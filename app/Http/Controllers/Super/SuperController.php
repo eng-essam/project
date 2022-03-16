@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Super;
 
 use App\Http\Controllers\Controller;
+use App\Models\operations;
+use App\Models\Service;
 use App\Models\Union;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class SuperController extends Controller
@@ -99,7 +102,12 @@ class SuperController extends Controller
         if (is_numeric($keyword)) {
             $data['allusers'] = User::where('union_id', $unionid)
                 ->where('role_id', "3")
-                ->where('union_number', $keyword)->get();
+                ->where('union_number', $keyword)->first();
+
+            if (!$data['allusers']) {
+                $request->session()->flash('error_keyword', 'لا يوجد عضو بهذا الرقم النقابي');
+                return back();
+            }
         } elseif (is_string($keyword)) {
             $data['allusers'] = User::where('union_id', $unionid)
                 ->where('role_id', "3")
@@ -351,10 +359,6 @@ class SuperController extends Controller
         return redirect(url('/admin/service'));
     }
 
-
-
-
-
     public function info()
     {
         $data['user'] = Auth::user();
@@ -398,8 +402,8 @@ class SuperController extends Controller
 
         if ($request->password == null) {
             $password = $user->password;
-        }else{
-            $password= Hash::make($request->password);
+        } else {
+            $password = Hash::make($request->password);
         }
 
         $userdata->update([
@@ -414,5 +418,53 @@ class SuperController extends Controller
 
         $request->session()->flash('success_edit', "تم تعديل البيانات بنجاح");
         return redirect(url('/super/info'));
+    }
+
+    public function operation()
+    {
+        $super = User::find(Auth::user()->id);
+
+        $user = User::select('id')->where('union_id', $super->union_id)->where('role_id', '3')->get();
+
+        $data['all_users'] = User::with('operations')
+            ->select('id', 'name')
+            ->whereIn('id', $user)
+            ->where('role_id', '3')->get();
+
+        return view('superadmin.operation')->with($data);
+    }
+
+    public function member_operation(Request $request)
+    {
+        $request->validate([
+            'keyword' => 'required|string',
+        ], [
+            'keyword.required' => "يرجي ادخال اسم العضو او الكود النقابي",
+            'keyword.string' => "يرجي ادخال اسم العضو او الكود النقابي",
+        ]);
+
+        if (is_numeric($request->keyword)) {
+            $user = User::select('id')
+                ->where('union_id', Auth::user()->union_id)
+                ->where('role_id', '3')
+                ->where('union_number', $request->keyword)->first();
+
+            if (!$user) {
+                $request->session()->flash('error_keyword', 'لا يوجد طلبات لعضو بهذا الرقم النقابي');
+                return back();
+            }
+        } elseif (is_string($request->keyword)) {
+            $user = User::select('id')
+                ->where('union_id', Auth::user()->union_id)
+                ->where('role_id', '3')
+                ->where('name', 'like', "%$request->keyword%")->get();
+        }
+
+        $data['all_users'] = User::with('operations')
+            ->select('id', 'name')
+            ->whereIn('id', $user)
+            ->where('role_id', '3')->get();
+
+        return  view('superadmin.search-operation')->with($data);
     }
 }

@@ -19,36 +19,36 @@
                 <div class="sidebar-menu">
                     <ul>
                         <li>
-                            <a href="{{url("/superadmin")}}">
+                            <a href="{{ url('/all/member') }}">
                                 <i class="fa-solid fa-user"></i>
                                 <span style="font-size: 17px ;font-weight: 700 "> الاعضاء</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="{{url("/all/admin")}}">
+                            <a href="{{ url('/all/admin') }}">
                                 <i class="fas fa-users-cog"></i>
                                 <span style="font-size: 17px ;font-weight: 700 ">المشرفون</span>
                             </a>
                         </li>
-                        
-                        <li >
-                            <a href="{{url("/admin/service")}}">
+
+                        <li>
+                            <a href="{{ url('/admin/service') }}">
                                 <i class="fas fa-hands-helping"></i>
                                 <span style="font-size: 17px ;font-weight: 700 ">خدمات النقابة</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="#">
-                                <i class="fas fa-users-cog"></i>
+                            <a href="{{ url('/super/operation') }}">
+                                <i class="far fa-address-book"></i>
                                 <span style="font-size: 17px ;font-weight: 700 ">سجل العمليات</span>
                                 {{-- <span class="badge badge-pill badge-warning">جديد</span> --}}
                             </a>
                         </li>
 
                         <li>
-                            <a href="{{url("/super/info")}}">
+                            <a href="{{ url('/super/info') }}">
                                 <i class="fas fa-info"></i>
                                 <span style="font-size: 17px ;font-weight: 700 ">بياناتي</span>
                             </a>
@@ -60,7 +60,7 @@
                         </form>
 
                         <li>
-                            <a id="logout-link" class="nav-link active" aria-current="page" href="#">
+                            <a href="" id="logout-link" class="nav-link active" aria-current="page" >
                                 <i class="fas fa-sign-out-alt"></i>
                                 <span style="font-size: 17px ;font-weight: 700 ">تسجيل خروج</span>
                             </a>

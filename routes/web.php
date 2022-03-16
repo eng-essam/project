@@ -5,17 +5,12 @@ use App\Http\Controllers\Super\SuperController;
 use App\Http\Controllers\web\Authcontroller;
 use App\Http\Controllers\Web\ServiceController;
 use App\Http\Controllers\Web\UnionController;
-use App\Http\Middleware\member;
 use Illuminate\Support\Facades\Route;
-
-
 
 // عرض جميع الخدامات الموجوده في نقابة معينة
 Route::get('/union/showservice/{id}', [ServiceController::class, 'showservice']);
 //البحث عن خدمة معينة في نقابة معينه
 Route::get('/union/service/search', [ServiceController::class, 'search']);
-
-
 
 /////////////صفحات الضيف//////////////////
 Route::middleware('guest')->group(function () {
@@ -32,7 +27,6 @@ Route::middleware('guest')->group(function () {
     Route::get('/', [UnionController::class, 'index']);
 });
 
-
 ///////////صفحات الاعضاء////////////////
 Route::middleware('auth', 'member')->group(function () {
     //عرض فورم رفع البيانات لخدمة معينة
@@ -47,13 +41,12 @@ Route::middleware('auth', 'member')->group(function () {
     //حذف بيانات خدمة العضو طلبها
     Route::get('/member/service/delete/{id}', [ServiceController::class, 'delete']);
 
-    //فورم تعديل بيانات خدمة 
+    //فورم تعديل بيانات خدمة
     Route::get('/member/service/eidt/{id}', [ServiceController::class, 'eidt']);
 
-    //تعديل بيانات خدمة 
+    //تعديل بيانات خدمة
     Route::post('/member/service/update/{id}', [ServiceFormController::class, 'update']);
 });
-
 
 ///////////صفحات السوبر ادمن//////////////
 Route::middleware('auth', 'superadmin')->group(function () {
@@ -109,16 +102,22 @@ Route::middleware('auth', 'superadmin')->group(function () {
     // تعديل سعر خدمة
     Route::post('/edit/service/cost/{id}', [SuperController::class, 'cost']);
 
-    //صفحة معلومات الادمن
+    //صفحة معلومات السوبر الادمن
     Route::get('/super/info', [SuperController::class, 'info']);
 
-    //صفحة تعديل المعلومات
+    // صفحة تعديل معلومات  السوبرالادمن
     Route::get('/super/edit/info', [SuperController::class, 'form_info']);
 
-     //مراجعة 
-     Route::post('/super/update/info', [SuperController::class, 'update_info']);
-});
+    //مراجعة بيانات السوبر الادمن الجديده
+    Route::post('/super/update/info', [SuperController::class, 'update_info']);
 
+    //عرض العمليات اللي بتحصل ف الموثع
+    Route::get('/super/operation', [SuperController::class, 'operation']);
+
+    //عرض العمليات اللي بتحصل ف الموثع
+    Route::get('/member/operation', [SuperController::class, 'member_operation']);
+
+});
 
 //صفحات ادمن
 Route::middleware('auth', 'admin')->group(function () {

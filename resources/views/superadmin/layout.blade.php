@@ -15,9 +15,9 @@
     <link rel="stylesheet" href="{{ asset('style_admin/css/adminlte.css') }}">
     <link rel="stylesheet" href="{{ asset('style_admin/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('style_admin/css/settings.css') }}">
-    
+
     @yield('link')
-    
+
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -38,7 +38,7 @@
             </div>
 
             <!-- main -->
-            <div style="margin: 0px 20px 20px 20px ;box-sizing: border-box;" >
+            <div style="margin: 0px 20px 20px 20px ;box-sizing: border-box;">
                 @yield('main')
             </div>
 
@@ -58,7 +58,7 @@
             $('#logout-form').submit()
         })
     </script>
-    
+
 </body>
 
 </html>

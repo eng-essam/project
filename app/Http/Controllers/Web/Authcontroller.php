@@ -86,6 +86,7 @@ class Authcontroller extends Controller
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
             ]);
+            request()->session()->flash('success-msg', 'تم التسجيل بنحاج');
             return view('all.login');
         } else {
             request()->session()->flash('error-msg', 'انت لست مسجل في النقابة');

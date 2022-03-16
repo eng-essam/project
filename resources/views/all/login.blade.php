@@ -21,11 +21,7 @@
 
                             @include('all.errors')
 
-                            @if (request()->session()->has('error-msg'))
-                                <div class="alert alert-danger">
-                                    <p> {{ request()->session()->get('error-msg') }} </p>
-                                </div>
-                            @endif
+                            
 
                             <form action="{{ url('login') }}" method="POST" enctype="multipart/form-data">
                                 @csrf

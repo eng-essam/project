@@ -28,7 +28,12 @@
                     <input style="width: 200px" type="text" placeholder="بحث عن مشرف " name="keyword">
                     <input style="background-color:#DC3545 ;color:white" type="submit" value="بحث">
                 </form>
-                <div style="color: red ;font-size:15px">@error('keyword'){{ $message }} @enderror</div>
+                <div style="color: red ;font-size:15px">
+                    @error('keyword')
+                        {{ $message }}
+                    @enderror
+                   
+                </div>
             </div>
         </div>
 
@@ -55,14 +60,14 @@
                             <td>
                                 <div style="width: max-content;margin: auto;">
                                     <div style="margin-left:20px;text-align: center;display: inline-block ">
-                                        <a href="{{url("/delet/member/$user->id")}}">
+                                        <a href="{{ url("/delet/member/$user->id") }}">
                                             <i style="color: red" class="fa-solid fa-trash fa-xl"></i>
                                             <p style="color: red;font-weight: bold">حذف</p>
                                         </a>
                                     </div>
 
                                     <div style="text-align: center;display: inline-block ">
-                                        <a href="{{url("/edit/member/$user->id")}}">
+                                        <a href="{{ url("/edit/member/$user->id") }}">
                                             <i style="color: rgb(0, 207, 0)" class="fas fa-edit fa-xl"></i>
                                             <p style="color: rgb(0, 207, 0);font-weight: bold">تعديل</p>
                                         </a>
@@ -73,7 +78,7 @@
                     @endforeach
                 </tbody>
             </table>
-          
+
 
 
         </div>

@@ -9,12 +9,6 @@
 @section('main')
     <div class="container">
 
-        @if (session('status'))
-            <div class="alert alert-success">
-                {{ session('status') }}
-            </div>
-        @endif
-        
         @include("all.errors")
 
         <form action="{{ url('/forgot-password') }}" method="POST">

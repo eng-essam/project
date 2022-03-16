@@ -45,10 +45,19 @@ class User extends Authenticatable implements MustVerifyEmail
     public function union(){
         return $this->belongsTo(Union::class);
     }
+
     public function services(){
         return $this->belongsToMany(Service::class,'user_user','user1_id','service_id')->withTimestamps()->withPivot('message','status');
     }
-    public function users(){
-        return $this->belongsToMany(User::class,'user_user')->withTimestamps()->withPivot('message','status');
+    
+    public function operations(){
+        return $this->belongsToMany(Service::class,'user_user','user1_id','service_id')->withTimestamps()->withPivot('message','status','admin_name');
     }
+
+    public function users(){
+        return $this->belongsToMany(User::class,'user_user','user1_id','user2_id')->withTimestamps()->withPivot('message','status','service_id');
+    }
+    
 }
+
+

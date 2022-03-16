@@ -99,7 +99,7 @@
                                 <div style="margin-bottom: 30px" class="form-group">
                                     <label style="float: right;">كلمة السر :</label>
                                     <div style="display: block;" class="input-group" style="direction: rtl">
-                                        <input type="text" class="form-control" name="password">
+                                        <input type="password" class="form-control" name="password">
                                         <div style="color: red ;font-size:15px;float: right;">
                                             @error('password')
                                                 {{ $message }}
@@ -112,7 +112,7 @@
                                 <div style="margin-bottom: 30px" class="form-group">
                                     <label style="float: right;">تأكيد كلمة السر :</label>
                                     <div style="display: block;" class="input-group" style="direction: rtl">
-                                        <input type="text" class="form-control" name="password_confirmation">
+                                        <input type="password" class="form-control" name="password_confirmation">
                                         <div style="color: red ;font-size:15px;float: right;">
                                             @error('password')
                                                 {{ $message }}
