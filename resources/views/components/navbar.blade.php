@@ -26,13 +26,14 @@
 
                         <ul class="dropdown-menu">
                             @foreach ($unions as $union)
-                                <li><a class="dropdown-item"
+                                <li>
+                                    <a class="dropdown-item"
                                         href="{{ url("union/showservice/$union->id") }}">نقابة{{ $union->name }}</a>
                                 </li>
                             @endforeach
                         </ul>
-
                     </div>
+
                 @endguest
 
                 @auth

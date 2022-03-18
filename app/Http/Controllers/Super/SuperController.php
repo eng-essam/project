@@ -3,16 +3,12 @@
 namespace App\Http\Controllers\Super;
 
 use App\Http\Controllers\Controller;
-use App\Models\operations;
-use App\Models\Service;
 use App\Models\Union;
 use App\Models\User;
-use Illuminate\Support\Facades\Validator;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class SuperController extends Controller
 {
@@ -43,10 +39,17 @@ class SuperController extends Controller
         }
 
         $request->validate([
-            'name' => 'required|string',
+            'name' => [
+                'required',
+                function ($attribute, $value, $fail) use ($loggedUser) {
+                    if (!preg_match('/\p{Arabic}/u', $value)) {
+                        $fail('يرجي كتابة الاسم صحيح بالغة العربية');
+                    }
+                },
+            ],
             'union_number' => 'required|numeric|unique:users,union_number',
             'ssn' => 'required|unique:users,ssn|numeric|digits:14',
-            'phone' => 'required|unique:users,phone|numeric',
+            'phone' => 'required|unique:users,phone|digits:11|numeric',
             'sex' => 'required',
         ], [
             'name.string' => "يرجي ادخال اسم المشرف",
@@ -58,10 +61,12 @@ class SuperController extends Controller
             'ssn.required' => "يرجي ادخال رقم قومي",
             'ssn.unique' => "الرقم القومي موجود بالفعل ",
             'ssn.numeric' => "يرجي ادخال رقم قومي صحيح",
-            'ssn.digits' => " يرجي ادخال رقم قومي صحيح",
+            'ssn.digits' => " يرجي ادخال رقم قومي صحيح مكون من 14 رقم",
             'phone.required' => "يرجي ادخال رقم الهاتف",
             'phone.unique' => "رقم الهاتف موجود بالفعل",
             'phone.numeric' => "يرجي ادخل رقم هاتف صحيح",
+            'phone.digits' => " يرجي ادخل رقم هاتف صحيح مكون من 11 رقم فقط",
+
         ]);
 
         User::create([
@@ -97,12 +102,12 @@ class SuperController extends Controller
 
         $user = Auth::user();
         $unionid = $user->union_id;
-        $keyword =  $request->keyword;
+        $keyword = $request->keyword;
 
         if (is_numeric($keyword)) {
             $data['allusers'] = User::where('union_id', $unionid)
                 ->where('role_id', "3")
-                ->where('union_number', $keyword)->first();
+                ->where('union_number', $keyword)->get();
 
             if (!$data['allusers']) {
                 $request->session()->flash('error_keyword', 'لا يوجد عضو بهذا الرقم النقابي');
@@ -126,7 +131,6 @@ class SuperController extends Controller
         return redirect(url('/all/member'));
     }
 
-
     public function edit_member($id, Request $request)
     {
         $user = Auth::user();
@@ -142,9 +146,16 @@ class SuperController extends Controller
 
     public function edit_update($id, Request $request)
     {
-
+        $user = User::find($id);
         $request->validate([
-            'name' => "required|string",
+            'name' => [
+                'required',
+                function ($attribute, $value, $fail) use ($user) {
+                    if (!preg_match('/\p{Arabic}/u', $value)) {
+                        $fail('يرجي كتابة الاسم صحيح بالغة العربية');
+                    }
+                },
+            ],
             'ssn' => "required|unique:users,ssn,$id|numeric|digits:14",
             'union_number' => "required|unique:users,union_number,$id|numeric",
         ], [
@@ -153,13 +164,12 @@ class SuperController extends Controller
             'ssn.unique' => "الرقم القومي موجود بالفعل",
             'ssn.numeric' => "يرجي ادخال رقم قومي صحيح",
             'ssn.required' => "يرجي ادخال رقم قومي ",
-            'ssn.digits' => "يرجي ادخال رقم قومي صحيح",
+            'ssn.digits' => " يرجي ادخال رقم قومي صحيح مكون من 14 رقم",
             'union_number.unique' => "كود النقابة موجود بالفعل موجود بالفعل",
             'union_number.numeric' => "يرجي ادخال كود نقابي صحيح",
             'union_number.required' => "يرجي ادخال الكود النقابي ",
         ]);
 
-        $user = User::find($id);
         $user->update([
             'name' => $request->name,
             'ssn' => $request->ssn,
@@ -185,6 +195,7 @@ class SuperController extends Controller
     public function update(Request $request)
     {
         $loggedUser = Auth::user();
+
         if ($loggedUser->union_id == '1') {
             $union_id = '1';
         } elseif ($loggedUser->union_id == '2') {
@@ -196,11 +207,18 @@ class SuperController extends Controller
         }
 
         $request->validate([
-            'name' => 'required|string',
+            'name' => [
+                'required',
+                function ($attribute, $value, $fail) {
+                    if (!preg_match('/\p{Arabic}/u', $value)) {
+                        $fail('يرجي كتابة الاسم صحيح بالغة العربية');
+                    }
+                },
+            ],
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|confirmed|min:6',
+            'password' => 'required|confirmed|min:8',
             'ssn' => 'required|unique:users,ssn|numeric|max:14',
-            'phone' => 'required|unique:users,phone|numeric',
+            'phone' => 'required|digits:11|unique:users,phone|numeric',
             'sex' => 'required',
         ], [
             'name.string' => "يرجي ادخال اسم المشرف",
@@ -210,7 +228,7 @@ class SuperController extends Controller
             'email.unique' => "البريد الالكتروني موجود بالفعل",
             'password.required' => "يرجي ادخال كلمة سر ",
             'password.confirmed' => "كلمة السر غير متطابقة ",
-            'password.min' => "ادخل كلمة سر اكبر من 6 احرف",
+            'password.min' => "ادخل كلمة سر اكبر من 8 احرف",
             'ssn.required' => "يرجي ادخال رقم قومي",
             'ssn.unique' => "الرقم القومي موجود بالفعل ",
             'ssn.numeric' => "يرجي ادخال رقم قومي صحيح",
@@ -218,6 +236,8 @@ class SuperController extends Controller
             'phone.required' => "يرجي ادخال رقم الهاتف",
             'phone.unique' => "رقم الهاتف موجود بالفعل",
             'phone.numeric' => "يرجي ادخل رقم هاتف صحيح",
+            'phone.digits' => " يرجي ادخل رقم هاتف صحيح مكون من 11 رقم فقط",
+
         ]);
 
         User::create([
@@ -253,13 +273,11 @@ class SuperController extends Controller
 
         $user = Auth::user();
         $unionid = $user->union_id;
-        $keyword =  $request->keyword;
-
+        $keyword = $request->keyword;
 
         $data['allusers'] = User::where('union_id', $unionid)
             ->where('role_id', "2")
             ->where('name', 'like', "%$keyword%")->get();
-
 
         return view("superadmin.search-admin")->with($data);
     }
@@ -288,8 +306,17 @@ class SuperController extends Controller
 
     public function update_admin($id, Request $request)
     {
+        $user = User::find($id);
+
         $request->validate([
-            'name' => "required|string",
+            'name' => [
+                'required',
+                function ($attribute, $value, $fail) use ($user) {
+                    if (!preg_match('/\p{Arabic}/u', $value)) {
+                        $fail('يرجي كتابة الاسم صحيح بالغة العربية');
+                    }
+                },
+            ],
             'ssn' => "required|unique:users,ssn,$id|numeric|digits:14",
         ], [
             'name.string' => "يرجي اخال اسم المشرف",
@@ -297,10 +324,9 @@ class SuperController extends Controller
             'ssn.unique' => "الرقم القومي موجود بالفعل",
             'ssn.numeric' => "يرجي ادخال رقم قومي صحيح",
             'ssn.required' => "يرجي ادخال رقم قومي ",
-            'ssn.digits' => "يرجي ادخال رقم قومي صحيح",
+            'ssn.digits' => " يرجي ادخال رقم قومي صحيح مكون من 14 رقم",
         ]);
 
-        $user = User::find($id);
         $user->update([
             'name' => $request->name,
             'ssn' => $request->ssn,
@@ -347,7 +373,6 @@ class SuperController extends Controller
             return redirect()->back()->withErrors($validator)->withInput($request->all());
         }
 
-
         $loggedUser = Auth::user();
         $union_data = Union::find($loggedUser->union_id);
 
@@ -376,45 +401,119 @@ class SuperController extends Controller
         $user = Auth::user();
         $userdata = User::where('id', '=', $user->id)->first();
 
-        $request->validate([
-            'name' => "required|string",
-            'email' => "required|email|unique:users,email,$user->id",
-            'phone' => "required|numeric|unique:users,phone,$user->id",
-            'ssn' => "required|numeric|unique:users,ssn,$user->id|digits:14",
-            'password' => "nullable|confirmed|min:6",
-            'sex' => "required",
-        ], [
-            'name.string' => "يرجي ادخال الاسم صحيح",
-            'name.required' => "يرجي ادخال الاسم  ",
-            'email.required' => "يرجي ادخال بريد الكتروني ",
-            'email.email' => "يرجي ادخال بريد الكتروني صحيح",
-            'email.unique' => "البريد الالكتروني موجود بالفعل",
-            'password.confirmed' => "كلمة السر غير متطابقة ",
-            'password.min' => "ادخل كلمة سر اكبر من 6 احرف",
-            'ssn.required' => "يرجي ادخال رقم قومي",
-            'ssn.unique' => "الرقم القومي موجود بالفعل ",
-            'ssn.numeric' => "يرجي ادخال رقم قومي صحيح",
-            'ssn.digits' => "يرجي ادخال رقم قومي صحيح",
-            'phone.required' => "يرجي ادخال رقم الهاتف",
-            'phone.unique' => "رقم الهاتف موجود بالفعل",
-            'phone.numeric' => "يرجي ادخل رقم هاتف صحيح",
-        ]);
-
-        if ($request->password == null) {
-            $password = $user->password;
+        //validate of email
+        if ($request->email == null) {
+            $request->email = $userdata->email;
         } else {
-            $password = Hash::make($request->password);
+            $request->validate(['email' => "email|unique:users,email,$user->id",
+            ], [
+                'email.email' => "يرجي ادخال بريد الكتروني صحيح",
+                'email.unique' => "البريد الالكتروني موجود بالفعل",
+            ]);
         }
+
+        //validate of phone
+        if ($request->phone == null) {
+            $request->phone = $userdata->phone;
+        } else {
+            $request->validate(['phone' => "numeric|digits:11|unique:users,phone,$user->id",
+            ], [
+                'phone.unique' => "رقم الهاتف موجود بالفعل",
+                'phone.numeric' => "يرجي ادخل رقم هاتف صحيح",
+                'phone.digits' => " يرجي ادخل رقم هاتف صحيح مكون من 11 رقم فقط",
+            ]);
+        }
+
+        //validate of ssn
+        if ($request->ssn == null) {
+            $request->ssn = $userdata->ssn;
+        } else {
+            $request->validate(['ssn' => "numeric|digits:14|unique:users,ssn,$user->id",
+            ], [
+                'ssn.unique' => "الرقم القومي موجود بالفعل ",
+                'ssn.numeric' => "يرجي ادخال رقم قومي صحيح",
+                'ssn.digits' => "يرجي ادخال رقم قومي صحيح مكون من 14 رقم فقط",
+            ]);
+        }
+
+        //validate of name and oldpassword
+        $request->validate([
+            'name' => [
+                function ($attribute, $value, $fail) use ($userdata) {
+                    if ($value == null) {
+                        $value = $userdata->name;
+                    } elseif (!preg_match('/\p{Arabic}/u', $value)) {
+                        $fail('يرجي كتابة الاسم صحيح');
+                    }
+                },
+            ],
+            'password' => [
+                'required',
+                function ($attribute, $value, $fail) use ($userdata) {
+                    if ($value != null) {
+                        if (!Hash::check($value, $userdata->password)) {
+                            $fail('كلمة السر غير صحيحة');
+                        }
+                    }
+
+                },
+            ],
+        ], [
+            'password.required' => "يرجي ادخال كلمة السر الحالية",
+        ]);
 
         $userdata->update([
             'name' => $request->name,
             'ssn' => $request->ssn,
             'sex' => $request->sex,
             'email' => $request->email,
-            'password' => $password,
             'phone' => $request->phone,
         ]);
 
+        $request->session()->flash('success_edit', "تم تعديل البيانات بنجاح");
+        return redirect(url('/super/info'));
+
+    }
+
+    public function form_password()
+    {
+        return view('superadmin.edit_password');
+    }
+
+    public function update_password(Request $request)
+    {
+        $user = Auth::user();
+        $userdata = User::where('id', '=', $user->id)->first();
+
+        $request->validate([
+            'oldpassword' => [
+                'required',
+                function ($attribute, $value, $fail) use ($userdata) {
+                    if (!Hash::check($value, $userdata->password)) {
+                        $fail('كلمة السر غير صحيحة');
+                    }
+                }],
+            'password' => [
+                'required',
+                'confirmed',
+                'min:6',
+                function ($attribute, $value, $fail) use ($userdata) {
+                    if (Hash::check($value, $userdata->password)) {
+                        $fail('كلمة السر الجديدة تشبة كلمة السر الحالية');
+                    }
+                }],
+
+        ], [
+            'oldpassword.required' => "يرجي ادخال كلمة السر الحالية",
+            'password.confirmed' => "كلمة السر غير متطابقة ",
+            'password.min' => "ادخل كلمة سر اكبر من 6 احرف",
+            'password.required' => "يرجي ادخال كلمة السر الجديدة",
+
+        ]);
+
+        $userdata->update([
+            'password' => Hash::make($request->password),
+        ]);
 
         $request->session()->flash('success_edit', "تم تعديل البيانات بنجاح");
         return redirect(url('/super/info'));
@@ -434,7 +533,58 @@ class SuperController extends Controller
         return view('superadmin.operation')->with($data);
     }
 
-    public function member_operation(Request $request)
+    public function accept_operation()
+    {
+        $super = User::find(Auth::user()->id);
+
+        $user = User::select('id')->where('union_id', $super->union_id)->where('role_id', '3')->get();
+
+        $data['all_users'] = User::with('operations')
+            ->select('id', 'name')
+            ->whereIn('id', $user)
+            ->where('role_id', '3')->get();
+
+        $data['status']="موافق";
+        $data['namepage']="جميع الطلبات التي تم الموافقة عليها";
+
+        return view('superadmin.types_of_operation')->with($data);
+    }
+
+    public function refuse_operation()
+    {
+        $super = User::find(Auth::user()->id);
+
+        $user = User::select('id')->where('union_id', $super->union_id)->where('role_id', '3')->get();
+
+        $data['all_users'] = User::with('operations')
+            ->select('id', 'name')
+            ->whereIn('id', $user)
+            ->where('role_id', '3')->get();
+
+        $data['status']="رفض";
+        $data['namepage']="جميع الطلبات التي تم رفضها ";
+
+        return view('superadmin.types_of_operation')->with($data);
+    }
+
+    public function check_operation()
+    {
+        $super = User::find(Auth::user()->id);
+
+        $user = User::select('id')->where('union_id', $super->union_id)->where('role_id', '3')->get();
+
+        $data['all_users'] = User::with('operations')
+            ->select('id', 'name')
+            ->whereIn('id', $user)
+            ->where('role_id', '3')->get();
+
+        $data['status']="جاري مراجعة البيانات";
+        $data['namepage']="جميع الطلبات التي لم يتم مراجعتها";
+
+        return view('superadmin.types_of_operation')->with($data);
+    }
+
+    public function search_member_operation(Request $request)
     {
         $request->validate([
             'keyword' => 'required|string',
@@ -458,6 +608,7 @@ class SuperController extends Controller
                 ->where('union_id', Auth::user()->union_id)
                 ->where('role_id', '3')
                 ->where('name', 'like', "%$request->keyword%")->get();
+
         }
 
         $data['all_users'] = User::with('operations')
@@ -465,6 +616,6 @@ class SuperController extends Controller
             ->whereIn('id', $user)
             ->where('role_id', '3')->get();
 
-        return  view('superadmin.search-operation')->with($data);
+        return view('superadmin.search-member-operation')->with($data);
     }
 }

@@ -17,7 +17,7 @@
         <div class="card-header">
             <!-- فورم البحث-->
             <div>
-                <form action="{{ url('/member/operation') }}" method="get">
+                <form action="{{ url('/search/member/operation') }}" method="get">
                     @csrf
                     <input style="width: 200px" type="text" placeholder="بحث عن عضو" name="keyword">
                     <input style="background-color:#DC3545 ;color:white" type="submit" value="بحث">

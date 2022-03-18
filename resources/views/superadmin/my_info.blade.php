@@ -24,7 +24,6 @@
 
         <div class="card-body">
 
-            
             <div class="card card-default">
                 <div class="card-body" style="direction: rtl">
                     <div class="row">
@@ -37,7 +36,8 @@
                                 <label style="float: right;"> الاسم :</label>
                                 <div style="display: block;" class="input-group" style="direction: rtl">
                                     <div>
-                                        <input readonly type="text" class="form-control" name="name" value="{{ $user->name }}">
+                                        <input readonly type="text" class="form-control" name="name"
+                                            value="{{ $user->name }}">
                                     </div>
                                 </div>
                             </div>
@@ -46,34 +46,27 @@
                             <div style="margin-bottom: 30px" class="form-group">
                                 <label style="float: right;"> البريد الالكتروني :</label>
                                 <div style="display: block;" class="input-group" style="direction: rtl">
-                                    <input readonly type="text" class="form-control" name="email" value="{{ $user->email }}">
+                                    <input readonly type="text" class="form-control" name="email"
+                                        value="{{ $user->email }}">
                                 </div>
                             </div>
 
                             <!-- ادخل-->
                             <div style="margin-bottom: 30px" class="form-group">
-                                <label style="float: right;"> كلمة السر :</label>
+                                <label style="float: right;"> الرقم القومي :</label>
                                 <div style="display: block;" class="input-group" style="direction: rtl">
-                                    <input readonly type="text" class="form-control" name="password" value="*******">
+                                    <input readonly type="text" class="form-control" name="ssn"
+                                        value="{{ $user->ssn }}">
                                 </div>
 
                             </div>
-
-                           
 
                         </div>
 
                         <!-- الجانب الايسر-->
                         <div style="margin-bottom: 30px" class="col-md-6">
 
-                             <!-- ادخل-->
-                             <div style="margin-bottom: 30px" class="form-group">
-                                <label style="float: right;"> الرقم القومي :</label>
-                                <div style="display: block;" class="input-group" style="direction: rtl">
-                                    <input readonly type="text" class="form-control" name="ssn" value="{{ $user->ssn }}">
-                                </div>
 
-                            </div>
 
                             <!-- ادخل-->
                             <div style="margin-bottom: 30px" class="form-group">
@@ -88,7 +81,8 @@
                             <div style="margin-bottom: 30px" class="form-group">
                                 <label style="float: right;"> الجنس :</label>
                                 <div style="display: block;" class="input-group" style="direction: rtl">
-                                    <input readonly type="text" class="form-control" name="sex" value="{{ $user->sex }}">
+                                    <input readonly type="text" class="form-control" name="sex"
+                                        value="{{ $user->sex }}">
                                 </div>
 
                             </div>
@@ -99,13 +93,23 @@
 
                 <div class="form-group" style="width: min-content;margin: auto auto 10px auto ;">
                     <div class="input-group" style="direction: rtl">
-                        <a href="{{url('/super/edit/info')}}" class="form-control" style="background-color: #DC3545;color: white">تعديل</a>
-                        
+                        <a href="{{ url('/super/edit/info') }}" class="form-control"
+                            style="background-color: #DC3545;color: white">تعديل</a>
+
                     </div>
                 </div>
             </div>
 
+            <div class="form-group" style="width: max-content ;float: right; margin-top: 20px">
+                <div class="input-group" style="direction: rtl">
+                    <a href="{{ url('/super/edit/password') }}" class="form-control"
+                        style="background-color: #DC3545;color: white">تغير كلمة السر</a>
+
+                </div>
+            </div>
 
         </div>
     </div>
+
+    
 @endsection

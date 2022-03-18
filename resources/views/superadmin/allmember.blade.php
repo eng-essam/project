@@ -14,7 +14,7 @@
 @section('main')
     <div class="card" style="direction: rtl">
 
-        <div class="card-header" >
+        <div class="card-header">
 
             <div style="text-align: center;display: inline-block ;float: right;height: 33px;">
                 <a href="{{ url('/add/member') }}">
@@ -29,13 +29,20 @@
                     <input style="width: 200px" type="text" placeholder="بحث عن عضو" name="keyword">
                     <input style="background-color:#DC3545;color:white" type="submit" value="بحث">
                 </form>
-                <div style="color: red ;font-size:15px">@error('keyword'){{ $message }} @enderror</div>
+                <div style="color: red ;font-size:15px">
+                    @error('keyword')
+                        {{ $message }}
+                    @enderror
+                    @if (session('error_keyword'))
+                        {{ session('error_keyword') }}
+                    @endif
+                </div>
             </div>
         </div>
 
         @include('all.message')
-        
-        <div class="card-body" >
+
+        <div class="card-body">
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -52,7 +59,13 @@
                     @foreach ($allusers as $user)
                         <tr>
                             <td style="text-align: center;font-size: 19px">{{ $user->name }}</td>
-                            <td style="text-align: center;font-size: 19px">{{ $user->email }}</td>
+                            <td style="text-align: center;font-size: 19px">
+                                @if ($user->email == null)
+                                    العضو لم يسجل في الموقع بعد
+                                @else
+                                    {{ $user->email }}
+                                @endif
+                            </td>
                             <td style="text-align: center;font-size: 19px">{{ $user->ssn }}</td>
                             <td style="text-align: center;font-size: 19px">{{ $user->phone }}</td>
                             <td style="text-align: center;font-size: 19px">{{ $user->sex }}</td>
@@ -60,14 +73,14 @@
                             <td>
                                 <div style="width: max-content;margin: auto;">
                                     <div style="margin-left:20px;text-align: center;display: inline-block ">
-                                        <a href="{{url("/delet/member/$user->id")}}">
+                                        <a href="{{ url("/delet/member/$user->id") }}">
                                             <i style="color: #BB2D3B" class="fa-solid fa-trash fa-xl"></i>
                                             <p style="color: #BB2D3B;font-weight: bold">حذف</p>
                                         </a>
                                     </div>
 
                                     <div style="text-align: center;display: inline-block ">
-                                        <a href="{{url("/edit/member/$user->id")}}">
+                                        <a href="{{ url("/edit/member/$user->id") }}">
                                             <i style="color: #157347" class="fas fa-edit fa-xl"></i>
                                             <p style="color: #157347;font-weight: bold">تعديل</p>
                                         </a>

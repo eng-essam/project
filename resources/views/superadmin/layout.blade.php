@@ -10,7 +10,6 @@
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="{{ asset('style_admin/css/css/all.css') }}">
-
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('style_admin/css/adminlte.css') }}">
     <link rel="stylesheet" href="{{ asset('style_admin/css/style.css') }}">
@@ -26,7 +25,7 @@
 <body class="hold-transition sidebar-mini">
 
     <div class="wrapper">
-
+       
         <x-admin-nav></x-admin-nav>
 
         <div class="content-wrapper">
@@ -46,7 +45,7 @@
     </div>
 
     <script src="{{ asset('style_admin/js/jquery.js') }}"></script>
-    <script src="{{ asset('style_admin/js/bootstrap.bundle.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="{{ asset('style_admin/js/adminlte.js') }}"></script>
     <script src="{{ asset('style_admin/js/main.js') }}"></script>
     <script src="{{ asset('style_admin/js/settings.js') }}"></script>

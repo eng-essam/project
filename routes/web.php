@@ -111,11 +111,26 @@ Route::middleware('auth', 'superadmin')->group(function () {
     //مراجعة بيانات السوبر الادمن الجديده
     Route::post('/super/update/info', [SuperController::class, 'update_info']);
 
-    //عرض العمليات اللي بتحصل ف الموثع
+    // صفحة تعديل كلمة السر  السوبرالادمن
+    Route::get('/super/edit/password', [SuperController::class, 'form_password']);
+
+    //مراجعة كلمة السر السوبر الادمن الجديده
+    Route::post('/super/update/password', [SuperController::class, 'update_password']);
+
+    //عرض  جميع العمليات اللي بتحصل ف النقابة
     Route::get('/super/operation', [SuperController::class, 'operation']);
 
-    //عرض العمليات اللي بتحصل ف الموثع
-    Route::get('/member/operation', [SuperController::class, 'member_operation']);
+    //عرض العمليات اللي تم قبولها فقط ف النقابة
+    Route::get('/accept/operation', [SuperController::class, 'accept_operation']);
+
+    //عرض العمليات اللي تم رفضها فقط ف النقابة
+    Route::get('/refuse/operation', [SuperController::class, 'refuse_operation']);
+
+    //عرض العمليات اللي مازالت في مرحلة المراجعة ف النقابة
+    Route::get('/check/operation', [SuperController::class, 'check_operation']);
+
+    //البحث عن طلبات عضو معين
+    Route::get('/search/member/operation', [SuperController::class, 'search_member_operation']);
 
 });
 

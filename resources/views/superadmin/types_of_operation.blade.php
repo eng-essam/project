@@ -7,7 +7,7 @@
 
 @section('namepage')
     <h1 style="color: white ; font-size: 25px ;padding-top: 10px">
-        جميع الطلبات
+        {{ $namepage }}
     </h1>
 @endsection
 
@@ -75,6 +75,7 @@
 
                     @for ($j = 0; $j < count($all_users); $j++)
                         @for ($i = 0; $i < count($all_users[$j]['operations']); $i++)
+                            @if ($all_users[$j]['operations'][$i]['pivot']['status'] == $status)
                                 <tr>
                                     <td style="text-align: center;font-size: 19px">
                                         {{ $all_users[$j]['name'] }}
@@ -92,6 +93,7 @@
                                         {{ $all_users[$j]['operations'][$i]['pivot']['admin_name'] }}
                                     </td>
                                 </tr>
+                            @endif
                         @endfor
                     @endfor
 
