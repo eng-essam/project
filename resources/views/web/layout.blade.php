@@ -1,8 +1,10 @@
     <!DOCTYPE html>
-    <html lang="en">
+<html lang="ar" dir="rtl">
+    
+</html>
 
-    <head>
-        <meta charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="{{ asset('style/css/bootstrap.css') }}" />

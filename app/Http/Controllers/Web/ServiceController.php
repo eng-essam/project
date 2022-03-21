@@ -481,4 +481,140 @@ class ServiceController extends Controller
             return view('web.edit.professionlicenform')->with($data);
         }
     }
+
+
+    public function info()
+    {
+        $data['user'] = Auth::user();
+        return view('superadmin.my_info')->with($data);
+    }
+
+    public function form_info()
+    {
+        $data['user'] = Auth::user();
+        return view('superadmin.edit-info')->with($data);
+    }
+
+    public function update_info(Request $request)
+    {
+        $user = Auth::user();
+        $userdata = User::where('id', '=', $user->id)->first();
+
+        //validate of email
+        if ($request->email == null) {
+            $request->email = $userdata->email;
+        } else {
+            $request->validate(['email' => "email|unique:users,email,$user->id",
+            ], [
+                'email.email' => "يرجي ادخال بريد الكتروني صحيح",
+                'email.unique' => "البريد الالكتروني موجود بالفعل",
+            ]);
+        }
+
+        //validate of phone
+        if ($request->phone == null) {
+            $request->phone = $userdata->phone;
+        } else {
+            $request->validate(['phone' => "numeric|digits:11|unique:users,phone,$user->id",
+            ], [
+                'phone.unique' => "رقم الهاتف موجود بالفعل",
+                'phone.numeric' => "يرجي ادخل رقم هاتف صحيح",
+                'phone.digits' => " يرجي ادخل رقم هاتف صحيح مكون من 11 رقم فقط",
+            ]);
+        }
+
+        //validate of ssn
+        if ($request->ssn == null) {
+            $request->ssn = $userdata->ssn;
+        } else {
+            $request->validate(['ssn' => "numeric|digits:14|unique:users,ssn,$user->id",
+            ], [
+                'ssn.unique' => "الرقم القومي موجود بالفعل ",
+                'ssn.numeric' => "يرجي ادخال رقم قومي صحيح",
+                'ssn.digits' => "يرجي ادخال رقم قومي صحيح مكون من 14 رقم فقط",
+            ]);
+        }
+
+        //validate of name and oldpassword
+        $request->validate([
+            'name' => [
+                function ($attribute, $value, $fail) use ($userdata) {
+                    if ($value == null) {
+                        $value = $userdata->name;
+                    } elseif (!preg_match('/\p{Arabic}/u', $value)) {
+                        $fail('يرجي كتابة الاسم صحيح');
+                    }
+                },
+            ],
+            'password' => [
+                'required',
+                function ($attribute, $value, $fail) use ($userdata) {
+                    if ($value != null) {
+                        if (!Hash::check($value, $userdata->password)) {
+                            $fail('كلمة السر غير صحيحة');
+                        }
+                    }
+
+                },
+            ],
+        ], [
+            'password.required' => "يرجي ادخال كلمة السر الحالية",
+        ]);
+
+        $userdata->update([
+            'name' => $request->name,
+            'ssn' => $request->ssn,
+            'sex' => $request->sex,
+            'email' => $request->email,
+            'phone' => $request->phone,
+        ]);
+
+        $request->session()->flash('success_edit', "تم تعديل البيانات بنجاح");
+        return redirect(url('/super/info'));
+
+    }
+
+    public function form_password()
+    {
+        return view('superadmin.edit_password');
+    }
+
+    public function update_password(Request $request)
+    {
+        $user = Auth::user();
+        $userdata = User::where('id', '=', $user->id)->first();
+
+        $request->validate([
+            'oldpassword' => [
+                'required',
+                function ($attribute, $value, $fail) use ($userdata) {
+                    if (!Hash::check($value, $userdata->password)) {
+                        $fail('كلمة السر غير صحيحة');
+                    }
+                }],
+            'password' => [
+                'required',
+                'confirmed',
+                'min:6',
+                function ($attribute, $value, $fail) use ($userdata) {
+                    if (Hash::check($value, $userdata->password)) {
+                        $fail('كلمة السر الجديدة تشبة كلمة السر الحالية');
+                    }
+                }],
+
+        ], [
+            'oldpassword.required' => "يرجي ادخال كلمة السر الحالية",
+            'password.confirmed' => "كلمة السر غير متطابقة ",
+            'password.min' => "ادخل كلمة سر اكبر من 6 احرف",
+            'password.required' => "يرجي ادخال كلمة السر الجديدة",
+
+        ]);
+
+        $userdata->update([
+            'password' => Hash::make($request->password),
+        ]);
+
+        $request->session()->flash('success_edit', "تم تعديل البيانات بنجاح");
+        return redirect(url('/super/info'));
+    }
 }
