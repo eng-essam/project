@@ -75,7 +75,7 @@
                     </div>
 
                     <div class="btn-group">
-                        <a style="color: white ; text-decoration: none ;margin-left: 10px" href="{{ url('myinfo') }}">
+                        <a style="color: white ; text-decoration: none ;margin-left: 10px" href="{{ url('/member/info') }}">
                             <button style="height: 40px" type="button" class="btn btn-danger">معلوماتي</button>
                         </a>
                     </div>

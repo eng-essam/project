@@ -11,7 +11,7 @@ return [
     | the validator class. Some of these rules have multiple versions such
     | as the size rules. Feel free to tweak each of these messages here.
     |
-    */
+     */
 
     'accepted' => 'The :attribute must be accepted.',
     'accepted_if' => 'The :attribute must be accepted when :other is :value.',
@@ -139,12 +139,43 @@ return [
     | convention "attribute.rule" to name the lines. This makes it quick to
     | specify a specific custom language line for a given attribute rule.
     |
-    */
+     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'email' => [
+            'required' => 'برجاء كتابة البريد الالكتروني',
+            'email' => " برجاء كتابة البريد الالكتروني صحيح",
+            'unique' => "البريد الالكتروني موجود بالفعل",
+
         ],
+
+        'password' => [
+            'required' => 'برجاء كتابة كلمة السر',
+            'confirmed' => 'كلمة السر غير متطابقتين',
+            'min' => 'برجاء كتابة كلمة سر اكبر من 8 احرف',
+        ],
+
+        'ssn' => [
+            'required' => 'برجاء كتابة الرقم القومي',
+            'numeric' => 'يرجي كتابة الرقم القومي صحيح',
+            'digits' => 'يرجي كتابة الرقم القومي صحيح (14 رقم)',
+            'unique' => "الرقم القومي موجود بالفعل ",
+        ],
+
+        'union_number' => [
+            'required' => 'برجاء كتابة الكود النقابي',
+            'numeric' => 'يرجي كتابة الكود النقابي صحيح',
+            'unique' => " الكود النقابي موجود بالفعل",
+            'numeric' => "يرجي ادخال كود نقابي صحيح",
+        ],
+
+        'phone' => [
+            'required' => "يرجي ادخال رقم الهاتف",
+            'unique' => "رقم الهاتف موجود بالفعل",
+            'numeric' => "يرجي ادخل رقم هاتف صحيح",
+            'digits' => " يرجي ادخل رقم هاتف صحيح مكون من 11 رقم فقط",
+        ],
+
     ],
 
     /*
@@ -156,7 +187,7 @@ return [
     | with something more reader friendly such as "E-Mail Address" instead
     | of "email". This simply helps us make our message more expressive.
     |
-    */
+     */
 
     'attributes' => [],
 

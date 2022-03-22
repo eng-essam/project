@@ -77,6 +77,13 @@ class ServiceFormController extends Controller
                 'personal_card' => 'required|image',
                 'cost' => 'required|image',
 
+            ],[
+                'card.required' => "يرجي رفع الصوره المطلوبة",
+                'card.image' => "يرجي رفع الصوره المطلوبة",
+                'personal_card.required' => "يرجي رفع الصوره المطلوبة",
+                'personal_card.image' => "يرجي رفع الصوره المطلوبة",
+                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
+                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
 
             $pathcard = Storage::disk('uploads')->put($pathimg, $request->card);
@@ -109,7 +116,15 @@ class ServiceFormController extends Controller
                 'personal_card' => 'required|image',
                 'recept' => 'required|image',
                 'cost' => 'required|image',
-
+            ],[
+                'card.required' => "يرجي رفع الصوره المطلوبة",
+                'card.image' => "يرجي رفع الصوره المطلوبة",
+                'personal_card.required' => "يرجي رفع الصوره المطلوبة",
+                'personal_card.image' => "يرجي رفع الصوره المطلوبة",
+                'recept.required' => "يرجي رفع الصوره المطلوبة",
+                'recept.image' => "يرجي رفع الصوره المطلوبة",
+                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
+                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
 
             $pathcard = Storage::disk('uploads')->put($pathimg, $request->card);
@@ -134,7 +149,17 @@ class ServiceFormController extends Controller
                 'personal_card' => 'required|image',
                 'receipt' => 'required|image',
                 'cost' => 'required|image',
+            ],[
+                'report.required' => "يرجي رفع الصوره المطلوبة",
+                'report.image' => "يرجي رفع الصوره المطلوبة",
+                'personal_card.required' => "يرجي رفع الصوره المطلوبة",
+                'personal_card.image' => "يرجي رفع الصوره المطلوبة",
+                'receipt.required' => "يرجي رفع الصوره المطلوبة",
+                'receipt.image' => "يرجي رفع الصوره المطلوبة",
+                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
+                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
+
             $pathreport = Storage::disk('uploads')->put($pathimg, $request->report);
             $pathpersonal_card = Storage::disk('uploads')->put($pathimg, $request->personal_card);
             $pathreceipt = Storage::disk('uploads')->put($pathimg, $request->receipt);
@@ -157,7 +182,17 @@ class ServiceFormController extends Controller
                 'salary' => 'required|image',
                 'receipt' => 'required|image',
                 'cost' => 'required|image',
-
+            ],[
+                'birth.required' => "يرجي رفع الصوره المطلوبة",
+                'birth.image' => "يرجي رفع الصوره المطلوبة",
+                'edu_certificate.required' => "يرجي رفع الصوره المطلوبة",
+                'edu_certificate.image' => "يرجي رفع الصوره المطلوبة",
+                'salary.required' => "يرجي رفع الصوره المطلوبة",
+                'salary.image' => "يرجي رفع الصوره المطلوبة",
+                'receipt.required' => "يرجي رفع الصوره المطلوبة",
+                'receipt.image' => "يرجي رفع الصوره المطلوبة",
+                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
+                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
             $pathbirth = Storage::disk('uploads')->put($pathimg, $request->birth);
             $pathedu_certificate = Storage::disk('uploads')->put($pathimg, $request->edu_certificate);
@@ -183,6 +218,13 @@ class ServiceFormController extends Controller
                 'report' => 'required|image',
                 'receipt' => 'required|image',
                 'cost' => 'required|image',
+            ],[
+                'report.required' => "يرجي رفع الصوره المطلوبة",
+                'report.image' => "يرجي رفع الصوره المطلوبة",
+                'receipt.required' => "يرجي رفع الصوره المطلوبة",
+                'receipt.image' => "يرجي رفع الصوره المطلوبة",
+                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
+                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
 
             $pathreport = Storage::disk('uploads')->put($pathimg, $request->report);
@@ -204,7 +246,15 @@ class ServiceFormController extends Controller
                 'wedding' => 'required|image',
                 'receipt' => 'required|image',
                 'cost' => 'required|image',
-
+            ],[
+                'police_certificae.required' => "يرجي رفع الصوره المطلوبة",
+                'police_certificae.image' => "يرجي رفع الصوره المطلوبة",
+                'wedding.required' => "يرجي رفع الصوره المطلوبة",
+                'wedding.image' => "يرجي رفع الصوره المطلوبة",
+                'receipt.required' => "يرجي رفع الصوره المطلوبة",
+                'receipt.image' => "يرجي رفع الصوره المطلوبة",
+                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
+                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
             $pathpolice_certificae = Storage::disk('uploads')->put($pathimg, $request->police_certificae);
             $pathwedding = Storage::disk('uploads')->put($pathimg, $request->wedding);
@@ -232,7 +282,25 @@ class ServiceFormController extends Controller
                 'brent' => 'required|image',
                 'Insurance' => 'required|image',
                 'cost' => 'required|image',
-
+            ],[
+                'disclaimer.required' => "يرجي رفع الصوره المطلوبة",
+                'disclaimer.image' => "يرجي رفع الصوره المطلوبة",
+                'fulltime.required' => "يرجي رفع الصوره المطلوبة",
+                'fulltime.image' => "يرجي رفع الصوره المطلوبة",
+                'card.required' => "يرجي رفع الصوره المطلوبة",
+                'card.image' => "يرجي رفع الصوره المطلوبة",
+                'personal_card.required' => "يرجي رفع الصوره المطلوبة",
+                'personal_card.image' => "يرجي رفع الصوره المطلوبة",
+                'ministry.required' => "يرجي رفع الصوره المطلوبة",
+                'ministry.image' => "يرجي رفع الصوره المطلوبة",
+                'endServ.required' => "يرجي رفع الصوره المطلوبة",
+                'endServ.image' => "يرجي رفع الصوره المطلوبة",
+                'brent.required' => "يرجي رفع الصوره المطلوبة",
+                'brent.image' => "يرجي رفع الصوره المطلوبة",
+                'Insurance.required' => "يرجي رفع الصوره المطلوبة",
+                'Insurance.image' => "يرجي رفع الصوره المطلوبة",
+                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
+                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
 
             $pathdisclaimer = Storage::disk('uploads')->put($pathimg, $request->disclaimer);
@@ -266,7 +334,15 @@ class ServiceFormController extends Controller
                 'card' => 'required|image',
                 'attorney' => 'required|image',
                 'cost' => 'required|image',
-
+            ],[
+                'health.required' => "يرجي رفع الصوره المطلوبة",
+                'health.image' => "يرجي رفع الصوره المطلوبة",
+                'card.required' => "يرجي رفع الصوره المطلوبة",
+                'card.image' => "يرجي رفع الصوره المطلوبة",
+                'attorney.required' => "يرجي رفع الصوره المطلوبة",
+                'attorney.image' => "يرجي رفع الصوره المطلوبة",
+                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
+                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
 
             $pathhealth = Storage::disk('uploads')->put($pathimg, $request->health);
@@ -294,7 +370,23 @@ class ServiceFormController extends Controller
                 'statement' => 'required|image',
                 'movements' => 'required|image',
                 'cost' => 'required|image',
-
+            ],[
+                'personal_card.required' => "يرجي رفع الصوره المطلوبة",
+                'personal_card.image' => "يرجي رفع الصوره المطلوبة",
+                'card.required' => "يرجي رفع الصوره المطلوبة",
+                'card.image' => "يرجي رفع الصوره المطلوبة",
+                'License.required' => "يرجي رفع الصوره المطلوبة",
+                'License.image' => "يرجي رفع الصوره المطلوبة",
+                'recruitment.required' => "يرجي رفع الصوره المطلوبة",
+                'recruitment.image' => "يرجي رفع الصوره المطلوبة",
+                'assignment.required' => "يرجي رفع الصوره المطلوبة",
+                'assignment.image' => "يرجي رفع الصوره المطلوبة",
+                'statement.required' => "يرجي رفع الصوره المطلوبة",
+                'statement.image' => "يرجي رفع الصوره المطلوبة",
+                'movements.required' => "يرجي رفع الصوره المطلوبة",
+                'movements.image' => "يرجي رفع الصوره المطلوبة",
+                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
+                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
 
             $pathpersonal_card = Storage::disk('uploads')->put($pathimg, $request->personal_card);
@@ -329,7 +421,21 @@ class ServiceFormController extends Controller
                 'approval' => 'required|image',
                 'presonal' => 'required|image',
                 'cost' => 'required|image',
-
+            ],[
+                'contract.required' => "يرجي رفع الصوره المطلوبة",
+                'contract.image' => "يرجي رفع الصوره المطلوبة",
+                'engineer.required' => "يرجي رفع الصوره المطلوبة",
+                'engineer.image' => "يرجي رفع الصوره المطلوبة",
+                'receipt.required' => "يرجي رفع الصوره المطلوبة",
+                'receipt.image' => "يرجي رفع الصوره المطلوبة",
+                'tax_card.required' => "يرجي رفع الصوره المطلوبة",
+                'tax_card.image' => "يرجي رفع الصوره المطلوبة",
+                'approval.required' => "يرجي رفع الصوره المطلوبة",
+                'approval.image' => "يرجي رفع الصوره المطلوبة",
+                'presonal.required' => "يرجي رفع الصوره المطلوبة",
+                'presonal.image' => "يرجي رفع الصوره المطلوبة",
+                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
+                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
             $pathcontract = Storage::disk('uploads')->put($pathimg, $request->contract);
             $pathengineer = Storage::disk('uploads')->put($pathimg, $request->engineer);
@@ -359,7 +465,17 @@ class ServiceFormController extends Controller
                 'card' => 'required|image',
                 'receipt' => 'required|image',
                 'cost' => 'required|image',
-
+            ],[
+                'recruitment.required' => "يرجي رفع الصوره المطلوبة",
+                'recruitment.image' => "يرجي رفع الصوره المطلوبة",
+                'army_card.required' => "يرجي رفع الصوره المطلوبة",
+                'army_card.image' => "يرجي رفع الصوره المطلوبة",
+                'card.required' => "يرجي رفع الصوره المطلوبة",
+                'card.image' => "يرجي رفع الصوره المطلوبة",
+                'receipt.required' => "يرجي رفع الصوره المطلوبة",
+                'receipt.image' => "يرجي رفع الصوره المطلوبة",
+                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
+                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
 
             $pathrecruitment = Storage::disk('uploads')->put($pathimg, $request->recruitment);
@@ -384,7 +500,13 @@ class ServiceFormController extends Controller
                 'temporary' => 'required|image',
                 'receipt' => 'required|image',
                 'cost' => 'required|image',
-
+            ],[
+                'temporary.required' => "يرجي رفع الصوره المطلوبة",
+                'temporary.image' => "يرجي رفع الصوره المطلوبة",
+                'receipt.required' => "يرجي رفع الصوره المطلوبة",
+                'receipt.image' => "يرجي رفع الصوره المطلوبة",
+                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
+                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
 
             $pathtemporary = Storage::disk('uploads')->put($pathimg, $request->temporary);
@@ -405,7 +527,13 @@ class ServiceFormController extends Controller
                 'master' => 'required|image',
                 'receipt' => 'required|image',
                 'cost' => 'required|image',
-
+            ],[
+                'master.required' => "يرجي رفع الصوره المطلوبة",
+                'master.image' => "يرجي رفع الصوره المطلوبة",
+                'receipt.required' => "يرجي رفع الصوره المطلوبة",
+                'receipt.image' => "يرجي رفع الصوره المطلوبة",
+                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
+                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
 
             $pathmaster = Storage::disk('uploads')->put($pathimg, $request->master);
@@ -433,8 +561,29 @@ class ServiceFormController extends Controller
                 'receipt' => 'required|image',
                 'certificate' => 'image',
                 'cost' => 'required|image',
-
+            ],[
+                'model.required' => "يرجي رفع الصوره المطلوبة",
+                'model.image' => "يرجي رفع الصوره المطلوبة",
+                'graduation.required' => "يرجي رفع الصوره المطلوبة",
+                'graduation.image' => "يرجي رفع الصوره المطلوبة",
+                'excellence.required' => "يرجي رفع الصوره المطلوبة",
+                'excellence.image' => "يرجي رفع الصوره المطلوبة",
+                'birth.required' => "يرجي رفع الصوره المطلوبة",
+                'birth.image' => "يرجي رفع الصوره المطلوبة",
+                'personal.required' => "يرجي رفع الصوره المطلوبة",
+                'personal.image' => "يرجي رفع الصوره المطلوبة",
+                'fesh.required' => "يرجي رفع الصوره المطلوبة",
+                'fesh.image' => "يرجي رفع الصوره المطلوبة",
+                'situation.required' => "يرجي رفع الصوره المطلوبة",
+                'situation.image' => "يرجي رفع الصوره المطلوبة",
+                'receipt.required' => "يرجي رفع الصوره المطلوبة",
+                'receipt.image' => "يرجي رفع الصوره المطلوبة",
+                'certificate.required' => "يرجي رفع الصوره المطلوبة",
+                'certificate.image' => "يرجي رفع الصوره المطلوبة",
+                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
+                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
+
             $pathmodel = Storage::disk('uploads')->put($pathimg, $request->model);
             $pathgraduation = Storage::disk('uploads')->put($pathimg, $request->graduation);
             $pathexcellence = Storage::disk('uploads')->put($pathimg, $request->excellence);
@@ -473,7 +622,25 @@ class ServiceFormController extends Controller
                 'purchase' => 'required|image',
                 'license' => 'required|image',
                 'cost' => 'required|image',
-
+            ],[
+                'contract.required' => "يرجي رفع الصوره المطلوبة",
+                'contract.image' => "يرجي رفع الصوره المطلوبة",
+                'certificate.required' => "يرجي رفع الصوره المطلوبة",
+                'certificate.image' => "يرجي رفع الصوره المطلوبة",
+                'card.required' => "يرجي رفع الصوره المطلوبة",
+                'card.image' => "يرجي رفع الصوره المطلوبة",
+                'building.required' => "يرجي رفع الصوره المطلوبة",
+                'building.image' => "يرجي رفع الصوره المطلوبة",
+                'device.required' => "يرجي رفع الصوره المطلوبة",
+                'device.image' => "يرجي رفع الصوره المطلوبة",
+                'purchase.required' => "يرجي رفع الصوره المطلوبة",
+                'purchase.image' => "يرجي رفع الصوره المطلوبة",
+                'license.required' => "يرجي رفع الصوره المطلوبة",
+                'license.required' => "يرجي رفع الصوره المطلوبة",
+                'recipe.required' => "يرجي رفع الصوره المطلوبة",
+                'recipe.required' => "يرجي رفع الصوره المطلوبة",
+                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
+                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
 
             $pathcontract = Storage::disk('uploads')->put($pathimg, $request->contract);
@@ -513,7 +680,27 @@ class ServiceFormController extends Controller
                 'fellowship' => 'required|image',
                 'Professional' => 'required|image',
                 'cost' => 'required|image',
-
+            ],[
+                'registration.required' => "يرجي رفع الصوره المطلوبة",
+                'registration.image' => "يرجي رفع الصوره المطلوبة",
+                'personal_card.required' => "يرجي رفع الصوره المطلوبة",
+                'personal_card.image' => "يرجي رفع الصوره المطلوبة",
+                'specialty.required' => "يرجي رفع الصوره المطلوبة",
+                'specialty.image' => "يرجي رفع الصوره المطلوبة",
+                'card.required' => "يرجي رفع الصوره المطلوبة",
+                'card.image' => "يرجي رفع الصوره المطلوبة",
+                'receipt.required' => "يرجي رفع الصوره المطلوبة",
+                'receipt.image' => "يرجي رفع الصوره المطلوبة",
+                'presonal.required' => "يرجي رفع الصوره المطلوبة",
+                'presonal.image' => "يرجي رفع الصوره المطلوبة",
+                'experience.required' => "يرجي رفع الصوره المطلوبة",
+                'experience.required' => "يرجي رفع الصوره المطلوبة",
+                'fellowship.required' => "يرجي رفع الصوره المطلوبة",
+                'fellowship.required' => "يرجي رفع الصوره المطلوبة",
+                'Professional.required' => "يرجي رفع الصوره المطلوبة",
+                'Professional.required' => "يرجي رفع الصوره المطلوبة",
+                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
+                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
 
             $pathregistration = Storage::disk('uploads')->put($pathimg, $request->registration);
@@ -551,7 +738,19 @@ class ServiceFormController extends Controller
                 'passport' => 'required|image',
                 'presonal' => 'image',
                 'cost' => 'required|image',
-
+            ],[
+                'license.required' => "يرجي رفع الصوره المطلوبة",
+                'license.image' => "يرجي رفع الصوره المطلوبة",
+                'personal_card.required' => "يرجي رفع الصوره المطلوبة",
+                'personal_card.image' => "يرجي رفع الصوره المطلوبة",
+                'passport.required' => "يرجي رفع الصوره المطلوبة",
+                'passport.image' => "يرجي رفع الصوره المطلوبة",
+                'card.required' => "يرجي رفع الصوره المطلوبة",
+                'card.image' => "يرجي رفع الصوره المطلوبة",
+                'presonal.required' => "يرجي رفع الصوره المطلوبة",
+                'presonal.image' => "يرجي رفع الصوره المطلوبة",
+                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
+                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
             $pathpersonal_card = Storage::disk('uploads')->put($pathimg, $request->personal_card);
             $pathcard = Storage::disk('uploads')->put($pathimg, $request->card);
@@ -623,8 +822,14 @@ class ServiceFormController extends Controller
                 'card' => 'nullable|image',
                 'personal_card' => 'nullable|image',
                 'cost' => 'nullable|image',
+            ],[
+                'personal_card.required' => "يرجي رفع الصوره المطلوبة",
+                'personal_card.image' => "يرجي رفع الصوره المطلوبة",
+                'card.required' => "يرجي رفع الصوره المطلوبة",
+                'card.image' => "يرجي رفع الصوره المطلوبة",
+                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
+                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
-
             $servicedata = Renewal::where('user_id', '=', $userid)->first();
             $pathcard = $servicedata->card;
             $pathpersonal_card = $servicedata->personal_card;
@@ -659,8 +864,16 @@ class ServiceFormController extends Controller
                 'personal_card' => 'nullable|image',
                 'recept' => 'nullable|image',
                 'cost' => 'nullable|image',
+            ],[
+                'personal_card.required' => "يرجي رفع الصوره المطلوبة",
+                'personal_card.image' => "يرجي رفع الصوره المطلوبة",
+                'card.required' => "يرجي رفع الصوره المطلوبة",
+                'card.image' => "يرجي رفع الصوره المطلوبة",
+                'recept.required' => "يرجي رفع الصوره المطلوبة",
+                'recept.image' => "يرجي رفع الصوره المطلوبة",
+                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
+                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
-
             $servicedata = Alternative::where('user_id', '=', $userid)->first();
             $pathcard = $servicedata->card;
             $pathpersonal_card = $servicedata->personal_card;
@@ -700,6 +913,15 @@ class ServiceFormController extends Controller
                 'personal_card' => 'nullable|image',
                 'receipt' => 'nullable|image',
                 'cost' => 'nullable|image',
+            ],[
+                'personal_card.required' => "يرجي رفع الصوره المطلوبة",
+                'personal_card.image' => "يرجي رفع الصوره المطلوبة",
+                'receipt.required' => "يرجي رفع الصوره المطلوبة",
+                'receipt.image' => "يرجي رفع الصوره المطلوبة",
+                'report.required' => "يرجي رفع الصوره المطلوبة",
+                'report.image' => "يرجي رفع الصوره المطلوبة",
+                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
+                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
             $servicedata = Treatment::where('user_id', '=', $userid)->first();
             $pathreport = $servicedata->report;

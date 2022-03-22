@@ -27,7 +27,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class ServiceController extends Controller
 {
@@ -65,9 +66,6 @@ class ServiceController extends Controller
         }
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////
-
     public function search(Request $request)
     {
 
@@ -81,7 +79,16 @@ class ServiceController extends Controller
 
 
         $request->validate([
-            'keyword' => 'required|string|max:20',
+            'keyword' => [
+                'required',
+                function ($attribute, $value, $fail) {
+                    if (!preg_match('/\p{Arabic}/u', $value)) {
+                        $fail('يرجي كتابة اسم الخدمة صحيح بالغة العربية');
+                    }
+                },
+            ],
+        ],[
+            'keyword.required' => 'يرجي كتابة اسم الخدمة'
         ]);
 
         $data['services'] = Service::where('namear', 'like', "%$request->keyword%")
@@ -93,8 +100,6 @@ class ServiceController extends Controller
         return view('web.servicessearch')->with($data);
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function serviceform($id, Request $request)
     {
@@ -183,8 +188,6 @@ class ServiceController extends Controller
         }
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function myservice()
     {
@@ -193,9 +196,6 @@ class ServiceController extends Controller
         $data['myservice'] = $user->services;
         return view('web.myservice')->with($data);
     }
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function delete($id, Request $request)
     {
@@ -436,8 +436,6 @@ class ServiceController extends Controller
         return redirect(url('member/myservice'));
     }
 
-
-
     public function eidt($id)
     {
         $loggedUser = Auth::user();
@@ -482,17 +480,16 @@ class ServiceController extends Controller
         }
     }
 
-
     public function info()
     {
         $data['user'] = Auth::user();
-        return view('superadmin.my_info')->with($data);
+        return view('web.my_info')->with($data);
     }
 
     public function form_info()
     {
         $data['user'] = Auth::user();
-        return view('superadmin.edit-info')->with($data);
+        return view('web.edit-info')->with($data);
     }
 
     public function update_info(Request $request)
@@ -505,9 +502,6 @@ class ServiceController extends Controller
             $request->email = $userdata->email;
         } else {
             $request->validate(['email' => "email|unique:users,email,$user->id",
-            ], [
-                'email.email' => "يرجي ادخال بريد الكتروني صحيح",
-                'email.unique' => "البريد الالكتروني موجود بالفعل",
             ]);
         }
 
@@ -516,36 +510,11 @@ class ServiceController extends Controller
             $request->phone = $userdata->phone;
         } else {
             $request->validate(['phone' => "numeric|digits:11|unique:users,phone,$user->id",
-            ], [
-                'phone.unique' => "رقم الهاتف موجود بالفعل",
-                'phone.numeric' => "يرجي ادخل رقم هاتف صحيح",
-                'phone.digits' => " يرجي ادخل رقم هاتف صحيح مكون من 11 رقم فقط",
-            ]);
-        }
-
-        //validate of ssn
-        if ($request->ssn == null) {
-            $request->ssn = $userdata->ssn;
-        } else {
-            $request->validate(['ssn' => "numeric|digits:14|unique:users,ssn,$user->id",
-            ], [
-                'ssn.unique' => "الرقم القومي موجود بالفعل ",
-                'ssn.numeric' => "يرجي ادخال رقم قومي صحيح",
-                'ssn.digits' => "يرجي ادخال رقم قومي صحيح مكون من 14 رقم فقط",
             ]);
         }
 
         //validate of name and oldpassword
         $request->validate([
-            'name' => [
-                function ($attribute, $value, $fail) use ($userdata) {
-                    if ($value == null) {
-                        $value = $userdata->name;
-                    } elseif (!preg_match('/\p{Arabic}/u', $value)) {
-                        $fail('يرجي كتابة الاسم صحيح');
-                    }
-                },
-            ],
             'password' => [
                 'required',
                 function ($attribute, $value, $fail) use ($userdata) {
@@ -554,29 +523,23 @@ class ServiceController extends Controller
                             $fail('كلمة السر غير صحيحة');
                         }
                     }
-
                 },
             ],
-        ], [
-            'password.required' => "يرجي ادخال كلمة السر الحالية",
         ]);
 
         $userdata->update([
-            'name' => $request->name,
-            'ssn' => $request->ssn,
-            'sex' => $request->sex,
             'email' => $request->email,
             'phone' => $request->phone,
         ]);
 
         $request->session()->flash('success_edit', "تم تعديل البيانات بنجاح");
-        return redirect(url('/super/info'));
+        return redirect(url('/member/info'));
 
     }
 
     public function form_password()
     {
-        return view('superadmin.edit_password');
+        return view('web.edit_password');
     }
 
     public function update_password(Request $request)
@@ -595,18 +558,12 @@ class ServiceController extends Controller
             'password' => [
                 'required',
                 'confirmed',
-                'min:6',
+                'min:8',
                 function ($attribute, $value, $fail) use ($userdata) {
                     if (Hash::check($value, $userdata->password)) {
                         $fail('كلمة السر الجديدة تشبة كلمة السر الحالية');
                     }
                 }],
-
-        ], [
-            'oldpassword.required' => "يرجي ادخال كلمة السر الحالية",
-            'password.confirmed' => "كلمة السر غير متطابقة ",
-            'password.min' => "ادخل كلمة سر اكبر من 6 احرف",
-            'password.required' => "يرجي ادخال كلمة السر الجديدة",
 
         ]);
 
@@ -617,4 +574,5 @@ class ServiceController extends Controller
         $request->session()->flash('success_edit', "تم تعديل البيانات بنجاح");
         return redirect(url('/super/info'));
     }
+                              
 }

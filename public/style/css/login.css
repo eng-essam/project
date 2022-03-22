@@ -1,0 +1,117 @@
+:root{
+    --main:#008080;
+    --dark: #1a2226;
+}
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Scheherazade New', serif;
+    text-align: right;
+    height: 100%;
+    color: var(--main);
+    background-color: #74EBD5;
+    background-image: linear-gradient(90deg, #2062a0 0%, #9FACE6 100%);
+}
+.login, 
+.confirm{
+    padding: 60px 0;
+}
+.newPassword{
+    padding: 140px 0;
+}
+.login-form,
+.problem-form, 
+.newPassword-form,
+.confirm-form{
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 400px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+}
+.login .inner-login .buttons{
+    width: 50%;
+    margin-right: 16%;
+    margin-top: 5px;
+}
+.login .card-title{
+    padding-top: 25px;
+}
+form{
+    padding-top: 10px;
+    font-size: 15px;
+    margin-top: 30px;
+}
+.card-text label{
+    font-weight: bold;
+    font-size: 17px;
+    margin-bottom: 12px;
+    margin-right: 3px;
+}
+.button{
+    margin-right: 40%;
+}
+.info .remember {
+    float: right;
+}
+.info .remember label{
+    margin-right: 22px;
+}
+.info .forget{
+    float: left;
+}
+
+
+
+
+
+/* start framework */
+.clearfix {
+	zoom:1;
+}
+.clearfix:after {
+	content:"";
+	display:table;
+	clear:both;
+	visibility:hidden;
+}
+.btn{
+    border: 1px solid var(--main);
+    color: var(--main);
+    margin-left: 5px;
+}
+.active , 
+.btn:hover{
+    background-color: var(--main);
+    color:#fff
+}
+input[type="email"]{
+    background-color: #f5f6fa;
+    border: 2px solid #dcdde1;
+}
+input[type="password"],
+input[type="text"]{
+    background-color: #f5f6fa;
+    border: 2px solid #dcdde1;
+}
+input[type="email"]:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus::placeholder,
+input[type="text"]:focus::placeholder,
+input[type="password"]:focus::placeholder {
+    outline: none;
+    border: none;
+}
+hr{
+    color: var(--dark)
+}
+a , a:hover{
+    text-decoration: none;
+    color: var(--main);
+}
+
+/* end framework */

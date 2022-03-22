@@ -54,19 +54,6 @@ class SuperController extends Controller
         ], [
             'name.string' => "يرجي ادخال اسم المشرف",
             'name.required' => "يرجي ادخال اسم المشرف ",
-            'union_number.required' => "يرجي ادخال الكود النقابي للعضو ",
-            'union_number.numeric' => "يرجي ادخال كود نقابي صحيح",
-            'union_number.unique' => " الكود النقابي موجود بالفعل",
-            'union_number.numeric' => "يرجي ادخال كود نقابي صحيح",
-            'ssn.required' => "يرجي ادخال رقم قومي",
-            'ssn.unique' => "الرقم القومي موجود بالفعل ",
-            'ssn.numeric' => "يرجي ادخال رقم قومي صحيح",
-            'ssn.digits' => " يرجي ادخال رقم قومي صحيح مكون من 14 رقم",
-            'phone.required' => "يرجي ادخال رقم الهاتف",
-            'phone.unique' => "رقم الهاتف موجود بالفعل",
-            'phone.numeric' => "يرجي ادخل رقم هاتف صحيح",
-            'phone.digits' => " يرجي ادخل رقم هاتف صحيح مكون من 11 رقم فقط",
-
         ]);
 
         User::create([
@@ -161,13 +148,6 @@ class SuperController extends Controller
         ], [
             'name.string' => "يرجي اخال اسم العضو",
             'name.required' => "يرجي ادخال اسم العضو ",
-            'ssn.unique' => "الرقم القومي موجود بالفعل",
-            'ssn.numeric' => "يرجي ادخال رقم قومي صحيح",
-            'ssn.required' => "يرجي ادخال رقم قومي ",
-            'ssn.digits' => " يرجي ادخال رقم قومي صحيح مكون من 14 رقم",
-            'union_number.unique' => "كود النقابة موجود بالفعل موجود بالفعل",
-            'union_number.numeric' => "يرجي ادخال كود نقابي صحيح",
-            'union_number.required' => "يرجي ادخال الكود النقابي ",
         ]);
 
         $user->update([
@@ -217,27 +197,12 @@ class SuperController extends Controller
             ],
             'email' => 'required|email|unique:users,email',
             'password' => 'required|confirmed|min:8',
-            'ssn' => 'required|unique:users,ssn|numeric|max:14',
+            'ssn' => 'required|unique:users,ssn|numeric|digits:14',
             'phone' => 'required|digits:11|unique:users,phone|numeric',
             'sex' => 'required',
         ], [
             'name.string' => "يرجي ادخال اسم المشرف",
             'name.required' => "يرجي ادخال اسم المشرف ",
-            'email.required' => "يرجي ادخال بريد الكتروني ",
-            'email.email' => "يرجي ادخال بريد الكتروني صحيح",
-            'email.unique' => "البريد الالكتروني موجود بالفعل",
-            'password.required' => "يرجي ادخال كلمة سر ",
-            'password.confirmed' => "كلمة السر غير متطابقة ",
-            'password.min' => "ادخل كلمة سر اكبر من 8 احرف",
-            'ssn.required' => "يرجي ادخال رقم قومي",
-            'ssn.unique' => "الرقم القومي موجود بالفعل ",
-            'ssn.numeric' => "يرجي ادخال رقم قومي صحيح",
-            'ssn.max' => "يرجي ادخال رقم قومي صحيح",
-            'phone.required' => "يرجي ادخال رقم الهاتف",
-            'phone.unique' => "رقم الهاتف موجود بالفعل",
-            'phone.numeric' => "يرجي ادخل رقم هاتف صحيح",
-            'phone.digits' => " يرجي ادخل رقم هاتف صحيح مكون من 11 رقم فقط",
-
         ]);
 
         User::create([
@@ -321,10 +286,6 @@ class SuperController extends Controller
         ], [
             'name.string' => "يرجي اخال اسم المشرف",
             'name.required' => "يرجي ادخال اسم المشرف ",
-            'ssn.unique' => "الرقم القومي موجود بالفعل",
-            'ssn.numeric' => "يرجي ادخال رقم قومي صحيح",
-            'ssn.required' => "يرجي ادخال رقم قومي ",
-            'ssn.digits' => " يرجي ادخال رقم قومي صحيح مكون من 14 رقم",
         ]);
 
         $user->update([
@@ -406,9 +367,6 @@ class SuperController extends Controller
             $request->email = $userdata->email;
         } else {
             $request->validate(['email' => "email|unique:users,email,$user->id",
-            ], [
-                'email.email' => "يرجي ادخال بريد الكتروني صحيح",
-                'email.unique' => "البريد الالكتروني موجود بالفعل",
             ]);
         }
 
@@ -417,10 +375,6 @@ class SuperController extends Controller
             $request->phone = $userdata->phone;
         } else {
             $request->validate(['phone' => "numeric|digits:11|unique:users,phone,$user->id",
-            ], [
-                'phone.unique' => "رقم الهاتف موجود بالفعل",
-                'phone.numeric' => "يرجي ادخل رقم هاتف صحيح",
-                'phone.digits' => " يرجي ادخل رقم هاتف صحيح مكون من 11 رقم فقط",
             ]);
         }
 
@@ -429,10 +383,6 @@ class SuperController extends Controller
             $request->ssn = $userdata->ssn;
         } else {
             $request->validate(['ssn' => "numeric|digits:14|unique:users,ssn,$user->id",
-            ], [
-                'ssn.unique' => "الرقم القومي موجود بالفعل ",
-                'ssn.numeric' => "يرجي ادخال رقم قومي صحيح",
-                'ssn.digits' => "يرجي ادخال رقم قومي صحيح مكون من 14 رقم فقط",
             ]);
         }
 
@@ -458,8 +408,6 @@ class SuperController extends Controller
 
                 },
             ],
-        ], [
-            'password.required' => "يرجي ادخال كلمة السر الحالية",
         ]);
 
         $userdata->update([
@@ -496,18 +444,12 @@ class SuperController extends Controller
             'password' => [
                 'required',
                 'confirmed',
-                'min:6',
+                'min:8',
                 function ($attribute, $value, $fail) use ($userdata) {
                     if (Hash::check($value, $userdata->password)) {
                         $fail('كلمة السر الجديدة تشبة كلمة السر الحالية');
                     }
                 }],
-
-        ], [
-            'oldpassword.required' => "يرجي ادخال كلمة السر الحالية",
-            'password.confirmed' => "كلمة السر غير متطابقة ",
-            'password.min' => "ادخل كلمة سر اكبر من 6 احرف",
-            'password.required' => "يرجي ادخال كلمة السر الجديدة",
 
         ]);
 

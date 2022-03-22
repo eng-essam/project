@@ -1,0 +1,29 @@
+:root{
+    --main:#008080;
+    --dark: #1a2226;
+}
+*{
+    box-sizing: border-box;
+}
+/* start problem classes */
+.problem{
+    padding: 100px 0;
+}
+.problem .form-select{
+    margin-right: 25%;
+}
+.form-select{
+    color: var(--main);
+}
+.form-group{
+    margin-right: 10px;
+}
+.number-info{
+    border: 1px solid #dcdde1;
+    width: 100%;
+    height: 31px;
+    background-color: #f5f6fa;
+    color: var(--main);  
+}
+
+/* end problem classes */

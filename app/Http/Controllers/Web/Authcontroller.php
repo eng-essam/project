@@ -3,105 +3,76 @@
 namespace App\Http\Controllers\web;
 
 use App\Http\Controllers\Controller;
-use App\Models\Role;
-use App\Models\Union;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
-  
-
-
 class Authcontroller extends Controller
 {
-    public function register_admin()
+
+    //validate logoin
+    public function guest_login(Request $request)
     {
-        $data['loggedUser'] = Auth::user();
-        if (!$data['loggedUser']) {
-            return abort(404);
-        }
-        $idunion = $data['loggedUser']->union_id;
-        $data['union'] = Union::find($idunion);
-        return view('admin.register_admin')->with($data);
-    }
-
-    public function admin_register(Request $request)
-    {
-        $loggedUser = Auth::user();
-
-        if ($loggedUser->union_id == '1') {
-            $union_id = '1';
-        } elseif ($loggedUser->union_id == '2') {
-            $union_id = '2';
-        } elseif ($loggedUser->union_id == '3') {
-            $union_id = '3';
-        } elseif ($loggedUser->union_id == '4') {
-            $union_id = '4';
-        }
-
         $request->validate([
-            'name' => 'required|string|max:255',
-            'ssn' => 'required|unique:users,ssn|numeric',
-            'phone' => 'required|numeric',
-            'sex' => 'required',
-            'union_number' => 'required|unique:users,union_number',
+            'email' => 'required|email',
+            'password' => [
+                'required',
+                'string',
+                function ($attribute, $value, $fail) use ($request) {
+                    if ($request->password != null || $request->email != null) {
+                        $islogin = Auth::attempt(['email' => $request->email, 'password' => $request->password]);
+                        if (!$islogin) {
+                            $fail('البريد الالكتروني او كلمة السر غير صحيح');
+                        }
+                    }
+                },
+            ],
         ]);
 
-        User::create([
-            'name' => $request->name,
-            'union_number' => $request->union_number,
-            'ssn' => $request->ssn,
-            'sex' => $request->sex,
-            'phone' => $request->phone,
-            'union_id' => $union_id,
-            'role_id' => '3',
-        ]);
-        return redirect(url('/register/admin'));
+        $uesrunion = Auth::user()->union_id;
+        if (Auth::user()->role_id == '1') {
+            return redirect(url('/all/member'));
+        } elseif (Auth::user()->role_id == '2') {
+            return redirect(url('/register/admin'));
+        } elseif (Auth::user()->role_id == '3') {
+            return redirect(url("/union/showservice/$uesrunion"));
+        }
     }
-    //////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////// 
+
+    //تسجيل عضو ف الموقع لاول مره
     public function register_member()
     {
         return view('web.register_member');
     }
 
+    //validate تسجيل عضو ف الموقع لاول مره
     public function member_register(Request $request)
     {
         $request->validate([
-            'email' => 'required|email|unique:users,email|max:255',
-            'password' => 'required|string|confirmed|min:5|max:30',
-            'ssn' => 'required|numeric',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|confirmed|min:8',
+            'ssn' => 'required|numeric|digits:14',
             'union_number' => 'required|numeric',
-
         ]);
 
         $user = User::where('ssn', '=', $request->ssn)
             ->where('union_number', '=', $request->union_number)
             ->where('role_id', '=', '3')->first();
 
-        if ($user !== null) {
-            $user->update([
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-            ]);
-            request()->session()->flash('success-msg', 'تم التسجيل بنحاج');
-            return view('all.login');
-        } else {
-            request()->session()->flash('error-msg', 'انت لست مسجل في النقابة');
-            return back();
-        }
+        $user->update([
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        request()->session()->flash('success-msg', 'تم التسجيل بنحاج');
+        return view('all.login');
     }
 
-
-   public function requestPassword()
-   {
-      return view("all.forgot-password");
-   }
-
-
-
-
+    // صفحة نسيت كلمة السر
+    public function requestPassword()
+    {
+        return view("all.forgot-password");
+    }
 
 }
