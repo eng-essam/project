@@ -15,6 +15,7 @@ Route::get('/union/service/search', [ServiceController::class, 'search']);
 /////////////صفحات الضيف//////////////////
 Route::middleware('guest')->group(function () {
 
+    //تسجيل دخول
     Route::post('/guest/login', [Authcontroller::class, 'guest_login']);
 
     //تسجيل عضو ف الموقع لاول مره
@@ -28,10 +29,17 @@ Route::middleware('guest')->group(function () {
 
     //عرض جميع النقابات الموجوده في الموقع
     Route::get('/', [UnionController::class, 'index']);
+
+    //عرض صفحة مشكلة في التسجيل
+    Route::get('/problem', [Authcontroller::class, 'problem']);
 });
 
 ///////////صفحات الاعضاء////////////////
 Route::middleware('auth', 'member')->group(function () {
+
+    //تسجيل خروج عضو
+    Route::get('/member_logout', [Authcontroller::class, 'member_logout']);
+
     //عرض فورم رفع البيانات لخدمة معينة
     Route::get('/union/serviceform/{id}', [ServiceController::class, 'serviceform']);
 

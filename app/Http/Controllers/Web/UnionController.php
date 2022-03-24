@@ -10,9 +10,7 @@ class UnionController extends Controller
 {
     public function index()
     {
-
-        $data['unions'] = Union::select('id', 'name')->get();
-        return view('web.home')->with($data);
+        return view('web.home');
     }
 
     

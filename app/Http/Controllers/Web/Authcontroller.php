@@ -41,10 +41,21 @@ class Authcontroller extends Controller
         }
     }
 
+    // logout
+    public function member_logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+        return redirect('login');
+    }
+
     //تسجيل عضو ف الموقع لاول مره
     public function register_member()
     {
-        return view('web.register_member');
+        return view('all.register_member');
     }
 
     //validate تسجيل عضو ف الموقع لاول مره
@@ -73,6 +84,12 @@ class Authcontroller extends Controller
     public function requestPassword()
     {
         return view("all.forgot-password");
+    }
+
+    //عرض صفحة مشكلة في التسجيل
+    public function problem()
+    {
+        return view("all.problem");
     }
 
 }

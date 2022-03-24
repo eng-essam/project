@@ -22,6 +22,12 @@
     <script type="text/javascript" src="{{ asset('style/js/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('style/js/bootstrap.js') }}"></script>
     <script type="text/javascript" src="{{ asset('style/js/main.js') }}"></script>
+    <script>
+        $('#logout-link').click(function(e) {
+            e.preventDefault()
+            $('#logout-form').submit()
+        })
+    </script>
 
 </body>
 

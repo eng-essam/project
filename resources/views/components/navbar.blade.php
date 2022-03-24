@@ -45,7 +45,7 @@
                     <li style="float: right" class="nav-item">
                         <a id="logout-link"
                             style="background-color: rgb(255, 0, 0) ; color: rgb(255, 255, 255); margin-right:20px "
-                            class="nav-link active" aria-current="page" href="#">تسجيل خروج
+                            class="nav-link active" aria-current="page" href="{{url('logout')}}">تسجيل خروج
                         </a>
                     </li>
 
