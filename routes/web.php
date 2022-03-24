@@ -160,54 +160,15 @@ Route::middleware('auth', 'superadmin')->group(function () {
     Route::get('/search/member/operation', [SuperController::class, 'search_member_operation']);
 
 });
-/*
+
+
 //صفحات ادمن
 Route::middleware('auth', 'admin')->group(function () {
     //اضافة  عضو في الداتا بيز
     Route::get('/register/admin', [Authcontroller::class, 'register_admin']);
-    {
-        $data['loggedUser'] = Auth::user();
-        if (!$data['loggedUser']) {
-            return abort(404);
-        }
-        $idunion = $data['loggedUser']->union_id;
-        $data['union'] = Union::find($idunion);
-        return view('admin.register_admin')->with($data);
-    }
+
 
     //مراجعة بيانات  العضو اللي اضاف
     Route::post('/register/admin', [Authcontroller::class, 'admin_register']);
-    {
-        $loggedUser = Auth::user();
-
-        if ($loggedUser->union_id == '1') {
-            $union_id = '1';
-        } elseif ($loggedUser->union_id == '2') {
-            $union_id = '2';
-        } elseif ($loggedUser->union_id == '3') {
-            $union_id = '3';
-        } elseif ($loggedUser->union_id == '4') {
-            $union_id = '4';
-        }
-
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'ssn' => 'required|unique:users,ssn|numeric',
-            'phone' => 'required|numeric',
-            'sex' => 'required',
-            'union_number' => 'required|unique:users,union_number',
-        ]);
-
-        User::create([
-            'name' => $request->name,
-            'union_number' => $request->union_number,
-            'ssn' => $request->ssn,
-            'sex' => $request->sex,
-            'phone' => $request->phone,
-            'union_id' => $union_id,
-            'role_id' => '3',
-        ]);
-        return redirect(url('/register/admin'));
-    }
+    
 });
-*/

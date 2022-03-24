@@ -103,7 +103,6 @@ class ServiceController extends Controller
 
     public function serviceform($id, Request $request)
     {
-
         $loggedUser = Auth::user();
         $user = User::findOrfail($loggedUser->id);
 
@@ -186,6 +185,7 @@ class ServiceController extends Controller
         } else {
             return view('web.services')->with($data);
         }
+        
     }
 
 
