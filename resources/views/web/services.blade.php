@@ -34,6 +34,43 @@
         </section>
         <!-- End Services Section -->
 
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+
+            <div class="container" data-aos="fade-up">
+                <div style="direction: rtl;" class="row gx-0">
+
+                    <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
+                        <div class="content">
+                            <h2>الموقع يُتيج للاعضاء تنفيذ الخدمات النقابية اونلاين لتوفير
+                                الوقت والجهد على جميع اعضاء النقابات </h2>
+                            <ul class="mt-5 mb-5 fs-5">
+                                <li class="pb-2">تجديد عضوية النقابة.</li>
+                                <li class="pb-2">صرف معاش التقاعد.</li>
+                                <li class="pb-2">صرف إعانة العجز الصحي.</li>
+                                <li class="pb-2">صرف إعانة زواج لبنات الأعضاء المتوفيين.</li>
+                            </ul>
+                            @guest
+                                <div class="text-center text-lg-start">
+                                    <a href="#"
+                                        class="btn-read-more d-inline-flexalign-items-center justify-content-centeralign-self-center">
+                                        <span style="margin-left: 10px;">المزيد</span>
+                                        <i class="bi bi-arrow-left"></i>
+                                    </a>
+                                </div>
+                            @endguest
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+                        <img src="{{ asset('style_member/assets/img/about.jpg') }}" class="img-fluid" alt="">
+                    </div>
+
+                </div>
+            </div>
+
+        </section><!-- End About Section -->
     </main>
     <!-- End #main -->
 @endsection
