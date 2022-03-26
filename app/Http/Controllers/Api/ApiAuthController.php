@@ -22,8 +22,8 @@ class ApiAuthController extends Controller
         if ($validator->fails()) {
             return response()->json([
                 'status' => false,
-                'errors' => $validator->errors(),
-            ], 404);
+                'message' => 'البريد الالكترونى أو كلمة السر خطأ',
+            ], 200);
         }
         $user = User::where('email', $request->email)->where('role_id', '=', 3)->first();
 
@@ -31,7 +31,7 @@ class ApiAuthController extends Controller
             return response()->json([
                 'status' => false,
                 'message' => 'البريد الالكترونى أو كلمة السر خطأ',
-            ], 404);
+            ], 200);
         }
         $token = $user->createToken('auth-token')->plainTextToken;
         $reponse = [

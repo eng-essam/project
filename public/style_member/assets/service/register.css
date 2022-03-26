@@ -1,0 +1,116 @@
+
+
+/*  inner-nav */
+.inner-nav {
+  padding: 15px 0;
+  background: var(--dark1);
+  min-height: 40px;
+  margin-top: 82px;
+  color: #fff;
+}
+
+@media (max-width: 992px) {
+  .inner-nav {
+    margin-top: 57px;
+  }
+}
+
+.inner-nav h2 {
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.inner-nav ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0 0 10px 0;
+  margin: 0;
+  font-size: 14px;
+}
+
+.inner-nav ol a {
+  color: var(--white);
+  transition: 0.3s;
+}
+
+.inner-nav ol a:hover {
+  text-decoration: underline;
+}
+
+.inner-nav ol li + li {
+  padding-left: 10px;
+}
+
+.inner-nav ol li + li::before {
+  display: inline-block;
+  padding-right: 10px;
+  color: #8894f6;
+  content: "/";
+}
+
+
+/* start register */
+.talbaty{
+  padding: 30px 0;
+}
+.talbaty{
+  background-color: #f6f9ff;
+}
+.talbaty h3{
+  font-size: 24px;
+  margin: 0 0 20px 0;
+  padding: 0;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--dark1);
+}
+
+.card {
+  color: var(--dark);
+}
+.card .main{
+  margin-bottom: 30px;
+}
+.card .main label{
+  float: right;
+  margin-left: 10px;
+  margin-top: 8px;
+}
+.card .inner{
+  display: block;
+}
+.card .button{
+  width: max-content;
+  margin: auto auto 10px auto ;
+}
+.card .button a{
+  color: var(--white);
+  background-color: var(--dark);
+}
+.card .button a:hover{
+  background-color: var(--dark1);
+}
+
+input[type=button] {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border: 0;
+  background: none;
+  font-size: 16px;
+  margin: 3px  ;
+    
+  background: var(--dark);
+  color: var(--white);
+  
+  border-radius: 4px;
+  width: 34%;
+ 
+  height: 40px;
+  text-align: center;
+}
+
+input[type=button]:hover {
+  background: var(--dark1);
+}

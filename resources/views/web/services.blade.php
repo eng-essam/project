@@ -1,5 +1,39 @@
 @extends('web.layout_member')
 
+@section('header')
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="hero d-flex align-items-center">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 d-flex flex-column justify-content-center">
+                    <h1 style="font-size: 37px;" data-aos="fade-up">معلوماتك النقابية من
+                        مكان واحد </h1>
+                    <h2 style="direction: rtl;" data-aos="fade-up" data-aos-delay="400" class="text-center">هذا
+                        الموقع صُمم لكي يساعد الأعضاء على إتمام الخدمات النقابية أونلاين
+                        وبسهولة</h2>
+                    @guest
+                        <div data-aos="fade-up" data-aos-delay="600">
+                            <div style="direction: rtl;" class="text-center text-lg-start">
+                                <a href="{{ url('login') }}"
+                                    class="btn-get-started scrollto d-inline-flex
+                            align-items-center justify-content-center align-self-center">
+                                    <span style="margin-left: 10px;">تسجيل دخول</span>
+                                    <i class="bi bi-arrow-left"></i>
+                                </a>
+                            </div>
+                        </div>
+                    @endguest
+                </div>
+                <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
+                    <img src="{{ asset('style_member/assets/img/hero-img.png') }}" class="img-fluid" alt="">
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- End Hero -->
+@endsection
 
 @section('main')
     <!-- Start #main -->
@@ -11,7 +45,7 @@
             <div class="container" data-aos="fade-up">
 
                 <header class="section-header text-center">
-                    <p>هذه هي الخدمات المتوفرة تبعاً لهذه النقابة</p>
+                    <p>الخدمات المتوفرة لنقابة {{$union->name}}</p>
                 </header>
 
                 <div class="row gy-4" style="direction: rtl;">
@@ -22,7 +56,7 @@
                                 <i class="ri-customer-service-2-line icon"></i>
                                 <h3>{{ $service->namear }}</h3>
                                 <p>{{ $service->title }}</p>
-                                <a  href="{{ url("union/serviceform/$service->id") }}" class="read-more"><span>إقرأ
+                                <a  href="{{ url("/union/servicedesc/$service->id") }}" class="read-more"><span>إقرأ
                                         المزيد</span><i class="bi bi-arrow-left"></i> </a>
                             </div>
                         </div>

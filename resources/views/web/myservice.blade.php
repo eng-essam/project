@@ -1,42 +1,56 @@
-@extends('web.layout')
-
-@section('title')
-    طلباتي
-@endsection
+@extends('web.layout_member')
 
 
 
 @section('main')
-    @if (session('success_edit'))
-        <div class="alert alert-success" style="margin: auto ;width: max-content">
-            <div style="direction: rtl   ; width: max-content  ;font-size: 20px ;margin-bottom: 10px ">
-                {{ session('success_edit') }}
+    <!-- Start #main -->
+    <main id="main">
+
+        <div  style="margin: 90px 0 90px 0" class="card" style="direction: rtl">
+    
+            @include('all.message')
+            <div class="card-body">
+                <table style="direction: rtl;"  class="table table-bordered">
+                    <thead>
+                        <tr style="background-color:#013289 ">
+                            <th style="text-align: center;font-size: 20px;color: white" scope="col">اسم الخدمة</th>
+                            <th style="text-align: center;font-size: 20px;color: white" scope="col">تاريخ الطلب</th>
+                            <th style="text-align: center;font-size: 20px;color: white" scope="col">حالة الطلب</th>
+                            <th style="text-align: center;font-size: 20px;color: white" scope="col">ملاحظات الطلب</th>
+                            <th style="text-align: center;font-size: 20px;color: white" scope="col">عمليات</th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        @foreach ($myservice as $data)
+                            <tr >
+                                <td style="text-align: center;font-size: 19px;padding-top: 25px">{{ $data->namear }}</td>
+                                <td style="text-align: center;font-size: 19px;padding-top: 25px">{{ Carbon\Carbon::parse($data->pivot->created_at)->format('Y-m-d') }}</td>
+                                <td style="text-align: center;font-size: 19px;padding-top: 25px">{{ $data->pivot->status }}</td>
+                                <td style="text-align: center;font-size: 19px;padding-top: 25px">{{ $data->pivot->message }}</td>
+                                <td style="padding-top: 25px">
+                                    <div style="width: max-content;margin: auto;">
+                                        <div style="margin-left:20px;text-align: center;display: inline-block ">
+                                            <a href="{{ url('member/service/delete/' . $data->pivot->service_id) }}">
+                                                <i style="color: #BB2D3B" class="fa-solid fa-trash fa-xl"></i>
+                                                <p style="color: #BB2D3B;font-weight: bold">الغاء</p>
+                                            </a>
+                                        </div>
+    
+                                        <div style="text-align: center;display: inline-block ">
+                                            <a href="{{ url('member/service/eidt/' . $data->pivot->service_id) }}">
+                                                <i style="color: #157347" class="fas fa-edit fa-xl"></i>
+                                                <p style="color: #157347;font-weight: bold">تعديل</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
-    @endif
 
-    <table class="table" style="float: right">
-        <thead>
-            <tr>
-                <th scope="col">اسم الخدمة</th>
-                <th scope="col">تاريخ الطلب</th>
-                <th scope="col">حالة الطلب</th>
-                <th scope="col">ملاحظات الطلب</th>
-                <th scope="col">عمليات</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($myservice as $data)
-                <tr>
-                    <td>{{ $data->namear }}</td>
-                    <td>{{ Carbon\Carbon::parse($data->pivot->created_at)->format('Y-m-d') }}</td>
-                    <td> {{ $data->pivot->status }}</td>
-                    <td>{{ $data->pivot->message }}</td>
-                    <td><a href="{{ url('member/service/delete/' . $data->pivot->service_id) }}">الغاء</a> |
-                        <a href="{{ url('member/service/eidt/' . $data->pivot->service_id) }}">تعديل</a>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+    </main>
+    <!-- End #main -->
 @endsection

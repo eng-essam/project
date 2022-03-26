@@ -1,0 +1,70 @@
+
+
+/* info table */
+
+.info h2{
+    font-size: 25px;
+    color: var(--dark1);
+    font-weight: 700;
+}
+.info-tabel{
+    border: 1px solid var(--dark);
+    border-radius: 5px;
+}
+
+.info-tabel .thead{
+    color: var(--dark);
+}
+.info-tabel .tbody tr{
+    color: var(--brown);
+}
+
+.disabled-link {
+  cursor: default;
+  pointer-events: none;
+  text-decoration: none;
+  color: grey;
+}
+
+
+
+/* start talbaty */
+.info{
+    padding: 30px 0;
+  }
+  .info,
+  .card-header{
+    background-color: #f6f9ff;
+  }
+  .info h3{
+    font-size: 24px;
+    margin: 0 0 20px 0;
+    padding: 0;
+    line-height: 1;
+    font-weight: 700;
+    color: var(--dark1);
+  }
+  
+  .card {
+    color: var(--dark);
+  }
+  .card .main{
+    margin-bottom: 30px;
+  }
+  .card .main label{
+    float: right;
+  }
+  .card .inner{
+    display: block;
+  }
+  .card .button{
+    width: max-content;
+    margin: auto auto 10px auto ;
+  }
+  .card .button a{
+    color: var(--white);
+    background-color: var(--dark);
+  }
+  .card .button a:hover{
+    background-color: var(--dark1);
+  }

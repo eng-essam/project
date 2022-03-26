@@ -22,13 +22,11 @@ use App\Models\Specialistcard;
 use App\Models\Specialiststable;
 use App\Models\Treatment;
 use App\Models\Union;
-use App\Models\Unionservice;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class ServiceController extends Controller
 {
@@ -49,7 +47,6 @@ class ServiceController extends Controller
 
             $request->session()->put('union', $data['union']);
 
-
             if (!$loggedUser) {
                 return view('web.services')->with($data);
             } elseif ($loggedUser->union_id == $id) {
@@ -69,14 +66,13 @@ class ServiceController extends Controller
     public function search(Request $request)
     {
 
-        $data['keyword'] =  $request->keyword;
+        $data['keyword'] = $request->keyword;
         $data['union'] = $request->session()->get('union');
         $data['servicess'] = $data['union']->services;
         $row = [];
         for ($i = 0; $i < $data['servicess']->count(); $i++) {
             $row[] = $data['servicess'][$i]["id"];
         }
-
 
         $request->validate([
             'keyword' => [
@@ -87,19 +83,98 @@ class ServiceController extends Controller
                     }
                 },
             ],
-        ],[
-            'keyword.required' => 'يرجي كتابة اسم الخدمة'
+        ], [
+            'keyword.required' => 'يرجي كتابة اسم الخدمة',
         ]);
 
         $data['services'] = Service::where('namear', 'like', "%$request->keyword%")
             ->whereIn('id', $row)->get();
-
 
         $data['servicess'] = $data['union']->services;
 
         return view('web.servicessearch')->with($data);
     }
 
+    public function servicedesc($id, Request $request)
+    {
+        $loggedUser = Auth::user();
+        $user = User::findOrfail($loggedUser->id);
+
+        $unionid = $user->union_id;
+        $data['union'] = Union::findOrfail($unionid);
+        $data['servicess'] = $data['union']->services;
+
+        //بجيب كل الخدمات اللي تبع نقابة واحده بس
+        $row = [];
+        for ($i = 0; $i < $data['servicess']->count(); $i++) {
+            $row[] = $data['servicess'][$i]["id"];
+        }
+
+        //قبل مظهر فورم الخدمة لليوزر بروح اشوف هو مستخدم الخدمة دي قبل كده اما لا
+        $user_services = $user->services;
+        $services_arr = [];
+        foreach ($user_services as $serviceid) {
+            $services_arr[] = $serviceid->pivot->service_id;
+        }
+
+        if (in_array($id, $row)) {
+            if ($id == 1) {
+                $data['service'] = Service::findOrfail($id);
+                return view('web.services_desc.renewal_desc')->with($data);
+            } elseif ($id == 2) {
+                $data['service'] = Service::findOrfail($id);
+                return view('web.services_desc.alternative_desc')->with($data);
+            } elseif ($id == 3) {
+                $data['service'] = Service::findOrfail($id);
+                return view('web.services_desc.treatment_desc')->with($data);
+            } elseif ($id == 4) {
+                $data['service'] = Service::findOrfail($id);
+                return view('web.services_desc.educationfee_desc')->with($data);
+            } elseif ($id == 5) {
+                $data['service'] = Service::findOrfail($id);
+                return view('web.services_desc.disease_desc')->with($data);
+            } elseif ($id == 6) {
+                $data['service'] = Service::findOrfail($id);
+                return view('web.services_desc.condition_desc')->with($data);
+            } elseif ($id == 7) {
+                $data['service'] = Service::findOrfail($id);
+                return view('web.services_desc.noworkform_desc')->with($data);
+            } elseif ($id == 8) {
+                $data['service'] = Service::findOrfail($id);
+                return view('web.services_desc.evictioncert_desc')->with($data);
+            } elseif ($id == 9) {
+                $data['service'] = Service::findOrfail($id);
+                return view('web.services_desc.experiencecert_desc')->with($data);
+            } elseif ($id == 10) {
+                $data['service'] = Service::findOrfail($id);
+                return view('web.services_desc.clinicscert_desc')->with($data);
+            } elseif ($id == 11) {
+                $data['service'] = Service::findOrfail($id);
+                return view('web.services_desc.recruitment_desc')->with($data);
+            } elseif ($id == 12) {
+                $data['service'] = Service::findOrfail($id);
+                return view('web.services_desc.consultantcard_desc')->with($data);
+            } elseif ($id == 13) {
+                $data['service'] = Service::findOrfail($id);
+                return view('web.services_desc.specialistcard_desc')->with($data);
+            } elseif ($id == 14) {
+                $data['service'] = Service::findOrfail($id);
+                return view('web.services_desc.professionlicense_desc')->with($data);
+            } elseif ($id == 15) {
+                $data['service'] = Service::findOrfail($id);
+                return view('web.services_desc.privateclinics_desc')->with($data);
+            } elseif ($id == 16) {
+                $data['service'] = Service::findOrfail($id);
+                return view('web.services_desc.specialiststable_desc')->with($data);
+            } elseif ($id == 17) {
+                $data['service'] = Service::findOrfail($id);
+                return view('web.services_desc.professionlicen_desc')->with($data);
+            }
+        } else {
+            return view('web.services')->with($data);
+        }
+
+    }
 
     public function serviceform($id, Request $request)
     {
@@ -113,7 +188,7 @@ class ServiceController extends Controller
         //بجيب كل الخدمات اللي تبع نقابة واحده بس
         $row = [];
         for ($i = 0; $i < $data['servicess']->count(); $i++) {
-            $row[] =  $data['servicess'][$i]["id"];
+            $row[] = $data['servicess'][$i]["id"];
         }
 
         //قبل مظهر فورم الخدمة لليوزر بروح اشوف هو مستخدم الخدمة دي قبل كده اما لا
@@ -125,7 +200,7 @@ class ServiceController extends Controller
 
         if (in_array($id, $row)) {
             if (in_array($id, $services_arr)) {
-                $request->session()->flash('servicess_error', 'لقت استخدمت هذه الخدمة من قبل هل تريد حذف 
+                $request->session()->flash('servicess_error', 'لقت استخدمت هذه الخدمة من قبل هل تريد حذف
                 بياناتك القديمه لهذه الخدمة وطلبها من جديد');
                 return redirect("/union/showservice/$unionid")->with(['id' => $id]);
             } else {
@@ -185,9 +260,8 @@ class ServiceController extends Controller
         } else {
             return view('web.services')->with($data);
         }
-        
-    }
 
+    }
 
     public function myservice()
     {
@@ -280,7 +354,6 @@ class ServiceController extends Controller
             Storage::disk('uploads')->delete($userdata->brent);
             Storage::disk('uploads')->delete($userdata->Insurance);
             Storage::disk('uploads')->delete($userdata->cost);
-
 
             $userdata->delete();
             $user->services()->detach([
@@ -430,8 +503,6 @@ class ServiceController extends Controller
             ]);
         }
 
-
-
         $request->session()->flash('success_edit', 'تم الغاءالطلب بنجاح');
         return redirect(url('member/myservice'));
     }
@@ -571,8 +642,8 @@ class ServiceController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $request->session()->flash('success_edit', "تم تعديل البيانات بنجاح");
-        return redirect(url('/super/info'));
+        $request->session()->flash('success_edit', "تم تعديل كلمة السر بنجاح");
+        return redirect(url('/member/info'));
     }
-                              
+
 }

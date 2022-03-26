@@ -11,7 +11,7 @@
                   <div class="dropdown">
                       <i class="fa-solid fa-gear dropicon"></i>
                       <div class="dropdown-content">
-                          <a href="#">
+                          <a href="{{ url('/member/info') }}">
                               معلوماتي
                               <i style="font-size: 15px" class="fa-solid fa-circle-info"></i>
                           </a>
@@ -62,7 +62,7 @@
                           <ul>
                               @foreach ($servicess as $service)
                                   <li>
-                                      <a href="{{ url("union/serviceform/$service->id") }}">
+                                      <a href="{{ url("/union/servicedesc/$service->id") }}">
                                           {{ $service->namear }}</a>
                                   </li>
                               @endforeach

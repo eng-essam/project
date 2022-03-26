@@ -40,6 +40,9 @@ Route::middleware('auth', 'member')->group(function () {
     //تسجيل خروج عضو
     Route::get('/member_logout', [Authcontroller::class, 'member_logout']);
 
+    //عرض وصف بيانات خدمة معينة
+    Route::get('/union/servicedesc/{id}', [ServiceController::class, 'servicedesc']);
+
     //عرض فورم رفع البيانات لخدمة معينة
     Route::get('/union/serviceform/{id}', [ServiceController::class, 'serviceform']);
 
@@ -58,14 +61,13 @@ Route::middleware('auth', 'member')->group(function () {
     //تعديل بيانات خدمة
     Route::post('/member/service/update/{id}', [ServiceFormController::class, 'update']);
 
-    
     //صفحة معلومات العضو
     Route::get('/member/info', [ServiceController::class, 'info']);
 
     //صفحة تعديل معلومات  العضو
     Route::get('/member/edit/info', [ServiceController::class, 'form_info']);
 
-    //مراجعة بيانات الجديدة العضو  
+    //مراجعة  تعديل بيانات الجديدة العضو  
     Route::post('/member/update/info', [ServiceController::class, 'update_info']);
 
     // صفحة تعديل كلمة السر  العضو

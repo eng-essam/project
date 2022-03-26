@@ -46,8 +46,10 @@
                             <div style="margin-bottom: 30px" class="form-group">
                                 <label style="float: right;"> البريد الالكتروني :</label>
                                 <div style="display: block;" class="input-group" style="direction: rtl">
-                                    <input readonly type="text" class="form-control" name="email"
-                                        value="{{ $user->email }}">
+                                    <div>
+                                        <input readonly type="text" class="form-control" name="email"
+                                            value="{{ $user->email }}">
+                                    </div>
                                 </div>
                             </div>
 
@@ -55,8 +57,10 @@
                             <div style="margin-bottom: 30px" class="form-group">
                                 <label style="float: right;"> الرقم القومي :</label>
                                 <div style="display: block;" class="input-group" style="direction: rtl">
-                                    <input readonly type="text" class="form-control" name="ssn"
+                                    <div>
+                                        <input readonly type="text" class="form-control" name="ssn"
                                         value="{{ $user->ssn }}">
+                                    </div>
                                 </div>
 
                             </div>
@@ -72,8 +76,10 @@
                             <div style="margin-bottom: 30px" class="form-group">
                                 <label style="float: right;">الهاتف :</label>
                                 <div style="display: block;" class="input-group" style="direction: rtl">
-                                    <input readonly type="text" class="form-control" name="phone"
-                                        value="{{ $user->phone }}">
+                                    <div>
+                                        <input readonly type="text" class="form-control" name="phone"
+                                            value="{{ $user->phone }}">
+                                    </div>
                                 </div>
                             </div>
 
@@ -81,8 +87,10 @@
                             <div style="margin-bottom: 30px" class="form-group">
                                 <label style="float: right;"> الجنس :</label>
                                 <div style="display: block;" class="input-group" style="direction: rtl">
-                                    <input readonly type="text" class="form-control" name="sex"
-                                        value="{{ $user->sex }}">
+                                    <div>
+                                        <input readonly type="text" class="form-control" name="sex"
+                                            value="{{ $user->sex }}">
+                                    </div>
                                 </div>
 
                             </div>
@@ -110,6 +118,4 @@
 
         </div>
     </div>
-
-    
 @endsection

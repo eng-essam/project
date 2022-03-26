@@ -4,7 +4,6 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Home Page</title>
     <meta content="" name="description">
 
     <meta content="" name="keywords">
@@ -22,7 +21,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+
     <!-- Vendor CSS Files -->
     <link href="{{ asset('style_member/assets/vendor/aos/aos.css') }}" rel="stylesheet">
     <link href="{{ asset('style_member/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -30,6 +29,8 @@
     <link href="{{ asset('style_member/assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
     <link href="{{ asset('style_member/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
     <link href="{{ asset('style_member/assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+    @yield('style')
+    <title> @yield('title')</title>
     <!-- Template Main CSS File -->
     <link href="{{ asset('style_member/assets/css/style.css') }}" rel="stylesheet">
 
@@ -39,41 +40,9 @@
 
     <!-- ======= Header ======= -->
     <x-membernav></x-membernav>
-
     <!-- End Header -->
 
-    <!-- ======= Hero Section ======= -->
-    <section id="hero" class="hero d-flex align-items-center">
-
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 d-flex flex-column justify-content-center">
-                    <h1 style="font-size: 37px;" data-aos="fade-up">معلوماتك النقابية من
-                        مكان واحد </h1>
-                    <h2 style="direction: rtl;" data-aos="fade-up" data-aos-delay="400" class="text-center">هذا
-                        الموقع صُمم لكي يساعد الأعضاء على إتمام الخدمات النقابية أونلاين
-                        وبسهولة</h2>
-                    @guest
-                        <div data-aos="fade-up" data-aos-delay="600">
-                            <div style="direction: rtl;" class="text-center text-lg-start">
-                                <a href="{{ url('login') }}"
-                                    class="btn-get-started scrollto d-inline-flex
-                            align-items-center justify-content-center align-self-center">
-                                    <span style="margin-left: 10px;">تسجيل دخول</span>
-                                    <i class="bi bi-arrow-left"></i>
-                                </a>
-                            </div>
-                        </div>
-                    @endguest
-                </div>
-                <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
-                    <img src="{{ asset('style_member/assets/img/hero-img.png') }}" class="img-fluid" alt="">
-                </div>
-            </div>
-        </div>
-
-    </section>
-    <!-- End Hero -->
+    @yield('header')
 
 
     @yield('main')
