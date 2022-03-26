@@ -3,10 +3,27 @@
       <div class="container-fluid container-xl d-flex align-items-center
         justify-content-between">
 
-          <a href="index.html" class="logo d-flex align-items-center">
-              <img src="{{ asset('style_member/assets/img/logo.png') }}" alt="">
-              <span>LOGO</span>
-          </a>
+
+
+          <div class="logo d-flex align-items-center">
+
+              @auth
+                  <div class="dropdown">
+                      <i class="fa-solid fa-gear dropicon"></i>
+                      <div class="dropdown-content">
+                          <a href="#">معلوماتي</a>
+                          <a style="display: inline-flex;background-color: red;padding: 5px" href="#">
+                              تسجيل خروج
+                              <i style="background-color: rgb(15, 14, 14);font-size: 20px"
+                                  class="fa-solid fa-right-from-bracket"></i>
+                          </a>
+                      </div>
+                  </div>
+              @endauth
+              <a href="index.html">
+                  <span>LOGO</span>
+              </a>
+          </div>
 
           <nav id="navbar" class="navbar">
               <ul>
@@ -32,7 +49,8 @@
 
                   @auth
 
-                      <li><a style="font-size: 20px;" class="nav-link scrollto active" href="#hero">الرئيسية</a></li>
+                      <li><a style="font-size: 20px;" class="nav-link scrollto active" href="#hero">نقابة
+                              {{ $union->name }}</a></li>
 
                       <li class="dropdown">
                           <a href="{{ url("union/showservice/$union->id") }}" class="scrollto">
@@ -53,20 +71,10 @@
                               href="{{ url('member/myservice') }}">طلباتي</a></li>
 
                       <li><a style="font-size: 20px;" class="nav-link scrollto" href="#about">معلومات عنا</a></li>
-                      <!--
-                            <form id="logout-form" action="{{ url('logout') }}" method="POST" style="display: none"> @csrf
-                              </form>
-                              <li><a style="font-size: 20px;" id="logout-link" class="nav-link scrollto"
-                                      href="{{ url('logout') }}">تسجيل خروج</a></li>
-                            -->
 
-
-                      <li><a style="font-size: 20px;" class="nav-link scrollto" href="{{ url('member_logout') }}">تسجيل
-                              خروج</a></li>
-
+                      <!--<li><a style="font-size: 20px;" class="nav-link scrollto" href="{{ url('member_logout') }}">تسجيل خروج</a></li> -->
 
                   @endauth
-
               </ul>
               <i class="bi bi-list mobile-nav-toggle"></i>
           </nav>

@@ -18,6 +18,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=El+Messiri&display=swap" rel="stylesheet">
 
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <!-- Vendor CSS Files -->
     <link href="{{ asset('style_member/assets/vendor/aos/aos.css') }}" rel="stylesheet">
     <link href="{{ asset('style_member/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -49,15 +54,16 @@
                         الموقع صُمم لكي يساعد الأعضاء على إتمام الخدمات النقابية أونلاين
                         وبسهولة</h2>
                     @guest
-                    <div data-aos="fade-up" data-aos-delay="600">
-                      <div style="direction: rtl;" class="text-center text-lg-start">
-                        <a href="{{url('login')}}" class="btn-get-started scrollto d-inline-flex
+                        <div data-aos="fade-up" data-aos-delay="600">
+                            <div style="direction: rtl;" class="text-center text-lg-start">
+                                <a href="{{ url('login') }}"
+                                    class="btn-get-started scrollto d-inline-flex
                             align-items-center justify-content-center align-self-center">
-                          <span style="margin-left: 10px;">تسجيل دخول</span>
-                          <i class="bi bi-arrow-left"></i>
-                        </a>
-                      </div>
-                    </div>
+                                    <span style="margin-left: 10px;">تسجيل دخول</span>
+                                    <i class="bi bi-arrow-left"></i>
+                                </a>
+                            </div>
+                        </div>
                     @endguest
                 </div>
                 <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
