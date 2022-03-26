@@ -12,7 +12,7 @@
                       <i class="fa-solid fa-gear dropicon"></i>
                       <div class="dropdown-content">
                           <a href="#">معلوماتي</a>
-                          <a style="display: inline-flex;background-color: red;padding: 5px" href="#">
+                          <a style="display: inline-flex;background-color: red;padding: 5px" href="{{url('member_logout')}}">
                               تسجيل خروج
                               <i style="background-color: rgb(15, 14, 14);font-size: 20px"
                                   class="fa-solid fa-right-from-bracket"></i>
