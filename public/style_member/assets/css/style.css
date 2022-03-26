@@ -797,7 +797,6 @@ body {
     color: white;
     padding: 16px;
     font-size: 16px;
-    border: none;
 }
 
 .dropdown {
@@ -814,7 +813,7 @@ body {
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     line-height: 15px;
-    text-align: center;
+    text-align: right;
 }
 
 .dropdown-content a {

@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
 
 class Authcontroller extends Controller
 {
@@ -70,12 +70,15 @@ class Authcontroller extends Controller
 
         $user = User::where('ssn', '=', $request->ssn)
             ->where('union_number', '=', $request->union_number)
-            ->where('role_id', '=', '3')->first();
+            ->where('role_id', '=', '3')
+            ->first();
 
         $user->update([
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'password' =>Hash::make($request->password) ,
         ]);
+
+
         request()->session()->flash('success-msg', 'تم التسجيل بنحاج');
         return view('all.login');
     }
