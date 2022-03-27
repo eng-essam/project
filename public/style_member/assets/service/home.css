@@ -330,3 +330,15 @@ body {
 .footer-newsletter button:hover {
   background-color: var(--blight);
 }
+.buttom {
+  background-color: #012970;
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.buttom:hover {
+  border-radius: 10px;
+  color: white;
+
+}

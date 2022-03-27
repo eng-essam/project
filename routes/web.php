@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ServiceFormController;
 use App\Http\Controllers\Super\SuperController;
 use App\Http\Controllers\web\Authcontroller;
 use App\Http\Controllers\Web\ServiceController;
@@ -47,7 +46,10 @@ Route::middleware('auth', 'member')->group(function () {
     Route::get('/union/serviceform/{id}', [ServiceController::class, 'serviceform']);
 
     //تخزين بيانات الخدمة اللي العضو طلبها
-    Route::post('/union/service/store/{id}', [ServiceFormController::class, 'store']);
+    Route::post('/union/service/store/{id}', [ServiceController::class, 'store']);
+
+    //تعديل بيانات خدمة
+    Route::post('/member/service/update/{id}', [ServiceController::class, 'update']);
 
     //عرض خدمات العضو اللي طلبها
     Route::get('/member/myservice', [ServiceController::class, 'myservice']);
@@ -58,22 +60,19 @@ Route::middleware('auth', 'member')->group(function () {
     //فورم تعديل بيانات خدمة
     Route::get('/member/service/eidt/{id}', [ServiceController::class, 'eidt']);
 
-    //تعديل بيانات خدمة
-    Route::post('/member/service/update/{id}', [ServiceFormController::class, 'update']);
-
     //صفحة معلومات العضو
     Route::get('/member/info', [ServiceController::class, 'info']);
 
     //صفحة تعديل معلومات  العضو
     Route::get('/member/edit/info', [ServiceController::class, 'form_info']);
 
-    //مراجعة  تعديل بيانات الجديدة العضو  
+    //مراجعة  تعديل بيانات الجديدة العضو
     Route::post('/member/update/info', [ServiceController::class, 'update_info']);
 
     // صفحة تعديل كلمة السر  العضو
     Route::get('/member/edit/password', [ServiceController::class, 'form_password']);
 
-    //مراجعة كلمة السر السوبر العضو 
+    //مراجعة كلمة السر السوبر العضو
     Route::post('/member/update/password', [ServiceController::class, 'update_password']);
 });
 
@@ -163,14 +162,12 @@ Route::middleware('auth', 'superadmin')->group(function () {
 
 });
 
-
 //صفحات ادمن
 Route::middleware('auth', 'admin')->group(function () {
     //اضافة  عضو في الداتا بيز
     Route::get('/register/admin', [Authcontroller::class, 'register_admin']);
 
-
     //مراجعة بيانات  العضو اللي اضاف
     Route::post('/register/admin', [Authcontroller::class, 'admin_register']);
-    
+
 });

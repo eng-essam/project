@@ -5,30 +5,27 @@
 @endsection
 
 @section('main')
-
-
     <!-- Start #main -->
     <main id="main">
-        <!-- ======= inner-nav ======= -->
-        <section id="inner-nav" class="inner-nav" style="direction: rtl">
-            <div class="container">
-                <ol>
-                    <li><a href="index.html">نقابة </a></li>
-                    <li>خدمة</li>
-                </ol>
-                <h2>بدل فائد</h2>
-            </div>
-        </section>
-        <!-- End inner-nav -->
 
         <!-- ======= service Details Section ======= -->
-        <section id="service-details" class="service-details">
+        <section style="margin-top:80px" id="service-details" class="service-details">
+
+            @if (session('servicess_error'))
+                <div style="text-align: center;margin-bottom: 20px">
+                    <div style="width: max-content;margin: auto" class="alert alert-success">
+                        <p> {{ session('servicess_error') }} </p>
+                    </div>
+                </div>
+            @endif
+
             <div class="container">
                 <div class="row gy-4">
                     <div class="col-lg-8">
-                        <div  class="service-details-slider swiper">
-                            <div  class="swiper-wrapper align-items-center">
-                                <img src="{{ asset('style_member/assets/img/hero-img.png') }}" class="img-fluid" alt="" />
+                        <div class="service-details-slider swiper">
+                            <div class="swiper-wrapper align-items-center">
+                                <img src="{{ asset('style_member/assets/img/hero-img.png') }}" class="img-fluid"
+                                    alt="" />
                             </div>
                             <div class="swiper-pagination"></div>
                         </div>
@@ -65,6 +62,7 @@
 
     <!-- ======= orders Section ======= -->
     <section id="orders" class="orders" style="direction: rtl">
+
         <div class="container" data-aos="fade-up">
             <header class="section-header text-center">
                 <p>المستندات المطلوبة</p>
@@ -77,14 +75,15 @@
                         <div class="col-md-6">
                             <!-- ادخل-->
                             <div class="form-group main">
-                                <img src="{{ asset('style_member/assets/img/values-3.png') }}" class="img-fluid" alt="" />
+                                <img src="{{ asset('style_member/assets/img/values-3.png') }}" class="img-fluid"
+                                    alt="" />
                             </div>
                         </div>
 
                         <!-- الجانب الايسر-->
                         <div style="margin-bottom: 30px;" class="col-md-6">
                             <!-- ادخل-->
-                            <ul style="line-height: 50px">
+                            <ul style="line-height: 50px;margin: 70px;">
                                 <li style="font-size: 30px">صورة الكارنيه</li>
                                 <li style="font-size: 30px">صورة البطاقة الشخصية</li>
                                 <li style="font-size: 30px">صورة إيصال آخر سداد</li>
@@ -95,6 +94,12 @@
             </div>
         </div>
         </div>
+        <div style="margin-top: 30px;text-align: center">
+            <div>
+                <a class="buttom" href="{{ url("/union/serviceform/$service->id") }}">طلب الخدمة</a>
+            </div>
+        </div>
     </section>
+
     <!-- End orders Section -->
 @endsection
