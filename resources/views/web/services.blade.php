@@ -105,5 +105,5 @@
 
         </section><!-- End About Section -->
     </main>
-    <!-- End #main -->
+    <!----- End #main ---->
 @endsection
