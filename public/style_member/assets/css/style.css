@@ -834,3 +834,21 @@ body {
 .dropdown:hover .dropicon {
     background-color: #013289;
 }
+
+@media screen and (max-width: 600px){
+    .mobile-hidden{
+      visibility: collapse;
+      clear: both;
+      display: none;
+    }
+    .values{
+      padding: 0;
+    }
+    .services{
+      margin-bottom: 5px;
+    }
+    .about{
+      margin-top: 0;
+      padding-top: 5px;
+    }
+  }
