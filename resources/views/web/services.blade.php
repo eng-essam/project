@@ -53,7 +53,7 @@
                     @foreach ($servicess as $service)
                         <div  class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="700">
                             <div style="padding: 5px" class="service-box blight">
-                                <i class="ri-customer-service-2-line icon"></i>
+                                <img style="width: 100px;height: 100px;margin-bottom: 5px" src="{{ $service->img }}">
                                 <h3>{{ $service->namear }}</h3>
                                 <p>{{ $service->title }}</p>
                                 <a  href="{{ url("/union/servicedesc/$service->id") }}" class="read-more"><span>إقرأ
