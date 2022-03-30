@@ -13,7 +13,7 @@
 
         <div>
             <div>
-                <input name="email" type="email" class="bg-light" value="{{ old('email') }}"
+                <input style="display: none" name="email" type="email" class="bg-light" value="{{ session('email_pass') }}"
                     placeholder="البريد الإلكتروني">
             </div>
             <div class="small mt-0 ">
