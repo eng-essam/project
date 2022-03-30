@@ -1,17 +1,167 @@
-@extends('web.layout')
+@extends('web.layout_member')
 
-@section('title')
-    تعديل بيانات {{ $service->namear }}
-@endsection
-
-@section('header')
-    <h1 style="width: max-content;margin: 20px auto">تعديل بيانات {{ $service->namear }}</h1>
+@section('style')
+    <link href="{{ asset('style_member/assets/service/register.css') }}" rel="stylesheet">
 @endsection
 
 @section('main')
+    <!-- start talbaty -->
+    <form style="margin-top: 100px" id="talbaty" class="talbaty" method="POST"
+        action="{{ url("/member/service/update/$service->id") }}" enctype="multipart/form-data">
+        @csrf
+        <div class="container">
+            <div class="">
+                <h3 class="text-center">
+                    المستندات المطلوبة
+                </h3>
+            </div>
 
-    @include('all.errors')
-    <form action="{{ url("/member/service/update/$service->id") }}" method="POST" enctype="multipart/form-data">
 
+            <div class="card-body mt-4 mb-4">
+
+                <div class="card card-default">
+                    <div class="card-body" style="direction: rtl">
+                        <div class="row">
+                            <!-- الجانب الايمن-->
+                            <div class="col-md-6">
+                                <!-- ادخل-->
+                                <div class="form-group main">
+                                    <label> صورة البطاقة الشخصية :</label>
+                                    <div class="input-group inner" style="direction: rtl">
+                                        <div>
+                                            <input class="form-control" type="file" id="formFileDisabled"
+                                                name="personal_card" />
+                                        </div>
+                                        @error('personal_card')
+                                            <div>
+                                                <small class="text-danger">{{ $message }}</small>
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <!-- ادخل-->
+                                <div class="form-group main">
+                                    <label>صورة الكارنيه العام :</label>
+                                    <div class="input-group inner" style="direction: rtl">
+                                        <div>
+                                            <input class="form-control mb-2" type="file" id="formFile" name="card">
+                                        </div>
+                                        @error('card')
+                                            <div>
+                                                <small class="text-danger">{{ $message }}</small>
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <!-- ادخل-->
+                                <div class="form-group main">
+                                    <label>صورة ترخيص مزاولة المهنة :</label>
+                                    <div class="input-group inner" style="direction: rtl">
+                                        <div>
+                                            <input class="form-control mb-2" type="file" id="formFile" name="License">
+                                        </div>
+                                        @error('License')
+                                            <div>
+                                                <small class="text-danger">{{ $message }}</small>
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <!-- ادخل-->
+                                <div class="form-group main">
+                                    <label>صورة التجنيد (ذكر) :</label>
+                                    <div class="input-group inner" style="direction: rtl">
+                                        <div>
+                                            <input class="form-control mb-2" type="file" id="formFile" name="recruitment">
+                                        </div>
+                                        @error('recruitment')
+                                            <div>
+                                                <small class="text-danger">{{ $message }}</small>
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <!-- الجانب الايسر-->
+                            <div style="margin-bottom: 30px" class="col-md-6">
+
+
+                                <!-- ادخل-->
+                                <div class="form-group main">
+                                    <label>صورة إلغاء التكليف :</label>
+                                    <div class="input-group inner" style="direction: rtl">
+                                        <div>
+                                            <input class="form-control mb-2" type="file" id="formFile" name="assignment">
+                                        </div>
+                                        @error('assignment')
+                                            <div>
+                                                <small class="text-danger">{{ $message }}</small>
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <!-- ادخل-->
+                                <div class="form-group main">
+                                    <label>صورة إفادة من جهة العمل بالمدة التي قضاها فى التكليف :</label>
+                                    <div class="input-group inner" style="direction: rtl">
+                                        <div>
+                                            <input class="form-control mb-2" type="file" id="formFile" name="statement">
+                                        </div>
+                                        @error('statement')
+                                            <div>
+                                                <small class="text-danger">{{ $message }}</small>
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <!-- ادخل-->
+                                <div class="form-group main">
+                                    <label>صورة شهادة تحركات من الصحة :</label>
+                                    <div class="input-group inner" style="direction: rtl">
+                                        <div>
+                                            <input class="form-control mb-2" type="file" id="formFile" name="movements">
+                                        </div>
+                                        @error('movements')
+                                            <div>
+                                                <small class="text-danger">{{ $message }}</small>
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <!-- ادخل-->
+                                <div class="form-group main">
+                                    <label>صورة وصل سداد الخدمة :</label>
+                                    <div class="input-group inner" style="direction: rtl">
+                                        <div>
+                                            <input class="form-control mb-2" type="file" id="formFile" name="cost">
+                                        </div>
+                                        @error('cost')
+                                            <div>
+                                                <small class="text-danger">{{ $message }}</small>
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group button">
+                        <div class="input-group" style="direction: rtl">
+                            <button type="submit" class="form-control">تسجيل</button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
     </form>
+    <!-- end talbaty-->
 @endsection

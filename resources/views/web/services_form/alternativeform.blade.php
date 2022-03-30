@@ -30,6 +30,11 @@
                                         <div>
                                             <input class="form-control" type="file" id="formFileDisabled" name="card" />
                                         </div>
+                                        @error('card')
+                                        <div>
+                                            <small class="text-danger">{{$message}}</small>
+                                        </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <!-- ادخل-->
@@ -39,6 +44,11 @@
                                         <div>
                                             <input class="form-control mb-2" type="file" id="formFile" name="recept">
                                         </div>
+                                        @error('recept')
+                                        <div>
+                                            <small class="text-danger">{{$message}}</small>
+                                        </div>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -55,6 +65,11 @@
                                         <div>
                                             <input class="form-control mb-2" type="file" id="formFile" name="personal_card">
                                         </div>
+                                        @error('personal_card')
+                                        <div>
+                                            <small class="text-danger">{{$message}}</small>
+                                        </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <!-- ادخل-->
@@ -64,6 +79,11 @@
                                         <div>
                                             <input class="form-control mb-2" type="file" id="formFile" name="cost">
                                         </div>
+                                        @error('cost')
+                                        <div>
+                                            <small class="text-danger">{{$message}}</small>
+                                        </div>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -73,14 +93,10 @@
 
                     <div class="form-group button">
                         <div class="input-group" style="direction: rtl">
-                            <button type="submit">تسجيل</button>
+                            <button type="submit" class="form-control">تسجيل</button>
                         </div>
                     </div>
                 </div>
-
-
-
-
             </div>
         </div>
     </form>

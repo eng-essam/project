@@ -97,13 +97,16 @@ class ServiceController extends Controller
 
     public function servicedesc($id, Request $request)
     {
-        
+
         $loggedUser = Auth::user();
         $user = User::findOrfail($loggedUser->id);
 
         $unionid = $user->union_id;
         $data['union'] = Union::findOrfail($unionid);
         $data['servicess'] = $data['union']->services;
+
+        //علشان اجيب سعر الخدمة
+        $data['services_cost']=$data['union']->services()->where('service_id' , $id)->first();
 
         //بجيب كل الخدمات اللي تبع نقابة واحده بس
         $row = [];
@@ -309,7 +312,7 @@ class ServiceController extends Controller
                 'personal_card' => 'required|image',
                 'cost' => 'required|image',
 
-            ],[
+            ], [
                 'card.required' => "يرجي رفع الصوره المطلوبة",
                 'card.image' => "يرجي رفع الصوره المطلوبة",
                 'personal_card.required' => "يرجي رفع الصوره المطلوبة",
@@ -325,7 +328,7 @@ class ServiceController extends Controller
             Renewal::create([
                 'user_id' => $userid,
                 'card' => $pathcard,
-                'personal_card' =>  $pathpersonal_card,
+                'personal_card' => $pathpersonal_card,
                 'cost' => $pathcost,
             ]);
 
@@ -333,7 +336,6 @@ class ServiceController extends Controller
 
             $user->services()->attach($id);
 
-            
         } elseif ($id == 2) {
 
             $request->validate([
@@ -341,7 +343,7 @@ class ServiceController extends Controller
                 'personal_card' => 'required|image',
                 'recept' => 'required|image',
                 'cost' => 'required|image',
-            ],[
+            ], [
                 'card.required' => "يرجي رفع الصوره المطلوبة",
                 'card.image' => "يرجي رفع الصوره المطلوبة",
                 'personal_card.required' => "يرجي رفع الصوره المطلوبة",
@@ -374,7 +376,7 @@ class ServiceController extends Controller
                 'personal_card' => 'required|image',
                 'receipt' => 'required|image',
                 'cost' => 'required|image',
-            ],[
+            ], [
                 'report.required' => "يرجي رفع الصوره المطلوبة",
                 'report.image' => "يرجي رفع الصوره المطلوبة",
                 'personal_card.required' => "يرجي رفع الصوره المطلوبة",
@@ -407,7 +409,7 @@ class ServiceController extends Controller
                 'salary' => 'required|image',
                 'receipt' => 'required|image',
                 'cost' => 'required|image',
-            ],[
+            ], [
                 'birth.required' => "يرجي رفع الصوره المطلوبة",
                 'birth.image' => "يرجي رفع الصوره المطلوبة",
                 'edu_certificate.required' => "يرجي رفع الصوره المطلوبة",
@@ -425,9 +427,6 @@ class ServiceController extends Controller
             $pathreceipt = Storage::disk('uploads')->put($pathimg, $request->receipt);
             $pathcost = Storage::disk('uploads')->put($pathimg, $request->cost);
 
-
-
-
             Educationfee::create([
                 'user_id' => $userid,
                 'birth' => $pathbirth,
@@ -443,7 +442,7 @@ class ServiceController extends Controller
                 'report' => 'required|image',
                 'receipt' => 'required|image',
                 'cost' => 'required|image',
-            ],[
+            ], [
                 'report.required' => "يرجي رفع الصوره المطلوبة",
                 'report.image' => "يرجي رفع الصوره المطلوبة",
                 'receipt.required' => "يرجي رفع الصوره المطلوبة",
@@ -471,7 +470,7 @@ class ServiceController extends Controller
                 'wedding' => 'required|image',
                 'receipt' => 'required|image',
                 'cost' => 'required|image',
-            ],[
+            ], [
                 'police_certificae.required' => "يرجي رفع الصوره المطلوبة",
                 'police_certificae.image' => "يرجي رفع الصوره المطلوبة",
                 'wedding.required' => "يرجي رفع الصوره المطلوبة",
@@ -507,7 +506,7 @@ class ServiceController extends Controller
                 'brent' => 'required|image',
                 'Insurance' => 'required|image',
                 'cost' => 'required|image',
-            ],[
+            ], [
                 'disclaimer.required' => "يرجي رفع الصوره المطلوبة",
                 'disclaimer.image' => "يرجي رفع الصوره المطلوبة",
                 'fulltime.required' => "يرجي رفع الصوره المطلوبة",
@@ -559,7 +558,7 @@ class ServiceController extends Controller
                 'card' => 'required|image',
                 'attorney' => 'required|image',
                 'cost' => 'required|image',
-            ],[
+            ], [
                 'health.required' => "يرجي رفع الصوره المطلوبة",
                 'health.image' => "يرجي رفع الصوره المطلوبة",
                 'card.required' => "يرجي رفع الصوره المطلوبة",
@@ -595,7 +594,7 @@ class ServiceController extends Controller
                 'statement' => 'required|image',
                 'movements' => 'required|image',
                 'cost' => 'required|image',
-            ],[
+            ], [
                 'personal_card.required' => "يرجي رفع الصوره المطلوبة",
                 'personal_card.image' => "يرجي رفع الصوره المطلوبة",
                 'card.required' => "يرجي رفع الصوره المطلوبة",
@@ -646,7 +645,7 @@ class ServiceController extends Controller
                 'approval' => 'required|image',
                 'presonal' => 'required|image',
                 'cost' => 'required|image',
-            ],[
+            ], [
                 'contract.required' => "يرجي رفع الصوره المطلوبة",
                 'contract.image' => "يرجي رفع الصوره المطلوبة",
                 'engineer.required' => "يرجي رفع الصوره المطلوبة",
@@ -690,7 +689,7 @@ class ServiceController extends Controller
                 'card' => 'required|image',
                 'receipt' => 'required|image',
                 'cost' => 'required|image',
-            ],[
+            ], [
                 'recruitment.required' => "يرجي رفع الصوره المطلوبة",
                 'recruitment.image' => "يرجي رفع الصوره المطلوبة",
                 'army_card.required' => "يرجي رفع الصوره المطلوبة",
@@ -725,7 +724,7 @@ class ServiceController extends Controller
                 'temporary' => 'required|image',
                 'receipt' => 'required|image',
                 'cost' => 'required|image',
-            ],[
+            ], [
                 'temporary.required' => "يرجي رفع الصوره المطلوبة",
                 'temporary.image' => "يرجي رفع الصوره المطلوبة",
                 'receipt.required' => "يرجي رفع الصوره المطلوبة",
@@ -752,7 +751,7 @@ class ServiceController extends Controller
                 'master' => 'required|image',
                 'receipt' => 'required|image',
                 'cost' => 'required|image',
-            ],[
+            ], [
                 'master.required' => "يرجي رفع الصوره المطلوبة",
                 'master.image' => "يرجي رفع الصوره المطلوبة",
                 'receipt.required' => "يرجي رفع الصوره المطلوبة",
@@ -786,7 +785,7 @@ class ServiceController extends Controller
                 'receipt' => 'required|image',
                 'certificate' => 'image',
                 'cost' => 'required|image',
-            ],[
+            ], [
                 'model.required' => "يرجي رفع الصوره المطلوبة",
                 'model.image' => "يرجي رفع الصوره المطلوبة",
                 'graduation.required' => "يرجي رفع الصوره المطلوبة",
@@ -847,7 +846,7 @@ class ServiceController extends Controller
                 'purchase' => 'required|image',
                 'license' => 'required|image',
                 'cost' => 'required|image',
-            ],[
+            ], [
                 'contract.required' => "يرجي رفع الصوره المطلوبة",
                 'contract.image' => "يرجي رفع الصوره المطلوبة",
                 'certificate.required' => "يرجي رفع الصوره المطلوبة",
@@ -905,7 +904,7 @@ class ServiceController extends Controller
                 'fellowship' => 'required|image',
                 'Professional' => 'required|image',
                 'cost' => 'required|image',
-            ],[
+            ], [
                 'registration.required' => "يرجي رفع الصوره المطلوبة",
                 'registration.image' => "يرجي رفع الصوره المطلوبة",
                 'personal_card.required' => "يرجي رفع الصوره المطلوبة",
@@ -963,7 +962,7 @@ class ServiceController extends Controller
                 'passport' => 'required|image',
                 'presonal' => 'image',
                 'cost' => 'required|image',
-            ],[
+            ], [
                 'license.required' => "يرجي رفع الصوره المطلوبة",
                 'license.image' => "يرجي رفع الصوره المطلوبة",
                 'personal_card.required' => "يرجي رفع الصوره المطلوبة",
@@ -1005,9 +1004,13 @@ class ServiceController extends Controller
     /////////////////////////////////////////////////////////////////////////////////////
     public function update($id, Request $request)
     {
-        $loggedUser = Auth::user();
+        $loggedUser = User::where('id', '=', Auth::user()->id)->first();
+
         $unionid = $loggedUser->union_id;
         $userid = $loggedUser->id;
+
+        $service = Service::where('id', '=', $id)->first();
+        $servicename = $service->namear;
 
         if ($unionid == 1) {
             if ($id == 1) {
@@ -1048,7 +1051,7 @@ class ServiceController extends Controller
                 'card' => 'nullable|image',
                 'personal_card' => 'nullable|image',
                 'cost' => 'nullable|image',
-            ],[
+            ], [
                 'personal_card.required' => "يرجي رفع الصوره المطلوبة",
                 'personal_card.image' => "يرجي رفع الصوره المطلوبة",
                 'card.required' => "يرجي رفع الصوره المطلوبة",
@@ -1083,14 +1086,19 @@ class ServiceController extends Controller
                 'cost' => $pathcost,
 
             ]);
-            
+            if (!$request->card == null || !$request->personal_card == null || !$request->cost == null) {
+                $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
+                $loggedUser->operations()->updateExistingpivot($id,
+                    ['message' => 'جاري مراجعة البيانات',
+                        'status' => 'جاري مراجعة البيانات']);
+            }
         } elseif ($id == 2) {
             $request->validate([
                 'card' => 'nullable|image',
                 'personal_card' => 'nullable|image',
                 'recept' => 'nullable|image',
                 'cost' => 'nullable|image',
-            ],[
+            ], [
                 'personal_card.required' => "يرجي رفع الصوره المطلوبة",
                 'personal_card.image' => "يرجي رفع الصوره المطلوبة",
                 'card.required' => "يرجي رفع الصوره المطلوبة",
@@ -1100,6 +1108,7 @@ class ServiceController extends Controller
                 'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
                 'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
+
             $servicedata = Alternative::where('user_id', '=', $userid)->first();
             $pathcard = $servicedata->card;
             $pathpersonal_card = $servicedata->personal_card;
@@ -1133,13 +1142,20 @@ class ServiceController extends Controller
                 'recept' => $pathrecept,
                 'cost' => $pathcost,
             ]);
+
+            if (!$request->card == null || !$request->personal_card == null || !$request->recept == null || !$request->cost == null) {
+                $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
+                $loggedUser->operations()->updateExistingpivot($id,
+                    ['message' => 'جاري مراجعة البيانات',
+                        'status' => 'جاري مراجعة البيانات']);
+            }
         } elseif ($id == 3) {
             $request->validate([
                 'report' => 'nullable|image',
                 'personal_card' => 'nullable|image',
                 'receipt' => 'nullable|image',
                 'cost' => 'nullable|image',
-            ],[
+            ], [
                 'personal_card.required' => "يرجي رفع الصوره المطلوبة",
                 'personal_card.image' => "يرجي رفع الصوره المطلوبة",
                 'receipt.required' => "يرجي رفع الصوره المطلوبة",
@@ -1182,6 +1198,12 @@ class ServiceController extends Controller
                 'receipt' => $pathreceipt,
                 'cost' => $pathcost,
             ]);
+            if (!$request->report == null || !$request->personal_card == null || !$request->receipt == null || !$request->cost == null) {
+                $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
+                $loggedUser->operations()->updateExistingpivot($id,
+                    ['message' => 'جاري مراجعة البيانات',
+                        'status' => 'جاري مراجعة البيانات']);
+            }
         } elseif ($id == 4) {
             $request->validate([
                 'birth' => 'nullable|image',
@@ -1230,6 +1252,13 @@ class ServiceController extends Controller
                 'receipt' => $pathreceipt,
                 'cost' => $pathcost,
             ]);
+            if (!$request->birth == null || !$request->edu_certificate == null || !$request->salary == null || !$request->receipt == null ||
+             !$request->cost == null) {
+                $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
+                $loggedUser->operations()->updateExistingpivot($id,
+                    ['message' => 'جاري مراجعة البيانات',
+                        'status' => 'جاري مراجعة البيانات']);
+            }
         } elseif ($id == 5) {
             $request->validate([
                 'report' => 'nullable|image',
@@ -1262,6 +1291,12 @@ class ServiceController extends Controller
                 'receipt' => $pathreceipt,
                 'cost' => $pathcost,
             ]);
+            if (!$request->report == null || !$request->receipt == null || !$request->cost == null) {
+                $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
+                $loggedUser->operations()->updateExistingpivot($id,
+                    ['message' => 'جاري مراجعة البيانات',
+                        'status' => 'جاري مراجعة البيانات']);
+            }
         } elseif ($id == 6) {
             $request->validate([
                 'police_certificae' => 'nullable|image',
@@ -1302,6 +1337,12 @@ class ServiceController extends Controller
                 'receipt' => $pathreceipt,
                 'cost' => $pathcost,
             ]);
+            if (!$request->police_certificae == null || !$request->wedding == null || !$request->receipt == null || !$request->cost == null) {
+                $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
+                $loggedUser->operations()->updateExistingpivot($id,
+                    ['message' => 'جاري مراجعة البيانات',
+                        'status' => 'جاري مراجعة البيانات']);
+            }
         } elseif ($id == 7) {
             $request->validate([
                 'disclaimer' => 'nullable|image',
@@ -1382,6 +1423,14 @@ class ServiceController extends Controller
                 'Insurance' => $pathInsurance,
                 'cost' => $pathcost,
             ]);
+            if (!$request->disclaimer == null || !$request->fulltime == null || !$request->card == null || !$request->cost == null ||
+            !$request->brent == null || !$request->personal_card == null || !$request->ministry == null || !$request->endServ == null ||
+            !$request->Insurance == null ) {
+                $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
+                $loggedUser->operations()->updateExistingpivot($id,
+                    ['message' => 'جاري مراجعة البيانات',
+                        'status' => 'جاري مراجعة البيانات']);
+            }
         } elseif ($id == 8) {
             $request->validate([
                 'health' => 'nullable|image',
@@ -1422,6 +1471,12 @@ class ServiceController extends Controller
                 'attorney' => $pathattorney,
                 'cost' => $pathcost,
             ]);
+            if (!$request->health == null || !$request->card == null || !$request->attorney == null || !$request->cost == null) {
+                $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
+                $loggedUser->operations()->updateExistingpivot($id,
+                    ['message' => 'جاري مراجعة البيانات',
+                        'status' => 'جاري مراجعة البيانات']);
+            }
         } elseif ($id == 9) {
             $request->validate([
                 'card' => 'nullable|image',
@@ -1495,6 +1550,13 @@ class ServiceController extends Controller
                 'movements' => $pathmovements,
                 'cost' => $pathcost,
             ]);
+            if (!$request->card == null || !$request->personal_card == null || !$request->License == null || !$request->cost == null ||
+            !$request->recruitment == null || !$request->assignment == null || !$request->statement == null || !$request->movements == null) {
+                $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
+                $loggedUser->operations()->updateExistingpivot($id,
+                    ['message' => 'جاري مراجعة البيانات',
+                        'status' => 'جاري مراجعة البيانات']);
+            }
         } elseif ($id == 10) {
             $request->validate([
                 'contract' => 'nullable|image',
@@ -1559,6 +1621,13 @@ class ServiceController extends Controller
                 'presonal' => $pathpresonal,
                 'cost' => $pathcost,
             ]);
+            if (!$request->contract == null || !$request->engineer == null || !$request->receipt == null || !$request->cost == null ||
+            !$request->tax_card == null || !$request->approval == null || !$request->presonal == null ) {
+                $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
+                $loggedUser->operations()->updateExistingpivot($id,
+                    ['message' => 'جاري مراجعة البيانات',
+                        'status' => 'جاري مراجعة البيانات']);
+            }
         } elseif ($id == 11) {
 
             $request->validate([
@@ -1609,6 +1678,13 @@ class ServiceController extends Controller
                 'card' => $pathcard,
                 'cost' => $pathcost,
             ]);
+            if (!$request->recruitment == null || !$request->army_card == null || !$request->receipt == null ||
+            !$request->card == null || !$request->cost == null) {
+                $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
+                $loggedUser->operations()->updateExistingpivot($id,
+                    ['message' => 'جاري مراجعة البيانات',
+                        'status' => 'جاري مراجعة البيانات']);
+            }
         } elseif ($id == 12) {
             $request->validate([
                 'temporary' => 'nullable|image',
@@ -1641,6 +1717,12 @@ class ServiceController extends Controller
                 'receipt' => $pathreceipt,
                 'cost' => $pathcost,
             ]);
+            if (!$request->temporary == null || !$request->receipt == null || !$request->cost == null) {
+                $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
+                $loggedUser->operations()->updateExistingpivot($id,
+                    ['message' => 'جاري مراجعة البيانات',
+                        'status' => 'جاري مراجعة البيانات']);
+            }
         } elseif ($id == 13) {
             $request->validate([
                 'master' => 'nullable|image',
@@ -1673,6 +1755,12 @@ class ServiceController extends Controller
                 'receipt' => $pathreceipt,
                 'cost' => $pathcost,
             ]);
+            if (!$request->master == null || !$request->receipt == null || !$request->cost == null) {
+                $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
+                $loggedUser->operations()->updateExistingpivot($id,
+                    ['message' => 'جاري مراجعة البيانات',
+                        'status' => 'جاري مراجعة البيانات']);
+            }
         } elseif ($id == 14) {
             $request->validate([
                 'model' => 'nullable|image',
@@ -1698,7 +1786,6 @@ class ServiceController extends Controller
             $pathsituation = $servicedata->situation;
             $pathcertificate = $servicedata->certificate;
             $pathcost = $servicedata->cost;
-
 
             if ($request->hasFile('model')) {
                 Storage::disk('uploads')->delete($pathmodel);
@@ -1767,6 +1854,14 @@ class ServiceController extends Controller
                 'certificate' => $pathcertificate,
                 'cost' => $pathcost,
             ]);
+            if (!$request->model == null || !$request->graduation == null || !$request->receipt == null || !$request->cost == null ||
+            !$request->excellence == null || !$request->birth == null || !$request->personal == null ||
+            !$request->fesh == null || !$request->situation == null || !$request->certificate == null ) {
+                $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
+                $loggedUser->operations()->updateExistingpivot($id,
+                    ['message' => 'جاري مراجعة البيانات',
+                        'status' => 'جاري مراجعة البيانات']);
+            }
         } elseif ($id == 15) {
 
             $request->validate([
@@ -1791,7 +1886,6 @@ class ServiceController extends Controller
             $pathpurchase = $servicedata->purchase;
             $pathlicense = $servicedata->license;
             $pathcost = $servicedata->cost;
-
 
             if ($request->hasFile('contract')) {
                 Storage::disk('uploads')->delete($pathcontract);
@@ -1846,6 +1940,14 @@ class ServiceController extends Controller
                 'cost' => $pathcost,
 
             ]);
+            if (!$request->contract == null || !$request->receipt == null || !$request->certificate == null || !$request->cost == null ||
+            !$request->building == null || !$request->device == null || !$request->purchase == null || 
+            !$request->card == null || !$request->license == null  ) {
+                $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
+                $loggedUser->operations()->updateExistingpivot($id,
+                    ['message' => 'جاري مراجعة البيانات',
+                        'status' => 'جاري مراجعة البيانات']);
+            }
         } elseif ($id == 16) {
 
             $request->validate([
@@ -1936,6 +2038,14 @@ class ServiceController extends Controller
                 'professional' => $pathprofessional,
                 'cost' => $pathcost,
             ]);
+            if (!$request->receipt == null || !$request->card == null || !$request->specialty == null || !$request->personal == null ||
+                !$request->experience == null || !$request->fellowship == null || !$request->professional == null ||
+                !$request->personal_card == null || !$request->registration == null || !$request->cost == null) {
+                $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
+                $loggedUser->operations()->updateExistingpivot($id,
+                    ['message' => 'جاري مراجعة البيانات',
+                        'status' => 'جاري مراجعة البيانات']);
+            }
         } elseif ($id == 17) {
 
             $request->validate([
@@ -1954,7 +2064,6 @@ class ServiceController extends Controller
             $pathpersonal = $servicedata->personal;
             $pathpassport = $servicedata->passport;
             $pathcost = $servicedata->cost;
-
 
             if ($request->hasFile('card')) {
                 Storage::disk('uploads')->delete($pathcard);
@@ -1995,11 +2104,14 @@ class ServiceController extends Controller
                 'passport' => $pathpassport,
                 'cost' => $pathcost,
             ]);
+            if (!$request->personal == null || !$request->passport == null || !$request->card == null || !$request->personal_card == null || !$request->license == null || !$request->cost == null) {
+                $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
+                $loggedUser->operations()->updateExistingpivot($id,
+                    ['message' => 'جاري مراجعة البيانات',
+                        'status' => 'جاري مراجعة البيانات']);
+            }
         }
 
-        $service = Service::where('id', '=', $id)->first();
-        $servicename = $service->namear;
-        $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
         return redirect(url("/member/myservice"));
     }
     public function myservice()

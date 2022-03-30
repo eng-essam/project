@@ -164,13 +164,4 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 
     });
 
-//صفحات ادمن
-    Route::middleware('auth', 'admin')->group(function () {
-        //اضافة  عضو في الداتا بيز
-        Route::get('/register/admin', [Authcontroller::class, 'register_admin']);
-
-        //مراجعة بيانات  العضو اللي اضاف
-        Route::post('/register/admin', [Authcontroller::class, 'admin_register']);
-
-    });
 });

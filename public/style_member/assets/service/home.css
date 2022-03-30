@@ -70,7 +70,12 @@ body {
   color: #8894f6;
   content: "/";
 }
-
+.ul{
+  font-size: 18px;
+}
+.ul li {
+  margin-bottom: 8px;
+}
 /*  service */
 .service #service-flters {
   padding: 0;
@@ -222,6 +227,9 @@ body {
   bottom: 15px;
   right: 15px;
 }
+.service-info ul li {
+  color: var(--brown);
+}
 
 /* service Details */
 .service-details {
@@ -281,6 +289,7 @@ body {
   padding: 0;
 }
 
+
 /* orders */
 .orders {
   background: #f6f9ff;
@@ -313,8 +322,62 @@ body {
 .orders .box:hover img {
   transform: scale(1);
 }
-
-.footer-newsletter button[type="submit"] {
+.left-altrenative{
+  margin-top: 130px;
+}
+.left-clincserts{
+  margin-top: 60px;
+}
+.left-conditions{
+  margin-top: 120px;
+}
+.left-consultantcards{
+  margin-top: 150px;
+}
+.left-diseases{
+  margin-top: 150px;
+}
+.left-educationfees{
+  margin-top: 100px;
+}
+.left-evictioncerts{
+  margin-top: 135px;
+}
+.left-experiencecerts{
+  margin-top: 55px;
+}
+.left-health{
+  margin-top: 70px;
+}
+.left-networks{
+  margin-top: 25px;
+}
+.left-privateclinics{
+  margin-top: 35px;
+}
+.left-professionlicens{
+  margin-top: 95px;
+}
+.left-professionlicenses{
+  margin-top: 25px;
+}
+.left-recruitments{
+  margin-top: 100px;
+}
+.left-renewal{
+  margin-top: 135px;
+}
+.left-specialistcards{
+  margin-top: 150px;
+}
+.left-specialiststabels{
+  margin-top: 20px;
+}
+.left-treatments{
+  margin-top: 140px;
+}
+/* footer */
+.footer-newsletter a[type="submit"] {
   background: var(--light);
   border: 0;
   padding: 10px 30px;
@@ -324,21 +387,20 @@ body {
   width: max-content;
   font-size: 20px;
 }
-.footer-newsletter button:focus {
+.footer-newsletter a:focus {
   outline: 0;
 }
-.footer-newsletter button:hover {
+.footer-newsletter a:hover {
   background-color: var(--blight);
 }
-.buttom {
-  background-color: #012970;
-  color: white;
-  font-size: 20px;
-  padding: 10px;
+
+.footer-newsletter p{
+  font-size: 15px;
 }
 
-.buttom:hover {
-  border-radius: 10px;
-  color: white;
-
+/* media */
+@media screen and (max-width: 600px){ 
+  .left{
+    margin-top: 15px;
+  }
 }

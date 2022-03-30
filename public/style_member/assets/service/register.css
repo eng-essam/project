@@ -70,7 +70,7 @@
   color: var(--dark);
 }
 .card .main{
-  margin-bottom: 30px;
+  margin-bottom: 5px;
 }
 .card .main label{
   float: right;
@@ -84,14 +84,16 @@
   width: max-content;
   margin: auto auto 10px auto ;
 }
-.card .button a{
+.card .button button{
   color: var(--white);
   background-color: var(--dark);
 }
-.card .button a:hover{
+.card .button button:hover{
   background-color: var(--dark1);
 }
-
+small{
+  margin-right: 5px;
+}
 input[type=button] {
   top: 0;
   right: 0;

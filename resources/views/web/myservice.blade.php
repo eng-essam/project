@@ -9,7 +9,7 @@
         <div style="margin: 90px 0 90px 0" class="card" style="direction: rtl">
             @if (session('success'))
                 <div style="text-align: center;margin: 10px 0 10px 0">
-                    <div style="width: max-content;margin: auto" class="alert alert-danger">
+                    <div style="width: max-content;margin: auto" class="alert alert-success">
                         <p> {{ session('success') }} </p>
                     </div>
                 </div>

@@ -124,7 +124,7 @@
                             </ul>
                             @guest
                                 <div class="text-center text-lg-start">
-                                    <a href="#"
+                                    <a href="{{url('/login')}}"
                                         class="btn-read-more d-inline-flexalign-items-center justify-content-centeralign-self-center">
                                         <span style="margin-left: 10px;">المزيد</span>
                                         <i class="bi bi-arrow-left"></i>
