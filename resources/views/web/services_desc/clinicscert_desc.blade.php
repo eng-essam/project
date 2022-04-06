@@ -6,91 +6,99 @@
 
 @section('main')
     <main style="margin-top:50px " style="margin-top: 50px" id="main">
-      <!-- ======= service Details Section ======= -->
-      <section id="service-details" class="service-details">
-        <div class="container">
-          <div class="row gy-4">
-            <div class="col-lg-8 mobile-hidden">
-              <div class="service-details-slider swiper">
-                <div class="service-details-slider ">
-                  <div class="align-items-center" data-aos="zoom-out" data-aos-delay="200">
-                      <img src="{{ asset('style_member/assets/img/hero-img.png') }}" class="img-fluid" alt="image" />
-                  </div>
-              </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4" style="direction: rtl">
-              <div class="service-info">
-                <h3>{{ $service->namear }}</h3>
-                <ul>
-                  <li><strong>وصف الخدمة</strong></li>
-                  <ul>
-                    <li>
-                      {{ $service->title }}
-                    </li>
-                  </ul>
-                </ul>
-              </div>
-              <div class="service-condition">
-                <h2>الشروط الواجب توافرها للحصول علي الخدمة</h2>
-                <ul>
-                  <li class="mb-3">صورة مفردات الزوج والزوجة</li>
-
+        <!-- ======= service Details Section ======= -->
+        <section id="service-details" class="service-details">
+            @if (session('servicess_error'))
+                <div style="text-align: center;margin-bottom: 20px">
+                    <div style="width: max-content;margin: auto" class="alert alert-success">
+                        <p> {{ session('servicess_error') }} </p>
+                    </div>
                 </div>
-              </div>
+            @endif
+            <div class="container">
+                <div class="row gy-4">
+                    <div class="col-lg-8 mobile-hidden">
+                        <div class="service-details-slider swiper">
+                            <div class="service-details-slider ">
+                                <div class="align-items-center" data-aos="zoom-out" data-aos-delay="200">
+                                    <img src="{{ asset('style_member/assets/img/hero-img.png') }}" class="img-fluid"
+                                        alt="image" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4" style="direction: rtl">
+                        <div class="service-info">
+                            <h3>{{ $service->namear }}</h3>
+                            <ul>
+                                <li><strong>وصف الخدمة</strong></li>
+                                <ul>
+                                    <li>
+                                        {{ $service->title }}
+                                    </li>
+                                </ul>
+                            </ul>
+                        </div>
+                        <div class="service-condition">
+                            <h2>الشروط الواجب توافرها للحصول علي الخدمة</h2>
+                            <ul>
+                                <li class="mb-3">صورة مفردات الزوج والزوجة</li>
+
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </section>
         <!-- End service Details Section -->
     </main>
 
-      <!-- ======= orders Section ======= -->
-      <section id="orders" class="orders" style="direction: rtl">
+    <!-- ======= orders Section ======= -->
+    <section id="orders" class="orders" style="direction: rtl">
         <div class="container" data-aos="fade-up">
-          <header class="section-header text-center">
-            <p>المستندات المطلوبة</p>
-          </header>
+            <header class="section-header text-center">
+                <p>المستندات المطلوبة</p>
+            </header>
 
-          <div class="card">
-            <div class="card-body" style="direction: rtl">
-              <div class="row">
-                <!-- الجانب الايمن-->
-                <div class="col-md-6">
-                  <!-- ادخل-->
-                  <div class="form-group main mobile-hidden">
-                    <img src="{{ asset('style_member/assets/img/values-3.png') }}" class="img-fluid"
-                      alt="" />
-                  </div>
+            <div class="card">
+                <div class="card-body" style="direction: rtl">
+                    <div class="row">
+                        <!-- الجانب الايمن-->
+                        <div class="col-md-6">
+                            <!-- ادخل-->
+                            <div class="form-group main mobile-hidden">
+                                <img src="{{ asset('style_member/assets/img/values-3.png') }}" class="img-fluid"
+                                    alt="" />
+                            </div>
 
 
-                </div>
+                        </div>
 
-                <!-- الجانب الايسر-->
-                <div class="col-md-6 left left-clincserts">
+                        <!-- الجانب الايسر-->
+                        <div class="col-md-6 left left-clincserts">
 
-                  <!-- ادخل-->
-                  <div class="form-group main">
-                    <div class="input-group inner" style="direction: rtl">
-                      <ul class="ul">
-                        <li>صورة عقد ايجار </li>
-                        <li>صورة اصل هندسي موضح بيه مصدر المياه معتمد من مكتب هندسي</li>
-                        <li>صور سداد اشتراك النقابة حتي العام الحالي</li>
-                        <li>صورة البطاقة الضريبية</li>
-                        <li>صورة موافقة النقابة الفرعية</li>
-                        <li>صورة شخصية</li>
-                        
-                      </ul>
+                            <!-- ادخل-->
+                            <div class="form-group main">
+                                <div class="input-group inner" style="direction: rtl">
+                                    <ul class="ul">
+                                        <li>صورة عقد ايجار </li>
+                                        <li>صورة اصل هندسي موضح بيه مصدر المياه معتمد من مكتب هندسي</li>
+                                        <li>صور سداد اشتراك النقابة حتي العام الحالي</li>
+                                        <li>صورة البطاقة الضريبية</li>
+                                        <li>صورة موافقة النقابة الفرعية</li>
+                                        <li>صورة شخصية</li>
+
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                        </div>
                     </div>
-                  </div>
-
-
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
+        </div>
     </section>
     <!-- End orders Section -->
 

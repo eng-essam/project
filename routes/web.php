@@ -33,6 +33,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 
         //عرض صفحة مشكلة في التسجيل
         Route::get('/problem', [Authcontroller::class, 'problem']);
+
     });
 
 ///////////صفحات الاعضاء////////////////

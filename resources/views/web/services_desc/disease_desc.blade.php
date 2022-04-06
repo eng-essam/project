@@ -8,6 +8,13 @@
     <main style="margin-top:50px " style="margin-top: 50px" id="main">
       <!-- ======= service Details Section ======= -->
       <section id="service-details" class="service-details">
+        @if (session('servicess_error'))
+        <div style="text-align: center;margin-bottom: 20px">
+            <div style="width: max-content;margin: auto" class="alert alert-success">
+                <p> {{ session('servicess_error') }} </p>
+            </div>
+        </div>
+    @endif
         <div class="container">
           <div class="row gy-4">
             <div class="col-lg-8 mobile-hidden">

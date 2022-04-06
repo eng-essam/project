@@ -106,7 +106,7 @@ class ServiceController extends Controller
         $data['servicess'] = $data['union']->services;
 
         //علشان اجيب سعر الخدمة
-        $data['services_cost']=$data['union']->services()->where('service_id' , $id)->first();
+        $data['services_cost'] = $data['union']->services()->where('service_id', $id)->first();
 
         //بجيب كل الخدمات اللي تبع نقابة واحده بس
         $row = [];
@@ -278,6 +278,34 @@ class ServiceController extends Controller
                 $pathimg = "pharmacy/alternatives";
             } elseif ($id == 3) {
                 $pathimg = "pharmacy/treatments";
+            } elseif ($id == 4) {
+                $pathimg = "pharmacy/educationfees";
+            } elseif ($id == 5) {
+                $pathimg = "pharmacy/diseases";
+            } elseif ($id == 6) {
+                $pathimg = "pharmacy/conditions";
+            } elseif ($id == 7) {
+                $pathimg = "pharmacy/noworks";
+            } elseif ($id == 8) {
+                $pathimg = "pharmacy/evictioncerts";
+            } elseif ($id == 9) {
+                $pathimg = "pharmacy/experiencecerts";
+            } elseif ($id == 10) {
+                $pathimg = "pharmacy/clinicscerts";
+            } elseif ($id == 11) {
+                $pathimg = "pharmacy/recruitments";
+            } elseif ($id == 12) {
+                $pathimg = "pharmacy/consultantcards";
+            } elseif ($id == 13) {
+                $pathimg = "pharmacy/specialistcards";
+            } elseif ($id == 14) {
+                $pathimg = "pharmacy/professionlicenses";
+            } elseif ($id == 15) {
+                $pathimg = "pharmacy/privateclinics";
+            } elseif ($id == 16) {
+                $pathimg = "pharmacy/specialiststables";
+            } elseif ($id == 17) {
+                $pathimg = "pharmacy/professionlicens";
             }
         } elseif ($unionid == 2) {
             if ($id == 1) {
@@ -286,6 +314,34 @@ class ServiceController extends Controller
                 $pathimg = "teeth/alternatives";
             } elseif ($id == 3) {
                 $pathimg = "teeth/treatments";
+            } elseif ($id == 4) {
+                $pathimg = "teeth/educationfees";
+            } elseif ($id == 5) {
+                $pathimg = "teeth/diseases";
+            } elseif ($id == 6) {
+                $pathimg = "teeth/conditions";
+            } elseif ($id == 7) {
+                $pathimg = "teeth/noworks";
+            } elseif ($id == 8) {
+                $pathimg = "teeth/evictioncerts";
+            } elseif ($id == 9) {
+                $pathimg = "teeth/experiencecerts";
+            } elseif ($id == 10) {
+                $pathimg = "teeth/clinicscerts";
+            } elseif ($id == 11) {
+                $pathimg = "teeth/recruitments";
+            } elseif ($id == 12) {
+                $pathimg = "teeth/consultantcards";
+            } elseif ($id == 13) {
+                $pathimg = "teeth/specialistcards";
+            } elseif ($id == 14) {
+                $pathimg = "teeth/professionlicenses";
+            } elseif ($id == 15) {
+                $pathimg = "teeth/privateclinics";
+            } elseif ($id == 16) {
+                $pathimg = "teeth/specialiststables";
+            } elseif ($id == 17) {
+                $pathimg = "teeth/professionlicens";
             }
         } elseif ($unionid == 3) {
             if ($id == 1) {
@@ -294,6 +350,34 @@ class ServiceController extends Controller
                 $pathimg = "human/alternatives";
             } elseif ($id == 3) {
                 $pathimg = "human/treatments";
+            } elseif ($id == 4) {
+                $pathimg = "human/educationfees";
+            } elseif ($id == 5) {
+                $pathimg = "human/diseases";
+            } elseif ($id == 6) {
+                $pathimg = "human/conditions";
+            } elseif ($id == 7) {
+                $pathimg = "human/noworks";
+            } elseif ($id == 8) {
+                $pathimg = "human/evictioncerts";
+            } elseif ($id == 9) {
+                $pathimg = "human/experiencecerts";
+            } elseif ($id == 10) {
+                $pathimg = "human/clinicscerts";
+            } elseif ($id == 11) {
+                $pathimg = "human/recruitments";
+            } elseif ($id == 12) {
+                $pathimg = "human/consultantcards";
+            } elseif ($id == 13) {
+                $pathimg = "human/specialistcards";
+            } elseif ($id == 14) {
+                $pathimg = "human/professionlicenses";
+            } elseif ($id == 15) {
+                $pathimg = "human/privateclinics";
+            } elseif ($id == 16) {
+                $pathimg = "human/specialiststables";
+            } elseif ($id == 17) {
+                $pathimg = "human/professionlicens";
             }
         } elseif ($unionid == 4) {
             if ($id == 1) {
@@ -302,11 +386,38 @@ class ServiceController extends Controller
                 $pathimg = "veterinary/alternatives";
             } elseif ($id == 3) {
                 $pathimg = "veterinary/treatments";
+            } elseif ($id == 4) {
+                $pathimg = "veterinary/educationfees";
+            } elseif ($id == 5) {
+                $pathimg = "veterinary/diseases";
+            } elseif ($id == 6) {
+                $pathimg = "veterinary/conditions";
+            } elseif ($id == 7) {
+                $pathimg = "veterinary/noworks";
+            } elseif ($id == 8) {
+                $pathimg = "veterinary/evictioncerts";
+            } elseif ($id == 9) {
+                $pathimg = "veterinary/experiencecerts";
+            } elseif ($id == 10) {
+                $pathimg = "veterinary/clinicscerts";
+            } elseif ($id == 11) {
+                $pathimg = "veterinary/recruitments";
+            } elseif ($id == 12) {
+                $pathimg = "veterinary/consultantcards";
+            } elseif ($id == 13) {
+                $pathimg = "veterinary/specialistcards";
+            } elseif ($id == 14) {
+                $pathimg = "veterinary/professionlicenses";
+            } elseif ($id == 15) {
+                $pathimg = "veterinary/privateclinics";
+            } elseif ($id == 16) {
+                $pathimg = "veterinary/specialiststables";
+            } elseif ($id == 17) {
+                $pathimg = "veterinary/professionlicens";
             }
         }
 
         if ($id == 1) {
-
             $request->validate([
                 'card' => 'required|image',
                 'personal_card' => 'required|image',
@@ -959,15 +1070,15 @@ class ServiceController extends Controller
                 'personal_card' => 'required|image',
                 'card' => 'required|image',
                 'license' => 'required|image',
-                'passport' => 'required|image',
-                'presonal' => 'image',
+                'passport' => 'image',
+                'personal' => 'required|image',
                 'cost' => 'required|image',
             ], [
                 'license.required' => "يرجي رفع الصوره المطلوبة",
                 'license.image' => "يرجي رفع الصوره المطلوبة",
                 'personal_card.required' => "يرجي رفع الصوره المطلوبة",
                 'personal_card.image' => "يرجي رفع الصوره المطلوبة",
-                'passport.required' => "يرجي رفع الصوره المطلوبة",
+                'personal.required' => "يرجي رفع الصوره المطلوبة",
                 'passport.image' => "يرجي رفع الصوره المطلوبة",
                 'card.required' => "يرجي رفع الصوره المطلوبة",
                 'card.image' => "يرجي رفع الصوره المطلوبة",
@@ -1019,6 +1130,34 @@ class ServiceController extends Controller
                 $pathimg = "pharmacy/alternatives";
             } elseif ($id == 3) {
                 $pathimg = "pharmacy/treatments";
+            } elseif ($id == 4) {
+                $pathimg = "pharmacy/educationfees";
+            } elseif ($id == 5) {
+                $pathimg = "pharmacy/diseases";
+            } elseif ($id == 6) {
+                $pathimg = "pharmacy/conditions";
+            } elseif ($id == 7) {
+                $pathimg = "pharmacy/noworks";
+            } elseif ($id == 8) {
+                $pathimg = "pharmacy/evictioncerts";
+            } elseif ($id == 9) {
+                $pathimg = "pharmacy/experiencecerts";
+            } elseif ($id == 10) {
+                $pathimg = "pharmacy/clinicscerts";
+            } elseif ($id == 11) {
+                $pathimg = "pharmacy/recruitments";
+            } elseif ($id == 12) {
+                $pathimg = "pharmacy/consultantcards";
+            } elseif ($id == 13) {
+                $pathimg = "pharmacy/specialistcards";
+            } elseif ($id == 14) {
+                $pathimg = "pharmacy/professionlicenses";
+            } elseif ($id == 15) {
+                $pathimg = "pharmacy/privateclinics";
+            } elseif ($id == 16) {
+                $pathimg = "pharmacy/specialiststables";
+            } elseif ($id == 17) {
+                $pathimg = "pharmacy/professionlicens";
             }
         } elseif ($unionid == 2) {
             if ($id == 1) {
@@ -1027,6 +1166,34 @@ class ServiceController extends Controller
                 $pathimg = "teeth/alternatives";
             } elseif ($id == 3) {
                 $pathimg = "teeth/treatments";
+            } elseif ($id == 4) {
+                $pathimg = "teeth/educationfees";
+            } elseif ($id == 5) {
+                $pathimg = "teeth/diseases";
+            } elseif ($id == 6) {
+                $pathimg = "teeth/conditions";
+            } elseif ($id == 7) {
+                $pathimg = "teeth/noworks";
+            } elseif ($id == 8) {
+                $pathimg = "teeth/evictioncerts";
+            } elseif ($id == 9) {
+                $pathimg = "teeth/experiencecerts";
+            } elseif ($id == 10) {
+                $pathimg = "teeth/clinicscerts";
+            } elseif ($id == 11) {
+                $pathimg = "teeth/recruitments";
+            } elseif ($id == 12) {
+                $pathimg = "teeth/consultantcards";
+            } elseif ($id == 13) {
+                $pathimg = "teeth/specialistcards";
+            } elseif ($id == 14) {
+                $pathimg = "teeth/professionlicenses";
+            } elseif ($id == 15) {
+                $pathimg = "teeth/privateclinics";
+            } elseif ($id == 16) {
+                $pathimg = "teeth/specialiststables";
+            } elseif ($id == 17) {
+                $pathimg = "teeth/professionlicens";
             }
         } elseif ($unionid == 3) {
             if ($id == 1) {
@@ -1035,6 +1202,34 @@ class ServiceController extends Controller
                 $pathimg = "human/alternatives";
             } elseif ($id == 3) {
                 $pathimg = "human/treatments";
+            } elseif ($id == 4) {
+                $pathimg = "human/educationfees";
+            } elseif ($id == 5) {
+                $pathimg = "human/diseases";
+            } elseif ($id == 6) {
+                $pathimg = "human/conditions";
+            } elseif ($id == 7) {
+                $pathimg = "human/noworks";
+            } elseif ($id == 8) {
+                $pathimg = "human/evictioncerts";
+            } elseif ($id == 9) {
+                $pathimg = "human/experiencecerts";
+            } elseif ($id == 10) {
+                $pathimg = "human/clinicscerts";
+            } elseif ($id == 11) {
+                $pathimg = "human/recruitments";
+            } elseif ($id == 12) {
+                $pathimg = "human/consultantcards";
+            } elseif ($id == 13) {
+                $pathimg = "human/specialistcards";
+            } elseif ($id == 14) {
+                $pathimg = "human/professionlicenses";
+            } elseif ($id == 15) {
+                $pathimg = "human/privateclinics";
+            } elseif ($id == 16) {
+                $pathimg = "human/specialiststables";
+            } elseif ($id == 17) {
+                $pathimg = "human/professionlicens";
             }
         } elseif ($unionid == 4) {
             if ($id == 1) {
@@ -1043,6 +1238,34 @@ class ServiceController extends Controller
                 $pathimg = "veterinary/alternatives";
             } elseif ($id == 3) {
                 $pathimg = "veterinary/treatments";
+            } elseif ($id == 4) {
+                $pathimg = "veterinary/educationfees";
+            } elseif ($id == 5) {
+                $pathimg = "veterinary/diseases";
+            } elseif ($id == 6) {
+                $pathimg = "veterinary/conditions";
+            } elseif ($id == 7) {
+                $pathimg = "veterinary/noworks";
+            } elseif ($id == 8) {
+                $pathimg = "veterinary/evictioncerts";
+            } elseif ($id == 9) {
+                $pathimg = "veterinary/experiencecerts";
+            } elseif ($id == 10) {
+                $pathimg = "veterinary/clinicscerts";
+            } elseif ($id == 11) {
+                $pathimg = "veterinary/recruitments";
+            } elseif ($id == 12) {
+                $pathimg = "veterinary/consultantcards";
+            } elseif ($id == 13) {
+                $pathimg = "veterinary/specialistcards";
+            } elseif ($id == 14) {
+                $pathimg = "veterinary/professionlicenses";
+            } elseif ($id == 15) {
+                $pathimg = "veterinary/privateclinics";
+            } elseif ($id == 16) {
+                $pathimg = "veterinary/specialiststables";
+            } elseif ($id == 17) {
+                $pathimg = "veterinary/professionlicens";
             }
         }
 
@@ -1253,7 +1476,7 @@ class ServiceController extends Controller
                 'cost' => $pathcost,
             ]);
             if (!$request->birth == null || !$request->edu_certificate == null || !$request->salary == null || !$request->receipt == null ||
-             !$request->cost == null) {
+                !$request->cost == null) {
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
@@ -1424,8 +1647,8 @@ class ServiceController extends Controller
                 'cost' => $pathcost,
             ]);
             if (!$request->disclaimer == null || !$request->fulltime == null || !$request->card == null || !$request->cost == null ||
-            !$request->brent == null || !$request->personal_card == null || !$request->ministry == null || !$request->endServ == null ||
-            !$request->Insurance == null ) {
+                !$request->brent == null || !$request->personal_card == null || !$request->ministry == null || !$request->endServ == null ||
+                !$request->Insurance == null) {
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
@@ -1551,7 +1774,7 @@ class ServiceController extends Controller
                 'cost' => $pathcost,
             ]);
             if (!$request->card == null || !$request->personal_card == null || !$request->License == null || !$request->cost == null ||
-            !$request->recruitment == null || !$request->assignment == null || !$request->statement == null || !$request->movements == null) {
+                !$request->recruitment == null || !$request->assignment == null || !$request->statement == null || !$request->movements == null) {
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
@@ -1622,7 +1845,7 @@ class ServiceController extends Controller
                 'cost' => $pathcost,
             ]);
             if (!$request->contract == null || !$request->engineer == null || !$request->receipt == null || !$request->cost == null ||
-            !$request->tax_card == null || !$request->approval == null || !$request->presonal == null ) {
+                !$request->tax_card == null || !$request->approval == null || !$request->presonal == null) {
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
@@ -1679,7 +1902,7 @@ class ServiceController extends Controller
                 'cost' => $pathcost,
             ]);
             if (!$request->recruitment == null || !$request->army_card == null || !$request->receipt == null ||
-            !$request->card == null || !$request->cost == null) {
+                !$request->card == null || !$request->cost == null) {
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
@@ -1855,8 +2078,8 @@ class ServiceController extends Controller
                 'cost' => $pathcost,
             ]);
             if (!$request->model == null || !$request->graduation == null || !$request->receipt == null || !$request->cost == null ||
-            !$request->excellence == null || !$request->birth == null || !$request->personal == null ||
-            !$request->fesh == null || !$request->situation == null || !$request->certificate == null ) {
+                !$request->excellence == null || !$request->birth == null || !$request->personal == null ||
+                !$request->fesh == null || !$request->situation == null || !$request->certificate == null) {
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
@@ -1941,8 +2164,8 @@ class ServiceController extends Controller
 
             ]);
             if (!$request->contract == null || !$request->receipt == null || !$request->certificate == null || !$request->cost == null ||
-            !$request->building == null || !$request->device == null || !$request->purchase == null || 
-            !$request->card == null || !$request->license == null  ) {
+                !$request->building == null || !$request->device == null || !$request->purchase == null ||
+                !$request->card == null || !$request->license == null) {
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
@@ -2354,7 +2577,7 @@ class ServiceController extends Controller
             ]);
         }
 
-        $request->session()->flash('success_edit', 'تم الغاءالطلب بنجاح');
+        $request->session()->flash('success_edit', 'تم الغاء الطلب بنجاح');
         return redirect(url('member/myservice'));
     }
 

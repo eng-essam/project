@@ -72,38 +72,39 @@
                                 </div>
 
                                 <!-- الجانب الايسر-->
-                                <div style="margin-bottom: 30px" class="col-md-6">
-                                    <!-- ادخل-->
-                                    <div class="form-group main">
-                                        <label>صورة ايصال اخر سداد اشتراك
-                                            النقابة :</label>
-                                        <div class="input-group inner" style="direction: rtl">
-                                            <div>
-                                                <input class="form-control mb-2" type="file" id="formFile" name="receipt">
-                                            </div>
-                                            @error('receipt')
-                                                <div>
-                                                    <small class="text-danger">{{ $message }}</small>
-                                                </div>
-                                            @enderror
+                                
+                            </div>
+                            <div style="margin-bottom: 30px" class="col-md-6">
+                                <!-- ادخل-->
+                                <div class="form-group main">
+                                    <label>صورة ايصال اخر سداد اشتراك
+                                        النقابة :</label>
+                                    <div class="input-group inner" style="direction: rtl">
+                                        <div>
+                                            <input class="form-control mb-2" type="file" id="formFile" name="receipt">
                                         </div>
-                                    </div>
-                                    <!-- ادخل-->
-                                    <div class="form-group main">
-                                        <label>صورة وصل سداد الخدمة :</label>
-                                        <div class="input-group inner" style="direction: rtl">
+                                        @error('receipt')
                                             <div>
-                                                <input class="form-control mb-2" type="file" id="formFile" name="cost">
+                                                <small class="text-danger">{{ $message }}</small>
                                             </div>
-                                            @error('cost')
-                                                <div>
-                                                    <small class="text-danger">{{ $message }}</small>
-                                                </div>
-                                            @enderror
-                                        </div>
+                                        @enderror
                                     </div>
-
                                 </div>
+                                <!-- ادخل-->
+                                <div class="form-group main">
+                                    <label>صورة وصل سداد الخدمة :</label>
+                                    <div class="input-group inner" style="direction: rtl">
+                                        <div>
+                                            <input class="form-control mb-2" type="file" id="formFile" name="cost">
+                                        </div>
+                                        @error('cost')
+                                            <div>
+                                                <small class="text-danger">{{ $message }}</small>
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 
