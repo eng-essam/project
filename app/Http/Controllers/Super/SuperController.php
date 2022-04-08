@@ -486,8 +486,8 @@ class SuperController extends Controller
             ->whereIn('id', $user)
             ->where('role_id', '3')->get();
 
-        $data['status']="موافق";
-        $data['namepage']="جميع الطلبات التي تم الموافقة عليها";
+        $data['status'] = "موافق";
+        $data['namepage'] = "جميع الطلبات التي تم الموافقة عليها";
 
         return view('superadmin.types_of_operation')->with($data);
     }
@@ -503,8 +503,8 @@ class SuperController extends Controller
             ->whereIn('id', $user)
             ->where('role_id', '3')->get();
 
-        $data['status']="رفض";
-        $data['namepage']="جميع الطلبات التي تم رفضها ";
+        $data['status'] = "رفض";
+        $data['namepage'] = "جميع الطلبات التي تم رفضها ";
 
         return view('superadmin.types_of_operation')->with($data);
     }
@@ -520,8 +520,8 @@ class SuperController extends Controller
             ->whereIn('id', $user)
             ->where('role_id', '3')->get();
 
-        $data['status']="جاري مراجعة البيانات";
-        $data['namepage']="جميع الطلبات التي لم يتم مراجعتها";
+        $data['status'] = "جاري مراجعة البيانات";
+        $data['namepage'] = "جميع الطلبات التي لم يتم مراجعتها";
 
         return view('superadmin.types_of_operation')->with($data);
     }

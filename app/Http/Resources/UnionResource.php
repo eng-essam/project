@@ -19,6 +19,8 @@ class UnionResource extends JsonResource
             'name'=>$this->name,
             'phone'=> $this->phone,
             'services'=> ServiceResource::collection($this->whenLoaded('services')),
+             //'services'=>$this->test(),
+
 
          ];
     }

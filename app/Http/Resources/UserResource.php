@@ -25,7 +25,7 @@ class UserResource extends JsonResource
             'union_number'=>$this->union_number,
             'union_id'=>$this->union_id,
             'role_id'=>$this->role_id,
-            //'services'=>$this->test(),
+
          ];
     }
 }

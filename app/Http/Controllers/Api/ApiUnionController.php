@@ -9,19 +9,20 @@ use Illuminate\Http\Request;
 
 class ApiUnionController extends Controller
 {
-      /// every unions
+      /// كل النقابات
       public function index(){
         $unions = Union::get();
         return UnionResource::collection($unions);
     }
-      /// every union with its services
+      /// كل نقاية بخدماتها
     public function show($id){
+
        $union = Union::with('services')->find($id);
        if($union==null){
           return response()->json([
               'status' => false,
               'message'=> 'هذه النقابة غير موجودة ',
-            ],404);
+          ]);
        }
         return new UnionResource($union);
     }
