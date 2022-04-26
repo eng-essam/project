@@ -53,6 +53,13 @@
                                     حالة الطلب
                                 </button>
                                 <ul style="text-align: center" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li>
+                                        <a href="{{ url('/super/operation') }}" style="font-weight:bold"
+                                            class="dropdown-item" href="#">جميع الطلبات</a>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
                                     <li><a href="{{ url('/accept/operation') }}" style="font-weight:bold"
                                             class="dropdown-item" href="#">تم الموافقة</a></li>
                                     <li>

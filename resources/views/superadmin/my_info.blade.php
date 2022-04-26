@@ -114,6 +114,16 @@
                         style="background-color: #DC3545;color: white">تغير كلمة السر</a>
 
                 </div>
+
+
+            </div>
+
+            <div class="form-group" style="width: max-content ;float: right; margin: 20px 20px 0 0">
+                <form action="{{ url('email/verification-notification') }}" method="POST">
+                    @csrf
+                    <button style="background-color: #DC3545;color: white;border: 0;
+                    font-size: 18px;padding: 5px;border-radius: 5px" type="submit">تأكيد البريد الالكتروني</button>
+                </form>
             </div>
 
         </div>

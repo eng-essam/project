@@ -6,7 +6,6 @@ use App\Http\Controllers\Api\ApiUnionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | is assigned the "api" middleware group. Enjoy building your API!
 |
-*/
+ */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -28,12 +27,12 @@ Route::get('/unions', [ApiUnionController::class, 'index']);
 Route::post('/login', [ApiAuthController::class, 'login']);
 /// روت إنشاء حساب
 Route::post('/register', [ApiAuthController::class, 'register']);
- // روت عرض كل نقابة بالخدمات المتاحة فيها
- Route::get('/unions/show/{id}', [ApiUnionController::class, 'show']);
- // روت عرض كل خدمة
- Route::get('/services/show/{id}', [ApiServiceFormController::class, 'show']);
+// روت عرض كل نقابة بالخدمات المتاحة فيها
+Route::get('/unions/show/{id}', [ApiUnionController::class, 'show']);
+// روت عرض كل خدمة
+Route::get('/services/show/{id}', [ApiServiceFormController::class, 'show']);
 
-Route::middleware('auth:sanctum')->group(function(){
+Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/logout', [ApiAuthController::class, 'logout']);
     // روت تخزين بيانات طلب كل خدمة
@@ -45,5 +44,3 @@ Route::middleware('auth:sanctum')->group(function(){
     // روت حذف بيانات كل خدمة طلبها يوزر
     Route::get('/services/delete/{id}', [ApiServiceFormController::class, 'delete']);
 });
-
-

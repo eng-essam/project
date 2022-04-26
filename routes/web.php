@@ -174,4 +174,9 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 
     });
 
+    ///////////صفحات ادمن//////////////
+    Route::middleware('auth', 'admin')->group(function () {
+
+    });
+
 });

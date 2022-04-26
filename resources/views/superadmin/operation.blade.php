@@ -53,18 +53,31 @@
                                     حالة الطلب
                                 </button>
                                 <ul style="text-align: center" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a href="{{ url('/accept/operation') }}" style="font-weight:bold"
-                                            class="dropdown-item" href="#">تم الموافقة</a></li>
+                                    <li>
+                                        <a href="{{ url('/super/operation') }}" style="font-weight:bold"
+                                            class="dropdown-item" href="#">جميع الطلبات</a>
+                                    </li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
-                                    <li><a href="{{ url('/refuse/operation') }}" style="font-weight:bold"
-                                            class="dropdown-item" href="#">تم الرفض</a></li>
+                                    <li>
+                                        <a href="{{ url('/accept/operation') }}" style="font-weight:bold"
+                                            class="dropdown-item" href="#">تم الموافقة</a>
+                                    </li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
-                                    <li><a href="{{ url('/check/operation') }}" style="font-weight:bold"
-                                            class="dropdown-item" href="#">جاري المراجعة</a></li>
+                                    <li>
+                                        <a href="{{ url('/refuse/operation') }}" style="font-weight:bold"
+                                            class="dropdown-item" href="#">تم الرفض</a>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('/check/operation') }}" style="font-weight:bold"
+                                            class="dropdown-item" href="#">لم يتم المراجعة بعد</a>
+                                    </li>
                                 </ul>
                             </div>
                         </th>
@@ -75,23 +88,23 @@
 
                     @for ($j = 0; $j < count($all_users); $j++)
                         @for ($i = 0; $i < count($all_users[$j]['operations']); $i++)
-                                <tr>
-                                    <td style="text-align: center;font-size: 19px">
-                                        {{ $all_users[$j]['name'] }}
-                                    </td>
-                                    <td style="text-align: center;font-size: 19px">
-                                        {{ $all_users[$j]['operations'][$i]['namear'] }}
-                                    </td>
-                                    <td style="text-align: center;font-size: 19px">
-                                        {{ $all_users[$j]['operations'][$i]['pivot']['message'] }}
-                                    </td>
-                                    <td style="text-align: center;font-size: 19px">
-                                        {{ $all_users[$j]['operations'][$i]['pivot']['status'] }}
-                                    </td>
-                                    <td style="text-align: center;font-size: 19px">
-                                        {{ $all_users[$j]['operations'][$i]['pivot']['admin_name'] }}
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td style="text-align: center;font-size: 19px">
+                                    {{ $all_users[$j]['name'] }}
+                                </td>
+                                <td style="text-align: center;font-size: 19px">
+                                    {{ $all_users[$j]['operations'][$i]['namear'] }}
+                                </td>
+                                <td style="text-align: center;font-size: 19px">
+                                    {{ $all_users[$j]['operations'][$i]['pivot']['message'] }}
+                                </td>
+                                <td style="text-align: center;font-size: 19px">
+                                    {{ $all_users[$j]['operations'][$i]['pivot']['status'] }}
+                                </td>
+                                <td style="text-align: center;font-size: 19px">
+                                    {{ $all_users[$j]['operations'][$i]['pivot']['admin_name'] }}
+                                </td>
+                            </tr>
                         @endfor
                     @endfor
 
