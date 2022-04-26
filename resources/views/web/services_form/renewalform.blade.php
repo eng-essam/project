@@ -29,7 +29,7 @@
                                     <label>صورة الكارنيه :</label>
                                     <div class="input-group inner" style="direction: rtl">
                                         <div>
-                                            <input class="form-control" type="file" id="formFileDisabled" name="card" />
+                                            <input class="form-control" value="{{old('card')}}" type="file" id="formFileDisabled" name="card" />
                                         </div>
                                         @error('card')
                                             <div>
@@ -40,18 +40,13 @@
                                 </div>
 
 
-                            </div>
-
-                            <!-- الجانب الايسر-->
-                            <div style="margin-bottom: 30px" class="col-md-6">
-
 
                                 <!-- ادخل-->
                                 <div class="form-group main">
                                     <label>صورة البطاقة الشخصية :</label>
                                     <div class="input-group inner" style="direction: rtl">
                                         <div>
-                                            <input class="form-control mb-2" type="file" id="formFile" name="personal_card">
+                                            <input class="form-control mb-2" value="{{old('personal_card')}}" type="file" id="formFile" name="personal_card">
                                         </div>
                                         @error('personal_card')
                                             <div>
@@ -60,12 +55,17 @@
                                         @enderror
                                     </div>
                                 </div>
+
+                            </div>
+
+                            <!-- الجانب الايسر-->
+                            <div style="margin-bottom: 30px" class="col-md-6">
                                 <!-- ادخل-->
                                 <div class="form-group main">
                                     <label>صورة وصل سداد الخدمة :</label>
                                     <div class="input-group inner" style="direction: rtl">
                                         <div>
-                                            <input class="form-control mb-2" type="file" id="formFile" name="cost">
+                                            <input class="form-control mb-2" value="{{old('cost')}}" type="file" id="formFile" name="cost">
                                         </div>
                                         @error('cost')
                                             <div>

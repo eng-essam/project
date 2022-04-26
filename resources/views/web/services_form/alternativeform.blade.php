@@ -28,7 +28,7 @@
                                     <label>صورة الكارنيه :</label>
                                     <div class="input-group inner" style="direction: rtl">
                                         <div>
-                                            <input class="form-control" type="file" id="formFileDisabled" name="card" />
+                                            <input class="form-control" value="{{old('card')}}" type="file" id="formFileDisabled" name="card" />
                                         </div>
                                         @error('card')
                                         <div>
@@ -42,7 +42,7 @@
                                     <label>صورة إيصال آخر سداد :</label>
                                     <div class="input-group inner" style="direction: rtl">
                                         <div>
-                                            <input class="form-control mb-2" type="file" id="formFile" name="recept">
+                                            <input class="form-control mb-2" value="{{old('recept')}}" type="file" id="formFile" name="recept">
                                         </div>
                                         @error('recept')
                                         <div>
