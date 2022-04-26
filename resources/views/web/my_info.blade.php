@@ -6,18 +6,14 @@
     <main id="main">
         <div style="margin: 90px 0 90px 0" class="card card-danger">
 
-
             @include('all.message')
 
             <div class="card-body">
-
                 <div class="card card-default">
                     <div class="card-body" style="direction: rtl">
                         <div class="row">
-
                             <!-- الجانب الايمن-->
                             <div class="col-md-6">
-
                                 <!-- ادخل-->
                                 <div style="margin-bottom: 30px" class="form-group">
                                     <label style="float: right;"> الاسم :</label>
@@ -28,7 +24,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <!-- ادخل-->
                                 <div style="margin-bottom: 30px" class="form-group">
                                     <label style="float: right;"> البريد الالكتروني :</label>
@@ -39,7 +34,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <!-- ادخل-->
                                 <div style="margin-bottom: 30px" class="form-group">
                                     <label style="float: right;"> الرقم القومي :</label>
@@ -49,16 +43,11 @@
                                                 value="{{ $user->ssn }}">
                                         </div>
                                     </div>
-
                                 </div>
-
                             </div>
 
                             <!-- الجانب الايسر-->
                             <div style="margin-bottom: 30px" class="col-md-6">
-
-
-
                                 <!-- ادخل-->
                                 <div style="margin-bottom: 30px" class="form-group">
                                     <label style="float: right;">الهاتف :</label>
@@ -79,9 +68,7 @@
                                                 value="{{ $user->sex }}">
                                         </div>
                                     </div>
-
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -90,7 +77,6 @@
                         <div class="input-group" style="direction: rtl">
                             <a href="{{ url('/member/edit/info') }}" class="form-control"
                                 style="background-color: #013289;color: white">تعديل</a>
-
                         </div>
                     </div>
                 </div>
@@ -99,8 +85,15 @@
                     <div class="input-group" style="direction: rtl">
                         <a href="{{ url('/member/edit/password') }}" class="form-control"
                             style="background-color: #013289;color: white">تغير كلمة السر</a>
-
                     </div>
+                </div>
+
+                <div class="form-group" style="width: max-content ;float: right; margin: 20px 20px 0 0">
+                    <form action="{{ url('email/verification-notification') }}" method="POST">
+                        @csrf
+                        <button style="background-color: #013289;color: white;border: 0;
+                        font-size: 18px;padding: 5px;border-radius: 5px" type="submit">تأكيد البريد الالكتروني</button>
+                    </form>
                 </div>
 
             </div>

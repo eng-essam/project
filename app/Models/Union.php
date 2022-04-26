@@ -22,7 +22,12 @@ class Union extends Model
         return $this->belongsToMany(Service::class,'union_service','union_id','service_id')->withTimestamps()->withPivot('service_cost');
     }
 
-   
-   
+    public function information()
+    {
+        return $this->hasMany(Information::class);
+    }
+
+
+
 }
 

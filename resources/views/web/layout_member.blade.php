@@ -72,6 +72,7 @@
                             @auth
                             <li style="direction: rtl;"><a href="#">الرئيسية</a><i class="bi bi-chevron-left"></i></li>
                             <li><a href=""> الخدمات</a><i class="bi bi-chevron-left"></i> </li>
+                            <li><a href="{{url("/union/information")}}"> الاخبار</a><i class="bi bi-chevron-left"></i> </li>
                             <li><a href="{{url("/member/myservice")}}"> طلباتي</a><i class="bi bi-chevron-left"></i> </li>
                             <li><a href="{{url("/member/info")}}"> معلوماتي</a><i class="bi bi-chevron-left"></i> </li>
                             <li><a href="{{url("/member_logout")}}"> تسجيل خروج</a><i class="bi bi-chevron-left"></i> </li>
@@ -79,7 +80,7 @@
                             @guest
                             <li><a href="{{url("/")}}">النقابات</a><i class="bi bi-chevron-left"></i> </li>
                             <li><a href="{{url("/login")}}"> تسجيل دخول</a><i class="bi bi-chevron-left"></i> </li>
-                            <li><a href="{{url("/register/member")}}">انشاء حساب</a><i class="bi bi-chevron-left"></i> </li>    
+                            <li><a href="{{url("/register/member")}}">انشاء حساب</a><i class="bi bi-chevron-left"></i> </li>
                             @endguest
                         </ul>
                     </div>

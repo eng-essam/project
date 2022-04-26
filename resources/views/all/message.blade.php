@@ -13,3 +13,9 @@
         </div>
     </div>
 @endif
+
+@if (session('success-msg'))
+    <div style="text-align: center" class="alert alert-success">
+        <p> {{ session('success-msg') }} </p>
+    </div>
+@endif

@@ -16,7 +16,7 @@
 
 <!--  رقم النقابة غلط عند تسجيل العضو-->
 @if (session('error-msg'))
-    <div style="text-align: center"  class="alert alert-danger">
+    <div style="text-align: center" class="alert alert-danger">
         <p> {{ session('error-msg') }} </p>
     </div>
 @endif
@@ -25,5 +25,11 @@
 @if (session('success-msg'))
     <div style="text-align: center" class="alert alert-success">
         <p> {{ session('success-msg') }} </p>
+    </div>
+@endif
+<!--تأكيد البريد الالكتروني بنجاح-->
+@if (session('email_verify'))
+    <div style="text-align: center" class="alert alert-success">
+        <p> {{ session('email_verify') }} </p>
     </div>
 @endif

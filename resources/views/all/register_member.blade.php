@@ -5,7 +5,7 @@
 @endsection
 
 @section('main')
-    <form action="{{ url('register/member') }}" method="POST" class="register-form validate-form">
+    <form  method="POST" action="{{ url('register') }}" class="register-form validate-form">
         @csrf
 
         <span class="login-form-title p-b-43">انشاء حساب</span>

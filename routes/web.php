@@ -13,6 +13,8 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 //البحث عن خدمة معينة في نقابة معينه
     Route::get('/union/service/search', [ServiceController::class, 'search']);
 
+    Route::get('/member_logout', [Authcontroller::class, 'member_logout']);
+
 /////////////صفحات الضيف//////////////////
     Route::middleware('guest')->group(function () {
 
@@ -36,47 +38,54 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 
     });
 
-///////////صفحات الاعضاء////////////////
+///////////صفحات الاعضاء/////////////// /
     Route::middleware('auth', 'member')->group(function () {
+        //الصفحة الرئيسية
+        Route::get('/union/home', [ServiceController::class, 'home']);
 
-        //تسجيل خروج عضو
-        Route::get('/member_logout', [Authcontroller::class, 'member_logout']);
+        //صفحة الاخبار
+        Route::get('/union/information', [ServiceController::class, 'information']);
+
+        //صفحة معلومات العضو
+        Route::get('/member/info', [Authcontroller::class, 'info']);
+
+        //صفحة تعديل معلومات  العضو
+        Route::get('/member/edit/info', [Authcontroller::class, 'form_info']);
+
+        //مراجعة  تعديل بيانات الجديدة العضو
+        Route::post('/member/update/info', [Authcontroller::class, 'update_info']);
+
+        // صفحة تعديل كلمة السر  العضو
+        Route::get('/member/edit/password', [Authcontroller::class, 'form_password']);
+
+        //مراجعة كلمة السر السوبر العضو
+        Route::post('/member/update/password', [Authcontroller::class, 'update_password']);
 
         //عرض وصف بيانات خدمة معينة
         Route::get('/union/servicedesc/{id}', [ServiceController::class, 'servicedesc']);
 
-        //عرض فورم رفع البيانات لخدمة معينة
-        Route::get('/union/serviceform/{id}', [ServiceController::class, 'serviceform']);
+        Route::middleware('verified')->group(function () {
 
-        //تخزين بيانات الخدمة اللي العضو طلبها
-        Route::post('/union/service/store/{id}', [ServiceController::class, 'store']);
+            //عرض فورم رفع البيانات لخدمة معينة
+            Route::get('/union/serviceform/{id}', [ServiceController::class, 'serviceform']);
 
-        //تعديل بيانات خدمة
-        Route::post('/member/service/update/{id}', [ServiceController::class, 'update']);
+            //تخزين بيانات الخدمة اللي العضو طلبها
+            Route::post('/union/service/store/{id}', [ServiceController::class, 'store']);
 
-        //عرض خدمات العضو اللي طلبها
-        Route::get('/member/myservice', [ServiceController::class, 'myservice']);
+            //تعديل بيانات خدمة
+            Route::post('/member/service/update/{id}', [ServiceController::class, 'update']);
 
-        //حذف بيانات خدمة العضو طلبها
-        Route::get('/member/service/delete/{id}', [ServiceController::class, 'delete']);
+            //عرض خدمات العضو اللي طلبها
+            Route::get('/member/myservice', [ServiceController::class, 'myservice'])->middleware('verified');
 
-        //فورم تعديل بيانات خدمة
-        Route::get('/member/service/eidt/{id}', [ServiceController::class, 'eidt']);
+            //حذف بيانات خدمة العضو طلبها
+            Route::get('/member/service/delete/{id}', [ServiceController::class, 'delete']);
 
-        //صفحة معلومات العضو
-        Route::get('/member/info', [ServiceController::class, 'info']);
+            //فورم تعديل بيانات خدمة
+            Route::get('/member/service/eidt/{id}', [ServiceController::class, 'eidt']);
 
-        //صفحة تعديل معلومات  العضو
-        Route::get('/member/edit/info', [ServiceController::class, 'form_info']);
+        });
 
-        //مراجعة  تعديل بيانات الجديدة العضو
-        Route::post('/member/update/info', [ServiceController::class, 'update_info']);
-
-        // صفحة تعديل كلمة السر  العضو
-        Route::get('/member/edit/password', [ServiceController::class, 'form_password']);
-
-        //مراجعة كلمة السر السوبر العضو
-        Route::post('/member/update/password', [ServiceController::class, 'update_password']);
     });
 
 ///////////صفحات السوبر ادمن//////////////

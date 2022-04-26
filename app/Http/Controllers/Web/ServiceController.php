@@ -25,11 +25,30 @@ use App\Models\Union;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class ServiceController extends Controller
 {
+
+    public function home()
+    {
+        $user = Auth::user();
+        $unionid = $user->union_id;
+        $data['union'] = Union::findOrfail($unionid);
+        $data['informations'] = $data['union']->information;
+        $data['servicess'] = $data['union']->services->take(4);
+        return view('web.unoin_home')->with($data);
+    }
+
+    public function information(){
+        $user = Auth::user();
+        $unionid = $user->union_id;
+        $data['union'] = Union::findOrfail($unionid);
+        $data['servicess'] = $data['union']->services->take(4);
+        $data['informations'] = $data['union']->information;
+        return view('web.information')->with($data);
+    }
+
     public function showservice($id, Request $request)
     {
 
@@ -2623,101 +2642,6 @@ class ServiceController extends Controller
         } elseif ($id == 17) {
             return view('web.edit.professionlicenform')->with($data);
         }
-    }
-
-    public function info()
-    {
-        $data['user'] = Auth::user();
-        return view('web.my_info')->with($data);
-    }
-
-    public function form_info()
-    {
-        $data['user'] = Auth::user();
-        return view('web.edit-info')->with($data);
-    }
-
-    public function update_info(Request $request)
-    {
-        $user = Auth::user();
-        $userdata = User::where('id', '=', $user->id)->first();
-
-        //validate of email
-        if ($request->email == null) {
-            $request->email = $userdata->email;
-        } else {
-            $request->validate(['email' => "email|unique:users,email,$user->id",
-            ]);
-        }
-
-        //validate of phone
-        if ($request->phone == null) {
-            $request->phone = $userdata->phone;
-        } else {
-            $request->validate(['phone' => "numeric|digits:11|unique:users,phone,$user->id",
-            ]);
-        }
-
-        //validate of name and oldpassword
-        $request->validate([
-            'password' => [
-                'required',
-                function ($attribute, $value, $fail) use ($userdata) {
-                    if ($value != null) {
-                        if (!Hash::check($value, $userdata->password)) {
-                            $fail('كلمة السر غير صحيحة');
-                        }
-                    }
-                },
-            ],
-        ]);
-
-        $userdata->update([
-            'email' => $request->email,
-            'phone' => $request->phone,
-        ]);
-
-        $request->session()->flash('success_edit', "تم تعديل البيانات بنجاح");
-        return redirect(url('/member/info'));
-
-    }
-
-    public function form_password()
-    {
-        return view('web.edit_password');
-    }
-
-    public function update_password(Request $request)
-    {
-        $user = Auth::user();
-        $userdata = User::where('id', '=', $user->id)->first();
-
-        $request->validate([
-            'oldpassword' => [
-                'required',
-                function ($attribute, $value, $fail) use ($userdata) {
-                    if (!Hash::check($value, $userdata->password)) {
-                        $fail('كلمة السر غير صحيحة');
-                    }
-                }],
-            'password' => [
-                'required',
-                'confirmed',
-                'min:8',
-                function ($attribute, $value, $fail) use ($userdata) {
-                    if (Hash::check($value, $userdata->password)) {
-                        $fail('كلمة السر الجديدة تشبة كلمة السر الحالية');
-                    }
-                }],
-
-        ]);
-
-        $userdata->update([
-            'password' => Hash::make($request->password),
-        ]);
-
-        $request->session()->flash('success_edit', "تم تعديل كلمة السر بنجاح");
-        return redirect(url('/member/info'));
     }
 
 }

@@ -3,15 +3,16 @@
 namespace App\Http\Controllers\web;
 
 use App\Http\Controllers\Controller;
+use App\Mail\verify_email;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use Mail;
 
 class Authcontroller extends Controller
 {
-
     //validate logoin
     public function guest_login(Request $request)
     {
@@ -58,7 +59,7 @@ class Authcontroller extends Controller
         return view('all.register_member');
     }
 
-    //validate تسجيل عضو ف الموقع لاول مره
+    /*validate تسجيل عضو ف الموقع لاول مره
     public function member_register(Request $request)
     {
         $request->validate([
@@ -75,18 +76,118 @@ class Authcontroller extends Controller
 
         $user->update([
             'email' => $request->email,
-            'password' =>Hash::make($request->password) ,
+            'password' => Hash::make($request->password),
         ]);
 
 
-        request()->session()->flash('success-msg', 'تم التسجيل بنحاج');
+        //request()->session()->flash('success-msg', 'تم التسجيل بنحاج');
         return view('all.login');
-    }
+    }*/
 
     // صفحة نسيت كلمة السر
     public function requestPassword()
     {
         return view("all.forgot-password");
+    }
+
+    public function info()
+    {
+        $data['user'] = Auth::user();
+        return view('web.my_info')->with($data);
+    }
+
+    public function form_info()
+    {
+        $data['user'] = Auth::user();
+        return view('web.edit-info')->with($data);
+    }
+
+    public function update_info(Request $request)
+    {
+        $user = Auth::user();
+        $userdata = User::where('id', '=', $user->id)->first();
+
+        //validate of email
+        if ($request->email == null) {
+            $request->email = $userdata->email;
+        } else {
+
+            $request->validate(['email' => "email|unique:users,email,$user->id",
+            ]);
+
+            $userdata->update([
+                'email_verified_at' => NULL,
+            ]);
+        }
+
+        //validate of phone
+        if ($request->phone == null) {
+            $request->phone = $userdata->phone;
+        } else {
+            $request->validate(['phone' => "numeric|digits:11|unique:users,phone,$user->id",
+            ]);
+        }
+
+        //validate of name and oldpassword
+        $request->validate([
+            'password' => [
+                'required',
+                function ($attribute, $value, $fail) use ($userdata) {
+                    if ($value != null) {
+                        if (!Hash::check($value, $userdata->password)) {
+                            $fail('كلمة السر غير صحيحة');
+                        }
+                    }
+                },
+            ],
+        ]);
+
+        $userdata->update([
+            'email' => $request->email,
+            'phone' => $request->phone,
+        ]);
+
+        $request->session()->flash('success_edit', "تم تعديل البيانات بنجاح");
+        return redirect(url('/member/info'));
+
+    }
+
+    public function form_password()
+    {
+        return view('web.edit_password');
+    }
+
+    public function update_password(Request $request)
+    {
+        $user = Auth::user();
+        $userdata = User::where('id', '=', $user->id)->first();
+
+        $request->validate([
+            'oldpassword' => [
+                'required',
+                function ($attribute, $value, $fail) use ($userdata) {
+                    if (!Hash::check($value, $userdata->password)) {
+                        $fail('كلمة السر غير صحيحة');
+                    }
+                }],
+            'password' => [
+                'required',
+                'confirmed',
+                'min:8',
+                function ($attribute, $value, $fail) use ($userdata) {
+                    if (Hash::check($value, $userdata->password)) {
+                        $fail('كلمة السر الجديدة تشبة كلمة السر الحالية');
+                    }
+                }],
+
+        ]);
+
+        $userdata->update([
+            'password' => Hash::make($request->password),
+        ]);
+
+        $request->session()->flash('success_edit', "تم تعديل كلمة السر بنجاح");
+        return redirect(url('/member/info'));
     }
 
     //عرض صفحة مشكلة في التسجيل

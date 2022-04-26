@@ -22,6 +22,7 @@
                       </div>
                   </div>
               @endauth
+
               <a href="index.html">
                   <span>LOGO</span>
               </a>
@@ -30,11 +31,11 @@
           <nav id="navbar" class="navbar">
               <ul>
                   @guest
-                      <li><a style="font-size: 20px;" class="nav-link scrollto active" href="#hero">الرئيسية</a></li>
+                      <li><a style="font-size: 20px;" class="nav-link scrollto active" href="/">الرئيسية</a></li>
 
                       <li class="dropdown">
-                          <a href="#values" class="scrollto"><span style="font-size: 20px;">النقابات</span><i
-                                  class="bibi-chevron-down"></i>
+                          <a href="{{ url('/') }}" class="scrollto"><span
+                                  style="font-size: 20px;">النقابات</span><i class="bibi-chevron-down"></i>
                           </a>
                           <ul>
                               @foreach ($unions as $union)
@@ -51,7 +52,7 @@
 
                   @auth
 
-                      <li><a style="font-size: 20px;" class="nav-link scrollto active" href="#hero">نقابة
+                      <li><a style="font-size: 20px;" class="nav-link scrollto active" href="{{ url('union/home') }}">نقابة
                               {{ $union->name }}</a></li>
 
                       <li class="dropdown">
@@ -69,13 +70,11 @@
                           </ul>
                       </li>
 
+                    <li><a style="font-size: 20px;" class="nav-link scrollto"
+                        href="{{ url('/union/information') }}">الاخبار</a></li>
+
                       <li><a style="font-size: 20px;" class="nav-link scrollto"
                               href="{{ url('member/myservice') }}">طلباتي</a></li>
-
-                      <li><a style="font-size: 20px;" class="nav-link scrollto" href="#about">معلومات عنا</a></li>
-
-                      <!--<li><a style="font-size: 20px;" class="nav-link scrollto" href="{{ url('member_logout') }}">تسجيل خروج</a></li> -->
-
                   @endauth
               </ul>
               <i class="bi bi-list mobile-nav-toggle"></i>
