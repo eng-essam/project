@@ -55,6 +55,34 @@ class ApiServiceFormController extends Controller
                 $pathimg = "pharmacy/alternatives";
             } elseif ($id == 3) {
                 $pathimg = "pharmacy/treatments";
+            } elseif ($id == 4) {
+                $pathimg = "pharmacy/educationfees";
+            } elseif ($id == 5) {
+                $pathimg = "pharmacy/diseases";
+            } elseif ($id == 6) {
+                $pathimg = "pharmacy/conditions";
+            } elseif ($id == 7) {
+                $pathimg = "pharmacy/noworks";
+            } elseif ($id == 8) {
+                $pathimg = "pharmacy/evictioncerts";
+            } elseif ($id == 9) {
+                $pathimg = "pharmacy/experiencecerts";
+            } elseif ($id == 10) {
+                $pathimg = "pharmacy/clinicscerts";
+            } elseif ($id == 11) {
+                $pathimg = "pharmacy/recruitments";
+            } elseif ($id == 12) {
+                $pathimg = "pharmacy/consultantcards";
+            } elseif ($id == 13) {
+                $pathimg = "pharmacy/specialistcards";
+            } elseif ($id == 14) {
+                $pathimg = "pharmacy/professionlicenses";
+            } elseif ($id == 15) {
+                $pathimg = "pharmacy/privateclinics";
+            } elseif ($id == 16) {
+                $pathimg = "pharmacy/specialiststables";
+            } elseif ($id == 17) {
+                $pathimg = "pharmacy/professionlicens";
             }
         } elseif ($unionid == 2) {
             if ($id == 1) {
@@ -63,6 +91,34 @@ class ApiServiceFormController extends Controller
                 $pathimg = "teeth/alternatives";
             } elseif ($id == 3) {
                 $pathimg = "teeth/treatments";
+            } elseif ($id == 4) {
+                $pathimg = "teeth/educationfees";
+            } elseif ($id == 5) {
+                $pathimg = "teeth/diseases";
+            } elseif ($id == 6) {
+                $pathimg = "teeth/conditions";
+            } elseif ($id == 7) {
+                $pathimg = "teeth/noworks";
+            } elseif ($id == 8) {
+                $pathimg = "teeth/evictioncerts";
+            } elseif ($id == 9) {
+                $pathimg = "teeth/experiencecerts";
+            } elseif ($id == 10) {
+                $pathimg = "teeth/clinicscerts";
+            } elseif ($id == 11) {
+                $pathimg = "teeth/recruitments";
+            } elseif ($id == 12) {
+                $pathimg = "teeth/consultantcards";
+            } elseif ($id == 13) {
+                $pathimg = "teeth/specialistcards";
+            } elseif ($id == 14) {
+                $pathimg = "teeth/professionlicenses";
+            } elseif ($id == 15) {
+                $pathimg = "teeth/privateclinics";
+            } elseif ($id == 16) {
+                $pathimg = "teeth/specialiststables";
+            } elseif ($id == 17) {
+                $pathimg = "teeth/professionlicens";
             }
         } elseif ($unionid == 3) {
             if ($id == 1) {
@@ -71,6 +127,34 @@ class ApiServiceFormController extends Controller
                 $pathimg = "human/alternatives";
             } elseif ($id == 3) {
                 $pathimg = "human/treatments";
+            } elseif ($id == 4) {
+                $pathimg = "human/educationfees";
+            } elseif ($id == 5) {
+                $pathimg = "human/diseases";
+            } elseif ($id == 6) {
+                $pathimg = "human/conditions";
+            } elseif ($id == 7) {
+                $pathimg = "human/noworks";
+            } elseif ($id == 8) {
+                $pathimg = "human/evictioncerts";
+            } elseif ($id == 9) {
+                $pathimg = "human/experiencecerts";
+            } elseif ($id == 10) {
+                $pathimg = "human/clinicscerts";
+            } elseif ($id == 11) {
+                $pathimg = "human/recruitments";
+            } elseif ($id == 12) {
+                $pathimg = "human/consultantcards";
+            } elseif ($id == 13) {
+                $pathimg = "human/specialistcards";
+            } elseif ($id == 14) {
+                $pathimg = "human/professionlicenses";
+            } elseif ($id == 15) {
+                $pathimg = "human/privateclinics";
+            } elseif ($id == 16) {
+                $pathimg = "human/specialiststables";
+            } elseif ($id == 17) {
+                $pathimg = "human/professionlicens";
             }
         } elseif ($unionid == 4) {
             if ($id == 1) {
@@ -79,6 +163,34 @@ class ApiServiceFormController extends Controller
                 $pathimg = "veterinary/alternatives";
             } elseif ($id == 3) {
                 $pathimg = "veterinary/treatments";
+            } elseif ($id == 4) {
+                $pathimg = "veterinary/educationfees";
+            } elseif ($id == 5) {
+                $pathimg = "veterinary/diseases";
+            } elseif ($id == 6) {
+                $pathimg = "veterinary/conditions";
+            } elseif ($id == 7) {
+                $pathimg = "veterinary/noworks";
+            } elseif ($id == 8) {
+                $pathimg = "veterinary/evictioncerts";
+            } elseif ($id == 9) {
+                $pathimg = "veterinary/experiencecerts";
+            } elseif ($id == 10) {
+                $pathimg = "veterinary/clinicscerts";
+            } elseif ($id == 11) {
+                $pathimg = "veterinary/recruitments";
+            } elseif ($id == 12) {
+                $pathimg = "veterinary/consultantcards";
+            } elseif ($id == 13) {
+                $pathimg = "veterinary/specialistcards";
+            } elseif ($id == 14) {
+                $pathimg = "veterinary/professionlicenses";
+            } elseif ($id == 15) {
+                $pathimg = "veterinary/privateclinics";
+            } elseif ($id == 16) {
+                $pathimg = "veterinary/specialiststables";
+            } elseif ($id == 17) {
+                $pathimg = "veterinary/professionlicens";
             }
         }
 

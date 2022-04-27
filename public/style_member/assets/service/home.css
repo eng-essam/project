@@ -323,84 +323,103 @@ body {
   transform: scale(1);
 }
 .left-altrenative{
-  margin-top: 130px;
-}
-.left-clincserts{
-  margin-top: 60px;
-}
-.left-conditions{
-  margin-top: 120px;
-}
-.left-consultantcards{
-  margin-top: 150px;
-}
-.left-diseases{
-  margin-top: 150px;
-}
-.left-educationfees{
-  margin-top: 100px;
-}
-.left-evictioncerts{
-  margin-top: 135px;
-}
-.left-experiencecerts{
-  margin-top: 55px;
-}
-.left-health{
-  margin-top: 70px;
-}
-.left-networks{
-  margin-top: 25px;
-}
-.left-privateclinics{
-  margin-top: 35px;
-}
-.left-professionlicens{
-  margin-top: 95px;
-}
-.left-professionlicenses{
-  margin-top: 25px;
-}
-.left-recruitments{
-  margin-top: 100px;
-}
-.left-renewal{
-  margin-top: 135px;
-}
-.left-specialistcards{
-  margin-top: 150px;
-}
-.left-specialiststabels{
-  margin-top: 20px;
-}
-.left-treatments{
-  margin-top: 140px;
-}
-/* footer */
-.footer-newsletter a[type="submit"] {
-  background: var(--light);
-  border: 0;
-  padding: 10px 30px;
-  color: var(--white);
-  transition: 0.4s;
-  border-radius: 4px;
-  width: max-content;
-  font-size: 20px;
-}
-.footer-newsletter a:focus {
-  outline: 0;
-}
-.footer-newsletter a:hover {
-  background-color: var(--blight);
-}
-
-.footer-newsletter p{
-  font-size: 15px;
-}
-
-/* media */
-@media screen and (max-width: 600px){ 
-  .left{
-    margin-top: 15px;
+    margin-top: 130px;
   }
-}
+  .left-clincserts{
+    margin-top: 60px;
+  }
+  .left-conditions,
+  .left-death,
+  .left-disability{
+    margin-top: 120px;
+  }
+  .left-consultantcards,
+  .left-diseases,
+  .left-supervision{
+    margin-top: 150px;
+  }
+  .left-educationfees,
+  .left-recruitments{
+    margin-top: 100px;
+  }
+  .left-evictioncerts,
+  .left-renewal{
+    margin-top: 135px;
+  }
+  .left-experiencecerts,
+  .left-treatment{
+    margin-top: 55px;
+  }
+  .left-health{
+    margin-top: 70px;
+  }
+  .left-networks,
+  .left-professionlicenses{
+    margin-top: 25px;
+  }
+  .left-privateclinics,
+  .left-health{
+    margin-top: 35px;
+  }
+  .left-professionlicens{
+    margin-top: 95px;
+  }
+  .left-specialistcards{
+    margin-top: 150px;
+  }
+  .left-specialiststabels{
+    margin-top: 20px;
+  }
+  .left-treatments{
+    margin-top: 140px;
+  }
+  .left-surgery{
+    margin-top:57px;
+  }
+  .left-medical,
+  .left-giveBirth{
+    margin-top:90px;
+  }
+
+  /* payment */
+
+  .payment {
+    padding: 50px 0;
+    background: #f6f9ff;
+    border-top: 1px solid #e1ecff;
+  }
+  .payment h4 {
+    font-size: 24px;
+    margin: 0 0 10px 0;
+    padding: 0;
+    line-height: 1;
+    font-weight: 700;
+    color: var(--dark1);
+  }
+  .payment a {
+    background: var(--light);
+    border: 0;
+    padding: 10px 30px;
+    color: var(--white);
+    transition: 0.4s;
+    border-radius: 4px;
+    width: max-content;
+    font-size: 20px;
+  }
+  .payment a:focus {
+    outline: 0;
+  }
+  .payment a:hover {
+    background-color: var(--blight);
+  }
+
+  .payment p{
+    font-size: 15px;
+  }
+
+  /* media */
+  @media screen and (max-width: 600px){
+    .left{
+      margin-top: 15px;
+    }
+  }

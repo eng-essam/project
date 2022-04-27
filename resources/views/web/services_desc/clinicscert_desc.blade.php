@@ -102,31 +102,27 @@
     </section>
     <!-- End orders Section -->
 
-    <!-- start footer -->
-    <footer id="footer" class="footer">
-        <!-- start payment -->
-        <div class="footer-newsletter" style="background: #fff">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12 text-center">
-                        <h4>الرسوم</h4>
-                        <p class="fs-5 mt-2">رسوم الخدمة: {{ $services_cost->pivot->service_cost }} </p>
-                        <p>
-                            يتم دفع الرسوم عن طريق تحويل المبلغ علي الحساب والإحتفاظ بصورة
-                            لوصل الدفع
-                        </p>
-                        <div>
-                            <p>فودافون كاش: 01090440347</p>
-                            <p>البنك الاهلي: 12345</p>
-                        </div>
+
+    <!-- start payment -->
+    <div class="payment" style="background: #fff">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12 text-center">
+                    <h4>الرسوم</h4>
+                    <p class="fs-5 mt-2">رسوم الخدمة: {{ $services_cost->pivot->service_cost }} </p>
+                    <p>
+                        يتم دفع الرسوم عن طريق تحويل المبلغ علي الحساب والإحتفاظ بصورة
+                        لوصل الدفع
+                    </p>
+                    <div>
+                        <p>فودافون كاش: 01090440347</p>
+                        <p>البنك الاهلي: 12345</p>
                     </div>
-                    <a type="submit" href="{{ url("/union/serviceform/$service->id") }}" class="text-center">إبدأ
-                        الخدمة</a>
                 </div>
+                <a type="submit" href="{{ url("/union/serviceform/$service->id") }}" class="text-center">إبدأ
+                    الخدمة</a>
             </div>
         </div>
-        <!-- end payment -->
-
-    </footer>
-    <!-- End Footer -->
+    </div>
+    <!-- end payment -->
 @endsection

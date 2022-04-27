@@ -6,124 +6,117 @@
 
 @section('main')
     <main style="margin-top:50px " style="margin-top: 50px" id="main">
-      <!-- ======= service Details Section ======= -->
-      <section id="service-details" class="service-details">
-        @if (session('servicess_error'))
-        <div style="text-align: center;margin-bottom: 20px">
-            <div style="width: max-content;margin: auto" class="alert alert-success">
-                <p> {{ session('servicess_error') }} </p>
-            </div>
-        </div>
-    @endif
-        <div class="container">
-          <div class="row gy-4">
-            <div class="col-lg-8 mobile-hidden">
-              <div class="service-details-slider">
-                <div class="align-items-center" data-aos="zoom-out"
-                  data-aos-delay="200">
-                  <img src="{{ asset('style_member/assets/img/hero-img.png') }}" class="img-fluid"
-                    alt="image" />
+        <!-- ======= service Details Section ======= -->
+        <section id="service-details" class="service-details">
+            @if (session('servicess_error'))
+                <div style="text-align: center;margin-bottom: 20px">
+                    <div style="width: max-content;margin: auto" class="alert alert-success">
+                        <p> {{ session('servicess_error') }} </p>
+                    </div>
                 </div>
-              </div>
-            </div>
+            @endif
+            <div class="container">
+                <div class="row gy-4">
+                    <div class="col-lg-8 mobile-hidden">
+                        <div class="service-details-slider">
+                            <div class="align-items-center" data-aos="zoom-out" data-aos-delay="200">
+                                <img src="{{ asset('style_member/assets/img/hero-img.png') }}" class="img-fluid"
+                                    alt="image" />
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="col-lg-4" style="direction: rtl">
-              <div class="service-info">
-                <h3>{{ $service->namear }}</h3>
-                <ul>
-                  <li><strong>وصف الخدمة</strong></li>
-                  <ul>
-                    <li>
-                      {{ $service->title }}
-                    </li>
-                  </ul>
-                </ul>
-              </div>
-              <div class="service-condition">
-                <h2>الشروط الواجب توافرها للحصول علي الخدمة</h2>
-                <ul>
-                  <li class="mb-3">صورة مفردات الزوج والزوجة</li>
+                    <div class="col-lg-4" style="direction: rtl">
+                        <div class="service-info">
+                            <h3>{{ $service->namear }}</h3>
+                            <ul>
+                                <li><strong>وصف الخدمة</strong></li>
+                                <ul>
+                                    <li>
+                                        {{ $service->title }}
+                                    </li>
+                                </ul>
+                            </ul>
+                        </div>
+                        <div class="service-condition">
+                            <h2>الشروط الواجب توافرها للحصول علي الخدمة</h2>
+                            <ul>
+                                <li class="mb-3">صورة مفردات الزوج والزوجة</li>
 
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
         </section>
         <!-- End service Details Section -->
     </main>
 
-      <!-- ======= orders Section ======= -->
-      <section id="orders" class="orders" style="direction: rtl">
+    <!-- ======= orders Section ======= -->
+    <section id="orders" class="orders" style="direction: rtl">
         <div class="container" data-aos="fade-up">
-          <header class="section-header text-center">
-            <h2>المستندات المطلوبة</h2>
-            <p>هذه المستندات المطلوبة لإتمام الخدمة</p>
-          </header>
+            <header class="section-header text-center">
+                <h2>المستندات المطلوبة</h2>
+                <p>هذه المستندات المطلوبة لإتمام الخدمة</p>
+            </header>
 
-          <div class="card">
-            <div class="card-body" style="direction: rtl">
-              <div class="row">
-                <!-- الجانب الايمن-->
-                <div class="col-md-6">
-                  <!-- ادخل-->
-                  <div class="form-group main mobile-hidden">
-                    <img src="{{ asset('style_member/assets/img/values-3.png') }}" class="img-fluid"
-                      alt="" />
-                  </div>
-
-
-                </div>
-
-                <!-- الجانب الايسر-->
-                <div
-                  class="col-md-6 left left-evictioncerts">
-
-                  <!-- ادخل-->
-                  <div class="form-group main">
-                    <div class="input-group inner" style="direction: rtl">
-                      <ul class="ul">
-                        <li>صورة إفادة من الصحة بعدم إدارة أي صيدلية</li>
-                        <li>صورة الكارنيه الفرعي </li>
-                        <li>صورة التوكيل فى حالة عدم وجود الصيدلي</li>
-
-                      </ul>
-                    </div>
-                  </div>
+            <div class="card">
+                <div class="card-body" style="direction: rtl">
+                    <div class="row">
+                        <!-- الجانب الايمن-->
+                        <div class="col-md-6">
+                            <!-- ادخل-->
+                            <div class="form-group main mobile-hidden">
+                                <img src="{{ asset('style_member/assets/img/values-3.png') }}" class="img-fluid"
+                                    alt="" />
+                            </div>
 
 
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End orders Section -->
-    <!-- start footer -->
-    <footer id="footer" class="footer">
-        <!-- start payment -->
-        <div class="footer-newsletter" style="background: #fff">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12 text-center">
-                        <h4>الرسوم</h4>
-                        <p class="fs-5 mt-2">رسوم الخدمة: {{ $services_cost->pivot->service_cost }}</p>
-                        <p>
-                            يتم دفع الرسوم عن طريق تحويل المبلغ علي الحساب والإحتفاظ بصورة
-                            لوصل الدفع
-                        </p>
-                        <div>
-                            <p>فودافون كاش: 01090440347</p>
-                            <p>البنك الاهلي: 12345</p>
+                        </div>
+
+                        <!-- الجانب الايسر-->
+                        <div class="col-md-6 left left-evictioncerts">
+
+                            <!-- ادخل-->
+                            <div class="form-group main">
+                                <div class="input-group inner" style="direction: rtl">
+                                    <ul class="ul">
+                                        <li>صورة إفادة من الصحة بعدم إدارة أي صيدلية</li>
+                                        <li>صورة الكارنيه الفرعي </li>
+                                        <li>صورة التوكيل فى حالة عدم وجود الصيدلي</li>
+
+                                    </ul>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
-                    <a type="submit" href="{{ url("/union/serviceform/$service->id") }}" class="text-center">إبدأ
-                        الخدمة</a>
                 </div>
             </div>
         </div>
-        <!-- end payment -->
-
-    </footer>
-    <!-- End Footer -->
+        </div>
+    </section>
+    <!-- End orders Section -->
+    <!-- start payment -->
+    <div class="payment" style="background: #fff">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12 text-center">
+                    <h4>الرسوم</h4>
+                    <p class="fs-5 mt-2">رسوم الخدمة: {{ $services_cost->pivot->service_cost }}</p>
+                    <p>
+                        يتم دفع الرسوم عن طريق تحويل المبلغ علي الحساب والإحتفاظ بصورة
+                        لوصل الدفع
+                    </p>
+                    <div>
+                        <p>فودافون كاش: 01090440347</p>
+                        <p>البنك الاهلي: 12345</p>
+                    </div>
+                </div>
+                <a type="submit" href="{{ url("/union/serviceform/$service->id") }}" class="text-center">إبدأ
+                    الخدمة</a>
+            </div>
+        </div>
+    </div>
+    <!-- end payment -->
 @endsection

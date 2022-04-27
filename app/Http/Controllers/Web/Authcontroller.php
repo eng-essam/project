@@ -36,7 +36,7 @@ class Authcontroller extends Controller
         if (Auth::user()->role_id == '1') {
             return redirect(url('/all/member'));
         } elseif (Auth::user()->role_id == '2') {
-            return redirect(url('/register/admin'));
+            return redirect(url('/admin/all/member'));
         } elseif (Auth::user()->role_id == '3') {
             return redirect(url("/union/showservice/$uesrunion"));
         }

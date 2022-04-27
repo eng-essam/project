@@ -52,8 +52,8 @@ class SuperController extends Controller
             'phone' => 'required|unique:users,phone|digits:11|numeric',
             'sex' => 'required',
         ], [
-            'name.string' => "يرجي ادخال اسم المشرف",
-            'name.required' => "يرجي ادخال اسم المشرف ",
+            'name.string' => "يرجي ادخال اسم العضو",
+            'name.required' => "يرجي ادخال اسم العضو ",
         ]);
 
         User::create([
@@ -73,7 +73,7 @@ class SuperController extends Controller
     public function all_member()
     {
         $data['user'] = Auth::user();
-        $data['allusers'] = User::where('union_id', $data['user']->id)->where('role_id', '3')->paginate(15);
+        $data['allusers'] = User::where('union_id', $data['user']->union_id)->where('role_id', '3')->paginate(15);
 
         return view("superadmin.allmember")->with($data);
     }

@@ -185,22 +185,21 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         Route::get('/admin/all/member', [AdminController::class, 'all_member']);
         //البحث عن عضو في النقابة
         Route::get('/admin/search/member', [AdminController::class, 'search_member']);
+
         //صفحة معلومات الادمن
-        Route::get('/admin/info', [AdminController::class, 'info']);
+        Route::get('/admin/info', [SuperController::class, 'info']);
+
         // صفحة تعديل معلومات الادمن
-        Route::get('/admin/edit/info', [AdminController::class, 'form_info']);
+        Route::get('/admin/edit/info', [SuperController::class, 'form_info']);
+
         //مراجعة بيانات الادمن الجديده
-        Route::post('/admin/update/info', [AdminController::class, 'update_info']);
+        Route::post('/admin/update/info', [SuperController::class, 'update_info']);
+
         // صفحة تعديل كلمة السر الادمن
-        Route::get('/admin/edit/password', [AdminController::class, 'form_password']);
+        Route::get('/admin/edit/password', [SuperController::class, 'form_password']);
+
         //مراجعة كلمة السر الادمن الجديده
-        Route::post('/admin/update/password', [AdminController::class, 'update_password']);
-        //عرض  جميع العمليات اللي بتحصل ف النقابة
-        Route::get('/admin/operation', [AdminController::class, 'operation']);
-         //البحث عن طلبات عضو معين
-         Route::get('/admin/search/member/operation', [AdminController::class, 'search_member_operation']);
-         //مراجعة طلبات الاعضاء
-         Route::get('/admin/review/service/{member}/{service}',[AdminController::class,'review']);
+        Route::post('/admin/update/password', [SuperController::class, 'update_password']);
     });
 
 });

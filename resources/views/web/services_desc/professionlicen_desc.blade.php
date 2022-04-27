@@ -9,18 +9,19 @@
         <!-- ======= service Details Section ======= -->
         <section id="service-details" class="service-details">
             @if (session('servicess_error'))
-            <div style="text-align: center;margin-bottom: 20px">
-                <div style="width: max-content;margin: auto" class="alert alert-success">
-                    <p> {{ session('servicess_error') }} </p>
+                <div style="text-align: center;margin-bottom: 20px">
+                    <div style="width: max-content;margin: auto" class="alert alert-success">
+                        <p> {{ session('servicess_error') }} </p>
+                    </div>
                 </div>
-            </div>
-        @endif
+            @endif
             <div class="container">
                 <div class="row gy-4">
                     <div class="col-lg-8 mobile-hidden">
                         <div class="service-details-slider ">
                             <div class="align-items-center" data-aos="zoom-out" data-aos-delay="200">
-                                <img src="{{ asset('style_member/assets/img/hero-img.png') }}" class="img-fluid" alt="image" />
+                                <img src="{{ asset('style_member/assets/img/hero-img.png') }}" class="img-fluid"
+                                    alt="image" />
                             </div>
                         </div>
                     </div>
@@ -64,7 +65,8 @@
                         <div class="col-md-6">
                             <!-- ادخل-->
                             <div class="form-group main mobile-hidden">
-                                <img src="{{ asset('style_member/assets/img/values-3.png') }}" class="img-fluid" alt="" />
+                                <img src="{{ asset('style_member/assets/img/values-3.png') }}" class="img-fluid"
+                                    alt="" />
                             </div>
                         </div>
 
@@ -94,31 +96,27 @@
     </section>
     <!-- End orders Section -->
 
-    <!-- start footer -->
-    <footer id="footer" class="footer">
-        <!-- start payment -->
-        <div class="footer-newsletter" style="background: #fff">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12 text-center">
-                        <h4>الرسوم</h4>
-                        <p class="fs-5 mt-2">رسوم الخدمة: {{ $services_cost->pivot->service_cost }}</p>
-                        <p>
-                            يتم دفع الرسوم عن طريق تحويل المبلغ علي الحساب والإحتفاظ بصورة
-                            لوصل الدفع
-                        </p>
-                        <div>
-                            <p>فودافون كاش: 01090440347</p>
-                            <p>البنك الاهلي: 12345</p>
-                        </div>
+    <!-- start payment -->
+    <div class="payment" style="background: #fff">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12 text-center">
+                    <h4>الرسوم</h4>
+                    <p class="fs-5 mt-2">رسوم الخدمة: {{ $services_cost->pivot->service_cost }}</p>
+                    <p>
+                        يتم دفع الرسوم عن طريق تحويل المبلغ علي الحساب والإحتفاظ بصورة
+                        لوصل الدفع
+                    </p>
+                    <div>
+                        <p>فودافون كاش: 01090440347</p>
+                        <p>البنك الاهلي: 12345</p>
                     </div>
-                    <a type="submit" href="{{ url("/union/serviceform/$service->id") }}" class="text-center">إبدأ
-                        الخدمة</a>
                 </div>
+                <a type="submit" href="{{ url("/union/serviceform/$service->id") }}" class="text-center">إبدأ
+                    الخدمة</a>
             </div>
         </div>
-        <!-- end payment -->
+    </div>
+    <!-- end payment -->
 
-    </footer>
-    <!-- End Footer -->
 @endsection

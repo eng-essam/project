@@ -95,10 +95,9 @@
         </section>
         <!-- End orders Section -->
 
-    <!-- start footer -->
-    <footer id="footer" class="footer">
+
         <!-- start payment -->
-        <div class="footer-newsletter" style="background: #fff">
+        <div class="payment" style="background: #fff">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-12 text-center">
@@ -120,6 +119,5 @@
         </div>
         <!-- end payment -->
 
-    </footer>
-    <!-- End Footer -->
+
 @endsection

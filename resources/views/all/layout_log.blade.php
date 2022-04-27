@@ -32,17 +32,13 @@
     <div class="limiter">
         <div class="container-login">
             <div class="wrap-login">
-
                 @yield('main')
-
-
                 <div class="login-more"
-                    style="background-image: url('{{ asset('style_log/images/bg-01.jpg') }}');">
+                    style="background-image: url('https://assets.mailtrap.io/packs/assets/landing/login-fb2fcb15feb36d8e9356.svg');padding: 10px">
                 </div>
             </div>
         </div>
     </div>
-
 
     <!-- vendor fiels -->
     <!-- 1 -->

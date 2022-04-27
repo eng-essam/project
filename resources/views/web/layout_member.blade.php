@@ -94,7 +94,7 @@
     <!-- End Footer -->
 
     <a href="#" class="back-to-top d-flex align-items-centerjustify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
+        class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="{{ asset('style_member/assets/vendor/purecounter/purecounter.js') }}"></script>
