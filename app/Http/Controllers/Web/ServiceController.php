@@ -1029,7 +1029,7 @@ class ServiceController extends Controller
                 'specialty' => 'required|image',
                 'card' => 'required|image',
                 'receipt' => 'required|image',
-                'presonal' => 'required|image',
+                'personal' => 'required|image',
                 'experience' => 'required|image',
                 'fellowship' => 'required|image',
                 'Professional' => 'required|image',
@@ -1062,20 +1062,20 @@ class ServiceController extends Controller
             $pathspecialty = Storage::disk('uploads')->put($pathimg, $request->specialty);
             $pathcard = Storage::disk('uploads')->put($pathimg, $request->card);
             $pathreceipt = Storage::disk('uploads')->put($pathimg, $request->receipt);
-            $pathpresonal = Storage::disk('uploads')->put($pathimg, $request->presonal);
+            $pathpresonal = Storage::disk('uploads')->put($pathimg, $request->personal);
             $pathexperience = Storage::disk('uploads')->put($pathimg, $request->experience);
             $pathfellowship = Storage::disk('uploads')->put($pathimg, $request->fellowship);
             $pathProfessional = Storage::disk('uploads')->put($pathimg, $request->Professional);
             $pathcost = Storage::disk('uploads')->put($pathimg, $request->cost);
 
-            Specialistcard::create([
+            Specialiststable::create([
                 'user_id' => $userid,
                 'registration' => $pathregistration,
                 'personal_card' => $pathpersonal_card,
                 'specialty' => $pathspecialty,
                 'card' => $pathcard,
                 'receipt' => $pathreceipt,
-                'presonal' => $pathpresonal,
+                'personal' => $pathpresonal,
                 'experience' => $pathexperience,
                 'fellowship' => $pathfellowship,
                 'Professional' => $pathProfessional,
@@ -1092,25 +1092,12 @@ class ServiceController extends Controller
                 'passport' => 'image',
                 'personal' => 'required|image',
                 'cost' => 'required|image',
-            ], [
-                'license.required' => "يرجي رفع الصوره المطلوبة",
-                'license.image' => "يرجي رفع الصوره المطلوبة",
-                'personal_card.required' => "يرجي رفع الصوره المطلوبة",
-                'personal_card.image' => "يرجي رفع الصوره المطلوبة",
-                'personal.required' => "يرجي رفع الصوره المطلوبة",
-                'passport.image' => "يرجي رفع الصوره المطلوبة",
-                'card.required' => "يرجي رفع الصوره المطلوبة",
-                'card.image' => "يرجي رفع الصوره المطلوبة",
-                'presonal.required' => "يرجي رفع الصوره المطلوبة",
-                'presonal.image' => "يرجي رفع الصوره المطلوبة",
-                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
-                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
             $pathpersonal_card = Storage::disk('uploads')->put($pathimg, $request->personal_card);
             $pathcard = Storage::disk('uploads')->put($pathimg, $request->card);
             $pathlicense = Storage::disk('uploads')->put($pathimg, $request->license);
             $pathpassport = Storage::disk('uploads')->put($pathimg, $request->passport);
-            $pathpresonal = Storage::disk('uploads')->put($pathimg, $request->presonal);
+            $pathpresonal = Storage::disk('uploads')->put($pathimg, $request->personal);
             $pathcost = Storage::disk('uploads')->put($pathimg, $request->cost);
 
             Professionlicen::create([
@@ -1119,7 +1106,7 @@ class ServiceController extends Controller
                 'card' => $pathcard,
                 'license' => $pathlicense,
                 'passport' => $pathpassport,
-                'presonal' => $pathpresonal,
+                'personal' => $pathpresonal,
                 'cost' => $pathcost,
             ]);
 
