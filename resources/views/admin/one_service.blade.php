@@ -42,12 +42,30 @@
                 <thead>
                     <tr style="color: #DC3545;">
                         <th style="text-align: center;font-size: 20px" scope="col">اسم العضو</th>
-                        <th style="text-align: center;font-size: 20px" scope="col">الخدمة</th>
+                        <th style="text-align: center;font-size: 20px" scope="col">
+                            <div class="dropdown">
+                                <button
+                                    style="width:160px;font-weight:500;color: #DC3545 ;background-color: white;border: none"
+                                    class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    الخدمة
+                                </button>
+                                <ul style="text-align: center" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    @foreach ($services as $service)
+                                        <li>
+                                            <a href="{{ url("/admin/operation/one_service/$service->id") }}" style="font-weight:bold" class="dropdown-item">
+                                                {{ $service->namear }}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </th>
                         <th style="text-align: center;font-size: 20px" scope="col">تاريخ الطلب</th>
                         <th style="text-align: center;font-size: 20px" scope="col">عمليات</th>
                     </tr>
                 </thead>
                 <tbody>
+
                     @for ($j = 0; $j < count($all_users); $j++)
                         @for ($i = 0; $i < count($all_users[$j]['operations']); $i++)
                             <tr>
@@ -65,9 +83,7 @@
                                         {{ $member = $all_users[$j]['id'] }}
                                         {{ $service = $all_users[$j]['operations'][$i]['pivot']['service_id'] }}
                                     </span>
-                                    <button type="button" class="btn btn-danger">
-                                        <a style="color: white ;font-weight: bold" href="{{ url("/admin/review/service/$member/$service") }}">مراجعة</a>
-                                    </button>
+                                    <a href="{{ url("/admin/review/service/$member/$service") }}">مراجعة الطلب</a>
                                 </td>
                             </tr>
                         @endfor

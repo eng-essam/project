@@ -87,7 +87,7 @@
                                     <label>صورة شخصية :</label>
                                     <div class="input-group inner" style="direction: rtl">
                                         <div>
-                                            <input class="form-control mb-2" type="file" id="formFile" name="personal">
+                                            <input class="form-control mb-2" value="{{old('personal')}}" type="file" id="formFile" name="personal">
                                         </div>
                                         @error('personal')
                                             <div>
@@ -114,7 +114,7 @@
                                             <div>
                                                 <small class="text-danger">{{ $message }}</small>
                                             </div>
-                                        @enderror>
+                                        @enderror
                                     </div>
                                 </div>
                                 <!-- ادخل-->

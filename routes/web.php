@@ -175,7 +175,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 
     });
 
-    ///////////صفحات ادمن//////////////
+///////////صفحات ادمن//////////////
     Route::middleware('auth', 'admin')->group(function () {
         //اضافة عضو
         Route::get('/admin/add/member', [AdminController::class, 'add_member']);
@@ -195,8 +195,10 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         Route::get('/admin/edit/password', [AdminController::class, 'form_password']);
         //مراجعة كلمة السر الادمن الجديده
         Route::post('/admin/update/password', [AdminController::class, 'update_password']);
-        //عرض  جميع العمليات اللي بتحصل ف النقابة
+        //عرض جميع الخدمات المطلوبه
         Route::get('/admin/operation', [AdminController::class, 'operation']);
+        //عرض خدمة واحده مطلوبه
+        // Route::get('/admin/operation/one_service/{id}', [AdminController::class, 'one_service']);
          //البحث عن طلبات عضو معين
          Route::get('/admin/search/member/operation', [AdminController::class, 'search_member_operation']);
          //مراجعة طلبات الاعضاء

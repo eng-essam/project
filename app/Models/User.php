@@ -47,7 +47,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function services(){
-        return $this->belongsToMany(Service::class,'user_user','user1_id','service_id')->withTimestamps()->withPivot('message','status');
+        return $this->belongsToMany(Service::class,'user_user','user1_id','service_id')->withTimestamps()->withPivot('message','status','service_id');
     }
 
     public function operations(){
@@ -57,6 +57,8 @@ class User extends Authenticatable implements MustVerifyEmail
     public function users(){
         return $this->belongsToMany(User::class,'user_user','user1_id','user2_id')->withTimestamps()->withPivot('message','status','service_id');
     }
+
+
 
 }
 
