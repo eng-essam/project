@@ -4,29 +4,11 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Web\UserServiceController;
-use App\Models\Alternative;
-use App\Models\Clinicscert;
-use App\Models\Condition;
-use App\Models\Consultantcard;
-use App\Models\Disease;
-use App\Models\Educationfee;
-use App\Models\Evictioncert;
-use App\Models\Experiencecert;
-use App\Models\Nowork;
-use App\Models\Privateclinic;
-use App\Models\Professionlicen;
-use App\Models\Professionlicense;
-use App\Models\Recruitment;
-use App\Models\Renewal;
 use App\Models\Service;
-use App\Models\Specialistcard;
-use App\Models\Specialiststable;
-use App\Models\Treatment;
 use App\Models\Union;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
 class ServiceController extends Controller
 {

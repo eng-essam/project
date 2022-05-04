@@ -1,7 +1,12 @@
 @extends('admin.layout')
 
+@section('link')
+    <link rel="stylesheet" href="{{ asset('style_admin/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('style_admin/css/jquery.fancybox.min.css') }}">
+@endsection
+
 @section('title')
-     مراجعة طلب العضو
+    مراجعة طلب العضو
 @endsection
 
 
@@ -12,15 +17,61 @@
 @endsection
 
 @section('main')
-    <div class="card" style="direction: rtl">
 
-        {{ $user->name }}
-        {{ $service->namear }}
-        <div class="card-body">
+<div style="direction:rtl;">
 
-            <img src="{{ asset("web/$img->card") }}" alt="" height="250px">
-            <img src="{{ asset("web/$img->personal_card") }}" alt="" height="250px">
-            <img src="{{ asset("web/$img->cost") }}" alt="" height="250px">
+    <div class="text main-container">
+        <p>
+            <span>الاسم:</span>
+            {{ $user->name }}
+        </p>
+        <p>
+            اسم الخدمة: {{ $service->namear }}
+        </p>
+    </div>
+    <div class="images main-container">
+        <div class="container">
+
+            <div class="main">
+                <a data-fancybox="gallery" href="{{ asset("web/$img->card") }}" data-caption=" هذه صورة">
+                    <img src="{{ asset("web/$img->card") }}" alt="image">
+                </a>
+                <p>صورة الكارنيه</p>
+            </div>
+
+            <div class="main">
+                <a data-fancybox="gallery" href="{{ asset("web/$img->personal_card") }}" data-caption="هذه صورة">
+                    <img src="{{ asset("web/$img->personal_card") }}" alt="image">
+                </a>
+                <p>صورة البطاقة الشخصية</p>
+            </div>
+
+            <div class="main">
+                <a data-fancybox="gallery" href="{{ asset("web/$img->cost") }}" data-caption="هذه صورة">
+                    <img src="{{ asset("web/$img->cost") }}" alt="image">
+                </a>
+                <p>صورة وصل سداد الخدمة</p>
+            </div>
+
+        </div>
+
+        <div style="background-color: red" class="approve">
+            <h2>مراجعة الطلب</h2>
+            <div style="direction:rtl;">
+                <textarea style="background-color: rgb(24, 20, 20);" name="text" value="" id=""></textarea>
+
+            </div>
+            <div class="buttons">
+                <a>موافقة</a>
+                <a>رفض</a>
+            </div>
         </div>
     </div>
+
+</div>
+@endsection
+
+@section('script')
+    <script src="{{ asset('style_admin/js/jquery.fancybox.min.js') }}"></script>
+
 @endsection

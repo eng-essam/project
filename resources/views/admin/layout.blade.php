@@ -49,6 +49,7 @@
     <script src="{{ asset('style_admin/js/adminlte.js') }}"></script>
     <script src="{{ asset('style_admin/js/main.js') }}"></script>
     <script src="{{ asset('style_admin/js/settings.js') }}"></script>
+    @yield('script')
 
     <!-- logout -->
     <script>

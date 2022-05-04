@@ -1,0 +1,118 @@
+* {
+  box-sizing: border-box;
+}
+/* 
+ #3C4147;
+*/
+body {
+  background-position: center center;
+  background-color: white;
+  font-family: "El Messiri", sans-serif;
+  color: #dc3545;
+}
+h1{
+  text-align: center;
+}
+.text{
+  display: flex;
+  justify-content: space-between;
+}
+.text p{
+  font-size: 20px;
+  margin: 5px 10px;
+}
+.text p span{
+  font-weight: bold;
+}
+.main-container {
+  width: 1300px;
+  margin: 0 20px;
+  padding-bottom: 20px;
+}
+
+.images .container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+.images .container .main {
+  border-bottom: 3px solid #dc3545;
+  width: 30%;
+  margin: 20px 20px;
+  box-shadow: 0 0 10px #8a2d38;
+  padding: 5px 0;
+  text-align: center;
+  border-radius: 5px;
+  background-color: aliceblue;
+  height: 255px;
+}
+.images .container .main a {
+  width: 90%;
+}
+.images .container .main a img {
+  width: 95%;
+  height: 170px;
+}
+.images .container .main p {
+  font-size: 20px;
+  margin: 5px auto;
+}
+.images .approve {
+  margin-right: 40px;
+}
+.images .approve h2{
+  margin-top: 20px;
+}
+.images .approve textarea {
+  height: 150px;
+  width: 50%;
+  color: #dc3545;
+  font-size: large;
+  outline: none;
+}
+.images .approve .buttons {
+  margin-top: 20px;
+  display: flex;
+}
+.images .approve .buttons a {
+  line-height: 0;
+  padding: 20px 40px;
+  border-radius: 4px;
+  color: white;
+  background: #dc3545;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  margin-left: 40px;
+  font-size: large;
+}
+@media screen and (max-width: 600px) {
+  .text{
+    flex-direction: column;
+  }
+  .main-container {
+    width: 80%;
+    margin: 0 30px;
+  }
+  .images .container {
+    display: flex;
+    flex-direction: column;
+  }
+  .images .container .main {
+    width: 80%;
+    margin: 15px 22px;
+  }
+  .images .approve {
+    margin-right: 10px;
+  }
+  .images .approve textarea {
+    height: 100px;
+    width: 90%;
+  }
+  .images .approve .buttons {
+    flex-direction: column;
+  }
+  .images .approve .buttons a {
+    margin-bottom: 20px;
+  }
+}

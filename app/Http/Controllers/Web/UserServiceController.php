@@ -23,10 +23,7 @@ use App\Models\Specialiststable;
 use App\Models\Treatment;
 use App\Models\Union;
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-
 class UserServiceController extends Controller
 {
     //عرض وصف الخدمة
@@ -2314,8 +2311,5 @@ class UserServiceController extends Controller
             return view('web.edit.professionlicenform')->with($data);
         }
     }
-
-
-
 
 }
