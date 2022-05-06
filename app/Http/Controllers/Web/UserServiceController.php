@@ -493,7 +493,7 @@ class UserServiceController extends Controller
                 'ministry' => 'required|image',
                 'endServ' => 'required|image',
                 'brent' => 'required|image',
-                'Insurance' => 'required|image',
+                'insurance' => 'required|image',
                 'cost' => 'required|image',
             ], [
                 'disclaimer.required' => "يرجي رفع الصوره المطلوبة",
@@ -510,8 +510,8 @@ class UserServiceController extends Controller
                 'endServ.image' => "يرجي رفع الصوره المطلوبة",
                 'brent.required' => "يرجي رفع الصوره المطلوبة",
                 'brent.image' => "يرجي رفع الصوره المطلوبة",
-                'Insurance.required' => "يرجي رفع الصوره المطلوبة",
-                'Insurance.image' => "يرجي رفع الصوره المطلوبة",
+                'insurance.required' => "يرجي رفع الصوره المطلوبة",
+                'insurance.image' => "يرجي رفع الصوره المطلوبة",
                 'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
                 'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
@@ -523,7 +523,7 @@ class UserServiceController extends Controller
             $pathministry = Storage::disk('uploads')->put($pathimg, $request->ministry);
             $pathendServ = Storage::disk('uploads')->put($pathimg, $request->endServ);
             $pathbrent = Storage::disk('uploads')->put($pathimg, $request->brent);
-            $pathInsurance = Storage::disk('uploads')->put($pathimg, $request->Insurance);
+            $pathInsurance = Storage::disk('uploads')->put($pathimg, $request->insurance);
             $pathcost = Storage::disk('uploads')->put($pathimg, $request->cost);
 
             Nowork::create([
@@ -535,7 +535,7 @@ class UserServiceController extends Controller
                 'ministry' => $pathministry,
                 'endServ' => $pathendServ,
                 'brent' => $pathbrent,
-                'Insurance' => $pathInsurance,
+                'insurance' => $pathInsurance,
                 'cost' => $pathcost,
             ]);
 
@@ -772,7 +772,7 @@ class UserServiceController extends Controller
                 'fesh' => 'required|image',
                 'situation' => 'required|image',
                 'receipt' => 'required|image',
-                'certificate' => 'image',
+                'certificate' => 'nullable|image',
                 'cost' => 'required|image',
             ], [
                 'model.required' => "يرجي رفع الصوره المطلوبة",
@@ -1283,7 +1283,7 @@ class UserServiceController extends Controller
                 'ministry' => 'nullable|image',
                 'endServ' => 'nullable|image',
                 'brent' => 'nullable|image',
-                'Insurance' => 'nullable|image',
+                'insurance' => 'nullable|image',
                 'cost' => 'nullable|image',
             ]);
             $servicedata = Nowork::where('user_id', '=', $userid)->first();
@@ -1294,7 +1294,7 @@ class UserServiceController extends Controller
             $pathministry = $servicedata->ministry;
             $pathendServ = $servicedata->endServ;
             $pathbrent = $servicedata->brent;
-            $pathInsurance = $servicedata->Insurance;
+            $pathinsurance = $servicedata->insurance;
             $pathcost = $servicedata->cost;
 
             if ($request->hasFile('personal_card')) {
@@ -1317,9 +1317,9 @@ class UserServiceController extends Controller
                 $pathbrent = Storage::disk('uploads')->put($pathimg, $request->brent);
             }
 
-            if ($request->hasFile('Insurance')) {
-                Storage::disk('uploads')->delete($pathInsurance);
-                $pathInsurance = Storage::disk('uploads')->put($pathimg, $request->Insurance);
+            if ($request->hasFile('insurance')) {
+                Storage::disk('uploads')->delete($pathinsurance);
+                $pathinsurance = Storage::disk('uploads')->put($pathimg, $request->Insurance);
             }
 
             if ($request->hasFile('disclaimer')) {
@@ -1351,7 +1351,7 @@ class UserServiceController extends Controller
                 'personal_card' => $pathpersonal_card,
                 'ministry' => $pathministry,
                 'endServ' => $pathendServ,
-                'Insurance' => $pathInsurance,
+                'insurance' => $pathinsurance,
                 'cost' => $pathcost,
             ]);
             if (!$request->disclaimer == null || !$request->fulltime == null || !$request->card == null || !$request->cost == null ||
@@ -1890,7 +1890,7 @@ class UserServiceController extends Controller
                 'receipt' => 'nullable|image',
                 'experience' => 'nullable|image',
                 'fellowship' => 'nullable|image',
-                'professional' => 'nullable|image',
+                'Professional' => 'nullable|image',
                 'cost' => 'nullable|image',
             ]);
 
@@ -1903,7 +1903,7 @@ class UserServiceController extends Controller
             $pathpersonal = $servicedata->personal;
             $pathexperience = $servicedata->experience;
             $pathfellowship = $servicedata->fellowship;
-            $pathprofessional = $servicedata->professional;
+            $pathProfessional = $servicedata->professional;
             $pathcost = $servicedata->cost;
 
             if ($request->hasFile('registration')) {
@@ -1946,9 +1946,9 @@ class UserServiceController extends Controller
                 $pathfellowship = Storage::disk('uploads')->put($pathimg, $request->fellowship);
             }
 
-            if ($request->hasFile('professional')) {
-                Storage::disk('uploads')->delete($pathprofessional);
-                $pathprofessional = Storage::disk('uploads')->put($pathimg, $request->professional);
+            if ($request->hasFile('Professional')) {
+                Storage::disk('uploads')->delete($pathProfessional);
+                $pathProfessional = Storage::disk('uploads')->put($pathimg, $request->professional);
             }
 
             if ($request->hasFile('cost')) {
@@ -1966,7 +1966,7 @@ class UserServiceController extends Controller
                 'personal' => $pathpersonal,
                 'experience' => $pathexperience,
                 'fellowship' => $pathfellowship,
-                'professional' => $pathprofessional,
+                'Professional' => $pathProfessional,
                 'cost' => $pathcost,
             ]);
             if (!$request->receipt == null || !$request->card == null || !$request->specialty == null || !$request->personal == null ||
@@ -2120,7 +2120,7 @@ class UserServiceController extends Controller
             Storage::disk('uploads')->delete($userdata->ministry);
             Storage::disk('uploads')->delete($userdata->endServ);
             Storage::disk('uploads')->delete($userdata->brent);
-            Storage::disk('uploads')->delete($userdata->Insurance);
+            Storage::disk('uploads')->delete($userdata->insurance);
             Storage::disk('uploads')->delete($userdata->cost);
 
             $userdata->delete();
