@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use App\Models\Service;
 use App\Models\Alternative;
 use App\Models\Clinicscert;
 use App\Models\Condition;
@@ -18,12 +17,13 @@ use App\Models\Professionlicen;
 use App\Models\Professionlicense;
 use App\Models\Recruitment;
 use App\Models\Renewal;
+use App\Models\Service;
 use App\Models\Specialistcard;
 use App\Models\Specialiststable;
 use App\Models\Treatment;
-use App\Models\Union;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
+
 class UserServiceController extends Controller
 {
     //عرض وصف الخدمة
@@ -142,7 +142,7 @@ class UserServiceController extends Controller
     }
 
     //مسار تخزين صور الخدمات
-    public function path($unionid ,$id)
+    public function path($unionid, $id)
     {
         if ($unionid == 1) {
             if ($id == 1) {
@@ -293,7 +293,7 @@ class UserServiceController extends Controller
     }
 
     //كود حفظ الخدمات
-    public function store($id,$request,$pathimg,$userid)
+    public function store($id, $request, $pathimg, $userid)
     {
         if ($id == 1) {
             $request->validate([
@@ -805,7 +805,13 @@ class UserServiceController extends Controller
             $pathfesh = Storage::disk('uploads')->put($pathimg, $request->fesh);
             $pathsituation = Storage::disk('uploads')->put($pathimg, $request->situation);
             $pathreceipt = Storage::disk('uploads')->put($pathimg, $request->receipt);
-            $pathcertificate = Storage::disk('uploads')->put($pathimg, $request->certificate);
+
+            if ($request->certificate == null) {
+                $pathcertificate = null;
+            } else {
+                $pathcertificate = Storage::disk('uploads')->put($pathimg, $request->certificate);
+            }
+            
             $pathcost = Storage::disk('uploads')->put($pathimg, $request->cost);
 
             Professionlicense::create([
@@ -948,14 +954,18 @@ class UserServiceController extends Controller
                 'personal_card' => 'required|image',
                 'card' => 'required|image',
                 'license' => 'required|image',
-                'passport' => 'image',
+                'passport' => 'nullable|image',
                 'personal' => 'required|image',
                 'cost' => 'required|image',
             ]);
             $pathpersonal_card = Storage::disk('uploads')->put($pathimg, $request->personal_card);
             $pathcard = Storage::disk('uploads')->put($pathimg, $request->card);
             $pathlicense = Storage::disk('uploads')->put($pathimg, $request->license);
-            $pathpassport = Storage::disk('uploads')->put($pathimg, $request->passport);
+            if ($request->passport == null) {
+                $pathpassport = null;
+            } else {
+                $pathpassport = Storage::disk('uploads')->put($pathimg, $request->passport);
+            }
             $pathpresonal = Storage::disk('uploads')->put($pathimg, $request->personal);
             $pathcost = Storage::disk('uploads')->put($pathimg, $request->cost);
 
@@ -975,7 +985,7 @@ class UserServiceController extends Controller
     }
 
     //كود التعديل ف خدمة العضو قام بطلبها
-    public function update($id,$request,$pathimg,$userid,$servicename,$loggedUser)
+    public function update($id, $request, $pathimg, $userid, $servicename, $loggedUser)
     {
         if ($id == 1) {
             $request->validate([
@@ -2044,7 +2054,7 @@ class UserServiceController extends Controller
     }
 
     //كود الغاء طلب خدمة
-    public function delete($id,$userid,$user)
+    public function delete($id, $userid, $user)
     {
         if ($id == 1) {
             $userdata = Renewal::where('user_id', $userid)->first();
@@ -2273,7 +2283,7 @@ class UserServiceController extends Controller
     }
 
     //عرض صفح تعديل الخدمة المطلوبه
-    public function eidt($id,$data)
+    public function eidt($id, $data)
     {
         if ($id == 1) {
             return view('web.edit.renewalform')->with($data);
