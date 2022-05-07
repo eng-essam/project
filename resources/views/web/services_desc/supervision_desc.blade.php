@@ -18,12 +18,14 @@
             <div class="container">
                 <div class="row gy-4">
                     <div class="col-lg-8 mobile-hidden">
-                        <div class="service-details-slider swiper">
-                            <div class="service-details-slider ">
-                                <div class="align-items-center" data-aos="zoom-out" data-aos-delay="200">
-                                    <img src="{{ asset('style_member/assetsimg/hero-img.png') }}" class="img-fluid"
-                                        alt="image" />
-                                </div>
+                        <div class="service-details-slider">
+                            <div class="align-items-center" data-aos="zoom-out" data-aos-delay="200">
+                                <img src="{{ asset('style_member/assets/img/hero-img.png') }}" class="img-fluid"
+                                    alt="image" />
+
+
+
+
                             </div>
                         </div>
                     </div>
@@ -43,13 +45,16 @@
                         <div class="service-condition">
                             <h2>الشروط الواجب توافرها للحصول علي الخدمة</h2>
                             <ul>
-                                <li class="mb-3">صورة مفردات الزوج والزوجة</li>
+                                <li class="mb-3"> تقريرين معتمدين من استاذين متخصصين لاحدي
+                                    الأمراض
+                                    المزمنة</li>
+
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- End service Details Section -->
+        <!-- End service Details Section -->>
     </main>
 
     <!-- ======= orders Section ======= -->
@@ -69,28 +74,20 @@
                             <div class="form-group main mobile-hidden">
                                 <img src="{{ asset('style_member/assets/img/values-3.png') }}" class="img-fluid"
                                     alt="" />
+
                             </div>
 
 
                         </div>
 
                         <!-- الجانب الايسر-->
-                        <div class="col-md-6 left left-privateclinics">
+                        <div class="col-md-6 left left-supervision">
 
                             <!-- ادخل-->
                             <div class="form-group main">
                                 <div class="input-group inner" style="direction: rtl">
                                     <ul class="ul">
-                                        <li>عقد إيجار أو تمليك</li>
-                                        <li>صورة شهادة الاخصائي أو
-                                            الاستشاري</li>
-                                        <li>صورة كارنيه النقابة </li>
-                                        <li>صورة للمبني من جهتين
-                                            مختلفتين</li>
-                                        <li>روشتة أصل مدموغة</li>
-                                        <li>صورة فوتغرافية للاجهزة</li>
-                                        <li>صورة فواتير الشراء</li>
-                                        <li>صورة ترخيص المزاولة للتحاليل</li>
+                                        <li>صورة رخصة المباني</li>
                                     </ul>
                                 </div>
                             </div>

@@ -8,22 +8,14 @@
     <main style="margin-top:50px " style="margin-top: 50px" id="main">
         <!-- ======= service Details Section ======= -->
         <section id="service-details" class="service-details">
-            @if (session('servicess_error'))
-                <div style="text-align: center;margin-bottom: 20px">
-                    <div style="width: max-content;margin: auto" class="alert alert-success">
-                        <p> {{ session('servicess_error') }} </p>
-                    </div>
-                </div>
-            @endif
+
             <div class="container">
                 <div class="row gy-4">
                     <div class="col-lg-8 mobile-hidden">
-                        <div class="service-details-slider swiper">
-                            <div class="service-details-slider ">
-                                <div class="align-items-center" data-aos="zoom-out" data-aos-delay="200">
-                                    <img src="{{ asset('style_member/assetsimg/hero-img.png') }}" class="img-fluid"
-                                        alt="image" />
-                                </div>
+                        <div class="service-details-slider">
+                            <div class="align-items-center" data-aos="zoom-out" data-aos-delay="200">
+                                <img src="{{ asset('style_member/assets/img/hero-img.png') }}" class="img-fluid"
+                                    alt="image" />
                             </div>
                         </div>
                     </div>
@@ -43,7 +35,10 @@
                         <div class="service-condition">
                             <h2>الشروط الواجب توافرها للحصول علي الخدمة</h2>
                             <ul>
-                                <li class="mb-3">صورة مفردات الزوج والزوجة</li>
+                                <li class="mb-3"> تقريرين معتمدين من استاذين متخصصين لاحدي
+                                    الأمراض
+                                    المزمنة</li>
+
                         </div>
                     </div>
                 </div>
@@ -75,22 +70,18 @@
                         </div>
 
                         <!-- الجانب الايسر-->
-                        <div class="col-md-6 left left-privateclinics">
+                        <div class="col-md-6 left left-death">
 
                             <!-- ادخل-->
                             <div class="form-group main">
                                 <div class="input-group inner" style="direction: rtl">
                                     <ul class="ul">
-                                        <li>عقد إيجار أو تمليك</li>
-                                        <li>صورة شهادة الاخصائي أو
-                                            الاستشاري</li>
-                                        <li>صورة كارنيه النقابة </li>
-                                        <li>صورة للمبني من جهتين
-                                            مختلفتين</li>
-                                        <li>روشتة أصل مدموغة</li>
-                                        <li>صورة فوتغرافية للاجهزة</li>
-                                        <li>صورة فواتير الشراء</li>
-                                        <li>صورة ترخيص المزاولة للتحاليل</li>
+                                        <li>أصل شهادة الوفاة</li>
+                                        <li>شهادة إدارية معتمدة يحدد
+                                            فيها القائم بصرف مصاريف
+                                            الجنازة</li>
+                                        <li>صورة البطاقة لمن قام بالصرف</li>
+                                        <li>صورة الكارنيه</li>
                                     </ul>
                                 </div>
                             </div>

@@ -48,58 +48,147 @@
                     <p>النقابات المتاحة</p>
                 </header>
 
-                <div class="row">
+                <div class="container-fluid">
+                    <section>
+                        <div class="row">
+                            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between px-md-1">
+                                            <div>
+                                                <img src="{{ asset('style_member/assets/img/Teeth.gif') }}"
+                                                    class="img-fluid" alt="">
+                                                <div style="text-align: center">
+                                                    <a style="color: #012970;font-size: 25px;font-weight: bold;"
+                                                        href="{{ url('union/showservice/2') }}">نقابة الاسنان</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between px-md-1">
+                                            <div>
+                                                <img src="{{ asset('style_member/assets/img/doctor.gif') }}"
+                                                    class="img-fluid" alt="">
+                                                <div style="text-align: center"><a
+                                                        style="color: #012970;font-size: 25px;font-weight: bold"
+                                                        href="{{ url('union/showservice/3') }}">نقابة طب بشري</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between px-md-1">
+                                            <div>
+                                                <img src="{{ asset('style_member/assets/img/veterinary.gif') }}"
+                                                    class="img-fluid" alt="">
 
-                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="box">
-                            <img src="{{ asset('style_member/assets/img/Teeth.gif') }}" class="img-fluid" alt="">
-                            <a style="color: #012970;font-size: 25px;font-weight: bold"
-                                href="{{ url('union/showservice/2') }}">نقابة الاسنان</a>
+                                                <div style="text-align: center"><a
+                                                        style="color: #012970;font-size: 25px;font-weight: bold"
+                                                        href="{{ url('union/showservice/4') }}">نقابة طب بطري</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between px-md-1">
+                                            <div>
+                                                <img src="{{ asset('style_member/assets/img/pharmacy.gif') }}"
+                                                    class="img-fluid" alt="">
+
+                                                <div style="text-align: center"><a
+                                                        style="color: #012970;font-size: 25px;font-weight: bold"
+                                                        href="{{ url('union/showservice/1') }}">نقابة الصيدلة</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                        <div class="row">
+                            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between px-md-1">
+                                            <div>
 
-                    <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
-                        <div class="box">
-                            <img src="{{ asset('style_member/assets/img/doctor.gif') }}" class="img-fluid" alt="">
-                            <a style="color: #012970;font-size: 25px;font-weight: bold"
-                                href="{{ url('union/showservice/3') }}">نقابة طب بشري</a>
+                                                <img src="{{ asset('style_member/assets/img/77366-engineering.gif') }}"
+                                                    class="img-fluid" alt="">
+                                                <div style="text-align: center"><a
+                                                        style="color: #012970;font-size: 25px;font-weight: bold"
+                                                        href="{{ url('union/showservice/8') }}">نقابة المهندسين </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between px-md-1">
+                                            <div>
+                                                <img src="{{ asset('style_member/assets/img/sport.gif') }}"
+                                                    class="img-fluid" alt="">
+                                                <div style="text-align: center"><a
+                                                        style="color: #012970;font-size: 25px;font-weight: bold"
+                                                        href="{{ url('union/showservice/7') }}">نقابة المهن الرياضية</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between px-md-1">
+                                            <div>
+                                                <img src="{{ asset('style_member/assets/img/teacher.png') }}"
+                                                    class="img-fluid" alt="">
+
+                                                <div style="text-align: center"><a
+                                                        style="color: #012970;font-size: 25px;font-weight: bold"
+                                                        href="{{ url('union/showservice/5') }}">نقابة المعلمين</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between px-md-1">
+                                            <div>
+                                                <img src="{{ asset('style_member/assets/img/lawyer.png') }}"
+                                                    class="img-fluid" alt="">
+
+
+                                                <div style="text-align: center"><a
+                                                        style="color: #012970;font-size: 25px;font-weight: bold"
+                                                        href="{{ url('union/showservice/6') }}">نقابة المحامين</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="600">
-                        <div class="box">
-                            <img src="{{ asset('style_member/assets/img/veterinary.gif') }}" class="img-fluid"
-                                alt="">
-                            <a style="color: #012970;font-size: 25px;font-weight: bold"
-                                href="{{ url('union/showservice/4') }}">نقابة طب بطري</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="600">
-                        <div class="box">
-                            <img src="{{ asset('style_member/assets/img/pharmacy.gif') }}" class="img-fluid" alt="">
-                            <a style="color: #012970;font-size: 25px;font-weight: bold"
-                                href="{{ url('union/showservice/1') }}">نقابة الصيدلة</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="600">
-                        <div class="box">
-                            <img src="{{ asset('style_member/assets/img/77366-engineering.gif') }}" class="img-fluid"
-                                alt="">
-                            <a style="color: #012970;font-size: 25px;font-weight: bold" href="#">نقابة المهندسين </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="600">
-                        <div class="box">
-                            <img src="{{ asset('style_member/assets/img/sport.gif') }}" class="img-fluid" alt="">
-                            <a style="color: #012970;font-size: 25px;font-weight: bold" href="#">نقابة المهن الرياضية</a>
-                        </div>
-                    </div>
-
+                    </section>
                 </div>
+
+
+
 
             </div>
 
@@ -124,7 +213,7 @@
                             </ul>
                             @guest
                                 <div class="text-center text-lg-start">
-                                    <a href="{{url('/login')}}"
+                                    <a href="{{ url('/login') }}"
                                         class="btn-read-more d-inline-flexalign-items-center justify-content-centeralign-self-center">
                                         <span style="margin-left: 10px;">المزيد</span>
                                         <i class="bi bi-arrow-left"></i>

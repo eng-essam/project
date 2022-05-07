@@ -21,7 +21,9 @@ use App\Models\Service;
 use App\Models\Specialistcard;
 use App\Models\Specialiststable;
 use App\Models\Treatment;
+use App\Models\Union;
 use App\Models\User;
+use Auth;
 use Illuminate\Support\Facades\Storage;
 
 class UserServiceController extends Controller
@@ -80,6 +82,30 @@ class UserServiceController extends Controller
         } elseif ($id == 17) {
             $data['service'] = Service::findOrfail($id);
             return view('web.services_desc.professionlicen_desc')->with($data);
+        } elseif ($id == 18) {
+            $data['service'] = Service::findOrfail($id);
+            return view('web.services_desc.surgery_desc')->with($data);
+        } elseif ($id == 19) {
+            $data['service'] = Service::findOrfail($id);
+            return view('web.services_desc.death_desc')->with($data);
+        } elseif ($id == 20) {
+            $data['service'] = Service::findOrfail($id);
+            return view('web.services_desc.health_desc')->with($data);
+        } elseif ($id == 21) {
+            $data['service'] = Service::findOrfail($id);
+            return view('web.services_desc.medical_desc')->with($data);
+        } elseif ($id == 22) {
+            $data['service'] = Service::findOrfail($id);
+            return view('web.services_desc.givebirth_desc')->with($data);
+        } elseif ($id == 23) {
+            $data['service'] = Service::findOrfail($id);
+            return view('web.services_desc.treatmenthelp_desc')->with($data);
+        } elseif ($id == 24) {
+            $data['service'] = Service::findOrfail($id);
+            return view('web.services_desc.disability_desc')->with($data);
+        } elseif ($id == 25) {
+            $data['service'] = Service::findOrfail($id);
+            return view('web.services_desc.supervision_desc')->with($data);
         }
 
     }
@@ -287,6 +313,88 @@ class UserServiceController extends Controller
                 $pathimg = "veterinary/specialiststables";
             } elseif ($id == 17) {
                 $pathimg = "veterinary/professionlicens";
+            }
+        } elseif ($unionid == 5) {
+            if ($id == 1) {
+                $pathimg = "teacher/renewals";
+            } elseif ($id == 2) {
+                $pathimg = "teacher/alternatives";
+            } elseif ($id == 18) {
+                $pathimg = "teacher/surgerys";
+            } elseif ($id == 19) {
+                $pathimg = "teacher/deaths";
+            } elseif ($id == 20) {
+                $pathimg = "teacher/healths";
+            } elseif ($id == 21) {
+                $pathimg = "teacher/medicals";
+            } elseif ($id == 22) {
+                $pathimg = "teacher/givebirths";
+            } elseif ($id == 23) {
+                $pathimg = "teacher/treatmenthelps";
+            } elseif ($id == 24) {
+                $pathimg = "teacher/disabilitys";
+            }
+        } elseif ($unionid == 6) {
+            if ($id == 1) {
+                $pathimg = "lawyer/renewals";
+            } elseif ($id == 2) {
+                $pathimg = "lawyer/alternatives";
+            } elseif ($id == 18) {
+                $pathimg = "lawyer/surgerys";
+            } elseif ($id == 19) {
+                $pathimg = "lawyer/deaths";
+            } elseif ($id == 20) {
+                $pathimg = "lawyer/healths";
+            } elseif ($id == 21) {
+                $pathimg = "lawyer/medicals";
+            } elseif ($id == 22) {
+                $pathimg = "lawyer/givebirths";
+            } elseif ($id == 23) {
+                $pathimg = "lawyer/treatmenthelps";
+            } elseif ($id == 24) {
+                $pathimg = "lawyer/disabilitys";
+            }
+        } elseif ($unionid == 7) {
+            if ($id == 1) {
+                $pathimg = "sport/renewals";
+            } elseif ($id == 2) {
+                $pathimg = "sport/alternatives";
+            } elseif ($id == 18) {
+                $pathimg = "sport/surgerys";
+            } elseif ($id == 19) {
+                $pathimg = "sport/deaths";
+            } elseif ($id == 20) {
+                $pathimg = "sport/healths";
+            } elseif ($id == 21) {
+                $pathimg = "sport/medicals";
+            } elseif ($id == 22) {
+                $pathimg = "sport/givebirths";
+            } elseif ($id == 23) {
+                $pathimg = "sport/treatmenthelps";
+            } elseif ($id == 24) {
+                $pathimg = "sport/disabilitys";
+            }
+        } elseif ($unionid == 8) {
+            if ($id == 1) {
+                $pathimg = "engineer/renewals";
+            } elseif ($id == 2) {
+                $pathimg = "engineer/alternatives";
+            } elseif ($id == 18) {
+                $pathimg = "engineer/surgerys";
+            } elseif ($id == 19) {
+                $pathimg = "engineer/deaths";
+            } elseif ($id == 20) {
+                $pathimg = "engineer/healths";
+            } elseif ($id == 21) {
+                $pathimg = "engineer/medicals";
+            } elseif ($id == 22) {
+                $pathimg = "engineer/givebirths";
+            } elseif ($id == 23) {
+                $pathimg = "engineer/treatmenthelps";
+            } elseif ($id == 24) {
+                $pathimg = "engineer/disabilitys";
+            } elseif ($id == 24) {
+                $pathimg = "engineer/supervision";
             }
         }
         return $pathimg;
@@ -811,7 +919,7 @@ class UserServiceController extends Controller
             } else {
                 $pathcertificate = Storage::disk('uploads')->put($pathimg, $request->certificate);
             }
-            
+
             $pathcost = Storage::disk('uploads')->put($pathimg, $request->cost);
 
             Professionlicense::create([

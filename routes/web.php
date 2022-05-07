@@ -199,10 +199,10 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         Route::get('/admin/operation', [AdminController::class, 'operation']);
         //عرض خدمة واحده مطلوبه
         // Route::get('/admin/operation/one_service/{id}', [AdminController::class, 'one_service']);
-         //البحث عن طلبات عضو معين
-         Route::get('/admin/search/member/operation', [AdminController::class, 'search_member_operation']);
-         //مراجعة طلبات الاعضاء
-         Route::get('/admin/review/service/{member}/{service}',[AdminController::class,'review']);
+        //البحث عن طلبات عضو معين
+        Route::get('/admin/search/member/operation', [AdminController::class, 'search_member_operation']);
+        //مراجعة طلبات الاعضاء
+        Route::get('/admin/review/service/{member}/{service}', [AdminController::class, 'review']);
     });
 
 });
