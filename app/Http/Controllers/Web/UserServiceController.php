@@ -945,9 +945,9 @@ class UserServiceController extends Controller
                 'card' => 'required|image',
                 'building' => 'required|image',
                 'recipe' => 'required|image',
-                'device' => 'required|image',
-                'purchase' => 'required|image',
-                'license' => 'required|image',
+                'device' => 'nullable|image',
+                'purchase' => 'nullable|image',
+                'license' => 'nullable|image',
                 'cost' => 'required|image',
             ], [
                 'contract.required' => "يرجي رفع الصوره المطلوبة",
@@ -2021,7 +2021,7 @@ class UserServiceController extends Controller
             $pathpersonal = $servicedata->personal;
             $pathexperience = $servicedata->experience;
             $pathfellowship = $servicedata->fellowship;
-            $pathProfessional = $servicedata->professional;
+            $pathProfessional = $servicedata->Professional;
             $pathcost = $servicedata->cost;
 
             if ($request->hasFile('registration')) {
@@ -2066,7 +2066,7 @@ class UserServiceController extends Controller
 
             if ($request->hasFile('Professional')) {
                 Storage::disk('uploads')->delete($pathProfessional);
-                $pathProfessional = Storage::disk('uploads')->put($pathimg, $request->professional);
+                $pathProfessional = Storage::disk('uploads')->put($pathimg, $request->Professional);
             }
 
             if ($request->hasFile('cost')) {
@@ -2365,7 +2365,7 @@ class UserServiceController extends Controller
             Storage::disk('uploads')->delete($userdata->receipt);
             Storage::disk('uploads')->delete($userdata->experience);
             Storage::disk('uploads')->delete($userdata->fellowship);
-            Storage::disk('uploads')->delete($userdata->professional);
+            Storage::disk('uploads')->delete($userdata->Professional);
             Storage::disk('uploads')->delete($userdata->cost);
 
             $userdata->delete();
