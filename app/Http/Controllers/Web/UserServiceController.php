@@ -7,10 +7,15 @@ use App\Models\Alternative;
 use App\Models\Clinicscert;
 use App\Models\Condition;
 use App\Models\Consultantcard;
+use App\Models\Death;
+use App\Models\Disability;
 use App\Models\Disease;
 use App\Models\Educationfee;
 use App\Models\Evictioncert;
 use App\Models\Experiencecert;
+use App\Models\Givebirth;
+use App\Models\Health;
+use App\Models\Medical;
 use App\Models\Nowork;
 use App\Models\Privateclinic;
 use App\Models\Professionlicen;
@@ -20,10 +25,11 @@ use App\Models\Renewal;
 use App\Models\Service;
 use App\Models\Specialistcard;
 use App\Models\Specialiststable;
+use App\Models\Supervision;
+use App\Models\Surgery;
 use App\Models\Treatment;
-use App\Models\Union;
+use App\Models\Treatmenthelp;
 use App\Models\User;
-use Auth;
 use Illuminate\Support\Facades\Storage;
 
 class UserServiceController extends Controller
@@ -164,6 +170,30 @@ class UserServiceController extends Controller
         } elseif ($id == 17) {
             $data['service'] = Service::findOrfail($id);
             return view('web.services_form.professionlicenform')->with($data);
+        } elseif ($id == 18) {
+            $data['service'] = Service::findOrfail($id);
+            return view('web.services_form.surgeryform')->with($data);
+        } elseif ($id == 19) {
+            $data['service'] = Service::findOrfail($id);
+            return view('web.services_form.deathform')->with($data);
+        } elseif ($id == 20) {
+            $data['service'] = Service::findOrfail($id);
+            return view('web.services_form.healthsform')->with($data);
+        } elseif ($id == 21) {
+            $data['service'] = Service::findOrfail($id);
+            return view('web.services_form.medicalform')->with($data);
+        } elseif ($id == 22) {
+            $data['service'] = Service::findOrfail($id);
+            return view('web.services_form.givebirthform')->with($data);
+        } elseif ($id == 23) {
+            $data['service'] = Service::findOrfail($id);
+            return view('web.services_form.treatmenthelpform')->with($data);
+        } elseif ($id == 24) {
+            $data['service'] = Service::findOrfail($id);
+            return view('web.services_form.disabilityform')->with($data);
+        } elseif ($id == 25) {
+            $data['service'] = Service::findOrfail($id);
+            return view('web.services_form.supervisionform')->with($data);
         }
     }
 
@@ -393,7 +423,7 @@ class UserServiceController extends Controller
                 $pathimg = "engineer/treatmenthelps";
             } elseif ($id == 24) {
                 $pathimg = "engineer/disabilitys";
-            } elseif ($id == 24) {
+            } elseif ($id == 25) {
                 $pathimg = "engineer/supervision";
             }
         }
@@ -603,25 +633,6 @@ class UserServiceController extends Controller
                 'brent' => 'required|image',
                 'insurance' => 'required|image',
                 'cost' => 'required|image',
-            ], [
-                'disclaimer.required' => "يرجي رفع الصوره المطلوبة",
-                'disclaimer.image' => "يرجي رفع الصوره المطلوبة",
-                'fulltime.required' => "يرجي رفع الصوره المطلوبة",
-                'fulltime.image' => "يرجي رفع الصوره المطلوبة",
-                'card.required' => "يرجي رفع الصوره المطلوبة",
-                'card.image' => "يرجي رفع الصوره المطلوبة",
-                'personal_card.required' => "يرجي رفع الصوره المطلوبة",
-                'personal_card.image' => "يرجي رفع الصوره المطلوبة",
-                'ministry.required' => "يرجي رفع الصوره المطلوبة",
-                'ministry.image' => "يرجي رفع الصوره المطلوبة",
-                'endServ.required' => "يرجي رفع الصوره المطلوبة",
-                'endServ.image' => "يرجي رفع الصوره المطلوبة",
-                'brent.required' => "يرجي رفع الصوره المطلوبة",
-                'brent.image' => "يرجي رفع الصوره المطلوبة",
-                'insurance.required' => "يرجي رفع الصوره المطلوبة",
-                'insurance.image' => "يرجي رفع الصوره المطلوبة",
-                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
-                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
 
             $pathdisclaimer = Storage::disk('uploads')->put($pathimg, $request->disclaimer);
@@ -882,27 +893,6 @@ class UserServiceController extends Controller
                 'receipt' => 'required|image',
                 'certificate' => 'nullable|image',
                 'cost' => 'required|image',
-            ], [
-                'model.required' => "يرجي رفع الصوره المطلوبة",
-                'model.image' => "يرجي رفع الصوره المطلوبة",
-                'graduation.required' => "يرجي رفع الصوره المطلوبة",
-                'graduation.image' => "يرجي رفع الصوره المطلوبة",
-                'excellence.required' => "يرجي رفع الصوره المطلوبة",
-                'excellence.image' => "يرجي رفع الصوره المطلوبة",
-                'birth.required' => "يرجي رفع الصوره المطلوبة",
-                'birth.image' => "يرجي رفع الصوره المطلوبة",
-                'personal.required' => "يرجي رفع الصوره المطلوبة",
-                'personal.image' => "يرجي رفع الصوره المطلوبة",
-                'fesh.required' => "يرجي رفع الصوره المطلوبة",
-                'fesh.image' => "يرجي رفع الصوره المطلوبة",
-                'situation.required' => "يرجي رفع الصوره المطلوبة",
-                'situation.image' => "يرجي رفع الصوره المطلوبة",
-                'receipt.required' => "يرجي رفع الصوره المطلوبة",
-                'receipt.image' => "يرجي رفع الصوره المطلوبة",
-                'certificate.required' => "يرجي رفع الصوره المطلوبة",
-                'certificate.image' => "يرجي رفع الصوره المطلوبة",
-                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
-                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
 
             $pathmodel = Storage::disk('uploads')->put($pathimg, $request->model);
@@ -1069,6 +1059,7 @@ class UserServiceController extends Controller
             $pathpersonal_card = Storage::disk('uploads')->put($pathimg, $request->personal_card);
             $pathcard = Storage::disk('uploads')->put($pathimg, $request->card);
             $pathlicense = Storage::disk('uploads')->put($pathimg, $request->license);
+
             if ($request->passport == null) {
                 $pathpassport = null;
             } else {
@@ -1084,6 +1075,229 @@ class UserServiceController extends Controller
                 'license' => $pathlicense,
                 'passport' => $pathpassport,
                 'personal' => $pathpresonal,
+                'cost' => $pathcost,
+            ]);
+
+            $user = User::findOrfail($userid);
+            $user->services()->attach($id);
+        } elseif ($id == 18) {
+            $request->validate([
+                'hospital' => 'required|image',
+                'report' => 'required|image',
+                'personal_card' => 'required|image',
+                'card' => 'required|image',
+                'receipt' => 'required|image',
+                'birth' => 'required|image',
+                'wedding' => 'nullable|image',
+                'cost' => 'required|image',
+            ]);
+
+            $pathhospital = Storage::disk('uploads')->put($pathimg, $request->hospital);
+            $pathreport = Storage::disk('uploads')->put($pathimg, $request->report);
+            $pathpersonal_card = Storage::disk('uploads')->put($pathimg, $request->personal_card);
+            $pathcard = Storage::disk('uploads')->put($pathimg, $request->card);
+            $pathreceipt = Storage::disk('uploads')->put($pathimg, $request->receipt);
+            $pathbirth = Storage::disk('uploads')->put($pathimg, $request->birth);
+
+            ($request->wedding == null) ? $pathwedding = null : $pathwedding = Storage::disk('uploads')->put($pathimg, $request->wedding);
+
+            // $pathwedding = Storage::disk('uploads')->put($pathimg, $request->wedding);
+            $pathcost = Storage::disk('uploads')->put($pathimg, $request->cost);
+
+            Surgery::create([
+                'user_id' => $userid,
+                'hospital' => $pathhospital,
+                'report' => $pathreport,
+                'card' => $pathcard,
+                'personal_card' => $pathpersonal_card,
+                'receipt' => $pathreceipt,
+                'birth' => $pathbirth,
+                'wedding' => $pathwedding,
+                'cost' => $pathcost,
+            ]);
+
+            $user = User::findOrfail($userid);
+            $user->services()->attach($id);
+        } elseif ($id == 19) {
+            $request->validate([
+                'death' => 'required|image',
+                'funeral' => 'required|image',
+                'card' => 'required|image',
+                'personal_card' => 'required|image',
+                'cost' => 'required|image',
+            ]);
+
+            $pathdeath = Storage::disk('uploads')->put($pathimg, $request->death);
+            $pathfuneral = Storage::disk('uploads')->put($pathimg, $request->funeral);
+            $pathcard = Storage::disk('uploads')->put($pathimg, $request->card);
+            $pathpersonal_card = Storage::disk('uploads')->put($pathimg, $request->personal_card);
+            $pathcost = Storage::disk('uploads')->put($pathimg, $request->cost);
+
+            Death::create([
+                'user_id' => $userid,
+                'death' => $pathdeath,
+                'funeral' => $pathfuneral,
+                'card' => $pathcard,
+                'personal_card' => $pathpersonal_card,
+                'cost' => $pathcost,
+            ]);
+
+            $user = User::findOrfail($userid);
+            $user->services()->attach($id);
+        } elseif ($id == 20) {
+            $request->validate([
+                'report' => 'required|image',
+                'benefits' => 'required|image',
+                'card' => 'required|image',
+                'personal_card' => 'required|image',
+                'newspaper' => 'required|image',
+                'hospital' => 'required|image',
+                'cost' => 'required|image',
+            ]);
+
+            $pathreport = Storage::disk('uploads')->put($pathimg, $request->report);
+            $pathbenefits = Storage::disk('uploads')->put($pathimg, $request->benefits);
+            $pathcard = Storage::disk('uploads')->put($pathimg, $request->card);
+            $pathpersonal_card = Storage::disk('uploads')->put($pathimg, $request->personal_card);
+            $pathnewspaper = Storage::disk('uploads')->put($pathimg, $request->newspaper);
+            $pathhospital = Storage::disk('uploads')->put($pathimg, $request->hospital);
+            $pathcost = Storage::disk('uploads')->put($pathimg, $request->cost);
+
+            Health::create([
+                'user_id' => $userid,
+                'report' => $pathreport,
+                'benefits' => $pathbenefits,
+                'card' => $pathcard,
+                'personal_card' => $pathpersonal_card,
+                'newspaper' => $pathnewspaper,
+                'hospital' => $pathhospital,
+                'cost' => $pathcost,
+            ]);
+
+            $user = User::findOrfail($userid);
+            $user->services()->attach($id);
+        } elseif ($id == 21) {
+            $request->validate([
+                'childrens' => 'required|image',
+                'childrenspersonal' => 'required|image',
+                'card' => 'required|image',
+                'personal_card' => 'required|image',
+                'wedding' => 'required|image',
+                'cost' => 'required|image',
+            ]);
+
+            $pathchildrens = Storage::disk('uploads')->put($pathimg, $request->childrens);
+            $pathchildrenspersonal = Storage::disk('uploads')->put($pathimg, $request->childrenspersonal);
+            $pathcard = Storage::disk('uploads')->put($pathimg, $request->card);
+            $pathpersonal_card = Storage::disk('uploads')->put($pathimg, $request->personal_card);
+            $pathwedding = Storage::disk('uploads')->put($pathimg, $request->wedding);
+            $pathcost = Storage::disk('uploads')->put($pathimg, $request->cost);
+
+            Medical::create([
+                'user_id' => $userid,
+                'childrens' => $pathchildrens,
+                'childrenspersonal' => $pathchildrenspersonal,
+                'card' => $pathcard,
+                'personal_card' => $pathpersonal_card,
+                'wedding' => $pathwedding,
+                'cost' => $pathcost,
+            ]);
+
+            $user = User::findOrfail($userid);
+            $user->services()->attach($id);
+        } elseif ($id == 22) {
+            $request->validate([
+                'hospital' => 'required|image',
+                'report' => 'required|image',
+                'card' => 'required|image',
+                'childs' => 'required|image',
+                'receipt' => 'required|image',
+                'cost' => 'required|image',
+            ]);
+
+            $pathhospital = Storage::disk('uploads')->put($pathimg, $request->hospital);
+            $pathreport = Storage::disk('uploads')->put($pathimg, $request->report);
+            $pathcard = Storage::disk('uploads')->put($pathimg, $request->card);
+            $pathchilds = Storage::disk('uploads')->put($pathimg, $request->childs);
+            $pathreceipt = Storage::disk('uploads')->put($pathimg, $request->receipt);
+            $pathcost = Storage::disk('uploads')->put($pathimg, $request->cost);
+
+            Givebirth::create([
+                'user_id' => $userid,
+                'hospital' => $pathhospital,
+                'report' => $pathreport,
+                'card' => $pathcard,
+                'childs' => $pathchilds,
+                'receipt' => $pathreceipt,
+                'cost' => $pathcost,
+            ]);
+
+            $user = User::findOrfail($userid);
+            $user->services()->attach($id);
+        } elseif ($id == 23) {
+            $request->validate([
+                'project' => 'required|image',
+                'hospitalcost' => 'required|image',
+                'report' => 'required|image',
+                'hospital' => 'required|image',
+                'receipt' => 'required|image',
+                'cost' => 'required|image',
+            ]);
+
+            $pathproject = Storage::disk('uploads')->put($pathimg, $request->project);
+            $pathhospitalcost = Storage::disk('uploads')->put($pathimg, $request->hospitalcost);
+            $pathreport = Storage::disk('uploads')->put($pathimg, $request->report);
+            $pathhospital = Storage::disk('uploads')->put($pathimg, $request->hospital);
+            $pathreceipt = Storage::disk('uploads')->put($pathimg, $request->receipt);
+            $pathcost = Storage::disk('uploads')->put($pathimg, $request->cost);
+
+            Treatmenthelp::create([
+                'user_id' => $userid,
+                'project' => $pathproject,
+                'hospitalcost' => $pathhospitalcost,
+                'report' => $pathreport,
+                'hospital' => $pathhospital,
+                'receipt' => $pathreceipt,
+                'cost' => $pathcost,
+            ]);
+
+            $user = User::findOrfail($userid);
+            $user->services()->attach($id);
+        } elseif ($id == 24) {
+            $request->validate([
+                'medical' => 'required|image',
+                'receipt' => 'required|image',
+                'personal_card' => 'required|image',
+                'cost' => 'required|image',
+            ]);
+
+            $pathmedical = Storage::disk('uploads')->put($pathimg, $request->medical);
+            $pathreceipt = Storage::disk('uploads')->put($pathimg, $request->receipt);
+            $pathpersonal_card = Storage::disk('uploads')->put($pathimg, $request->personal_card);
+            $pathcost = Storage::disk('uploads')->put($pathimg, $request->cost);
+
+            Disability::create([
+                'user_id' => $userid,
+                'medical' => $pathmedical,
+                'receipt' => $pathreceipt,
+                'personal_card' => $pathpersonal_card,
+                'cost' => $pathcost,
+            ]);
+
+            $user = User::findOrfail($userid);
+            $user->services()->attach($id);
+        } elseif ($id == 25) {
+            $request->validate([
+                'license' => 'required|image',
+                'cost' => 'required|image',
+            ]);
+
+            $pathlicense = Storage::disk('uploads')->put($pathimg, $request->license);
+            $pathcost = Storage::disk('uploads')->put($pathimg, $request->cost);
+
+            Supervision::create([
+                'user_id' => $userid,
+                'license' => $pathlicense,
                 'cost' => $pathcost,
             ]);
 
@@ -2158,6 +2372,488 @@ class UserServiceController extends Controller
                     ['message' => 'جاري مراجعة البيانات',
                         'status' => 'جاري مراجعة البيانات']);
             }
+        } elseif ($id == 18) {
+            $request->validate([
+                'card' => 'nullable|image',
+                'personal_card' => 'nullable|image',
+                'hospital' => 'nullable|image',
+                'report' => 'nullable|image',
+                'receipt' => 'nullable|image',
+                'birth' => 'nullable|image',
+                'cost' => 'nullable|image',
+                'cost' => 'nullable|image',
+            ]);
+
+            $servicedata = Surgery::where('user_id', '=', $userid)->first();
+            $pathcard = $servicedata->card;
+            $pathpersonal_card = $servicedata->personal_card;
+            $pathhospital = $servicedata->hospital;
+            $pathreport = $servicedata->report;
+            $pathreceipt = $servicedata->receipt;
+            $pathbirth = $servicedata->birth;
+            $pathwedding = $servicedata->wedding;
+            $pathcost = $servicedata->cost;
+
+            if ($request->hasFile('card')) {
+                Storage::disk('uploads')->delete($pathcard);
+                $pathcard = Storage::disk('uploads')->put($pathimg, $request->card);
+            }
+
+            if ($request->hasFile('personal_card')) {
+                Storage::disk('uploads')->delete($pathpersonal_card);
+                $pathpersonal_card = Storage::disk('uploads')->put($pathimg, $request->personal_card);
+            }
+
+            if ($request->hasFile('hospital')) {
+                Storage::disk('uploads')->delete($pathhospital);
+                $pathhospital = Storage::disk('uploads')->put($pathimg, $request->hospital);
+            }
+
+            if ($request->hasFile('report')) {
+                Storage::disk('uploads')->delete($pathreport);
+                $pathreport = Storage::disk('uploads')->put($pathimg, $request->report);
+            }
+
+            if ($request->hasFile('receipt')) {
+                Storage::disk('uploads')->delete($pathreceipt);
+                $pathreceipt = Storage::disk('uploads')->put($pathimg, $request->receipt);
+            }
+
+            if ($request->hasFile('birth')) {
+                Storage::disk('uploads')->delete($pathbirth);
+                $pathbirth = Storage::disk('uploads')->put($pathimg, $request->birth);
+            }
+
+            if ($request->hasFile('wedding')) {
+                Storage::disk('uploads')->delete($pathwedding);
+                $pathwedding = Storage::disk('uploads')->put($pathimg, $request->wedding);
+            }
+
+            if ($request->hasFile('cost')) {
+                Storage::disk('uploads')->delete($pathcost);
+                $pathcost = Storage::disk('uploads')->put($pathimg, $request->cost);
+            }
+
+            $servicedata->update([
+                'user_id' => $userid,
+                'card' => $pathcard,
+                'personal_card' => $pathpersonal_card,
+                'hospital' => $pathhospital,
+                'report' => $pathreport,
+                'receipt' => $pathreceipt,
+                'birth' => $pathbirth,
+                'wedding' => $pathwedding,
+                'cost' => $pathcost,
+
+            ]);
+            if (!$request->report == null || !$request->receipt == null || !$request->card == null
+                || !$request->personal_card == null || !$request->hospital == null || !$request->birth == null
+                || !$request->wedding == null || !$request->cost == null) {
+                $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
+                $loggedUser->operations()->updateExistingpivot($id,
+                    ['message' => 'جاري مراجعة البيانات',
+                        'status' => 'جاري مراجعة البيانات']);
+            }
+        } elseif ($id == 19) {
+            $request->validate([
+                'card' => 'nullable|image',
+                'personal_card' => 'nullable|image',
+                'death' => 'nullable|image',
+                'funeral' => 'nullable|image',
+                'cost' => 'nullable|image',
+            ]);
+
+            $servicedata = Death::where('user_id', '=', $userid)->first();
+            $pathcard = $servicedata->card;
+            $pathpersonal_card = $servicedata->personal_card;
+            $pathdeath = $servicedata->death;
+            $pathfuneral = $servicedata->funeral;
+            $pathcost = $servicedata->cost;
+
+            if ($request->hasFile('card')) {
+                Storage::disk('uploads')->delete($pathcard);
+                $pathcard = Storage::disk('uploads')->put($pathimg, $request->card);
+            }
+
+            if ($request->hasFile('personal_card')) {
+                Storage::disk('uploads')->delete($pathpersonal_card);
+                $pathpersonal_card = Storage::disk('uploads')->put($pathimg, $request->personal_card);
+            }
+
+            if ($request->hasFile('death')) {
+                Storage::disk('uploads')->delete($pathdeath);
+                $pathdeath = Storage::disk('uploads')->put($pathimg, $request->death);
+            }
+
+            if ($request->hasFile('funeral')) {
+                Storage::disk('uploads')->delete($pathfuneral);
+                $pathfuneral = Storage::disk('uploads')->put($pathimg, $request->funeral);
+            }
+
+            if ($request->hasFile('cost')) {
+                Storage::disk('uploads')->delete($pathcost);
+                $pathcost = Storage::disk('uploads')->put($pathimg, $request->cost);
+            }
+
+            $servicedata->update([
+                'user_id' => $userid,
+                'card' => $pathcard,
+                'personal_card' => $pathpersonal_card,
+                'death' => $pathdeath,
+                'funeral' => $pathfuneral,
+                'cost' => $pathcost,
+            ]);
+            if (!$request->funeral == null || !$request->card == null || !$request->personal_card == null || !$request->death == null || !$request->cost == null) {
+                $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
+                $loggedUser->operations()->updateExistingpivot($id,
+                    ['message' => 'جاري مراجعة البيانات',
+                        'status' => 'جاري مراجعة البيانات']);
+            }
+        } elseif ($id == 20) {
+            $request->validate([
+                'card' => 'nullable|image',
+                'personal_card' => 'nullable|image',
+                'report' => 'nullable|image',
+                'benefits' => 'nullable|image',
+                'newspaper' => 'nullable|image',
+                'hospital' => 'nullable|image',
+                'cost' => 'nullable|image',
+
+            ]);
+
+            $servicedata = Health::where('user_id', '=', $userid)->first();
+            $pathcard = $servicedata->card;
+            $pathpersonal_card = $servicedata->personal_card;
+            $pathreport = $servicedata->report;
+            $pathbenefits = $servicedata->benefits;
+            $pathnewspaper = $servicedata->newspaper;
+            $pathhospital = $servicedata->hospital;
+            $pathcost = $servicedata->cost;
+
+            if ($request->hasFile('card')) {
+                Storage::disk('uploads')->delete($pathcard);
+                $pathcard = Storage::disk('uploads')->put($pathimg, $request->card);
+            }
+
+            if ($request->hasFile('personal_card')) {
+                Storage::disk('uploads')->delete($pathpersonal_card);
+                $pathpersonal_card = Storage::disk('uploads')->put($pathimg, $request->personal_card);
+            }
+
+            if ($request->hasFile('report')) {
+                Storage::disk('uploads')->delete($pathreport);
+                $pathreport = Storage::disk('uploads')->put($pathimg, $request->report);
+            }
+
+            if ($request->hasFile('benefits')) {
+                Storage::disk('uploads')->delete($pathbenefits);
+                $pathbenefits = Storage::disk('uploads')->put($pathimg, $request->benefits);
+            }
+
+            if ($request->hasFile('newspaper')) {
+                Storage::disk('uploads')->delete($pathnewspaper);
+                $pathnewspaper = Storage::disk('uploads')->put($pathimg, $request->newspaper);
+            }
+
+            if ($request->hasFile('hospital')) {
+                Storage::disk('uploads')->delete($pathhospital);
+                $pathhospital = Storage::disk('uploads')->put($pathimg, $request->hospital);
+            }
+
+            if ($request->hasFile('cost')) {
+                Storage::disk('uploads')->delete($pathcost);
+                $pathcost = Storage::disk('uploads')->put($pathimg, $request->cost);
+            }
+
+            $servicedata->update([
+                'user_id' => $userid,
+                'card' => $pathcard,
+                'personal_card' => $pathpersonal_card,
+                'report' => $pathreport,
+                'benefits' => $pathbenefits,
+                'newspaper' => $pathnewspaper,
+                'hospital' => $pathhospital,
+                'cost' => $pathcost,
+
+            ]);
+            if (!$request->benefits == null || !$request->newspaper == null || !$request->card == null
+                || !$request->personal_card == null || !$request->report == null || !$request->hospital == null || !$request->cost == null) {
+                $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
+                $loggedUser->operations()->updateExistingpivot($id,
+                    ['message' => 'جاري مراجعة البيانات',
+                        'status' => 'جاري مراجعة البيانات']);
+            }
+        } elseif ($id == 21) {
+            $request->validate([
+                'card' => 'nullable|image',
+                'personal_card' => 'nullable|image',
+                'childrens' => 'nullable|image',
+                'childrenspersonal' => 'nullable|image',
+                'wedding' => 'nullable|image',
+                'cost' => 'nullable|image',
+            ]);
+
+            $servicedata = Medical::where('user_id', '=', $userid)->first();
+            $pathcard = $servicedata->card;
+            $pathpersonal_card = $servicedata->personal_card;
+            $pathchildrens = $servicedata->childrens;
+            $pathchildrenspersonal = $servicedata->childrenspersonal;
+            $pathwedding = $servicedata->wedding;
+            $pathcost = $servicedata->cost;
+
+            if ($request->hasFile('card')) {
+                Storage::disk('uploads')->delete($pathcard);
+                $pathcard = Storage::disk('uploads')->put($pathimg, $request->card);
+            }
+
+            if ($request->hasFile('personal_card')) {
+                Storage::disk('uploads')->delete($pathpersonal_card);
+                $pathpersonal_card = Storage::disk('uploads')->put($pathimg, $request->personal_card);
+            }
+
+            if ($request->hasFile('childrens')) {
+                Storage::disk('uploads')->delete($pathchildrens);
+                $pathchildrens = Storage::disk('uploads')->put($pathimg, $request->childrens);
+            }
+
+            if ($request->hasFile('childrenspersonal')) {
+                Storage::disk('uploads')->delete($pathchildrenspersonal);
+                $pathchildrenspersonal = Storage::disk('uploads')->put($pathimg, $request->childrenspersonal);
+            }
+
+            if ($request->hasFile('wedding')) {
+                Storage::disk('uploads')->delete($pathwedding);
+                $pathwedding = Storage::disk('uploads')->put($pathimg, $request->wedding);
+            }
+
+            if ($request->hasFile('cost')) {
+                Storage::disk('uploads')->delete($pathcost);
+                $pathcost = Storage::disk('uploads')->put($pathimg, $request->cost);
+            }
+
+            $servicedata->update([
+                'user_id' => $userid,
+                'card' => $pathcard,
+                'personal_card' => $pathpersonal_card,
+                'childrens' => $pathchildrens,
+                'childrenspersonal' => $pathchildrenspersonal,
+                'wedding' => $pathwedding,
+                'cost' => $pathcost,
+            ]);
+            if (!$request->childrenspersonal == null || !$request->wedding == null || !$request->card == null
+                || !$request->personal_card == null || !$request->childrens == null || !$request->cost == null) {
+                $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
+                $loggedUser->operations()->updateExistingpivot($id,
+                    ['message' => 'جاري مراجعة البيانات',
+                        'status' => 'جاري مراجعة البيانات']);
+            }
+        } elseif ($id == 22) {
+            $request->validate([
+                'card' => 'nullable|image',
+                'hospital' => 'nullable|image',
+                'report' => 'nullable|image',
+                'childs' => 'nullable|image',
+                'receipt' => 'nullable|image',
+                'cost' => 'nullable|image',
+            ]);
+
+            $servicedata = Givebirth::where('user_id', '=', $userid)->first();
+            $pathcard = $servicedata->card;
+            $pathhospital = $servicedata->hospital;
+            $pathreport = $servicedata->report;
+            $pathchilds = $servicedata->childs;
+            $pathreceipt = $servicedata->receipt;
+            $pathcost = $servicedata->cost;
+
+            if ($request->hasFile('card')) {
+                Storage::disk('uploads')->delete($pathcard);
+                $pathcard = Storage::disk('uploads')->put($pathimg, $request->card);
+            }
+
+            if ($request->hasFile('hospital')) {
+                Storage::disk('uploads')->delete($pathhospital);
+                $pathhospital = Storage::disk('uploads')->put($pathimg, $request->hospital);
+            }
+
+            if ($request->hasFile('report')) {
+                Storage::disk('uploads')->delete($pathreport);
+                $pathreport = Storage::disk('uploads')->put($pathimg, $request->report);
+            }
+
+            if ($request->hasFile('childs')) {
+                Storage::disk('uploads')->delete($pathchilds);
+                $pathchilds = Storage::disk('uploads')->put($pathimg, $request->childs);
+            }
+
+            if ($request->hasFile('receipt')) {
+                Storage::disk('uploads')->delete($pathreceipt);
+                $pathreceipt = Storage::disk('uploads')->put($pathimg, $request->receipt);
+            }
+
+            if ($request->hasFile('cost')) {
+                Storage::disk('uploads')->delete($pathcost);
+                $pathcost = Storage::disk('uploads')->put($pathimg, $request->cost);
+            }
+
+            $servicedata->update([
+                'user_id' => $userid,
+                'card' => $pathcard,
+                'hospital' => $pathhospital,
+                'report' => $pathreport,
+                'childs' => $pathchilds,
+                'receipt' => $pathreceipt,
+                'cost' => $pathcost,
+            ]);
+            if (!$request->childs == null || !$request->receipt == null || !$request->card == null
+                || !$request->hospital == null || !$request->report == null || !$request->cost == null) {
+                $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
+                $loggedUser->operations()->updateExistingpivot($id,
+                    ['message' => 'جاري مراجعة البيانات',
+                        'status' => 'جاري مراجعة البيانات']);
+            }
+        } elseif ($id == 23) {
+            $request->validate([
+                'project' => 'nullable|image',
+                'hospitalcost' => 'nullable|image',
+                'report' => 'nullable|image',
+                'hospital' => 'nullable|image',
+                'receipt' => 'nullable|image',
+                'cost' => 'nullable|image',
+            ]);
+
+            $servicedata = Treatmenthelp::where('user_id', '=', $userid)->first();
+            $pathproject = $servicedata->project;
+            $pathhospitalcost = $servicedata->hospitalcost;
+            $pathreport = $servicedata->report;
+            $pathhospital = $servicedata->hospital;
+            $pathreceipt = $servicedata->receipt;
+            $pathcost = $servicedata->cost;
+
+            if ($request->hasFile('project')) {
+                Storage::disk('uploads')->delete($pathproject);
+                $pathproject = Storage::disk('uploads')->put($pathimg, $request->project);
+            }
+
+            if ($request->hasFile('hospitalcost')) {
+                Storage::disk('uploads')->delete($pathhospitalcost);
+                $pathhospitalcost = Storage::disk('uploads')->put($pathimg, $request->hospitalcost);
+            }
+
+            if ($request->hasFile('report')) {
+                Storage::disk('uploads')->delete($pathreport);
+                $pathreport = Storage::disk('uploads')->put($pathimg, $request->report);
+            }
+
+            if ($request->hasFile('hospital')) {
+                Storage::disk('uploads')->delete($pathhospital);
+                $pathhospital = Storage::disk('uploads')->put($pathimg, $request->hospital);
+            }
+
+            if ($request->hasFile('receipt')) {
+                Storage::disk('uploads')->delete($pathreceipt);
+                $pathreceipt = Storage::disk('uploads')->put($pathimg, $request->receipt);
+            }
+
+            if ($request->hasFile('cost')) {
+                Storage::disk('uploads')->delete($pathcost);
+                $pathcost = Storage::disk('uploads')->put($pathimg, $request->cost);
+            }
+
+            $servicedata->update([
+                'user_id' => $userid,
+                'project' => $pathproject,
+                'hospitalcost' => $pathhospitalcost,
+                'report' => $pathreport,
+                'hospital' => $pathhospital,
+                'receipt' => $pathreceipt,
+                'cost' => $pathcost,
+            ]);
+            if (!$request->hospital == null || !$request->receipt == null
+                || !$request->project == null || !$request->hospitalcost == null || !$request->report == null || !$request->cost == null) {
+                $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
+                $loggedUser->operations()->updateExistingpivot($id,
+                    ['message' => 'جاري مراجعة البيانات',
+                        'status' => 'جاري مراجعة البيانات']);
+            }
+        } elseif ($id == 24) {
+            $request->validate([
+                'medical' => 'nullable|image',
+                'personal_card' => 'nullable|image',
+                'receipt' => 'nullable|image',
+                'cost' => 'nullable|image',
+            ]);
+
+            $servicedata = Disability::where('user_id', '=', $userid)->first();
+            $pathmedical = $servicedata->medical;
+            $pathpersonal_card = $servicedata->personal_card;
+            $pathreceipt = $servicedata->receipt;
+            $pathcost = $servicedata->cost;
+
+            if ($request->hasFile('medical')) {
+                Storage::disk('uploads')->delete($pathmedical);
+                $pathmedical = Storage::disk('uploads')->put($pathimg, $request->medical);
+            }
+
+            if ($request->hasFile('personal_card')) {
+                Storage::disk('uploads')->delete($pathpersonal_card);
+                $pathpersonal_card = Storage::disk('uploads')->put($pathimg, $request->personal_card);
+            }
+
+            if ($request->hasFile('receipt')) {
+                Storage::disk('uploads')->delete($pathreceipt);
+                $pathreceipt = Storage::disk('uploads')->put($pathimg, $request->receipt);
+            }
+
+            if ($request->hasFile('cost')) {
+                Storage::disk('uploads')->delete($pathcost);
+                $pathcost = Storage::disk('uploads')->put($pathimg, $request->cost);
+            }
+
+            $servicedata->update([
+                'user_id' => $userid,
+                'medical' => $pathmedical,
+                'personal_card' => $pathpersonal_card,
+                'receipt' => $pathreceipt,
+                'cost' => $pathcost,
+            ]);
+            if (!$request->medical == null || !$request->personal_card == null
+                || !$request->receipt == null || !$request->cost == null) {
+                $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
+                $loggedUser->operations()->updateExistingpivot($id,
+                    ['message' => 'جاري مراجعة البيانات',
+                        'status' => 'جاري مراجعة البيانات']);
+            }
+        } elseif ($id == 25) {
+            $request->validate([
+                'license' => 'nullable|image',
+                'cost' => 'nullable|image',
+            ]);
+
+            $servicedata = Supervision::where('user_id', '=', $userid)->first();
+            $pathlicense = $servicedata->license;
+            $pathcost = $servicedata->cost;
+
+            if ($request->hasFile('license')) {
+                Storage::disk('uploads')->delete($pathlicense);
+                $pathlicense = Storage::disk('uploads')->put($pathimg, $request->license);
+            }
+
+            if ($request->hasFile('cost')) {
+                Storage::disk('uploads')->delete($pathcost);
+                $pathcost = Storage::disk('uploads')->put($pathimg, $request->cost);
+            }
+
+            $servicedata->update([
+                'user_id' => $userid,
+                'license' => $pathlicense,
+                'cost' => $pathcost,
+            ]);
+            if (!$request->license == null || !$request->cost == null) {
+                $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
+                $loggedUser->operations()->updateExistingpivot($id,
+                    ['message' => 'جاري مراجعة البيانات',
+                        'status' => 'جاري مراجعة البيانات']);
+            }
         }
     }
 
@@ -2387,6 +3083,114 @@ class UserServiceController extends Controller
                 1 => ['user1_id ' => $userid],
                 2 => ['service_id ' => $id],
             ]);
+        } elseif ($id == 18) {
+            $userdata = Surgery::where('user_id', $userid)->first();
+            Storage::disk('uploads')->delete($userdata->hospital);
+            Storage::disk('uploads')->delete($userdata->report);
+            Storage::disk('uploads')->delete($userdata->personal_card);
+            Storage::disk('uploads')->delete($userdata->card);
+            Storage::disk('uploads')->delete($userdata->receipt);
+            Storage::disk('uploads')->delete($userdata->birth);
+            Storage::disk('uploads')->delete($userdata->wedding);
+            Storage::disk('uploads')->delete($userdata->cost);
+
+            $userdata->delete();
+            $user->services()->detach([
+                1 => ['user1_id ' => $userid],
+                2 => ['service_id ' => $id],
+            ]);
+        } elseif ($id == 19) {
+            $userdata = Death::where('user_id', $userid)->first();
+            Storage::disk('uploads')->delete($userdata->death);
+            Storage::disk('uploads')->delete($userdata->funeral);
+            Storage::disk('uploads')->delete($userdata->card);
+            Storage::disk('uploads')->delete($userdata->personal_card);
+            Storage::disk('uploads')->delete($userdata->cost);
+
+            $userdata->delete();
+            $user->services()->detach([
+                1 => ['user1_id ' => $userid],
+                2 => ['service_id ' => $id],
+            ]);
+        } elseif ($id == 20) {
+            $userdata = Health::where('user_id', $userid)->first();
+            Storage::disk('uploads')->delete($userdata->report);
+            Storage::disk('uploads')->delete($userdata->benefits);
+            Storage::disk('uploads')->delete($userdata->card);
+            Storage::disk('uploads')->delete($userdata->personal_card);
+            Storage::disk('uploads')->delete($userdata->newspaper);
+            Storage::disk('uploads')->delete($userdata->hospital);
+            Storage::disk('uploads')->delete($userdata->cost);
+
+            $userdata->delete();
+            $user->services()->detach([
+                1 => ['user1_id ' => $userid],
+                2 => ['service_id ' => $id],
+            ]);
+        } elseif ($id == 21) {
+            $userdata = Medical::where('user_id', $userid)->first();
+            Storage::disk('uploads')->delete($userdata->childrens);
+            Storage::disk('uploads')->delete($userdata->childrenspersonal);
+            Storage::disk('uploads')->delete($userdata->card);
+            Storage::disk('uploads')->delete($userdata->personal_card);
+            Storage::disk('uploads')->delete($userdata->wedding);
+            Storage::disk('uploads')->delete($userdata->cost);
+
+            $userdata->delete();
+            $user->services()->detach([
+                1 => ['user1_id ' => $userid],
+                2 => ['service_id ' => $id],
+            ]);
+        } elseif ($id == 22) {
+            $userdata = Givebirth::where('user_id', $userid)->first();
+            Storage::disk('uploads')->delete($userdata->hospital);
+            Storage::disk('uploads')->delete($userdata->report);
+            Storage::disk('uploads')->delete($userdata->card);
+            Storage::disk('uploads')->delete($userdata->childs);
+            Storage::disk('uploads')->delete($userdata->receipt);
+            Storage::disk('uploads')->delete($userdata->cost);
+
+            $userdata->delete();
+            $user->services()->detach([
+                1 => ['user1_id ' => $userid],
+                2 => ['service_id ' => $id],
+            ]);
+        } elseif ($id == 23) {
+            $userdata = Treatmenthelp::where('user_id', $userid)->first();
+            Storage::disk('uploads')->delete($userdata->project);
+            Storage::disk('uploads')->delete($userdata->hospitalcost);
+            Storage::disk('uploads')->delete($userdata->report);
+            Storage::disk('uploads')->delete($userdata->hospital);
+            Storage::disk('uploads')->delete($userdata->receipt);
+            Storage::disk('uploads')->delete($userdata->cost);
+
+            $userdata->delete();
+            $user->services()->detach([
+                1 => ['user1_id ' => $userid],
+                2 => ['service_id ' => $id],
+            ]);
+        } elseif ($id == 24) {
+            $userdata = Disability::where('user_id', $userid)->first();
+            Storage::disk('uploads')->delete($userdata->medical);
+            Storage::disk('uploads')->delete($userdata->receipt);
+            Storage::disk('uploads')->delete($userdata->personal_card);
+            Storage::disk('uploads')->delete($userdata->cost);
+
+            $userdata->delete();
+            $user->services()->detach([
+                1 => ['user1_id ' => $userid],
+                2 => ['service_id ' => $id],
+            ]);
+        } elseif ($id == 25) {
+            $userdata = Supervision::where('user_id', $userid)->first();
+            Storage::disk('uploads')->delete($userdata->license);
+            Storage::disk('uploads')->delete($userdata->cost);
+
+            $userdata->delete();
+            $user->services()->detach([
+                1 => ['user1_id ' => $userid],
+                2 => ['service_id ' => $id],
+            ]);
         }
     }
 
@@ -2427,6 +3231,22 @@ class UserServiceController extends Controller
             return view('web.edit.specialiststableform')->with($data);
         } elseif ($id == 17) {
             return view('web.edit.professionlicenform')->with($data);
+        } elseif ($id == 18) {
+            return view('web.edit.surgeryform')->with($data);
+        } elseif ($id == 19) {
+            return view('web.edit.deathform')->with($data);
+        } elseif ($id == 20) {
+            return view('web.edit.healthsform')->with($data);
+        } elseif ($id == 21) {
+            return view('web.edit.medicalform')->with($data);
+        } elseif ($id == 22) {
+            return view('web.edit.givebirthform')->with($data);
+        } elseif ($id == 23) {
+            return view('web.edit.treatmenthelpform')->with($data);
+        } elseif ($id == 24) {
+            return view('web.edit.disabilityform')->with($data);
+        } elseif ($id == 25) {
+            return view('web.edit.supervisionform')->with($data);
         }
     }
 
