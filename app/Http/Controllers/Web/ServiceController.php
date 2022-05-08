@@ -117,7 +117,7 @@ class ServiceController extends Controller
             $services_arr[] = $serviceid->pivot->service_id;
         }
         if (in_array($id, $row)) {
-            return $desc->servicedesc($id)->with($data);
+            return $desc->servicedesc($id ,$unionid)->with($data);
         }else{
             return view('web.services')->with($data);
         }
@@ -168,7 +168,7 @@ class ServiceController extends Controller
         $userid = $loggedUser->id;
 
         $pathimg=$StorePath->path($unionid,$id);
-        $StorePath->store($id,$request,$pathimg,$userid);
+        $StorePath->store($id,$request,$pathimg,$userid,$unionid);
 
         $request->session()->flash('success', 'تم طلب الخدمة بنجاح وفي انتظار مراجعة طلبك');
         return redirect(url("/member/myservice"));
@@ -207,8 +207,9 @@ class ServiceController extends Controller
     {
         $loggedUser = Auth::user();
         $user = User::findOrfail($loggedUser->id);
+        $unionid=$user->union_id;
         $data['service'] = Service::findOrfail($id);
-        return $EidtPath->eidt($id,$data);
+        return $EidtPath->eidt($id,$data,$unionid);
     }
 
     public function myservice()

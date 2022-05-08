@@ -431,7 +431,7 @@ class UserServiceController extends Controller
     }
 
     //كود حفظ الخدمات
-    public function store($id, $request, $pathimg, $userid)
+    public function store($id, $request, $pathimg, $userid, $unionid)
     {
         if ($id == 1) {
             $request->validate([
@@ -1147,22 +1147,29 @@ class UserServiceController extends Controller
         } elseif ($id == 20) {
             $request->validate([
                 'report' => 'required|image',
-                'benefits' => 'required|image',
                 'card' => 'required|image',
                 'personal_card' => 'required|image',
-                'newspaper' => 'required|image',
-                'hospital' => 'required|image',
                 'cost' => 'required|image',
             ]);
 
+            if ($unionid == 5) {
+                $request->validate([
+                    'benefits' => 'required|image',
+                    'newspaper' => 'required|image',
+                    'hospital' => 'required|image',
+                ]);
+                $pathbenefits = Storage::disk('uploads')->put($pathimg, $request->benefits);
+                $pathnewspaper = Storage::disk('uploads')->put($pathimg, $request->newspaper);
+                $pathhospital = Storage::disk('uploads')->put($pathimg, $request->hospital);
+            } else {
+                $pathbenefits = null;
+                $pathnewspaper = null;
+                $pathhospital = null;
+            }
             $pathreport = Storage::disk('uploads')->put($pathimg, $request->report);
-            $pathbenefits = Storage::disk('uploads')->put($pathimg, $request->benefits);
             $pathcard = Storage::disk('uploads')->put($pathimg, $request->card);
             $pathpersonal_card = Storage::disk('uploads')->put($pathimg, $request->personal_card);
-            $pathnewspaper = Storage::disk('uploads')->put($pathimg, $request->newspaper);
-            $pathhospital = Storage::disk('uploads')->put($pathimg, $request->hospital);
             $pathcost = Storage::disk('uploads')->put($pathimg, $request->cost);
-
             Health::create([
                 'user_id' => $userid,
                 'report' => $pathreport,
@@ -3195,7 +3202,7 @@ class UserServiceController extends Controller
     }
 
     //عرض صفح تعديل الخدمة المطلوبه
-    public function eidt($id, $data)
+    public function eidt($id, $data, $unionid)
     {
         if ($id == 1) {
             return view('web.edit.renewalform')->with($data);
@@ -3236,6 +3243,7 @@ class UserServiceController extends Controller
         } elseif ($id == 19) {
             return view('web.edit.deathform')->with($data);
         } elseif ($id == 20) {
+            $data['unionid'] = $unionid;
             return view('web.edit.healthsform')->with($data);
         } elseif ($id == 21) {
             return view('web.edit.medicalform')->with($data);

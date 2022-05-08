@@ -76,9 +76,10 @@
                             <!-- الجانب الايسر-->
                             <div style="margin-bottom: 30px" class="col-md-6">
 
-                                <!-- ادخل-->
+                                @if ($unionid == 5)
+                                    <!-- ادخل-->
                                 <div class="form-group main">
-                                    <label>صورة إفادة الاشتراك في الصندوق (نقابة المعلمين) :</label>
+                                    <label>صورة إفادة الاشتراك في الصندوق  :</label>
 
                                     <div class="input-group inner" style="direction: rtl">
                                         <div>
@@ -94,7 +95,7 @@
 
                                 <!-- ادخل-->
                                 <div class="form-group main">
-                                    <label>صورة صحيفة أحوال إلكترونية حديثة (نقابة المعلمين) :</label>
+                                    <label>صورة صحيفة أحوال إلكترونية حديثة  :</label>
                                     <div class="input-group inner" style="direction: rtl">
                                         <div>
                                             <input class="form-control mb-2" type="file" id="formFile" name="newspaper">
@@ -108,7 +109,7 @@
                                 </div>
                                 <!-- ادخل-->
                                 <div class="form-group main">
-                                    <label>صورة فواتير معتمدة من المستشفي (نقابة المحاميين) :</label>
+                                    <label>صورة فواتير معتمدة من المستشفي  :</label>
 
                                     <div class="input-group inner" style="direction: rtl">
                                         <div>
@@ -121,6 +122,8 @@
                                         @enderror
                                     </div>
                                 </div>
+                                @endif
+
                                 <!-- ادخل-->
                                 <div class="form-group main">
                                     <label>صورة وصل سداد الخدمة :</label>
