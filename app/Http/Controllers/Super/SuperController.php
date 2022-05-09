@@ -219,6 +219,7 @@ class SuperController extends Controller
         $request->session()->flash('success_edit', 'تم اضافة مشرف جديد بنجاح');
         return redirect(url('/all/admin'));
     }
+
     public function all_admin()
     {
         $data['user'] = Auth::user();

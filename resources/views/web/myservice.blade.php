@@ -47,8 +47,10 @@
 
                                         <div style="text-align: center;display: inline-block ">
                                             <a href="{{ url('member/service/eidt/' . $data->pivot->service_id) }}">
+                                                @if ($data->pivot->status != 'موافق')
                                                 <i style="color: #157347" class="fas fa-edit fa-xl"></i>
                                                 <p style="color: #157347;font-weight: bold">تعديل</p>
+                                                @endif
                                             </a>
                                         </div>
                                     </div>

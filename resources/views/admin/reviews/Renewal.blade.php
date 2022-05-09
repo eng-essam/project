@@ -17,61 +17,144 @@
 @endsection
 
 @section('main')
-
-<div style="direction:rtl;">
-
-    <div class="text main-container">
-        <p>
-            <span>الاسم:</span>
-            {{ $user->name }}
-        </p>
-        <p>
-            اسم الخدمة: {{ $service->namear }}
-        </p>
-    </div>
-    <div class="images main-container">
-        <div class="container">
-
-            <div class="main">
-                <a data-fancybox="gallery" href="{{ asset("web/$img->card") }}" data-caption=" هذه صورة">
-                    <img src="{{ asset("web/$img->card") }}" alt="image">
-                </a>
-                <p>صورة الكارنيه</p>
+    <div class="card card-danger">
+        <div class="card-header">
+            <div style="float: right;">
+                <h5>
+                    <span style="font-weight: bold"> اسم العضو : </span>
+                    {{ $user->name }}
+                </h5>
             </div>
-
-            <div class="main">
-                <a data-fancybox="gallery" href="{{ asset("web/$img->personal_card") }}" data-caption="هذه صورة">
-                    <img src="{{ asset("web/$img->personal_card") }}" alt="image">
-                </a>
-                <p>صورة البطاقة الشخصية</p>
+            <div>
+                <h5>
+                    <span style="font-weight: bold"> اسم الخدمة : </span>
+                    {{ $service->namear }}
+                </h5>
             </div>
-
-            <div class="main">
-                <a data-fancybox="gallery" href="{{ asset("web/$img->cost") }}" data-caption="هذه صورة">
-                    <img src="{{ asset("web/$img->cost") }}" alt="image">
-                </a>
-                <p>صورة وصل سداد الخدمة</p>
-            </div>
-
         </div>
 
-        <div style="background-color: red" class="approve">
-            <h2>مراجعة الطلب</h2>
+        <div class="card-body">
             <div style="direction:rtl;">
-                <textarea style="background-color: rgb(24, 20, 20);" name="text" value="" id=""></textarea>
+                <div class="container">
+                    <div class="container-fluid">
+                        <div class="row">
 
+                            {{-- <div class="col-xl-3 col-md-4 col-sm-6 col-12 mb-4">
+                                <div class="cardimg">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between px-md-1">
+                                            <div class="align-self-center">
+                                                <a data-fancybox="gallery" href="{{ asset("web/$img->card") }}"
+                                                    data-caption="صورة الكارنيه">
+                                                    <img src="{{ asset("web/$img->card") }}" alt="image">
+                                                </a>
+                                                <p class="mt-2">صورة الكارنيه</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> --}}
+
+                            <div class="col-xl-3 col-md-4 col-sm-6 col-12 mb-4">
+                                <div class="cardimg">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between px-md-1">
+                                            <div class="align-self-center">
+                                                <a data-fancybox="gallery" href="{{ asset("web/$img->card") }}"
+                                                    data-caption="صورة الكارنيه">
+                                                    <img src="{{ asset("web/$img->card") }}" alt="image">
+                                                </a>
+                                                <p class="mt-2">صورة الكارنيه</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-3 col-md-4 col-sm-6 col-12 mb-4">
+                                <div class="cardimg">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between px-md-1">
+                                            <div class="align-self-center">
+                                                <a data-fancybox="gallery" href="{{ asset("web/$img->personal_card") }}"
+                                                    data-caption="صورة البطاقة الشخصية">
+                                                    <img src="{{ asset("web/$img->personal_card") }}" alt="image">
+                                                </a>
+                                                <p class="mt-2">صورة البطاقة الشخصية</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-4 col-sm-6 col-12 mb-4">
+                                <div class="cardimg">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between px-md-1">
+                                            <div class="align-self-center">
+                                                <a data-fancybox="gallery" href="{{ asset("web/$img->cost") }}"
+                                                    data-caption="صورة وصل سداد الخدمة">
+                                                    <img src="{{ asset("web/$img->cost") }}" alt="image">
+                                                </a>
+                                                <p class="mt-2">صورة وصل سداد الخدمة</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 100px" class="row">
+                            <div style="text-align: right" class="card cardimg">
+                                <div class="card-body" style="direction: rtl">
+                                    <form action="{{url("admin/review/$user->id/$service->id")}}" method="POST">
+                                        @csrf
+                                        <h2 class="text-right">مراجعة الطلب</h2>
+                                        <textarea style="width: 400px;height: 100px;" placeholder="يرجي كتابة ملاحظات المشرف المراجع علي بيانات الخدمة"
+                                            name="text" value="" id=""></textarea>
+                                            <div >
+                                                @error('text')
+                                                    {{ $message }}
+                                                @enderror
+                                            </div>
+                                        <div class="mt-3 d-flex">
+                                            <div style="margin-left: 20px" class="form-check">
+                                                <input class="form-check-input" type="radio" name="check" value="موافق"
+                                                    id="flexRadioDefault1" checked>
+                                                <label style="font-size: 23px ;font-weight: bold;margin-right: 20px"
+                                                    class="form-check-label" for="flexRadioDefault1">
+                                                    موافقة
+                                                </label>
+                                            </div>
+                                            <div style="margin-bottom: 20px" class="form-check">
+                                                <input class="form-check-input" type="radio" name="check" value="رفض"
+                                                    id="flexRadioDefault2">
+                                                <label style="font-size: 23px ;font-weight: bold;margin-right: 20px"
+                                                    class="form-check-label" for="flexRadioDefault2">
+                                                    رفض
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group"
+                                            style="width: min-content;margin: auto auto 10px auto ;">
+                                            <div class="input-group" style="direction: rtl">
+                                                <input style="background-color: #DC3545;color: white" type="submit"
+                                                    value="ارسال" class="form-control">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
-            <div class="buttons">
-                <a>موافقة</a>
-                <a>رفض</a>
-            </div>
+
         </div>
     </div>
-
-</div>
 @endsection
 
 @section('script')
     <script src="{{ asset('style_admin/js/jquery.fancybox.min.js') }}"></script>
-
 @endsection

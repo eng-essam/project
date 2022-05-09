@@ -439,13 +439,6 @@ class UserServiceController extends Controller
                 'personal_card' => 'required|image',
                 'cost' => 'required|image',
 
-            ], [
-                'card.required' => "يرجي رفع الصوره المطلوبة",
-                'card.image' => "يرجي رفع الصوره المطلوبة",
-                'personal_card.required' => "يرجي رفع الصوره المطلوبة",
-                'personal_card.image' => "يرجي رفع الصوره المطلوبة",
-                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
-                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
 
             $pathcard = Storage::disk('uploads')->put($pathimg, $request->card);
@@ -459,10 +452,6 @@ class UserServiceController extends Controller
                 'cost' => $pathcost,
             ]);
 
-            $user = User::findOrfail($userid);
-
-            $user->services()->attach($id);
-
         } elseif ($id == 2) {
 
             $request->validate([
@@ -470,15 +459,6 @@ class UserServiceController extends Controller
                 'personal_card' => 'required|image',
                 'recept' => 'required|image',
                 'cost' => 'required|image',
-            ], [
-                'card.required' => "يرجي رفع الصوره المطلوبة",
-                'card.image' => "يرجي رفع الصوره المطلوبة",
-                'personal_card.required' => "يرجي رفع الصوره المطلوبة",
-                'personal_card.image' => "يرجي رفع الصوره المطلوبة",
-                'recept.required' => "يرجي رفع الصوره المطلوبة",
-                'recept.image' => "يرجي رفع الصوره المطلوبة",
-                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
-                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
 
             $pathcard = Storage::disk('uploads')->put($pathimg, $request->card);
@@ -495,23 +475,12 @@ class UserServiceController extends Controller
 
             ]);
 
-            $user = User::findOrfail($userid);
-            $user->services()->attach($id);
         } elseif ($id == 3) {
             $request->validate([
                 'report' => 'required|image',
                 'personal_card' => 'required|image',
                 'receipt' => 'required|image',
                 'cost' => 'required|image',
-            ], [
-                'report.required' => "يرجي رفع الصوره المطلوبة",
-                'report.image' => "يرجي رفع الصوره المطلوبة",
-                'personal_card.required' => "يرجي رفع الصوره المطلوبة",
-                'personal_card.image' => "يرجي رفع الصوره المطلوبة",
-                'receipt.required' => "يرجي رفع الصوره المطلوبة",
-                'receipt.image' => "يرجي رفع الصوره المطلوبة",
-                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
-                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
 
             $pathreport = Storage::disk('uploads')->put($pathimg, $request->report);
@@ -526,8 +495,6 @@ class UserServiceController extends Controller
                 'receipt' => $pathreceipt,
                 'cost' => $pathcost,
             ]);
-            $user = User::findOrfail($userid);
-            $user->services()->attach($id);
 
         } elseif ($id == 4) {
             $request->validate([
@@ -536,17 +503,6 @@ class UserServiceController extends Controller
                 'salary' => 'required|image',
                 'receipt' => 'required|image',
                 'cost' => 'required|image',
-            ], [
-                'birth.required' => "يرجي رفع الصوره المطلوبة",
-                'birth.image' => "يرجي رفع الصوره المطلوبة",
-                'edu_certificate.required' => "يرجي رفع الصوره المطلوبة",
-                'edu_certificate.image' => "يرجي رفع الصوره المطلوبة",
-                'salary.required' => "يرجي رفع الصوره المطلوبة",
-                'salary.image' => "يرجي رفع الصوره المطلوبة",
-                'receipt.required' => "يرجي رفع الصوره المطلوبة",
-                'receipt.image' => "يرجي رفع الصوره المطلوبة",
-                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
-                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
             $pathbirth = Storage::disk('uploads')->put($pathimg, $request->birth);
             $pathedu_certificate = Storage::disk('uploads')->put($pathimg, $request->edu_certificate);
@@ -562,20 +518,12 @@ class UserServiceController extends Controller
                 'receipt' => $pathreceipt,
                 'cost' => $pathcost,
             ]);
-            $user = User::findOrfail($userid);
-            $user->services()->attach($id);
+
         } elseif ($id == 5) {
             $request->validate([
                 'report' => 'required|image',
                 'receipt' => 'required|image',
                 'cost' => 'required|image',
-            ], [
-                'report.required' => "يرجي رفع الصوره المطلوبة",
-                'report.image' => "يرجي رفع الصوره المطلوبة",
-                'receipt.required' => "يرجي رفع الصوره المطلوبة",
-                'receipt.image' => "يرجي رفع الصوره المطلوبة",
-                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
-                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
 
             $pathreport = Storage::disk('uploads')->put($pathimg, $request->report);
@@ -589,23 +537,12 @@ class UserServiceController extends Controller
                 'cost' => $pathcost,
             ]);
 
-            $user = User::findOrfail($userid);
-            $user->services()->attach($id);
         } elseif ($id == 6) {
             $request->validate([
                 'police_certificae' => 'required|image',
                 'wedding' => 'required|image',
                 'receipt' => 'required|image',
                 'cost' => 'required|image',
-            ], [
-                'police_certificae.required' => "يرجي رفع الصوره المطلوبة",
-                'police_certificae.image' => "يرجي رفع الصوره المطلوبة",
-                'wedding.required' => "يرجي رفع الصوره المطلوبة",
-                'wedding.image' => "يرجي رفع الصوره المطلوبة",
-                'receipt.required' => "يرجي رفع الصوره المطلوبة",
-                'receipt.image' => "يرجي رفع الصوره المطلوبة",
-                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
-                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
             $pathpolice_certificae = Storage::disk('uploads')->put($pathimg, $request->police_certificae);
             $pathwedding = Storage::disk('uploads')->put($pathimg, $request->wedding);
@@ -619,9 +556,6 @@ class UserServiceController extends Controller
                 'receipt' => $pathreceipt,
                 'cost' => $pathcost,
             ]);
-
-            $user = User::findOrfail($userid);
-            $user->services()->attach($id);
         } elseif ($id == 7) {
             $request->validate([
                 'disclaimer' => 'required|image',
@@ -666,15 +600,6 @@ class UserServiceController extends Controller
                 'card' => 'required|image',
                 'attorney' => 'required|image',
                 'cost' => 'required|image',
-            ], [
-                'health.required' => "يرجي رفع الصوره المطلوبة",
-                'health.image' => "يرجي رفع الصوره المطلوبة",
-                'card.required' => "يرجي رفع الصوره المطلوبة",
-                'card.image' => "يرجي رفع الصوره المطلوبة",
-                'attorney.required' => "يرجي رفع الصوره المطلوبة",
-                'attorney.image' => "يرجي رفع الصوره المطلوبة",
-                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
-                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
 
             $pathhealth = Storage::disk('uploads')->put($pathimg, $request->health);
@@ -690,8 +615,6 @@ class UserServiceController extends Controller
                 'pathcost' => $pathcost,
             ]);
 
-            $user = User::findOrfail($userid);
-            $user->services()->attach($id);
         } elseif ($id == 9) {
             $request->validate([
                 'personal_card' => 'required|image',
@@ -702,23 +625,6 @@ class UserServiceController extends Controller
                 'statement' => 'required|image',
                 'movements' => 'required|image',
                 'cost' => 'required|image',
-            ], [
-                'personal_card.required' => "يرجي رفع الصوره المطلوبة",
-                'personal_card.image' => "يرجي رفع الصوره المطلوبة",
-                'card.required' => "يرجي رفع الصوره المطلوبة",
-                'card.image' => "يرجي رفع الصوره المطلوبة",
-                'License.required' => "يرجي رفع الصوره المطلوبة",
-                'License.image' => "يرجي رفع الصوره المطلوبة",
-                'recruitment.required' => "يرجي رفع الصوره المطلوبة",
-                'recruitment.image' => "يرجي رفع الصوره المطلوبة",
-                'assignment.required' => "يرجي رفع الصوره المطلوبة",
-                'assignment.image' => "يرجي رفع الصوره المطلوبة",
-                'statement.required' => "يرجي رفع الصوره المطلوبة",
-                'statement.image' => "يرجي رفع الصوره المطلوبة",
-                'movements.required' => "يرجي رفع الصوره المطلوبة",
-                'movements.image' => "يرجي رفع الصوره المطلوبة",
-                'cost.required' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
-                'cost.image' => "يرجي رفع صوره لوصل سداد تكلفة الخدمة",
             ]);
 
             $pathpersonal_card = Storage::disk('uploads')->put($pathimg, $request->personal_card);
@@ -742,8 +648,6 @@ class UserServiceController extends Controller
                 'cost' => $pathcost,
             ]);
 
-            $user = User::findOrfail($userid);
-            $user->services()->attach($id);
         } elseif ($id == 10) {
             $request->validate([
                 'contract' => 'required|image',
@@ -788,8 +692,6 @@ class UserServiceController extends Controller
                 'cost' => $pathcost,
             ]);
 
-            $user = User::findOrfail($userid);
-            $user->services()->attach($id);
         } elseif ($id == 11) {
             $request->validate([
                 'recruitment' => 'required|image',
@@ -825,8 +727,6 @@ class UserServiceController extends Controller
                 'cost' => $pathcost,
             ]);
 
-            $user = User::findOrfail($userid);
-            $user->services()->attach($id);
         } elseif ($id == 12) {
             $request->validate([
                 'temporary' => 'required|image',
@@ -852,8 +752,6 @@ class UserServiceController extends Controller
                 'cost' => $pathcost,
             ]);
 
-            $user = User::findOrfail($userid);
-            $user->services()->attach($id);
         } elseif ($id == 13) {
             $request->validate([
                 'master' => 'required|image',
@@ -879,8 +777,6 @@ class UserServiceController extends Controller
                 'cost' => $pathcost,
             ]);
 
-            $user = User::findOrfail($userid);
-            $user->services()->attach($id);
         } elseif ($id == 14) {
             $request->validate([
                 'model' => 'required|image',
@@ -926,8 +822,6 @@ class UserServiceController extends Controller
                 'cost' => $pathcost,
             ]);
 
-            $user = User::findOrfail($userid);
-            $user->services()->attach($id);
         } elseif ($id == 15) {
             $request->validate([
                 'contract' => 'required|image',
@@ -983,8 +877,6 @@ class UserServiceController extends Controller
                 'cost' => $pathcost,
             ]);
 
-            $user = User::findOrfail($userid);
-            $user->services()->attach($id);
         } elseif ($id == 16) {
             $request->validate([
                 'registration' => 'required|image',
@@ -1045,8 +937,6 @@ class UserServiceController extends Controller
                 'cost' => $pathcost,
             ]);
 
-            $user = User::findOrfail($userid);
-            $user->services()->attach($id);
         } elseif ($id == 17) {
             $request->validate([
                 'personal_card' => 'required|image',
@@ -1078,8 +968,6 @@ class UserServiceController extends Controller
                 'cost' => $pathcost,
             ]);
 
-            $user = User::findOrfail($userid);
-            $user->services()->attach($id);
         } elseif ($id == 18) {
             $request->validate([
                 'hospital' => 'required|image',
@@ -1098,10 +986,7 @@ class UserServiceController extends Controller
             $pathcard = Storage::disk('uploads')->put($pathimg, $request->card);
             $pathreceipt = Storage::disk('uploads')->put($pathimg, $request->receipt);
             $pathbirth = Storage::disk('uploads')->put($pathimg, $request->birth);
-
             ($request->wedding == null) ? $pathwedding = null : $pathwedding = Storage::disk('uploads')->put($pathimg, $request->wedding);
-
-            // $pathwedding = Storage::disk('uploads')->put($pathimg, $request->wedding);
             $pathcost = Storage::disk('uploads')->put($pathimg, $request->cost);
 
             Surgery::create([
@@ -1116,8 +1001,6 @@ class UserServiceController extends Controller
                 'cost' => $pathcost,
             ]);
 
-            $user = User::findOrfail($userid);
-            $user->services()->attach($id);
         } elseif ($id == 19) {
             $request->validate([
                 'death' => 'required|image',
@@ -1142,8 +1025,6 @@ class UserServiceController extends Controller
                 'cost' => $pathcost,
             ]);
 
-            $user = User::findOrfail($userid);
-            $user->services()->attach($id);
         } elseif ($id == 20) {
             $request->validate([
                 'report' => 'required|image',
@@ -1181,8 +1062,6 @@ class UserServiceController extends Controller
                 'cost' => $pathcost,
             ]);
 
-            $user = User::findOrfail($userid);
-            $user->services()->attach($id);
         } elseif ($id == 21) {
             $request->validate([
                 'childrens' => 'required|image',
@@ -1210,8 +1089,6 @@ class UserServiceController extends Controller
                 'cost' => $pathcost,
             ]);
 
-            $user = User::findOrfail($userid);
-            $user->services()->attach($id);
         } elseif ($id == 22) {
             $request->validate([
                 'hospital' => 'required|image',
@@ -1239,8 +1116,6 @@ class UserServiceController extends Controller
                 'cost' => $pathcost,
             ]);
 
-            $user = User::findOrfail($userid);
-            $user->services()->attach($id);
         } elseif ($id == 23) {
             $request->validate([
                 'project' => 'required|image',
@@ -1268,8 +1143,6 @@ class UserServiceController extends Controller
                 'cost' => $pathcost,
             ]);
 
-            $user = User::findOrfail($userid);
-            $user->services()->attach($id);
         } elseif ($id == 24) {
             $request->validate([
                 'medical' => 'required|image',
@@ -1291,8 +1164,6 @@ class UserServiceController extends Controller
                 'cost' => $pathcost,
             ]);
 
-            $user = User::findOrfail($userid);
-            $user->services()->attach($id);
         } elseif ($id == 25) {
             $request->validate([
                 'license' => 'required|image',
@@ -1307,10 +1178,9 @@ class UserServiceController extends Controller
                 'license' => $pathlicense,
                 'cost' => $pathcost,
             ]);
-
-            $user = User::findOrfail($userid);
-            $user->services()->attach($id);
         }
+        $user = User::findOrfail($userid);
+        $user->services()->attach($id);
     }
 
     //كود التعديل ف خدمة العضو قام بطلبها
@@ -1360,7 +1230,11 @@ class UserServiceController extends Controller
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
-                        'status' => 'جاري مراجعة البيانات']);
+                        'status' => 'جاري مراجعة البيانات',
+                        'admin_name' => null,
+                        'user2_id' => null,
+                    ]
+                );
             }
         } elseif ($id == 2) {
             $request->validate([
@@ -1417,7 +1291,9 @@ class UserServiceController extends Controller
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
-                        'status' => 'جاري مراجعة البيانات']);
+                        'status' => 'جاري مراجعة البيانات',
+                        'admin_name' => null,
+                        'user2_id' => null]);
             }
         } elseif ($id == 3) {
             $request->validate([
@@ -1472,7 +1348,9 @@ class UserServiceController extends Controller
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
-                        'status' => 'جاري مراجعة البيانات']);
+                        'status' => 'جاري مراجعة البيانات',
+                        'admin_name' => null,
+                        'user2_id' => null]);
             }
         } elseif ($id == 4) {
             $request->validate([
@@ -1527,7 +1405,9 @@ class UserServiceController extends Controller
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
-                        'status' => 'جاري مراجعة البيانات']);
+                        'status' => 'جاري مراجعة البيانات',
+                        'admin_name' => null,
+                        'user2_id' => null]);
             }
         } elseif ($id == 5) {
             $request->validate([
@@ -1565,7 +1445,9 @@ class UserServiceController extends Controller
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
-                        'status' => 'جاري مراجعة البيانات']);
+                        'status' => 'جاري مراجعة البيانات',
+                        'admin_name' => null,
+                        'user2_id' => null]);
             }
         } elseif ($id == 6) {
             $request->validate([
@@ -1611,7 +1493,9 @@ class UserServiceController extends Controller
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
-                        'status' => 'جاري مراجعة البيانات']);
+                        'status' => 'جاري مراجعة البيانات',
+                        'admin_name' => null,
+                        'user2_id' => null]);
             }
         } elseif ($id == 7) {
             $request->validate([
@@ -1699,7 +1583,9 @@ class UserServiceController extends Controller
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
-                        'status' => 'جاري مراجعة البيانات']);
+                        'status' => 'جاري مراجعة البيانات',
+                        'admin_name' => null,
+                        'user2_id' => null]);
             }
         } elseif ($id == 8) {
             $request->validate([
@@ -1745,7 +1631,9 @@ class UserServiceController extends Controller
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
-                        'status' => 'جاري مراجعة البيانات']);
+                        'status' => 'جاري مراجعة البيانات',
+                        'admin_name' => null,
+                        'user2_id' => null]);
             }
         } elseif ($id == 9) {
             $request->validate([
@@ -1825,7 +1713,9 @@ class UserServiceController extends Controller
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
-                        'status' => 'جاري مراجعة البيانات']);
+                        'status' => 'جاري مراجعة البيانات',
+                        'admin_name' => null,
+                        'user2_id' => null]);
             }
         } elseif ($id == 10) {
             $request->validate([
@@ -1896,7 +1786,9 @@ class UserServiceController extends Controller
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
-                        'status' => 'جاري مراجعة البيانات']);
+                        'status' => 'جاري مراجعة البيانات',
+                        'admin_name' => null,
+                        'user2_id' => null]);
             }
         } elseif ($id == 11) {
 
@@ -1953,7 +1845,9 @@ class UserServiceController extends Controller
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
-                        'status' => 'جاري مراجعة البيانات']);
+                        'status' => 'جاري مراجعة البيانات',
+                        'admin_name' => null,
+                        'user2_id' => null]);
             }
         } elseif ($id == 12) {
             $request->validate([
@@ -1991,7 +1885,9 @@ class UserServiceController extends Controller
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
-                        'status' => 'جاري مراجعة البيانات']);
+                        'status' => 'جاري مراجعة البيانات',
+                        'admin_name' => null,
+                        'user2_id' => null]);
             }
         } elseif ($id == 13) {
             $request->validate([
@@ -2029,7 +1925,9 @@ class UserServiceController extends Controller
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
-                        'status' => 'جاري مراجعة البيانات']);
+                        'status' => 'جاري مراجعة البيانات',
+                        'admin_name' => null,
+                        'user2_id' => null]);
             }
         } elseif ($id == 14) {
             $request->validate([
@@ -2130,7 +2028,9 @@ class UserServiceController extends Controller
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
-                        'status' => 'جاري مراجعة البيانات']);
+                        'status' => 'جاري مراجعة البيانات',
+                        'admin_name' => null,
+                        'user2_id' => null]);
             }
         } elseif ($id == 15) {
 
@@ -2216,7 +2116,9 @@ class UserServiceController extends Controller
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
-                        'status' => 'جاري مراجعة البيانات']);
+                        'status' => 'جاري مراجعة البيانات',
+                        'admin_name' => null,
+                        'user2_id' => null]);
             }
         } elseif ($id == 16) {
 
@@ -2314,7 +2216,9 @@ class UserServiceController extends Controller
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
-                        'status' => 'جاري مراجعة البيانات']);
+                        'status' => 'جاري مراجعة البيانات',
+                        'admin_name' => null,
+                        'user2_id' => null]);
             }
         } elseif ($id == 17) {
             $request->validate([
@@ -2377,7 +2281,9 @@ class UserServiceController extends Controller
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
-                        'status' => 'جاري مراجعة البيانات']);
+                        'status' => 'جاري مراجعة البيانات',
+                        'admin_name' => null,
+                        'user2_id' => null]);
             }
         } elseif ($id == 18) {
             $request->validate([
@@ -2459,7 +2365,9 @@ class UserServiceController extends Controller
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
-                        'status' => 'جاري مراجعة البيانات']);
+                        'status' => 'جاري مراجعة البيانات',
+                        'admin_name' => null,
+                        'user2_id' => null]);
             }
         } elseif ($id == 19) {
             $request->validate([
@@ -2514,7 +2422,9 @@ class UserServiceController extends Controller
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
-                        'status' => 'جاري مراجعة البيانات']);
+                        'status' => 'جاري مراجعة البيانات',
+                        'admin_name' => null,
+                        'user2_id' => null]);
             }
         } elseif ($id == 20) {
             $request->validate([
@@ -2588,7 +2498,9 @@ class UserServiceController extends Controller
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
-                        'status' => 'جاري مراجعة البيانات']);
+                        'status' => 'جاري مراجعة البيانات',
+                        'admin_name' => null,
+                        'user2_id' => null]);
             }
         } elseif ($id == 21) {
             $request->validate([
@@ -2652,7 +2564,9 @@ class UserServiceController extends Controller
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
-                        'status' => 'جاري مراجعة البيانات']);
+                        'status' => 'جاري مراجعة البيانات',
+                        'admin_name' => null,
+                        'user2_id' => null]);
             }
         } elseif ($id == 22) {
             $request->validate([
@@ -2716,7 +2630,9 @@ class UserServiceController extends Controller
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
-                        'status' => 'جاري مراجعة البيانات']);
+                        'status' => 'جاري مراجعة البيانات',
+                        'admin_name' => null,
+                        'user2_id' => null]);
             }
         } elseif ($id == 23) {
             $request->validate([
@@ -2780,7 +2696,9 @@ class UserServiceController extends Controller
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
-                        'status' => 'جاري مراجعة البيانات']);
+                        'status' => 'جاري مراجعة البيانات',
+                        'admin_name' => null,
+                        'user2_id' => null]);
             }
         } elseif ($id == 24) {
             $request->validate([
@@ -2828,7 +2746,9 @@ class UserServiceController extends Controller
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
-                        'status' => 'جاري مراجعة البيانات']);
+                        'status' => 'جاري مراجعة البيانات',
+                        'admin_name' => null,
+                        'user2_id' => null]);
             }
         } elseif ($id == 25) {
             $request->validate([
@@ -2859,7 +2779,9 @@ class UserServiceController extends Controller
                 $request->session()->flash('success_edit', " تم تعديل بياناتك في خدمة ' $servicename ' بنجاح");
                 $loggedUser->operations()->updateExistingpivot($id,
                     ['message' => 'جاري مراجعة البيانات',
-                        'status' => 'جاري مراجعة البيانات']);
+                        'status' => 'جاري مراجعة البيانات',
+                        'admin_name' => null,
+                        'user2_id' => null]);
             }
         }
     }

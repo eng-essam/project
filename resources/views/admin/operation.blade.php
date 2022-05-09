@@ -50,26 +50,28 @@
                 <tbody>
                     @for ($j = 0; $j < count($all_users); $j++)
                         @for ($i = 0; $i < count($all_users[$j]['operations']); $i++)
-                            <tr>
-                                <td style="text-align: center;font-size: 19px">
-                                    {{ $all_users[$j]['name'] }}
-                                </td>
-                                <td style="text-align: center;font-size: 19px">
-                                    {{ $all_users[$j]['operations'][$i]['namear'] }}
-                                </td>
-                                <td style="text-align: center;font-size: 19px">
-                                    {{ Carbon\Carbon::parse($all_users[$j]['operations'][$i]['pivot']['created_at'])->format('Y-m-d') }}
-                                </td>
-                                <td style="text-align: center;font-size: 19px">
-                                    <span style="display: none">
-                                        {{ $member = $all_users[$j]['id'] }}
-                                        {{ $service = $all_users[$j]['operations'][$i]['pivot']['service_id'] }}
-                                    </span>
-                                    <button type="button" class="btn btn-danger">
-                                        <a style="color: white ;font-weight: bold" href="{{ url("/admin/review/service/$member/$service") }}">مراجعة</a>
-                                    </button>
-                                </td>
-                            </tr>
+                        @if ($all_users[$j]['operations'][$i]['pivot']['status'] == $status)
+                        <tr>
+                            <td style="text-align: center;font-size: 19px">
+                                {{ $all_users[$j]['name'] }}
+                            </td>
+                            <td style="text-align: center;font-size: 19px">
+                                {{ $all_users[$j]['operations'][$i]['namear'] }}
+                            </td>
+                            <td style="text-align: center;font-size: 19px">
+                                {{ Carbon\Carbon::parse($all_users[$j]['operations'][$i]['pivot']['created_at'])->format('Y-m-d') }}
+                            </td>
+                            <td style="text-align: center;font-size: 19px">
+                                <span style="display: none">
+                                    {{ $member = $all_users[$j]['id'] }}
+                                    {{ $service = $all_users[$j]['operations'][$i]['pivot']['service_id'] }}
+                                </span>
+                                <button type="button" class="btn btn-danger">
+                                    <a style="color: white ;font-weight: bold" href="{{ url("/admin/review/service/$member/$service") }}">مراجعة</a>
+                                </button>
+                            </td>
+                        </tr>
+                        @endif
                         @endfor
                     @endfor
 

@@ -197,12 +197,13 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         Route::post('/admin/update/password', [AdminController::class, 'update_password']);
         //عرض جميع الخدمات المطلوبه
         Route::get('/admin/operation', [AdminController::class, 'operation']);
-        //عرض خدمة واحده مطلوبه
-        // Route::get('/admin/operation/one_service/{id}', [AdminController::class, 'one_service']);
         //البحث عن طلبات عضو معين
         Route::get('/admin/search/member/operation', [AdminController::class, 'search_member_operation']);
-        //مراجعة طلبات الاعضاء
+        // صفح مراجعة طلبات الاعضاء
         Route::get('/admin/review/service/{member}/{service}', [AdminController::class, 'review']);
+        // مراجعة طلبات الاعضاء
+        Route::post('/admin/review/{member}/{service}', [AdminController::class, 'reviewservice']);
+
     });
 
 });

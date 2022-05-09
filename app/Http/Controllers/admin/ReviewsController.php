@@ -27,7 +27,7 @@ class ReviewsController extends Controller
 {
     public function reviews($service, $member)
     {
-        $data['user'] = User::find($member)->first();
+        $data['user'] = User::where('id',$member)->first();
         $data['service'] = Service::find($service)->first();
         if ($service == 1) {
             $data['img'] = Renewal::where('user_id', $member)->first();

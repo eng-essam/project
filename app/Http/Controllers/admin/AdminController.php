@@ -4,7 +4,6 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\admin\ReviewsController;
 use App\Http\Controllers\Controller;
-use App\Models\Service;
 use App\Models\Union;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -225,6 +224,8 @@ class AdminController extends Controller
             ->select('id', 'name')
             ->whereIn('id', $user)
             ->where('role_id', '3')->get();
+        $data['status'] = "جاري مراجعة البيانات";
+
         return view('admin.operation')->with($data);
     }
 
@@ -263,32 +264,38 @@ class AdminController extends Controller
         return view('admin.search-member-operation')->with($data);
     }
 
-    public function review($member, $service ,ReviewsController $revi)
+    public function review($member, $service, ReviewsController $revi)
     {
         return $revi->reviews($service, $member);
     }
 
-/*
-public function one_service(Request $request, $id)
-{
-$super = User::find(Auth::user()->id);
-$user = User::select('id')->where('union_id', $super->union_id)->where('role_id', '3')->get();
-$union = Union::find($super->union_id);
-$data['services'] = $union->services;
+    public function reviewservice($member, $service, Request $request)
+    {
+        $request->validate([
+            'text' => [
+                function ($attribute, $value, $fail) {
+                    if ($value == null) {
+                        $fail('برجاء كتابة ملاحظات المشرف');
+                    } elseif (!preg_match('/\p{Arabic}/u', $value)) {
+                        $fail('يرجي الكتابة بالغة العربية');
+                    }
+                },
+            ],
+        ]);
 
-$data['all_users'] = Service::with('users')->find(1);
+        $admin = Auth::user();
+        $mamber = User::where('id', $member)->first();
+        $service_id = $service;
 
-//return  $data['all_users'];
-
-for ($i = 0; $i < count($data['all_users']['users']); $i++) {
-
-echo $data['all_users']['users'][$i]['pivot']['user1_id'] . "*******" .
-$data['all_users']['users'][$i]['namear'] . "*********" .
-$data['all_users']['users'][$i]['pivot']['created_at'] . "*********" . "<pre>";
-}
-
-//return view('admin.one_service')->with($data);
-}
- */
+        $mamber->services()->updateExistingpivot(
+            $service_id, [
+                'admin_name' => $admin->name,
+                'user2_id' => $admin->id,
+                'message' => $request->text,
+                'status' => $request->check,
+            ]
+        );
+        return redirect('/admin/operation');
+    }
 
 }
