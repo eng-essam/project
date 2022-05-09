@@ -7,10 +7,15 @@ use App\Models\Alternative;
 use App\Models\Clinicscert;
 use App\Models\Condition;
 use App\Models\Consultantcard;
+use App\Models\Death;
+use App\Models\Disability;
 use App\Models\Disease;
 use App\Models\Educationfee;
 use App\Models\Evictioncert;
 use App\Models\Experiencecert;
+use App\Models\Givebirth;
+use App\Models\Health;
+use App\Models\Medical;
 use App\Models\Nowork;
 use App\Models\Privateclinic;
 use App\Models\Professionlicen;
@@ -20,14 +25,17 @@ use App\Models\Renewal;
 use App\Models\Service;
 use App\Models\Specialistcard;
 use App\Models\Specialiststable;
+use App\Models\Supervision;
+use App\Models\Surgery;
 use App\Models\Treatment;
+use App\Models\Treatmenthelp;
 use App\Models\User;
 
 class ReviewsController extends Controller
 {
     public function reviews($service, $member)
     {
-        $data['user'] = User::where('id',$member)->first();
+        $data['user'] = User::where('id', $member)->first();
         $data['service'] = Service::find($service)->first();
         if ($service == 1) {
             $data['img'] = Renewal::where('user_id', $member)->first();
@@ -80,6 +88,30 @@ class ReviewsController extends Controller
         } elseif ($service == 17) {
             $data['img'] = Professionlicen::where('user_id', $member)->first();
             return view('admin.reviews.Professionlicen')->with($data);
+        } elseif ($service == 18) {
+            $data['img'] = Surgery::where('user_id', $member)->first();
+            return view('admin.reviews.Surgerys')->with($data);
+        } elseif ($service == 19) {
+            $data['img'] = Death::where('user_id', $member)->first();
+            return view('admin.reviews.Deaths')->with($data);
+        } elseif ($service == 20) {
+            $data['img'] = Health::where('user_id', $member)->first();
+            return view('admin.reviews.Healths')->with($data);
+        } elseif ($service == 21) {
+            $data['img'] = Medical::where('user_id', $member)->first();
+            return view('admin.reviews.Medicals')->with($data);
+        } elseif ($service == 22) {
+            $data['img'] = Givebirth::where('user_id', $member)->first();
+            return view('admin.reviews.Givebirths')->with($data);
+        } elseif ($service == 23) {
+            $data['img'] = Treatmenthelp::where('user_id', $member)->first();
+            return view('admin.reviews.Treatmenthelps')->with($data);
+        } elseif ($service == 24) {
+            $data['img'] = Disability::where('user_id', $member)->first();
+            return view('admin.reviews.Disabilitys')->with($data);
+        } elseif ($service == 25) {
+            $data['img'] = Supervision::where('user_id', $member)->first();
+            return view('admin.reviews.supervision')->with($data);
         }
     }
 }
