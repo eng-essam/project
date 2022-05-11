@@ -90,6 +90,13 @@ class Authcontroller extends Controller
         return view("all.forgot-password");
     }
 
+    //تغير كلمة السر
+    public function forgot_password()
+    {
+        Auth::logout();
+        return redirect(url("/requestPassword"));
+    }
+
     public function info()
     {
         $data['user'] = Auth::user();

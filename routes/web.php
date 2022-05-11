@@ -9,10 +9,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'prevent-back-history'], function () {
 
-// عرض جميع الخدامات الموجوده في نقابة معينة
+    // عرض جميع الخدامات الموجوده في نقابة معينة
     Route::get('/union/showservice/{id}', [ServiceController::class, 'showservice']);
-//البحث عن خدمة معينة في نقابة معينه
+    //البحث عن خدمة معينة في نقابة معينه
     Route::get('/union/service/search', [ServiceController::class, 'search']);
+    // نسيت كلمة السر
+    Route::get('/forgot/password', [Authcontroller::class, 'forgot_password']);
 
     Route::get('/member_logout', [Authcontroller::class, 'member_logout']);
 

@@ -35,13 +35,15 @@
                                     <li>
                                         {{ $service->title }}
                                     </li>
+
                                 </ul>
                             </ul>
                         </div>
                         <div class="service-condition">
                             <h2>الشروط الواجب توافرها للحصول علي الخدمة</h2>
                             <ul>
-                                <li class="mb-3">صورة مفردات الزوج والزوجة</li>
+                                <li class="mb-3">أن يكون قد قام بسداد رسوم الاشتراك حتى تاريخ التقديم</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -111,7 +113,7 @@
                 <div class="col-lg-12 text-center">
                     <h4>الرسوم</h4>
                     <p class="fs-5 mt-2">رسوم الخدمة: {{ $services_cost->pivot->service_cost }}</p>
-
+                    <p>1030 جنيه</p>
                     <p>
                         يتم دفع الرسوم عن طريق تحويل المبلغ علي الحساب والإحتفاظ بصورة
                         لوصل الدفع

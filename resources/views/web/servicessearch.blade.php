@@ -8,20 +8,13 @@
     <h1 style="width: max-content ;margin: auto"> البحث عن خدمة  "{{ $keyword }}"  في نقابة {{ $union->name }}</h1>
 
     <div style="margin-right:30px ;float: right;">
-        @include('all.errors')  
+        @include('all.errors')
         <form action="{{ url('/union/service/search') }}" method="GET">
             <input type="text" name="keyword">
             <br>
             <input type="submit" value="search">
         </form>
     </div>
-   
-
-
-
-
-  
-
 
     <div class="container" style="margin-top: 50px">
         <div class="row row-cols-3 ">

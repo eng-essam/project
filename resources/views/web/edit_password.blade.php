@@ -33,6 +33,7 @@
                                             @error('oldpassword')
                                                 {{ $message }}
                                             @enderror
+                                            <div><a href="{{ url('/forgot/password') }}" class="txt1">نسيت كلمة السر؟</a></div>
                                         </div>
                                     </div>
                                 </div>

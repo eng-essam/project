@@ -34,7 +34,7 @@
             <div class="wrap-login">
                 @yield('main')
                 <div class="login-more"
-                    style="background-image: url('https://assets.mailtrap.io/packs/assets/landing/login-fb2fcb15feb36d8e9356.svg');padding: 10px">
+                    style="background-image:url({{ asset('style/img/login.svg') }});padding: 10px">
                 </div>
             </div>
         </div>
