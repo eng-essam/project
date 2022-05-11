@@ -4,6 +4,7 @@ namespace App\Http\Controllers\web;
 
 use App\Http\Controllers\Controller;
 use App\Mail\verify_email;
+use App\Models\Union;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -200,7 +201,8 @@ class Authcontroller extends Controller
     //عرض صفحة مشكلة في التسجيل
     public function problem()
     {
-        return view("all.problem");
+        $data['unions']=Union::all();
+        return view("all.problem")->with($data);
     }
 
 }

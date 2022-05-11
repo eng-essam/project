@@ -24,6 +24,7 @@
               @endauth
 
               <a href="index.html">
+                  {{-- <span><img style="width: 100px" src={{ asset('style_member/assets/img/logo.png') }}></span> --}}
                   <span>LOGO</span>
               </a>
           </div>
@@ -52,7 +53,8 @@
 
                   @auth
 
-                      <li><a style="font-size: 20px;" class="nav-link scrollto active" href="{{ url('union/home') }}">نقابة
+                      <li><a style="font-size: 20px;" class="nav-link scrollto active"
+                              href="{{ url('union/home') }}">نقابة
                               {{ $union->name }}</a></li>
 
                       <li class="dropdown">
@@ -70,8 +72,8 @@
                           </ul>
                       </li>
 
-                    <li><a style="font-size: 20px;" class="nav-link scrollto"
-                        href="{{ url('/union/information') }}">الاخبار</a></li>
+                      <li><a style="font-size: 20px;" class="nav-link scrollto"
+                              href="{{ url('/union/information') }}">الاخبار</a></li>
 
                       <li><a style="font-size: 20px;" class="nav-link scrollto"
                               href="{{ url('member/myservice') }}">طلباتي</a></li>

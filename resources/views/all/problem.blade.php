@@ -5,7 +5,7 @@
 @endsection
 
 @section('main')
-    
+
 
     <form class="problem-form">
 
@@ -16,10 +16,10 @@
         <div class="text-center">
             <select id="governerate" class="form-select problem-form-btn text-center w-50" style="margin-right: 110px;">
                 <option value="" >إختر النقابة </option>
-                <option value="01283181109"> نقابة الصيدلة</option>
-                <option value="01525381109"> نقابة طب بيطرى </option>
-                <option value="01225536582">نقابة طب بشري</option>
-                <option value="01022898109">نقابة الاسنان</option>
+                @foreach ($unions as $union)
+                <option value="{{$union->phone}}">{{$union->name}}</option>
+                @endforeach
+
             </select>
         </div>
         <div class="text-center form-group mt-5 mb-4">
