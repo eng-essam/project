@@ -19,15 +19,15 @@
 @section('main')
     <div class="card card-danger">
         <div class="card-header">
-            <div style="float: right;">
+            <div>
                 <h5>
-                    <span style="font-weight: bold"> اسم العضو : </span>
+                    <span> اسم العضو : </span>
                     {{ $user->name }}
                 </h5>
             </div>
             <div>
                 <h5>
-                    <span style="font-weight: bold"> اسم الخدمة : </span>
+                    <span> اسم الخدمة : </span>
                     {{ $service->namear }}
                 </h5>
             </div>
@@ -103,13 +103,13 @@
                             </div>
                         </div>
 
-                        <div style="margin-top: 100px" class="row">
+                        <div class="row form">
                             <div style="text-align: right" class="card cardimg">
                                 <div class="card-body" style="direction: rtl">
                                     <form action="{{url("admin/review/$user->id/$service->id")}}" method="POST">
                                         @csrf
                                         <h2 class="text-right">مراجعة الطلب</h2>
-                                        <textarea style="width: 400px;height: 100px;" placeholder="يرجي كتابة ملاحظات المشرف المراجع علي بيانات الخدمة"
+                                        <textarea placeholder="يرجي كتابة ملاحظات المشرف المراجع علي بيانات الخدمة"
                                             name="text" value="" id=""></textarea>
                                             <div >
                                                 @error('text')
@@ -117,26 +117,23 @@
                                                 @enderror
                                             </div>
                                         <div class="mt-3 d-flex">
-                                            <div style="margin-left: 20px" class="form-check">
+                                            <div class="form-check ckeck1">
                                                 <input class="form-check-input" type="radio" name="check" value="موافق"
                                                     id="flexRadioDefault1" checked>
-                                                <label style="font-size: 23px ;font-weight: bold;margin-right: 20px"
-                                                    class="form-check-label" for="flexRadioDefault1">
+                                                <label class="form-check-label" for="flexRadioDefault1">
                                                     موافقة
                                                 </label>
                                             </div>
-                                            <div style="margin-bottom: 20px" class="form-check">
+                                            <div class="form-check check2">
                                                 <input class="form-check-input" type="radio" name="check" value="رفض"
                                                     id="flexRadioDefault2">
-                                                <label style="font-size: 23px ;font-weight: bold;margin-right: 20px"
-                                                    class="form-check-label" for="flexRadioDefault2">
+                                                <label class="form-check-label" for="flexRadioDefault2">
                                                     رفض
                                                 </label>
                                             </div>
                                         </div>
 
-                                        <div class="form-group"
-                                            style="width: min-content;margin: auto auto 10px auto ;">
+                                        <div class="form-group approve">
                                             <div class="input-group" style="direction: rtl">
                                                 <input style="background-color: #DC3545;color: white" type="submit"
                                                     value="ارسال" class="form-control">

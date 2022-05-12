@@ -1,30 +1,219 @@
 @extends('admin.layout')
 
+@section('link')
+    <link rel="stylesheet" href="{{ asset('style_admin/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('style_admin/css/jquery.fancybox.min.css') }}">
+@endsection
+
 @section('title')
-     مراجعة طلب العضو
+    مراجعة طلب العضو
 @endsection
 
 
 @section('namepage')
     <h1 style="color: white ; font-size: 25px ;padding-top: 10px">
-        بحث عن عضو
+        مراجعة طلب العضو
     </h1>
 @endsection
 
 @section('main')
-    <div class="card" style="direction: rtl">
+    <div class="card card-danger">
+        <div class="card-header">
+            <div>
+                <h5>
+                    <span> اسم العضو : </span>
+                    {{ $user->name }}
+                </h5>
+            </div>
+            <div>
+                <h5>
+                    <span> اسم الخدمة : </span>
+                    {{ $service->namear }}
+                </h5>
+            </div>
+        </div>
+
         <div class="card-body">
+            <div style="direction:rtl;">
+                <div class="container">
+                    <div class="container-fluid">
+                        <div class="row">
 
-            <img src="{{ asset("web/$img->card") }}" alt="" height="250px">
-            <img src="{{ asset("web/$img->personal_card") }}" alt="" height="250px">
-            <img src="{{ asset("web/$img->License") }}" alt="" height="250px">
-            <img src="{{ asset("web/$img->recruitment") }}" alt="" height="250px">
-            <img src="{{ asset("web/$img->assignment") }}" alt="" height="250px">
-            <img src="{{ asset("web/$img->statement") }}" alt="" height="250px">
-            <img src="{{ asset("web/$img->movements") }}" alt="" height="250px">
-            <img src="{{ asset("web/$img->cost") }}" alt="" height="250px">
+                            
+                            <div class="col-xl-3 col-md-4 col-sm-6 col-12 mb-4">
+                                <div class="cardimg">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between px-md-1">
+                                            <div class="align-self-center">
+                                                <a data-fancybox="gallery" href="{{ asset("web/$img->personal_card") }}"
+                                                    data-caption="صورة البطاقة">
+                                                    <img src="{{ asset("web/$img->personal_card") }}" alt="image">
+                                                </a>
+                                                <p class="mt-2">صورة البطاقة</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-xl-3 col-md-4 col-sm-6 col-12 mb-4">
+                                <div class="cardimg">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between px-md-1">
+                                            <div class="align-self-center">
+                                                <a data-fancybox="gallery" href="{{ asset("web/$img->card") }}"
+                                                    data-caption="صورة الكارنيه العام">
+                                                    <img src="{{ asset("web/$img->card") }}" alt="image">
+                                                </a>
+                                                <p class="mt-2">صورة الكارنيه العام</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-4 col-sm-6 col-12 mb-4">
+                                <div class="cardimg">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between px-md-1">
+                                            <div class="align-self-center">
+                                                <a data-fancybox="gallery" href="{{ asset("web/$img->License") }}"
+                                                    data-caption="صورة ترخيص مزاولة المهنه">
+                                                    <img src="{{ asset("web/$img->License") }}" alt="image">
+                                                </a>
+                                                <p class="mt-2">صورة ترخيص مزاولة المهنه</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-4 col-sm-6 col-12 mb-4">
+                                <div class="cardimg">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between px-md-1">
+                                            <div class="align-self-center">
+                                                <a data-fancybox="gallery" href="{{ asset("web/$img->recruitment") }}"
+                                                    data-caption="صورة التجنيد (مذكر)">
+                                                    <img src="{{ asset("web/$img->recruitment") }}" alt="image">
+                                                </a>
+                                                <p class="mt-2">صورة التجنيد (مذكر)</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-4 col-sm-6 col-12 mb-4">
+                                <div class="cardimg">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between px-md-1">
+                                            <div class="align-self-center">
+                                                <a data-fancybox="gallery" href="{{ asset("web/$img->assignment") }}"
+                                                    data-caption="صورة إلغاء التكليف">
+                                                    <img src="{{ asset("web/$img->assignment") }}" alt="image">
+                                                </a>
+                                                <p class="mt-2">صورة إلغاء التكليف</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-4 col-sm-6 col-12 mb-4">
+                                <div class="cardimg">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between px-md-1">
+                                            <div class="align-self-center">
+                                                <a data-fancybox="gallery" href="{{ asset("web/$img->statement") }}"
+                                                    data-caption="صورة إفادة من جهة العمل بالمدة التي قضاها في التكليف">
+                                                    <img src="{{ asset("web/$img->statement") }}" alt="image">
+                                                </a>
+                                                <p class="mt-2">صورة إفادة من جهة العمل بالمدة التي قضاها في التكليف</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-4 col-sm-6 col-12 mb-4">
+                                <div class="cardimg">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between px-md-1">
+                                            <div class="align-self-center">
+                                                <a data-fancybox="gallery" href="{{ asset("web/$img->movements") }}"
+                                                    data-caption="صورة شهادة تحركات من الصحة">
+                                                    <img src="{{ asset("web/$img->movements") }}" alt="image">
+                                                </a>
+                                                <p class="mt-2">صورة شهادة تحركات من الصحة</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
 
+                            
+                            <div class="col-xl-3 col-md-4 col-sm-6 col-12 mb-4">
+                                <div class="cardimg">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between px-md-1">
+                                            <div class="align-self-center">
+                                                <a data-fancybox="gallery" href="{{ asset("web/$img->cost") }}"
+                                                    data-caption="صورة وصل سداد الخدمة">
+                                                    <img src="{{ asset("web/$img->cost") }}" alt="image">
+                                                </a>
+                                                <p class="mt-2">صورة وصل سداد الخدمة</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row form">
+                            <div style="text-align: right" class="card cardimg">
+                                <div class="card-body" style="direction: rtl">
+                                    <form action="{{url("admin/review/$user->id/$service->id")}}" method="POST">
+                                        @csrf
+                                        <h2 class="text-right">مراجعة الطلب</h2>
+                                        <textarea placeholder="يرجي كتابة ملاحظات المشرف المراجع علي بيانات الخدمة"
+                                            name="text" value="" id=""></textarea>
+                                            <div >
+                                                @error('text')
+                                                    {{ $message }}
+                                                @enderror
+                                            </div>
+                                        <div class="mt-3 d-flex">
+                                            <div class="form-check ckeck1">
+                                                <input class="form-check-input" type="radio" name="check" value="موافق"
+                                                    id="flexRadioDefault1" checked>
+                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                    موافقة
+                                                </label>
+                                            </div>
+                                            <div class="form-check check2">
+                                                <input class="form-check-input" type="radio" name="check" value="رفض"
+                                                    id="flexRadioDefault2">
+                                                <label class="form-check-label" for="flexRadioDefault2">
+                                                    رفض
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group approve">
+                                            <div class="input-group" style="direction: rtl">
+                                                <input style="background-color: #DC3545;color: white" type="submit"
+                                                    value="ارسال" class="form-control">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script src="{{ asset('style_admin/js/jquery.fancybox.min.js') }}"></script>
 @endsection
