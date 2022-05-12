@@ -22,10 +22,6 @@
                             <div class="align-items-center" data-aos="zoom-out" data-aos-delay="200">
                                 <img src="{{ asset('style_member/assets/img/hero-img.png') }}" class="img-fluid"
                                     alt="image" />
-
-
-
-
                             </div>
                         </div>
                     </div>
@@ -117,8 +113,8 @@
                         لوصل الدفع
                     </p>
                     <div>
-                        <p>فودافون كاش: {{$union->phone}}</p>
-                        <p>البنك الاهلي: 12345</p>
+                        <p>فودافون كاش: {{ $union->phone }}</p>
+                        <p> رقم الحساب البنكي: {{$union->bank}}</p>
                     </div>
                 </div>
                 <a type="submit" href="{{ url("/union/serviceform/$service->id") }}" class="text-center">إبدأ

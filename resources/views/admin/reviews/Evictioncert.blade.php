@@ -25,7 +25,7 @@
                     {{ $user->name }}
                 </h5>
             </div>
-            <div>
+            <div class="left">
                 <h5>
                     <span> اسم الخدمة : </span>
                     {{ $service->namear }}

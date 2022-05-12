@@ -110,14 +110,13 @@
                 <div class="col-lg-12 text-center">
                     <h4>الرسوم</h4>
                     <p class="fs-5 mt-2">رسوم الخدمة: {{ $services_cost->pivot->service_cost }} </p>
-                    <p>1010 جنيه</p>
                     <p>
                         يتم دفع الرسوم عن طريق تحويل المبلغ علي الحساب والإحتفاظ بصورة
                         لوصل الدفع
                     </p>
                     <div>
                         <p>فودافون كاش: {{$union->phone}}</p>
-                        <p>البنك الاهلي: 12345</p>
+                        <p> رقم الحساب البنكي: {{$union->bank}}</p>
                     </div>
                 </div>
                 <a type="submit" href="{{ url("/union/serviceform/$service->id") }}" class="text-center">إبدأ

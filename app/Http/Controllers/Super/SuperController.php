@@ -561,4 +561,91 @@ class SuperController extends Controller
 
         return view('superadmin.search-member-operation')->with($data);
     }
+
+    public function union_setting()
+    {
+        $data['union'] = Union::where('id', Auth::user()->union_id)->first();
+        return view('superadmin.union_data')->with($data);
+    }
+
+    public function union_setting_phone()
+    {
+        $data['union'] = Union::where('id', Auth::user()->union_id)->first();
+        return view('superadmin.union_phone')->with($data);
+    }
+
+    public function setting_phone(Request $request)
+    {
+        $userdata=Auth::user();
+        $union = Union::where('id', Auth::user()->union_id)->first();
+        //validate of phone
+        if ($request->phone == null) {
+            $request->phone = $union->phone;
+        } else {
+            $request->validate(['phone' => "numeric|digits:11|unique:unions,phone,$union->phone",
+            ]);
+            $request->session()->flash('success_edit', "تم تعديل البيانات بنجاح");
+        }
+
+        //validate of  oldpassword
+        $request->validate([
+            'password' => [
+                'required',
+                function ($attribute, $value, $fail) use ($userdata) {
+                    if ($value != null) {
+                        if (!Hash::check($value, $userdata->password)) {
+                            $fail('كلمة السر غير صحيحة');
+                        }
+                    }
+                },
+            ],
+        ]);
+
+        $union->update([
+            'phone' => $request->phone,
+        ]);
+
+        return redirect(url('/union/setting'));
+    }
+
+    public function union_setting_bank()
+    {
+        $data['union'] = Union::where('id', Auth::user()->union_id)->first();
+        return view('superadmin.union_bank')->with($data);
+    }
+
+    public function setting_bank(Request $request)
+    {
+        $userdata=Auth::user();
+        $union = Union::where('id', Auth::user()->union_id)->first();
+        //validate of bank
+        if ($request->bank == null) {
+            $request->bank = $union->bank;
+        } else {
+            $request->validate(['bank' => "numeric|unique:unions,bank,$union->bank",
+            ]);
+            $request->session()->flash('success_edit', "تم تعديل البيانات بنجاح");
+        }
+
+        //validate of  oldpassword
+        $request->validate([
+            'password' => [
+                'required',
+                function ($attribute, $value, $fail) use ($userdata) {
+                    if ($value != null) {
+                        if (!Hash::check($value, $userdata->password)) {
+                            $fail('كلمة السر غير صحيحة');
+                        }
+                    }
+                },
+            ],
+        ]);
+
+        $union->update([
+            'bank' => $request->bank,
+        ]);
+
+        return redirect(url('/union/setting'));
+    }
+
 }

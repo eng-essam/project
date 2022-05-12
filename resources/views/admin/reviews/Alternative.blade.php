@@ -25,9 +25,9 @@
                     {{ $user->name }}
                 </h5>
             </div>
-            <div>
-                <h5>
-                    <span> اسم الخدمة : </span>
+            <div class="left">
+                <h5 >
+                    <span > اسم الخدمة : </span>
                     {{ $service->namear }}
                 </h5>
             </div>
@@ -53,7 +53,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
 
                             <div class="col-xl-3 col-md-4 col-sm-6 col-12 mb-4">
                                 <div class="cardimg">

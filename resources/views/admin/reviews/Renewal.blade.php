@@ -25,9 +25,9 @@
                     {{ $user->name }}
                 </h5>
             </div>
-            <div>
-                <h5>
-                    <span> اسم الخدمة : </span>
+            <div class="left" >
+                <h5 >
+                    <span > اسم الخدمة : </span>
                     {{ $service->namear }}
                 </h5>
             </div>
@@ -38,23 +38,6 @@
                 <div class="container">
                     <div class="container-fluid">
                         <div class="row">
-
-                            {{-- <div class="col-xl-3 col-md-4 col-sm-6 col-12 mb-4">
-                                <div class="cardimg">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between px-md-1">
-                                            <div class="align-self-center">
-                                                <a data-fancybox="gallery" href="{{ asset("web/$img->card") }}"
-                                                    data-caption="صورة الكارنيه">
-                                                    <img src="{{ asset("web/$img->card") }}" alt="image">
-                                                </a>
-                                                <p class="mt-2">صورة الكارنيه</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
-
                             <div class="col-xl-3 col-md-4 col-sm-6 col-12 mb-4">
                                 <div class="cardimg">
                                     <div class="card-body">

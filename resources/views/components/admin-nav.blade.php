@@ -7,12 +7,12 @@
         <nav id="sidebar" class="sidebar-wrapper">
             <div class="sidebar-content">
 
-                <div class="sidebar-header">
+                <div style="padding:0" class="sidebar-header">
                     <h2 class="text-danger text-center m-4 ">
                         &nbsp; <span style="color: white;"> نقابة<span class="text-danger">{{ $union->name }}</span>
                         </span>
                     </h2>
-                </div>
+                </div >
                 <!-- sidebar-head  -->
 
 
@@ -51,6 +51,12 @@
                             <a href="{{ url('/super/info') }}">
                                 <i class="fas fa-info"></i>
                                 <span style="font-size: 17px ;font-weight: 700 ">بياناتي</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url('/union/setting') }}">
+                                <i class="fa-solid fa-gear"></i>
+                                <span style="font-size: 17px ;font-weight: 700 ">اعدادات النقابة</span>
                             </a>
                         </li>
 

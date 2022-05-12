@@ -116,7 +116,7 @@
                     </p>
                     <div>
                         <p>فودافون كاش: {{$union->phone}}</p>
-                        <p>البنك الاهلي: 12345</p>
+                        <p> رقم الحساب البنكي: {{$union->bank}}</p>
                     </div>
                 </div>
                 <a type="submit" href="{{ url("/union/serviceform/$service->id") }}" class="text-center">إبدأ
