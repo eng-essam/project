@@ -14,12 +14,12 @@ class Union extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class,'user_user');
+        return $this->belongsToMany(User::class, 'user_user');
     }
 
     public function services()
     {
-        return $this->belongsToMany(Service::class,'union_service','union_id','service_id')->withTimestamps()->withPivot('service_cost');
+        return $this->belongsToMany(Service::class, 'union_service', 'union_id', 'service_id')->withTimestamps()->withPivot('service_cost');
     }
 
     public function information()
@@ -27,7 +27,17 @@ class Union extends Model
         return $this->hasMany(Information::class);
     }
 
-
+    public function test()
+    {
+        $test = $this->services;
+        $data = [];
+        for ($i = 0; $i < $test->count(); $i++) {
+            $data[] = [
+                'service_id' => $test[$i]->pivot->service_id,
+                'service_cost' => $test[$i]->pivot->service_cost,
+            ];
+        }
+        return $data;
+    }
 
 }
-

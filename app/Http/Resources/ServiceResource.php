@@ -19,6 +19,7 @@ class ServiceResource extends JsonResource
            'namear'=> $this->namear,
            'title'=> $this->title,
            'img'=> $this->img,
+            //'service_cost'=>$this->test(),
 
         ];
     }

@@ -18,8 +18,9 @@ class UnionResource extends JsonResource
             'id'=>$this->id,
             'name'=>$this->name,
             'phone'=> $this->phone,
+            'bank'=> $this->bank,
             'services'=> ServiceResource::collection($this->whenLoaded('services')),
-             //'services'=>$this->test(),
+            'service_cost'=>$this->test(),
 
 
          ];
