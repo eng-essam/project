@@ -19,7 +19,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 d-flex flex-column justify-content-center">
-                    <h1 style="font-size: 37px;" data-aos="fade-up">معلوماتك النقابية من
+                    <h1 style="font-size: 37px;" data-aos="fade-up">خدماتك النقابية من
                         مكان واحد </h1>
                     <h2 style="direction: rtl;" data-aos="fade-up" data-aos-delay="400" class="text-center">هذا
                         الموقع صُمم لكي يساعد الأعضاء على إتمام الخدمات النقابية أونلاين
