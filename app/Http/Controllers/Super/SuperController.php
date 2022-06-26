@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Super;
 
-use App\Http\Controllers\Controller;
-use App\Models\Union;
 use App\Models\User;
+use App\Models\Union;
+use App\Models\Information;
 use Illuminate\Http\Request;
+use App\Http\Middleware\superadmin;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class SuperController extends Controller
@@ -26,6 +29,7 @@ class SuperController extends Controller
 
     public function update_member(Request $request)
     {
+
         $loggedUser = Auth::user();
 
         if ($loggedUser->union_id == '1') {
@@ -36,6 +40,14 @@ class SuperController extends Controller
             $union_id = '3';
         } elseif ($loggedUser->union_id == '4') {
             $union_id = '4';
+        } elseif($loggedUser->union_id == '5') {
+            $union_id = '5';
+        } elseif ($loggedUser->union_id == '6') {
+            $union_id = '6';
+        } elseif ($loggedUser->union_id == '7') {
+            $union_id = '7';
+        } elseif ($loggedUser->union_id == '8') {
+            $union_id = '8';
         }
 
         $request->validate([
@@ -184,6 +196,14 @@ class SuperController extends Controller
             $union_id = '3';
         } elseif ($loggedUser->union_id == '4') {
             $union_id = '4';
+        } elseif($loggedUser->union_id == '5') {
+            $union_id = '5';
+        } elseif ($loggedUser->union_id == '6') {
+            $union_id = '6';
+        } elseif ($loggedUser->union_id == '7') {
+            $union_id = '7';
+        } elseif ($loggedUser->union_id == '8') {
+            $union_id = '8';
         }
 
         $request->validate([
@@ -647,5 +667,169 @@ class SuperController extends Controller
 
         return redirect(url('/union/setting'));
     }
+    //////////////////////////////
+
+    public function information(){
+
+        $data['user'] = Auth::user();
+        $data['information'] = Information::where('union_id', $data['user']->union_id)->paginate(15);
+        return view('superadmin.all-information')->with($data);
+    }
+    /////////////////////////////////////
+
+    public function oneinformation($id)
+    {
+        $data['user'] = Auth::user();
+        $data['information'] = Information::where('union_id', $data['user']->union_id)->where('id', $id)->first();
+        return view("superadmin.one-information")->with($data);
+    }
+
+    public function add_information(){
+
+        $data['loggedUser'] = Auth::user();
+        $unionid = $data['loggedUser']->union_id;
+        $data['union'] = Union::find($unionid);
+        return view('superadmin.add-information')->with($data);
+    }
+    //////////////////////////////////////
+
+    public function store_information(Request $request){
+
+    $loggedUser = Auth::user();
+    $superid = $loggedUser->id;
+    $supername = $loggedUser->name;
+
+    if ($loggedUser->union_id == '1') {
+        $union_id = '1';
+    } elseif ($loggedUser->union_id == '2') {
+        $union_id = '2';
+    } elseif ($loggedUser->union_id == '3') {
+        $union_id = '3';
+    } elseif ($loggedUser->union_id == '4') {
+        $union_id = '4';
+    } elseif($loggedUser->union_id == '5') {
+        $union_id = '5';
+    } elseif ($loggedUser->union_id == '6') {
+        $union_id = '6';
+    } elseif ($loggedUser->union_id == '7') {
+        $union_id = '7';
+    } elseif ($loggedUser->union_id == '8') {
+        $union_id = '8';
+    }
+
+        $request->validate([
+            'header' => [
+                'required',
+                function ($attribute, $value, $fail) {
+                    if (!preg_match('/\p{Arabic}/u', $value)) {
+                        $fail('يرجي كتابة عنوان الخبر بالغة العربية');
+                    }
+                },
+            ],
+            'titel' => [
+                'required',
+                function ($attribute, $value, $fail) {
+                    if (!preg_match('/\p{Arabic}/u', $value)) {
+                        $fail('يرجي كتابة محتوى الخبر بالغة العربية');
+                    }
+                },
+            ],
+            'img' => 'required|image',
+        ]);
+
+        $pathimg = Storage::disk('uploads')->put('information',$request->img);
+        Information::create([
+            'header'=>$request->header,
+            'titel'=>$request->titel,
+            'img' => $pathimg,
+            'admin_id' => $superid,
+            'admin_name' => $supername,
+            'union_id' => $union_id,
+        ]);
+
+        $request->session()->flash('success_edit', 'تم إضافة خبر جديد بنجاح');
+        return redirect(url('/superadmin/all/information'));
+    }
+    /////////////////////////////////////////
+
+    public function delete_information($id, Request $request){
+
+        $loggedUser = Auth::user();
+        $user = User::findOrfail($loggedUser->id);
+        $informationdata = Information::where('union_id', $user->union_id)->where('id', $id)->first();
+        Storage::disk('uploads')->delete($informationdata->img);
+        $informationdata->delete();
+        $request->session()->flash('success_delet', 'تم حذف بيانات الخبر بنجاح');
+        return redirect(url('superadmin/all/information'));
+    }
+    /////////////////////////////////////
+
+
+    public function edit_information($id){
+
+        $loggedUser = Auth::user();
+        $user = User::findOrfail($loggedUser->id);
+        $data['information'] = Information::where('union_id', $user->union_id)->where('id', $id)->first();
+        if($data['information']){
+        return view("superadmin.edit-information")->with($data);
+        }
+        else {
+            return abort('403');
+        }
+
+    }
+    /////////////////////////////////////
+
+    public function update_information($id, Request $request){
+
+        $loggedUser = Auth::user();
+        $user = User::findOrfail($loggedUser->id);
+        $informationdata = Information::where('union_id', $user->union_id)->where('id', $id)->first();
+        if ($request->header == null ){
+            $request->header = $informationdata->header;
+        }
+        else {
+        $request->validate([
+            'header' => [
+                function ($attribute, $value, $fail) {
+                        if(!preg_match('/\p{Arabic}/u', $value)) {
+                            $fail('يرجي كتابة عنوان الخبر بالغة العربية');
+                        }
+                },
+             ],
+          ]);
+        }
+        if ($request->titel == null ){
+            $request->titel = $informationdata->titel;
+        }
+        else {
+          $request->validate([
+            'titel' => [
+                function ($attribute, $value, $fail){
+                   if(!preg_match('/\p{Arabic}/u', $value)) {
+                        $fail('يرجي كتابة محتوى الخبر بالغة العربية');
+                    }
+                },
+             ],
+            'img' => 'nullable|image',
+         ]);
+       }
+
+        $pathimg = $informationdata ->img;
+        if ($request->hasFile('img')) {
+            Storage::disk('uploads')->delete($pathimg);
+            $pathimg = Storage::disk('uploads')->put('information',$request->img);
+        }
+        $informationdata->update([
+            'header'=>$request->header,
+            'titel'=>$request->titel,
+            'img' => $pathimg,
+        ]);
+
+        $request->session()->flash('success_edit', 'تم تعديل الخبر بنجاح');
+        return redirect(url('/superadmin/all/information'));
+    }
+    /////////////////////////////////////
+
 
 }

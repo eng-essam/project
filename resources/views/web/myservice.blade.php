@@ -1,6 +1,8 @@
 @extends('web.layout_member')
 
-
+@section('title')
+طلباتي
+@endsection
 
 @section('main')
     <!-- Start #main -->

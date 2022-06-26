@@ -33,6 +33,7 @@ class ApiUnionController extends Controller
        return response()->json([
           'status' => true,
           'data'=> new UnionResource($union),
+
        ]);
     }
     //////////////////////////////

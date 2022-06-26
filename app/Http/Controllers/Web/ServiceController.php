@@ -18,8 +18,8 @@ class ServiceController extends Controller
         $user = Auth::user();
         $unionid = $user->union_id;
         $data['union'] = Union::findOrfail($unionid);
-        $data['informations'] = $data['union']->information;
-        $data['servicess'] = $data['union']->services->take(4);
+        $data['information'] = $data['union']->information->take(10);
+        $data['servicess'] = $data['union']->services->take(10);
         return view('web.unoin_home')->with($data);
     }
 
@@ -28,10 +28,20 @@ class ServiceController extends Controller
         $user = Auth::user();
         $unionid = $user->union_id;
         $data['union'] = Union::findOrfail($unionid);
-        $data['servicess'] = $data['union']->services->take(4);
-        $data['informations'] = $data['union']->information;
-        return view('web.information')->with($data);
+        $data['information'] = $data['union']->information->take(12);  //paginate()
+        return view('web.all-information')->with($data);
     }
+    /////////////////////////////
+
+    public function oneinformation($id)
+    {
+        $user = Auth::user();
+        $unionid = $user->union_id;
+        $data['union'] = Union::findOrfail($unionid);
+        $data['information'] = $data['union']->information->where('id', $id)->first();
+        return view('web.one-information')->with($data);
+    }
+    ///////////////////////////////////
 
     public function showservice($id, Request $request)
     {

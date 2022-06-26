@@ -15,12 +15,14 @@ class UnionResource extends JsonResource
     public function toArray($request)
     {
         return [
+
             'id'=>$this->id,
             'name'=>$this->name,
             'phone'=> $this->phone,
             'bank'=> $this->bank,
             'services'=> ServiceResource::collection($this->whenLoaded('services')),
             'service_cost'=>$this->test(),
+            'information'=>$this->Info(),
 
 
          ];

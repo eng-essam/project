@@ -1,0 +1,34 @@
+.entry img{
+    height: 500px;
+}
+.entry h5{
+    font-weight: bold;
+}
+.entry p small{
+    margin-left: 10px;
+}
+.entry p i{
+    color: #4084fd;
+}
+.entry p span{
+    margin-right:2px ;
+}
+.edit{
+    background-color:#3C4147 ;
+    display: grid;
+    grid-template-columns: repeat(2,50%);
+    justify-items: center;
+}
+.edit a i {
+    font-size:x-large;
+}
+.edit a .del{
+    color: red;
+}
+@media screen and (max-width: 768px) {
+    .entry img{
+        height:auto; 
+        max-width: 400px; 
+        width: 100%;
+    }
+}

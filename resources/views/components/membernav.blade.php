@@ -3,7 +3,10 @@
       <div class="container-fluid container-xl d-flex align-items-center
         justify-content-between">
 
+
+
           <div class="logo d-flex align-items-center">
+
               @auth
                   <div class="dropdown">
                       <i class="fa-solid fa-gear dropicon"></i>
@@ -19,6 +22,7 @@
                       </div>
                   </div>
               @endauth
+
               <a href="index.html">
                   {{-- <span><img style="width: 100px" src={{ asset('style_member/assets/img/logo.png') }}></span> --}}
                   <span>LOGO</span>
@@ -42,8 +46,8 @@
                               @endforeach
                           </ul>
                       </li>
+
                       <li><a style="font-size: 20px;" class="nav-link scrollto" href="#about">معلومات عنا</a></li>
-                      <li><a style="font-size: 20px;" class="nav-link scrollto" href="#team">الفريق</a></li>
 
                   @endguest
 
@@ -69,7 +73,7 @@
                       </li>
 
                       <li><a style="font-size: 20px;" class="nav-link scrollto"
-                              href="{{ url('/union/information') }}">الاخبار</a></li>
+                              href="{{ url('/union/all/information') }}">الأخبار</a></li>
 
                       <li><a style="font-size: 20px;" class="nav-link scrollto"
                               href="{{ url('member/myservice') }}">طلباتي</a></li>

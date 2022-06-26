@@ -1,5 +1,9 @@
 @extends('web.layout_member')
 
+@section('title')
+الخدمات
+@endsection
+
 @section('header')
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="hero d-flex align-items-center">

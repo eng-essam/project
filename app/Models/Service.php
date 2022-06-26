@@ -20,5 +20,18 @@ class Service extends Model
         return $this->belongsToMany(Union::class,'union_service')->withTimestamps()->withPivot('service_cost');
     }
 
+     /*  public function test(){
+        $test = $this->unions;
+        $data = [];
+        for ($i=0; $i<$test->count();$i++){
+            $data[] = [
+               'union_id'=> $test[$i]-> pivot->union_id,
+               'service_id'=> $test[$i]-> pivot->service_id,
+               'service_cost'=> $test[$i]-> pivot->service_cost,
+            ];
+        }
+        return  $data;
+      } */
+
 
 }

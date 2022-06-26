@@ -1,5 +1,8 @@
 @extends('web.layout_member')
 
+@section('title')
+    الصفحة الرئيسية
+@endsection
 @section('style')
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -61,115 +64,31 @@
                 </header>
                 <div style="grid-gap: 20px 20px;" class="card-group">
                     <div class="owl-carousel owl-theme">
+                        @foreach ($information as $info)
+                            <div class="item">
+                                <div style="border:1px #D2D2D2 solid ;height:437px ;" class="card">
 
-                        <div class="item">
-                            <div style="border:1px #D2D2D2 solid ;height:437px ;" class="card">
+                                    <img style="height: 200px;" src="{{ asset("web/$info->img") }}" alt="image"
+                                        class="card-img-top" alt="...">
 
-                                <img style="height: 200px;" src="{{ asset('style/img/login.svg') }}" class="card-img-top" alt="...">
+                                    <div style="direction: rtl;padding-bottom: 0px;margin-bottom: 0;" class="card-body">
+                                        <h5>{{ $info->header }}</h5>
 
-                                <div style="direction: rtl ;height: 100px;overflow: hidden;" class="card-body">
-                                    <h5>عنوان الموضوع</h5>
-                                    <p style="overflow: hidden;" class="card-text">هناك حقيقة مثبتة منذ
-                                        زمن طويل وهي أن المحتوى المقروء
-                                        لصفحة ما سيلهي القارئ عريقة لوريم إيبسومهناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى
-                                        المقروء
-                                        لصفحة                                ما سيلهي القارئ عن افي الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسومإيبسومم
-                                        ما سيلهي القارئ عن افي الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسومإيبسومم
-                                        ما سيلهي القارئ عن افي الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسومإيبسومم
-                                        ما سيلهي القارئ عن افي الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسومإيبسومم
+                                        <p style=" display: -webkit-box;-webkit-line-clamp: 4;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;"
+                                            class="card-text">{{ $info->titel }}</p>
+                                    </div>
+                                    <a style="text-decoration: none;text-align: center;"
+                                        href="{{ url("/union/one/information/$info->id") }}">المزيد</a>
 
-                                        ما سيلهي القارئ عن افي الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسومإيبسومم
-                                    </p>
+                                    <div style="direction: rtl;" class="card-footer">
+                                        <small
+                                            class="text-muted">{{ Carbon\Carbon::parse($info->created_at)->format('Y-m-d') }}</small>
+                                    </div>
 
                                 </div>
-                                <a style="text-decoration: none;text-align: center;" href="#">المزيد</a>
-                                <div style="direction: rtl;" class="card-footer">
-                                    <small class="text-muted">10/11/2000 </small>
-                                </div>
-
                             </div>
-                        </div>
-                        <div class="item">
-                            <div style="border:1px #D2D2D2 solid ;height:437px ;" class="card">
+                        @endforeach
 
-                                <img style="height: 200px;" src="{{ asset('style/img/login.svg') }}" class="card-img-top" alt="...">
-
-                                <div style="direction: rtl ;height: 100px;overflow: hidden;" class="card-body">
-                                    <h5>عنوان الموضوع</h5>
-                                    <p style="overflow: hidden;" class="card-text">هناك حقيقة مثبتة منذ
-                                        زمن طويل وهي أن المحتوى المقروء
-                                        لصفحة ما سيلهي القارئ عريقة لوريم إيبسومهناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى
-                                        المقروء
-                                        لصفحة                                ما سيلهي القارئ عن افي الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسومإيبسومم
-                                        ما سيلهي القارئ عن افي الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسومإيبسومم
-                                        ما سيلهي القارئ عن افي الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسومإيبسومم
-                                        ما سيلهي القارئ عن افي الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسومإيبسومم
-
-                                        ما سيلهي القارئ عن افي الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسومإيبسومم
-                                    </p>
-
-                                </div>
-                                <a style="text-decoration: none;text-align: center;" href="#">المزيد</a>
-                                <div style="direction: rtl;" class="card-footer">
-                                    <small class="text-muted">10/11/2000 </small>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div style="border:1px #D2D2D2 solid ;height:437px ;" class="card">
-
-                                <img style="height: 200px;" src="{{ asset('style/img/login.svg') }}" class="card-img-top" alt="...">
-
-                                <div style="direction: rtl ;height: 100px;overflow: hidden;" class="card-body">
-                                    <h5>عنوان الموضوع</h5>
-                                    <p style="overflow: hidden;" class="card-text">هناك حقيقة مثبتة منذ
-                                        زمن طويل وهي أن المحتوى المقروء
-                                        لصفحة ما سيلهي القارئ عريقة لوريم إيبسومهناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى
-                                        المقروء
-                                        لصفحة                                ما سيلهي القارئ عن افي الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسومإيبسومم
-                                        ما سيلهي القارئ عن افي الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسومإيبسومم
-                                        ما سيلهي القارئ عن افي الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسومإيبسومم
-                                        ما سيلهي القارئ عن افي الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسومإيبسومم
-
-                                        ما سيلهي القارئ عن افي الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسومإيبسومم
-                                    </p>
-
-                                </div>
-                                <a style="text-decoration: none;text-align: center;" href="#">المزيد</a>
-                                <div style="direction: rtl;" class="card-footer">
-                                    <small class="text-muted">10/11/2000 </small>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div style="border:1px #D2D2D2 solid ;height:437px ;" class="card">
-
-                                <img style="height: 200px;" src="{{ asset('style/img/login.svg') }}" class="card-img-top" alt="...">
-
-                                <div style="direction: rtl ;height: 100px;overflow: hidden;" class="card-body">
-                                    <h5>عنوان الموضوع</h5>
-                                    <p style="overflow: hidden;" class="card-text">هناك حقيقة مثبتة منذ
-                                        زمن طويل وهي أن المحتوى المقروء
-                                        لصفحة ما سيلهي القارئ عريقة لوريم إيبسومهناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى
-                                        المقروء
-                                        لصفحة                                ما سيلهي القارئ عن افي الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسومإيبسومم
-                                        ما سيلهي القارئ عن افي الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسومإيبسومم
-                                        ما سيلهي القارئ عن افي الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسومإيبسومم
-                                        ما سيلهي القارئ عن افي الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسومإيبسومم
-
-                                        ما سيلهي القارئ عن افي الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسومإيبسومم
-                                    </p>
-
-                                </div>
-                                <a style="text-decoration: none;text-align: center;" href="#">المزيد</a>
-                                <div style="direction: rtl;" class="card-footer">
-                                    <small class="text-muted">10/11/2000 </small>
-                                </div>
-
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -205,8 +124,7 @@
             <div class="container" data-aos="fade-up">
                 <div style="direction: rtl;" class="row gx-0">
 
-                    <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up"
-                        data-aos-delay="200">
+                    <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
                         <div class="content">
                             <h2>الموقع يُتيج للاعضاء تنفيذ الخدمات النقابية اونلاين لتوفير
                                 الوقت والجهد على جميع اعضاء النقابات </h2>
@@ -229,8 +147,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-6 d-flex align-items-center mobile-hidden" data-aos="zoom-out"
-                        data-aos-delay="200">
+                    <div class="col-lg-6 d-flex align-items-center mobile-hidden" data-aos="zoom-out" data-aos-delay="200">
                         <img src="{{ asset('style_member/assets/img/about.jpg') }}" class="img-fluid" alt="">
                     </div>
 

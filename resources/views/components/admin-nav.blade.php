@@ -33,6 +33,13 @@
                         </li>
 
                         <li>
+                            <a href="{{ url('/superadmin/all/information') }}">
+                                <i class="fas fa-newspaper"></i>
+                                <span style="font-size: 17px ;font-weight: 700 ">الأخبار</span>
+                            </a>
+                        </li>
+
+                        <li>
                             <a href="{{ url('/admin/service') }}">
                                 <i class="fas fa-hands-helping"></i>
                                 <span style="font-size: 17px ;font-weight: 700 ">خدمات النقابة</span>

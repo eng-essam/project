@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\ApiAuthController;
 use App\Http\Controllers\Api\ApiServiceFormController;
 use App\Http\Controllers\Api\ApiUnionController;
+use App\Http\Controllers\Api\EmailVerificationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,12 @@ Route::post('/register', [ApiAuthController::class, 'register']);
 
 Route::middleware('auth:sanctum')->group(function(){
 
+    /////////////
+    Route::post ('/email/verification', [EmailVerificationController::class ,'sendVerificationEmail']);
+
+    /////////////
+    Route::get ('/verify-email/{id}/{hash}', [EmailVerificationController::class ,'verify']);
+
     ///////// روت عرض معلومات اليوزر
     Route::get('/userInfo', [ApiAuthController::class, 'userInfo']);
 
@@ -53,6 +60,8 @@ Route::middleware('auth:sanctum')->group(function(){
     /////// روت البحث عن خدمة معينة في نقابة معينه
    //Route::post('/services/search', [ApiServiceFormController::class, 'search']);
 
+   Route::middleware('verified')->group(function () {
+
      ///// روت معرفة اذا كان اليوزر طلب الخدمة ولا لا
      Route::get('/serviceInfo/{id}', [ApiServiceFormController::class, 'serviceInfo'] );
 
@@ -68,7 +77,7 @@ Route::middleware('auth:sanctum')->group(function(){
      // روت حذف بيانات كل خدمة طلبها يوزر
      Route::get('/services/delete/{id}', [ApiServiceFormController::class, 'delete']);
 
-
+   });
 
 
 });

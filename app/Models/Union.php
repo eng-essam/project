@@ -14,12 +14,12 @@ class Union extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'user_user');
+        return $this->belongsToMany(User::class,'user_user');
     }
 
     public function services()
     {
-        return $this->belongsToMany(Service::class, 'union_service', 'union_id', 'service_id')->withTimestamps()->withPivot('service_cost');
+        return $this->belongsToMany(Service::class,'union_service','union_id','service_id')->withTimestamps()->withPivot('service_cost');
     }
 
     public function information()
@@ -27,17 +27,36 @@ class Union extends Model
         return $this->hasMany(Information::class);
     }
 
-    public function test()
-    {
+    public function test(){
         $test = $this->services;
         $data = [];
-        for ($i = 0; $i < $test->count(); $i++) {
+        for ($i=0; $i<$test->count();$i++){
             $data[] = [
-                'service_id' => $test[$i]->pivot->service_id,
-                'service_cost' => $test[$i]->pivot->service_cost,
+               'service_id'=> $test[$i]-> pivot->service_id,
+               'service_cost'=> $test[$i]-> pivot->service_cost,
             ];
         }
-        return $data;
-    }
+        return  $data;
+      }
+
+      public function Info(){
+        $Info = $this->information;
+        $data = [];
+        for ($i=0; $i< $Info->count();$i++){
+            $data[] = [
+               'id'=>  $Info[$i]->id,
+               'union_id'=>  $Info[$i]->union_id,
+               'header'=>  $Info[$i]->header,
+               'titel'=>  $Info[$i]->titel,
+               'img'=> asset('web') . "/" . $Info[$i]->img,
+               'created_at'=> $Info[$i]->created_at->format('Y-m-d') ,
+
+            ];
+        }
+        return  $data;
+      }
+
+
 
 }
+

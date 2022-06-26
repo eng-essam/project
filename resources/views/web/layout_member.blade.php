@@ -70,9 +70,9 @@
               rtl;" class="col-lg-2 col-6 footer-links">
                         <ul>
                             @auth
-                            <li style="direction: rtl;"><a href="#">الرئيسية</a><i class="bi bi-chevron-left"></i></li>
+                            <li style="direction: rtl;"><a href="union/home">الرئيسية</a><i class="bi bi-chevron-left"></i></li>
                             <li><a href=""> الخدمات</a><i class="bi bi-chevron-left"></i> </li>
-                            <li><a href="{{url("/union/information")}}"> الاخبار</a><i class="bi bi-chevron-left"></i> </li>
+                            <li><a href="{{url("/union/all/information")}}"> الاخبار</a><i class="bi bi-chevron-left"></i> </li>
                             <li><a href="{{url("/member/myservice")}}"> طلباتي</a><i class="bi bi-chevron-left"></i> </li>
                             <li><a href="{{url("/member/info")}}"> معلوماتي</a><i class="bi bi-chevron-left"></i> </li>
                             <li><a href="{{url("/member_logout")}}"> تسجيل خروج</a><i class="bi bi-chevron-left"></i> </li>

@@ -26,6 +26,13 @@
                         </li>
 
                         <li>
+                            <a href="{{ url('/admin/all/information') }}">
+                                <i class="fas fa-newspaper"></i>
+                                <span style="font-size: 17px ;font-weight: 700 ">الأخبار</span>
+                            </a>
+                        </li>
+
+                        <li>
                             <a href="{{ url('/admin/operation') }}">
                                 <i class="far fa-address-book"></i>
                                 <span style="font-size: 17px ;font-weight: 700 ">الطلبات الوارده</span>
