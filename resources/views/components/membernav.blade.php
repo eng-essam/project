@@ -21,12 +21,19 @@
                           </a>
                       </div>
                   </div>
+
+                  <a href="/union/home">
+                      <span style="font-size:35px ">نق<span style="color: #4D66F1;font-size:35px">ا</span>بتي</span>
+                  </a>
               @endauth
 
-              <a href="index.html">
-                  {{-- <span><img style="width: 100px" src={{ asset('style_member/assets/img/logo.png') }}></span> --}}
-                  <span>LOGO</span>
-              </a>
+              @guest
+                  <a href="/">
+                      <span style="font-size:35px ">نق<span style="color: #4D66F1;font-size:35px">ا</span>بتي</span>
+                  </a>
+              @endguest
+
+
           </div>
 
           <nav id="navbar" class="navbar">
@@ -35,8 +42,8 @@
                       <li><a style="font-size: 20px;" class="nav-link scrollto active" href="/">الرئيسية</a></li>
 
                       <li class="dropdown">
-                          <a href="{{ url('/') }}" class="scrollto"><span
-                                  style="font-size: 20px;">النقابات</span><i class="bibi-chevron-down"></i>
+                          <a href="{{ url('/') }}" class="scrollto"><span style="font-size: 20px;">النقابات</span><i
+                                  class="bibi-chevron-down"></i>
                           </a>
                           <ul>
                               @foreach ($unions as $union)

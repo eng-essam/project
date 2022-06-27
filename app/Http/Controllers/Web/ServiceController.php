@@ -19,7 +19,7 @@ class ServiceController extends Controller
         $unionid = $user->union_id;
         $data['union'] = Union::findOrfail($unionid);
         $data['information'] = $data['union']->information->take(10);
-        $data['servicess'] = $data['union']->services->take(10);
+        $data['servicess'] = $data['union']->services->take(4);
         return view('web.unoin_home')->with($data);
     }
 

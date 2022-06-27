@@ -136,7 +136,7 @@ class Authcontroller extends Controller
             ]);
         }
 
-        //validate of name and oldpassword
+        //validate oldpassword
         $request->validate([
             'password' => [
                 'required',

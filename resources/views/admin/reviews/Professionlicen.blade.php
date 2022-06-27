@@ -25,7 +25,7 @@
                     {{ $user->name }}
                 </h5>
             </div>
-            <div  class="left">
+            <div class="left">
                 <h5>
                     <span> اسم الخدمة : </span>
                     {{ $service->namear }}
@@ -101,6 +101,8 @@
                                     </div>
                                 </div>
                             </div>
+
+
                             <div class="col-xl-3 col-md-4 col-sm-6 col-12 mb-4">
                                 <div class="cardimg">
                                     <div class="card-body">
@@ -116,6 +118,7 @@
                                     </div>
                                 </div>
                             </div>
+
 
 
                             <div class="col-xl-3 col-md-4 col-sm-6 col-12 mb-4">
@@ -138,16 +141,16 @@
                         <div class="row form">
                             <div style="text-align: right" class="card cardimg">
                                 <div class="card-body" style="direction: rtl">
-                                    <form action="{{url("admin/review/$user->id/$service->id")}}" method="POST">
+                                    <form action="{{ url("admin/review/$user->id/$service->id") }}" method="POST">
                                         @csrf
                                         <h2 class="text-right">مراجعة الطلب</h2>
-                                        <textarea placeholder="يرجي كتابة ملاحظات المشرف المراجع علي بيانات الخدمة"
-                                            name="text" value="" id=""></textarea>
-                                            <div >
-                                                @error('text')
-                                                    {{ $message }}
-                                                @enderror
-                                            </div>
+                                        <textarea placeholder="يرجي كتابة ملاحظات المشرف المراجع علي بيانات الخدمة" name="text" value=""
+                                            id=""></textarea>
+                                        <div>
+                                            @error('text')
+                                                {{ $message }}
+                                            @enderror
+                                        </div>
                                         <div class="mt-3 d-flex">
                                             <div class="form-check ckeck1">
                                                 <input class="form-check-input" type="radio" name="check" value="موافق"
@@ -157,8 +160,8 @@
                                                 </label>
                                             </div>
                                             <div class="form-check check2">
-                                                <input class="form-check-input" type="radio" name="check" value="رفض"
-                                                    id="flexRadioDefault2">
+                                                <input class="form-check-input" type="radio" name="check"
+                                                    value="رفض" id="flexRadioDefault2">
                                                 <label class="form-check-label" for="flexRadioDefault2">
                                                     رفض
                                                 </label>

@@ -39,7 +39,7 @@
                                 <!-- عنوان الخبر -->
                                 <h5 class="text-right" class="card-title">{{ $info->header }}</h5>
                                 <!-- محتوي الخبر -->
-                                <p style=" display: -webkit-box;-webkit-line-clamp: 4;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;"
+                                <p style=" display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;"
                                     class="card-text">{{ $info->titel }}</p>
                             </div>
 

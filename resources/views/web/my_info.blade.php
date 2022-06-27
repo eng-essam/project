@@ -1,5 +1,8 @@
 @extends('web.layout_member')
 
+@section('title')
+معلوماتي
+@endsection
 
 @section('main')
     <!-- Start #main -->
@@ -88,13 +91,19 @@
                     </div>
                 </div>
 
-                <div class="form-group" style="width: max-content ;float: right; margin: 20px 20px 0 0">
-                    <form action="{{ url('email/verification-notification') }}" method="POST">
-                        @csrf
-                        <button style="background-color: #013289;color: white;border: 0;
-                        font-size: 18px;padding: 5px;border-radius: 5px" type="submit">تأكيد البريد الالكتروني</button>
-                    </form>
-                </div>
+                @if ($user->email_verified_at == null)
+                    <div class="form-group" style="width: max-content ;float: right; margin: 20px 20px 0 0">
+                        <form action="{{ url('email/verification-notification') }}" method="POST">
+                            @csrf
+                            <button
+                                style="background-color: #013289;color: white;border: 0;
+                        font-size: 18px;padding: 5px;border-radius: 5px"
+                                type="submit">تأكيد البريد الالكتروني</button>
+                        </form>
+                    </div>
+                @endif
+
+
 
             </div>
         </div>

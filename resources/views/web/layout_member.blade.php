@@ -58,7 +58,9 @@
                         <a style="margin-bottom: 50px;" href="index.html"
                             class="logo
                 d-flex align-items-center">
-                            <span>LOGO</span>
+                            <span style="font-size:50px ">نق<span
+                                    style="color: #4D66F1;font-size:50px">ا</span>بتي</span>
+
                         </a>
                         <div style="direction: rtl;">
                             <p>الموقع يُتيج للأعضاء تنفيذ الخدمات النقابية اونلاين لتوفير
@@ -70,17 +72,23 @@
               rtl;" class="col-lg-2 col-6 footer-links">
                         <ul>
                             @auth
-                            <li style="direction: rtl;"><a href="union/home">الرئيسية</a><i class="bi bi-chevron-left"></i></li>
-                            <li><a href=""> الخدمات</a><i class="bi bi-chevron-left"></i> </li>
-                            <li><a href="{{url("/union/all/information")}}"> الاخبار</a><i class="bi bi-chevron-left"></i> </li>
-                            <li><a href="{{url("/member/myservice")}}"> طلباتي</a><i class="bi bi-chevron-left"></i> </li>
-                            <li><a href="{{url("/member/info")}}"> معلوماتي</a><i class="bi bi-chevron-left"></i> </li>
-                            <li><a href="{{url("/member_logout")}}"> تسجيل خروج</a><i class="bi bi-chevron-left"></i> </li>
+                                <li style="direction: rtl;"><a href="union/home">الرئيسية</a><i
+                                        class="bi bi-chevron-left"></i></li>
+                                <li><a href=""> الخدمات</a><i class="bi bi-chevron-left"></i> </li>
+                                <li><a href="{{ url('/union/all/information') }}"> الاخبار</a><i
+                                        class="bi bi-chevron-left"></i> </li>
+                                <li><a href="{{ url('/member/myservice') }}"> طلباتي</a><i class="bi bi-chevron-left"></i>
+                                </li>
+                                <li><a href="{{ url('/member/info') }}"> معلوماتي</a><i class="bi bi-chevron-left"></i>
+                                </li>
+                                <li><a href="{{ url('/member_logout') }}"> تسجيل خروج</a><i class="bi bi-chevron-left"></i>
+                                </li>
                             @endauth
                             @guest
-                            <li><a href="{{url("/")}}">النقابات</a><i class="bi bi-chevron-left"></i> </li>
-                            <li><a href="{{url("/login")}}"> تسجيل دخول</a><i class="bi bi-chevron-left"></i> </li>
-                            <li><a href="{{url("/register/member")}}">انشاء حساب</a><i class="bi bi-chevron-left"></i> </li>
+                                <li><a href="{{ url('/') }}">النقابات</a><i class="bi bi-chevron-left"></i> </li>
+                                <li><a href="{{ url('/login') }}"> تسجيل دخول</a><i class="bi bi-chevron-left"></i> </li>
+                                <li><a href="{{ url('/register/member') }}">انشاء حساب</a><i
+                                        class="bi bi-chevron-left"></i> </li>
                             @endguest
                         </ul>
                     </div>
@@ -94,7 +102,7 @@
     <!-- End Footer -->
 
     <a href="#" class="back-to-top d-flex align-items-centerjustify-content-center"><i
-        class="bi bi-arrow-up-short"></i></a>
+            class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="{{ asset('style_member/assets/vendor/purecounter/purecounter.js') }}"></script>

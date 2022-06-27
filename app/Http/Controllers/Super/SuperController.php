@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Super;
 
-use App\Models\User;
-use App\Models\Union;
-use App\Models\Information;
-use Illuminate\Http\Request;
-use App\Http\Middleware\superadmin;
 use App\Http\Controllers\Controller;
+use App\Models\Information;
+use App\Models\Union;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -40,7 +39,7 @@ class SuperController extends Controller
             $union_id = '3';
         } elseif ($loggedUser->union_id == '4') {
             $union_id = '4';
-        } elseif($loggedUser->union_id == '5') {
+        } elseif ($loggedUser->union_id == '5') {
             $union_id = '5';
         } elseif ($loggedUser->union_id == '6') {
             $union_id = '6';
@@ -196,7 +195,7 @@ class SuperController extends Controller
             $union_id = '3';
         } elseif ($loggedUser->union_id == '4') {
             $union_id = '4';
-        } elseif($loggedUser->union_id == '5') {
+        } elseif ($loggedUser->union_id == '5') {
             $union_id = '5';
         } elseif ($loggedUser->union_id == '6') {
             $union_id = '6';
@@ -389,6 +388,10 @@ class SuperController extends Controller
         } else {
             $request->validate(['email' => "email|unique:users,email,$user->id",
             ]);
+
+            $userdata->update([
+                'email_verified_at' => null,
+            ]);
         }
 
         //validate of phone
@@ -430,7 +433,9 @@ class SuperController extends Controller
                 },
             ],
         ]);
-
+        if ($request->name == null) {
+            $request->name = $userdata->name;
+        }
         $userdata->update([
             'name' => $request->name,
             'ssn' => $request->ssn,
@@ -596,7 +601,7 @@ class SuperController extends Controller
 
     public function setting_phone(Request $request)
     {
-        $userdata=Auth::user();
+        $userdata = Auth::user();
         $union = Union::where('id', Auth::user()->union_id)->first();
         //validate of phone
         if ($request->phone == null) {
@@ -636,7 +641,7 @@ class SuperController extends Controller
 
     public function setting_bank(Request $request)
     {
-        $userdata=Auth::user();
+        $userdata = Auth::user();
         $union = Union::where('id', Auth::user()->union_id)->first();
         //validate of bank
         if ($request->bank == null) {
@@ -669,7 +674,8 @@ class SuperController extends Controller
     }
     //////////////////////////////
 
-    public function information(){
+    public function information()
+    {
 
         $data['user'] = Auth::user();
         $data['information'] = Information::where('union_id', $data['user']->union_id)->paginate(15);
@@ -684,7 +690,8 @@ class SuperController extends Controller
         return view("superadmin.one-information")->with($data);
     }
 
-    public function add_information(){
+    public function add_information()
+    {
 
         $data['loggedUser'] = Auth::user();
         $unionid = $data['loggedUser']->union_id;
@@ -693,29 +700,30 @@ class SuperController extends Controller
     }
     //////////////////////////////////////
 
-    public function store_information(Request $request){
+    public function store_information(Request $request)
+    {
 
-    $loggedUser = Auth::user();
-    $superid = $loggedUser->id;
-    $supername = $loggedUser->name;
+        $loggedUser = Auth::user();
+        $superid = $loggedUser->id;
+        $supername = $loggedUser->name;
 
-    if ($loggedUser->union_id == '1') {
-        $union_id = '1';
-    } elseif ($loggedUser->union_id == '2') {
-        $union_id = '2';
-    } elseif ($loggedUser->union_id == '3') {
-        $union_id = '3';
-    } elseif ($loggedUser->union_id == '4') {
-        $union_id = '4';
-    } elseif($loggedUser->union_id == '5') {
-        $union_id = '5';
-    } elseif ($loggedUser->union_id == '6') {
-        $union_id = '6';
-    } elseif ($loggedUser->union_id == '7') {
-        $union_id = '7';
-    } elseif ($loggedUser->union_id == '8') {
-        $union_id = '8';
-    }
+        if ($loggedUser->union_id == '1') {
+            $union_id = '1';
+        } elseif ($loggedUser->union_id == '2') {
+            $union_id = '2';
+        } elseif ($loggedUser->union_id == '3') {
+            $union_id = '3';
+        } elseif ($loggedUser->union_id == '4') {
+            $union_id = '4';
+        } elseif ($loggedUser->union_id == '5') {
+            $union_id = '5';
+        } elseif ($loggedUser->union_id == '6') {
+            $union_id = '6';
+        } elseif ($loggedUser->union_id == '7') {
+            $union_id = '7';
+        } elseif ($loggedUser->union_id == '8') {
+            $union_id = '8';
+        }
 
         $request->validate([
             'header' => [
@@ -737,10 +745,10 @@ class SuperController extends Controller
             'img' => 'required|image',
         ]);
 
-        $pathimg = Storage::disk('uploads')->put('information',$request->img);
+        $pathimg = Storage::disk('uploads')->put('information', $request->img);
         Information::create([
-            'header'=>$request->header,
-            'titel'=>$request->titel,
+            'header' => $request->header,
+            'titel' => $request->titel,
             'img' => $pathimg,
             'admin_id' => $superid,
             'admin_name' => $supername,
@@ -752,7 +760,8 @@ class SuperController extends Controller
     }
     /////////////////////////////////////////
 
-    public function delete_information($id, Request $request){
+    public function delete_information($id, Request $request)
+    {
 
         $loggedUser = Auth::user();
         $user = User::findOrfail($loggedUser->id);
@@ -764,65 +773,63 @@ class SuperController extends Controller
     }
     /////////////////////////////////////
 
-
-    public function edit_information($id){
+    public function edit_information($id)
+    {
 
         $loggedUser = Auth::user();
         $user = User::findOrfail($loggedUser->id);
         $data['information'] = Information::where('union_id', $user->union_id)->where('id', $id)->first();
-        if($data['information']){
-        return view("superadmin.edit-information")->with($data);
-        }
-        else {
+        if ($data['information']) {
+            return view("superadmin.edit-information")->with($data);
+        } else {
             return abort('403');
         }
 
     }
     /////////////////////////////////////
 
-    public function update_information($id, Request $request){
+    public function update_information($id, Request $request)
+    {
 
         $loggedUser = Auth::user();
         $user = User::findOrfail($loggedUser->id);
         $informationdata = Information::where('union_id', $user->union_id)->where('id', $id)->first();
-        if ($request->header == null ){
+        if ($request->header == null) {
             $request->header = $informationdata->header;
-        }
-        else {
-        $request->validate([
-            'header' => [
-                function ($attribute, $value, $fail) {
-                        if(!preg_match('/\p{Arabic}/u', $value)) {
+        } else {
+            $request->validate([
+                'header' => [
+                    function ($attribute, $value, $fail) {
+                        if (!preg_match('/\p{Arabic}/u', $value)) {
                             $fail('يرجي كتابة عنوان الخبر بالغة العربية');
                         }
-                },
-             ],
-          ]);
+                    },
+                ],
+            ]);
         }
-        if ($request->titel == null ){
+        if ($request->titel == null) {
             $request->titel = $informationdata->titel;
+        } else {
+            $request->validate([
+                'titel' => [
+                    function ($attribute, $value, $fail) {
+                        if (!preg_match('/\p{Arabic}/u', $value)) {
+                            $fail('يرجي كتابة محتوى الخبر بالغة العربية');
+                        }
+                    },
+                ],
+                'img' => 'nullable|image',
+            ]);
         }
-        else {
-          $request->validate([
-            'titel' => [
-                function ($attribute, $value, $fail){
-                   if(!preg_match('/\p{Arabic}/u', $value)) {
-                        $fail('يرجي كتابة محتوى الخبر بالغة العربية');
-                    }
-                },
-             ],
-            'img' => 'nullable|image',
-         ]);
-       }
 
-        $pathimg = $informationdata ->img;
+        $pathimg = $informationdata->img;
         if ($request->hasFile('img')) {
             Storage::disk('uploads')->delete($pathimg);
-            $pathimg = Storage::disk('uploads')->put('information',$request->img);
+            $pathimg = Storage::disk('uploads')->put('information', $request->img);
         }
         $informationdata->update([
-            'header'=>$request->header,
-            'titel'=>$request->titel,
+            'header' => $request->header,
+            'titel' => $request->titel,
             'img' => $pathimg,
         ]);
 
@@ -830,6 +837,5 @@ class SuperController extends Controller
         return redirect(url('/superadmin/all/information'));
     }
     /////////////////////////////////////
-
 
 }

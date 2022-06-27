@@ -71,10 +71,10 @@
                                     <img style="height: 200px;" src="{{ asset("web/$info->img") }}" alt="image"
                                         class="card-img-top" alt="...">
 
-                                    <div style="direction: rtl;padding-bottom: 0px;margin-bottom: 0;" class="card-body">
-                                        <h5>{{ $info->header }}</h5>
+                                    <div style="direction: rtl" class="card-body">
+                                        <h5 style="font-weight: bold">{{ $info->header }}</h5>
 
-                                        <p style=" display: -webkit-box;-webkit-line-clamp: 4;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;"
+                                        <p style=" display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;"
                                             class="card-text">{{ $info->titel }}</p>
                                     </div>
                                     <a style="text-decoration: none;text-align: center;"
@@ -147,7 +147,8 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-6 d-flex align-items-center mobile-hidden" data-aos="zoom-out" data-aos-delay="200">
+                    <div class="col-lg-6 d-flex align-items-center mobile-hidden" data-aos="zoom-out"
+                        data-aos-delay="200">
                         <img src="{{ asset('style_member/assets/img/about.jpg') }}" class="img-fluid" alt="">
                     </div>
 

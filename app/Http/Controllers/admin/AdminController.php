@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Models\User;
-use App\Models\Union;
-use App\Models\Information;
-use Illuminate\Http\Request;
+use App\Http\Controllers\admin\ReviewsController;
 use App\Http\Controllers\Controller;
+use App\Models\Information;
+use App\Models\Union;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Controllers\admin\ReviewsController;
 use Storage;
 
 class AdminController extends Controller
@@ -45,7 +45,7 @@ class AdminController extends Controller
             $union_id = '3';
         } elseif ($loggedUser->union_id == '4') {
             $union_id = '4';
-        } elseif($loggedUser->union_id == '5') {
+        } elseif ($loggedUser->union_id == '5') {
             $union_id = '5';
         } elseif ($loggedUser->union_id == '6') {
             $union_id = '6';
@@ -139,7 +139,12 @@ class AdminController extends Controller
         if ($request->email == null) {
             $request->email = $userdata->email;
         } else {
+
             $request->validate(['email' => "email|unique:users,email,$user->id",
+            ]);
+
+            $userdata->update([
+                'email_verified_at' => null,
             ]);
         }
 
@@ -175,6 +180,9 @@ class AdminController extends Controller
             ],
         ]);
 
+        if( $request->name ==  null){
+            $request->name =  $userdata->name;
+        }
         $userdata->update([
             'name' => $request->name,
             'email' => $request->email,
@@ -310,32 +318,35 @@ class AdminController extends Controller
 
     ///////////////////////////////////
 
-    public function information(){
+    public function information()
+    {
 
-            $data['user'] = Auth::user();
-            $data['information'] = Information::where('union_id', $data['user']->union_id)->where('admin_id', $data['user']->id)->paginate(15);
-            return view("admin.all-information")->with($data);
-        }
-        /////////////////////////////////////
+        $data['user'] = Auth::user();
+        $data['information'] = Information::where('union_id', $data['user']->union_id)->where('admin_id', $data['user']->id)->paginate(15);
+        return view("admin.all-information")->with($data);
+    }
+    /////////////////////////////////////
 
-        public function oneinformation($id)
-        {
-            $data['user'] = Auth::user();
-            $data['information'] = Information::where('union_id', $data['user']->union_id)->where('admin_id', $data['user']->id)->where('id', $id)->first();
-            return view("admin.one-information")->with($data);
-        }
-        ///////////////////////////////////
+    public function oneinformation($id)
+    {
+        $data['user'] = Auth::user();
+        $data['information'] = Information::where('union_id', $data['user']->union_id)->where('admin_id', $data['user']->id)->where('id', $id)->first();
+        return view("admin.one-information")->with($data);
+    }
+    ///////////////////////////////////
 
-        public function add_information(){
+    public function add_information()
+    {
 
-            $data['loggedUser'] = Auth::user();
-            $unionid = $data['loggedUser']->union_id;
-            $data['union'] = Union::find($unionid);
-            return view('admin.add-information')->with($data);
-        }
-        //////////////////////////////////////
+        $data['loggedUser'] = Auth::user();
+        $unionid = $data['loggedUser']->union_id;
+        $data['union'] = Union::find($unionid);
+        return view('admin.add-information')->with($data);
+    }
+    //////////////////////////////////////
 
-        public function store_information(Request $request){
+    public function store_information(Request $request)
+    {
 
         $loggedUser = Auth::user();
         $adminid = $loggedUser->id;
@@ -349,7 +360,7 @@ class AdminController extends Controller
             $union_id = '3';
         } elseif ($loggedUser->union_id == '4') {
             $union_id = '4';
-        } elseif($loggedUser->union_id == '5') {
+        } elseif ($loggedUser->union_id == '5') {
             $union_id = '5';
         } elseif ($loggedUser->union_id == '6') {
             $union_id = '6';
@@ -359,118 +370,118 @@ class AdminController extends Controller
             $union_id = '8';
         }
 
+        $request->validate([
+            'header' => [
+                'required',
+                function ($attribute, $value, $fail) {
+                    if (!preg_match('/\p{Arabic}/u', $value)) {
+                        $fail('يرجي كتابة عنوان الخبر بالغة العربية');
+                    }
+                },
+            ],
+            'titel' => [
+                'required',
+                function ($attribute, $value, $fail) {
+                    if (!preg_match('/\p{Arabic}/u', $value)) {
+                        $fail('يرجي كتابة محتوى الخبر بالغة العربية');
+                    }
+                },
+            ],
+            'img' => 'required|image',
+        ]);
+
+        $pathimg = Storage::disk('uploads')->put('information', $request->img);
+        Information::create([
+            'header' => $request->header,
+            'titel' => $request->titel,
+            'img' => $pathimg,
+            'admin_id' => $adminid,
+            'admin_name' => $adminname,
+            'union_id' => $union_id,
+        ]);
+
+        $request->session()->flash('success_edit', 'تم إضافة خبر جديد بنجاح');
+        return redirect(url('/admin/all/information'));
+    }
+    /////////////////////////////////////////
+
+    public function delete_information($id, Request $request)
+    {
+
+        $loggedUser = Auth::user();
+        $user = User::findOrfail($loggedUser->id);
+        $informationdata = Information::where('union_id', $user->union_id)->where('admin_id', $user->id)->where('id', $id)->first();
+        Storage::disk('uploads')->delete($informationdata->img);
+        $informationdata->delete();
+        $request->session()->flash('success_delet', 'تم حذف بيانات الخبر بنجاح');
+        return redirect(url('admin/all/information'));
+    }
+    /////////////////////////////////////
+
+    public function edit_information($id)
+    {
+
+        $loggedUser = Auth::user();
+        $user = User::findOrfail($loggedUser->id);
+        $data['information'] = Information::where('union_id', $user->union_id)->where('admin_id', $user->id)->where('id', $id)->first();
+        if ($data['information']) {
+            return view("admin.edit-information")->with($data);
+        } else {
+            return abort('403');
+        }
+
+    }
+    /////////////////////////////////////
+
+    public function update_information($id, Request $request)
+    {
+
+        $loggedUser = Auth::user();
+        $user = User::findOrfail($loggedUser->id);
+        $adminid = $user->id;
+        $informationdata = Information::where('union_id', $user->union_id)->where('admin_id', $adminid)->where('id', $id)->first();
+        if ($request->header == null) {
+            $request->header = $informationdata->header;
+        } else {
             $request->validate([
                 'header' => [
-                    'required',
                     function ($attribute, $value, $fail) {
                         if (!preg_match('/\p{Arabic}/u', $value)) {
                             $fail('يرجي كتابة عنوان الخبر بالغة العربية');
                         }
                     },
                 ],
+            ]);
+        }
+        if ($request->titel == null) {
+            $request->titel = $informationdata->titel;
+        } else {
+            $request->validate([
                 'titel' => [
-                    'required',
                     function ($attribute, $value, $fail) {
                         if (!preg_match('/\p{Arabic}/u', $value)) {
                             $fail('يرجي كتابة محتوى الخبر بالغة العربية');
                         }
                     },
                 ],
-                'img' => 'required|image',
-            ]);
-
-            $pathimg = Storage::disk('uploads')->put('information',$request->img);
-            Information::create([
-                'header'=>$request->header,
-                'titel'=>$request->titel,
-                'img' => $pathimg,
-                'admin_id' => $adminid,
-                'admin_name' => $adminname,
-                'union_id' => $union_id,
-            ]);
-
-            $request->session()->flash('success_edit', 'تم إضافة خبر جديد بنجاح');
-            return redirect(url('/admin/all/information'));
-        }
-        /////////////////////////////////////////
-
-        public function delete_information($id, Request $request){
-
-            $loggedUser = Auth::user();
-            $user = User::findOrfail($loggedUser->id);
-            $informationdata = Information::where('union_id', $user->union_id)->where('admin_id', $user->id)->where('id', $id)->first();
-            Storage::disk('uploads')->delete($informationdata->img);
-            $informationdata->delete();
-            $request->session()->flash('success_delet', 'تم حذف بيانات الخبر بنجاح');
-            return redirect(url('admin/all/information'));
-        }
-        /////////////////////////////////////
-
-        public function edit_information($id){
-
-            $loggedUser = Auth::user();
-            $user = User::findOrfail($loggedUser->id);
-            $data['information'] = Information::where('union_id', $user->union_id)->where('admin_id', $user->id)->where('id', $id)->first();
-            if($data['information']){
-            return view("admin.edit-information")->with($data);
-            }
-            else {
-                return abort('403');
-            }
-
-        }
-        /////////////////////////////////////
-
-        public function update_information($id, Request $request){
-
-            $loggedUser = Auth::user();
-            $user = User::findOrfail($loggedUser->id);
-            $adminid = $user->id;
-            $informationdata = Information::where('union_id', $user->union_id)->where('admin_id', $adminid)->where('id', $id)->first();
-            if ($request->header == null ){
-                $request->header = $informationdata->header;
-            }
-            else {
-            $request->validate([
-                'header' => [
-                    function ($attribute, $value, $fail) {
-                            if(!preg_match('/\p{Arabic}/u', $value)) {
-                                $fail('يرجي كتابة عنوان الخبر بالغة العربية');
-                            }
-                    },
-                 ],
-              ]);
-            }
-            if ($request->titel == null ){
-                $request->titel = $informationdata->titel;
-            }
-            else {
-              $request->validate([
-                'titel' => [
-                    function ($attribute, $value, $fail){
-                       if(!preg_match('/\p{Arabic}/u', $value)) {
-                            $fail('يرجي كتابة محتوى الخبر بالغة العربية');
-                        }
-                    },
-                 ],
                 'img' => 'nullable|image',
-             ]);
-           }
-
-            $pathimg = $informationdata ->img;
-            if ($request->hasFile('img')) {
-                Storage::disk('uploads')->delete($pathimg);
-                $pathimg = Storage::disk('uploads')->put('information',$request->img);
-            }
-            $informationdata->update([
-                'header'=>$request->header,
-                'titel'=>$request->titel,
-                'img' => $pathimg,
             ]);
-
-            $request->session()->flash('success_edit', 'تم تعديل الخبر بنجاح');
-            return redirect(url('/admin/all/information'));
         }
-        /////////////////////////////////////
+
+        $pathimg = $informationdata->img;
+        if ($request->hasFile('img')) {
+            Storage::disk('uploads')->delete($pathimg);
+            $pathimg = Storage::disk('uploads')->put('information', $request->img);
+        }
+        $informationdata->update([
+            'header' => $request->header,
+            'titel' => $request->titel,
+            'img' => $pathimg,
+        ]);
+
+        $request->session()->flash('success_edit', 'تم تعديل الخبر بنجاح');
+        return redirect(url('/admin/all/information'));
+    }
+    /////////////////////////////////////
 
 }
